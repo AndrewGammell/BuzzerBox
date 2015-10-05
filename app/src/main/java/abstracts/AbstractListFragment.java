@@ -22,6 +22,8 @@ public abstract class AbstractListFragment extends ListFragment {
 
     protected abstract int getRecyclerView();
 
+    protected abstract RecyclerView.Adapter getAdapter();
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -51,6 +53,7 @@ public abstract class AbstractListFragment extends ListFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        recyclerView.setAdapter(getAdapter());
     }
 
     @Override
