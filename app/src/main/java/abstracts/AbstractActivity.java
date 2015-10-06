@@ -44,6 +44,10 @@ public abstract class AbstractActivity extends FragmentActivity implements Fragm
         return true;
     }
 
+    public Fragment getFragment(){
+        return fragmentManager.findFragmentByTag(TAG);
+    }
+
     public void onStop(){
         super.onStop();
         persistFragment();

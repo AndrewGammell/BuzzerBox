@@ -1,9 +1,13 @@
 package util;
 
 import android.content.Context;
+import io.buzzerbox.app.R;
 import singleton.User;
 import tester.Database;
 import tester.DummyUsers;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Devstream on 29/09/2015.
@@ -32,5 +36,12 @@ public class Utility {
         user.setUsername(null);
         user.setPassword(null);
     }
+
+public static List makeList(Context context){
+    List list = new ArrayList();
+
+
+    return DummyUsers.initialiseDummies();
+}
 
 }

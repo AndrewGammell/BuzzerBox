@@ -8,4 +8,11 @@
     <string name="forgot_password">Forgot password?</string>
     <string name="no_account">No Account? Create an account\nget.buzzerbox.com</string>
     <string name="buzzerbox">buzzerbox</string>
+
+    <string-array name="test_strings">
+        <item>Error</item>
+        <item>Sale</item>
+        <item>Account Delete</item>
+        <item>Account Created</item>
+    </string-array>
 </resources>

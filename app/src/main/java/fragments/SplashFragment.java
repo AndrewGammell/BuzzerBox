@@ -67,7 +67,7 @@ public class SplashFragment extends AbstractFragment {
             public void onFinish() {
                 if(Utility.isValidUser(getContext())){
                     Log.d("TAG","Validated user in splash");
-                    fragmentControllerInterface.replaceWithFragment(OverviewFragment.newInstance());
+                    fragmentControllerInterface.replaceWithFragment(ListOverViewFragment.newInstance());
                 }else{
                     Log.d("TAG","Invalid user in splash");
                     fragmentControllerInterface.replaceWithFragment(LoginFragment.newInstance());
@@ -75,6 +75,7 @@ public class SplashFragment extends AbstractFragment {
             }
         }.start();
     }
+
 
 
 }

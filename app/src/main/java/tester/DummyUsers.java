@@ -1,12 +1,13 @@
 package tester;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Devstream on 29/09/2015.
  */
-public class DummyUsers {
+public class DummyUsers implements Serializable{
 
     int id;
     String username;

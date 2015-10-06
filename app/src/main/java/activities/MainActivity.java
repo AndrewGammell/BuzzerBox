@@ -3,8 +3,14 @@ package activities;
 
 import abstracts.AbstractActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
+import fragments.DetailedViewFragment;
+import fragments.ListOverViewFragment;
 import fragments.OverviewFragment;
 import fragments.SplashFragment;
 import io.buzzerbox.app.R;
@@ -12,14 +18,16 @@ import persistence.DataPersister;
 import util.MessageTools;
 import util.Utility;
 
+import java.util.Locale;
+
 
 public class MainActivity extends AbstractActivity implements View.OnClickListener {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
-
         displaySplash();
     }
 
@@ -50,7 +58,8 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
             case R.id.btn_login:
                 if(Utility.isValidUser(this)){
                     MessageTools.showLongToast(this,"User was validated");
-                    replaceWithFragment(OverviewFragment.newInstance());
+
+                    replaceWithFragment(ListOverViewFragment.newInstance());
                 }else{
                     MessageTools.showLongToast(this,"not a valid user");
                 }
@@ -71,4 +80,17 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
         persistFragment();
         DataPersister.saveUser(this);
     }
+
+    @Override
+    public void onBackPressed(){
+        Fragment fragment = getFragment();
+        if(fragment instanceof DetailedViewFragment){
+            replaceWithFragment(ListOverViewFragment.newInstance());
+        }
+        if(fragment instanceof  ListOverViewFragment){
+            this.finish();
+        }
+    }
+
+
 }
