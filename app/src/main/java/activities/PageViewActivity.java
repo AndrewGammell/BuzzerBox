@@ -35,7 +35,7 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.test_activity_pager_layout);
+        setContentView(R.layout.activity_pager_layout);
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);

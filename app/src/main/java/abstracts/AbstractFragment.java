@@ -17,10 +17,6 @@ public abstract class AbstractFragment extends Fragment {
     protected abstract void instantiateWidgets(View view);
 
 
-
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(getLayout(),container,false);

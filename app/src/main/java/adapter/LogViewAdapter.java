@@ -35,7 +35,7 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
     }
 
     private int getLayout(){
-        return R.layout.test_card_layout;
+        return R.layout.logview_card_layout;
     }
 
     @Override
