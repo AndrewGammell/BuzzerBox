@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import fragments.ListOverViewFragment;
+import fragments.LoginFragment;
 import io.buzzerbox.app.R;
 import persistence.DataPersister;
 import util.MessageTools;
@@ -33,7 +34,7 @@ public class PageViewActivity extends AppCompatActivity implements ListOverViewF
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.test_activity_pager_layout);
+        setContentView(R.layout.activity_pager_layout);
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -60,7 +61,7 @@ public class PageViewActivity extends AppCompatActivity implements ListOverViewF
             if(position == 0){
                 fragment = ListOverViewFragment.newInstance();
             }else{
-                fragment = ListOverViewFragment.newInstance();
+                fragment = LoginFragment.newInstance();
             }
 
             return fragment;

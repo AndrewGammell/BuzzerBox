@@ -14,13 +14,13 @@ import java.util.List;
 /**
  * Created by Devstream on 05/10/2015.
  */
-public class ListOverViewAdapter extends RecyclerView.Adapter<ListOverViewAdapter.ItemHolder> {
+public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHolder> {
 
     private List list;
 //    private ViewController control;
 
 
-    public ListOverViewAdapter(List list,Context context) {
+    public OverviewAdapter(List list, Context context) {
         super();
         this.list = list;
 //        if(context instanceof ViewController){

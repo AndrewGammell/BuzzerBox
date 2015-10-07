@@ -1,46 +1,88 @@
 package fragments;
 
-import abstracts.AbstractFragment;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-import io.buzzerbox.app.R;
+import abstracts.AbstractListFragment;
+import adapter.OverviewAdapter;
 
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import io.buzzerbox.app.R;
+import tester.DummyAlerts;
+
+
+import java.util.List;
 
 /**
- * Created by Devstream on 29/09/2015.
+ * Created by Devstream on 05/10/2015.
  */
-public class OverviewFragment extends AbstractFragment {
+public class OverviewFragment extends AbstractListFragment {
 
-    /**
-     * create recycler layout and view for displaying.
-     */
-View.OnClickListener listener;
+    private Callback mCallback = null;
 
-    public static OverviewFragment newInstance(){
-        return new OverviewFragment();
+    @Override
+    protected int getRecyclerLayout() {
+        return R.layout.layout_recycler;
     }
 
     @Override
-    protected int getLayout() {
-        return R.layout.fragment_overview;
+    protected int getRecyclerView() {
+        return R.id.recycler_view;
     }
 
-    /**
-     *
-     * just for testing
-     */
     @Override
-    protected void instantiateWidgets(View view) {
-        listener = (View.OnClickListener) getContext();
-                TextView text_placeholder = (TextView) view.findViewById(R.id.txt_placeholder);
-                text_placeholder.setOnClickListener(listener);
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if(!(context instanceof Callback)){
+            throw new IllegalStateException();
+        }
+        mCallback = (Callback)context;
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
+        setHasOptionsMenu(true);
     }
+
+    @Override
+    protected RecyclerView.Adapter getAdapter() {
+        return new OverviewAdapter(getList(),getActivity());
+    }
+
+    public static Fragment newInstance(){
+        return new OverviewFragment();
+    }
+
+    /**
+     *
+     * @return
+     * this list is for test purposes only
+     */
+    private List getList(){
+        return DummyAlerts.initialiseDummies();
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_main, menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return mCallback.onOptionsItemSelected(item);
+    }
+
+    public interface Callback{
+        boolean onOptionsItemSelected(MenuItem item);
+    }
+
 }
