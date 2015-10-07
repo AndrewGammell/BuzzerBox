@@ -8,8 +8,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import fragments.ListOverViewFragment;
 import fragments.LogViewFragment;
+import fragments.OverviewFragment;
 import io.buzzerbox.app.R;
 import persistence.DataPersister;
 import util.MessageTools;
@@ -18,7 +18,7 @@ import util.Utility;
 /**
  * Created by Devstream on 06/10/2015.
  */
-public class PageViewActivity extends AppCompatActivity implements ListOverViewFragment.Callback
+public class PageViewActivity extends AppCompatActivity implements OverviewFragment.Callback
         , LogViewFragment.Callback {
     private static final String OBJECT_KEY = "OBJECT";
     private static final String BUNDLE_KEY = "BUNDLE";
@@ -60,7 +60,7 @@ public class PageViewActivity extends AppCompatActivity implements ListOverViewF
         public Fragment getItem(int position) {
             Fragment fragment;
             if(position == 0){
-                fragment = ListOverViewFragment.newInstance();
+                fragment = OverviewFragment.newInstance();
             }else{
                 fragment = LogViewFragment.newInstance();
             }
