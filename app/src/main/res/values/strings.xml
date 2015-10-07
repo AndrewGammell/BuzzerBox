@@ -1,13 +1,25 @@
 <resources>
     <string name="app_name">BuzzerBox</string>
-
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="buzzerbox">buzzerbox</string>
+    <string name="text_placeholder_buzzerbox">buzzerbox</string>
+    <string name="text_placeholder_test">Test</string>
+
     <string name="email">Email*</string>
     <string name="password">PASSWORD*</string>
     <string name="forgot_password">Forgot password?</string>
     <string name="no_account">No Account? Create an account\nget.buzzerbox.com</string>
-    <string name="buzzerbox">buzzerbox</string>
+    <string name="text_login_title">buzzerbox</string>
+    <string name="text_login_successful">Log In Successful</string>
+
+    <string name="text_alarm_type">Placeholder Alarm Type Text</string>
+    <string name="text_today">Today</string>
+
+
+
+
+
+
 
     <string-array name="test_strings">
         <item>Error</item>

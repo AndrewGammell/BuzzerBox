@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="unique_alarm_color">#FFBB00</color>
     <color name="blue">#25a2f1</color>
     <color name="white">#FFFFFF</color>
     <color name="grey">#b0b0b0</color>
