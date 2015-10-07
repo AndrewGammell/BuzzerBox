@@ -20,15 +20,15 @@ import java.util.List;
 public class ListOverViewAdapter extends RecyclerView.Adapter<ListOverViewAdapter.ItemHolder> {
 
     private List list;
-    private FragmentControllerInterface control;
+//    private FragmentControllerInterface control;
 
 
     public ListOverViewAdapter(List list,Context context) {
         super();
         this.list = list;
-        if(context instanceof FragmentControllerInterface){
-            this.control = (FragmentControllerInterface) context;
-        }
+//        if(context instanceof FragmentControllerInterface){
+//            this.control = (FragmentControllerInterface) context;
+//        }
 
 
     }
@@ -50,21 +50,23 @@ public class ListOverViewAdapter extends RecyclerView.Adapter<ListOverViewAdapte
 
         DummyAlerts dummy = (DummyAlerts)list.get(i);
         itemHolder.alarmName.setText(dummy.getAlarmName());
-        itemHolder.alarmToday.setText(dummy.getAlarmName());
-        itemHolder.alarmYesterday.setText(dummy.getAlarmName());
-        itemHolder.alarmTotalWeek.setText(dummy.getAlarmName());
-        itemHolder.alarmTotalMonth.setText(dummy.getAlarmName());
-        itemHolder.alarmTotal.setText(dummy.getAlarmName());
-        itemHolder.alarmTimeSinceLast.setText(dummy.getAlarmName());
+        itemHolder.alarmToday.setText(String.valueOf(dummy.getAlarmToday()));
+        itemHolder.alarmYesterday.setText(String.valueOf(dummy.getAlarmYesterday()));
+        itemHolder.alarmTotalWeek.setText(String.valueOf(dummy.getAlarmTotalWeek()));
+        itemHolder.alarmTotalMonth.setText(String.valueOf(dummy.getAlarmTotalMonth()));
+        itemHolder.alarmTotal.setText(String.valueOf(dummy.getAlarmTotal()));
+        itemHolder.alarmTimeSinceLast.setText(String.valueOf(dummy.getAlarmTimeSinceLast()));
 
     }
+
+
 
     @Override
     public int getItemCount() {
         return list.size();
     }
 
-    public class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ItemHolder extends RecyclerView.ViewHolder { //implements View.OnClickListener{
         TextView alarmName;
         TextView alarmToday;
         TextView alarmYesterday;
@@ -73,9 +75,9 @@ public class ListOverViewAdapter extends RecyclerView.Adapter<ListOverViewAdapte
         TextView alarmTotal;
         TextView alarmTimeSinceLast;
 
-        TextView ItemHolder(View itemView) {
+         ItemHolder(View itemView) {
             super(itemView);
-            itemView.setOnClickListener(this);
+          //  itemView.setOnClickListener(this);
             alarmName = (TextView)itemView.findViewById(R.id.text_alarm_type);
             alarmToday = (TextView)itemView.findViewById(R.id.text_today_int_value);
             alarmYesterday = (TextView)itemView.findViewById(R.id.text_yesterday_int_value);
@@ -85,11 +87,11 @@ public class ListOverViewAdapter extends RecyclerView.Adapter<ListOverViewAdapte
             alarmTimeSinceLast = (TextView)itemView.findViewById(R.id.text_last_buzz_int_value);
         }
 
-        @Override
-        public void onClick(View view) {
-            int index = getAdapterPosition();
-
-            control.replaceWithFragment(DetailedViewFragment.newInstance(list.get(index)));
-        }
+//        @Override
+//        public void onClick(View view) {
+//            int index = getAdapterPosition();
+//
+//            control.replaceWithFragment(DetailedViewFragment.newInstance(list.get(index)));
+//        }
     }
 }
