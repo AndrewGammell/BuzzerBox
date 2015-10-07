@@ -1,0 +1,105 @@
+package activities;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
+import fragments.ListOverViewFragment;
+import io.buzzerbox.app.R;
+import persistence.DataPersister;
+import util.MessageTools;
+import util.Utility;
+
+/**
+ * Created by Devstream on 06/10/2015.
+ */
+public class PageViewActivity extends AppCompatActivity implements ListOverViewFragment.Callback {
+    private static final String OBJECT_KEY = "OBJECT";
+    private static final String BUNDLE_KEY = "BUNDLE";
+    SectionsPagerAdapter mSectionsPagerAdapter;
+    ViewPager mViewPager;
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.test_activity_pager_layout);
+
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        mViewPager = (ViewPager) findViewById(R.id.pager);
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        DataPersister.saveUser(this);
+    }
+
+
+
+    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+
+        public SectionsPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            Fragment fragment;
+            if(position == 0){
+                fragment = ListOverViewFragment.newInstance();
+            }else{
+                fragment = ListOverViewFragment.newInstance();
+            }
+
+            return fragment;
+        }
+
+        @Override
+        public int getCount() {
+            // Show 2 total pages.
+            return 2;
+        }
+
+//        @Override
+//        public CharSequence getPageTitle(int position) {
+//            Locale l = Locale.getDefault();
+//            switch (position) {
+//                case 0:
+//                    setTitle("OverView");
+//                    return "help";
+//                case 1:
+//                    return "me";
+//
+//            }
+//            return "null";
+//        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.action_settings:Utility.logout(this);
+                MessageTools.showShortToast(this, "logged out");
+                goToLogin();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void goToLogin(){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+    }
+}

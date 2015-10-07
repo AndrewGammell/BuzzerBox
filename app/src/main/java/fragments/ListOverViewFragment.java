@@ -2,11 +2,17 @@ package fragments;
 
 import abstracts.AbstractListFragment;
 import adapter.ListOverViewAdapter;
+
+import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import io.buzzerbox.app.R;
 import tester.DummyAlerts;
-import util.Utility;
+
 
 import java.util.List;
 
@@ -15,6 +21,7 @@ import java.util.List;
  */
 public class ListOverViewFragment extends AbstractListFragment {
 
+    private Callback mCallback = null;
 
     @Override
     protected int getRecyclerLayout() {
@@ -24,6 +31,23 @@ public class ListOverViewFragment extends AbstractListFragment {
     @Override
     protected int getRecyclerView() {
         return R.id.recycler_view;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if(!(context instanceof Callback)){
+            throw new IllegalStateException();
+        }
+        mCallback = (Callback)context;
+    }
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -42,6 +66,23 @@ public class ListOverViewFragment extends AbstractListFragment {
      */
     private List getList(){
         return DummyAlerts.initialiseDummies();
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_main, menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return mCallback.onOptionsItemSelected(item);
+    }
+
+    public interface Callback{
+        boolean onOptionsItemSelected(MenuItem item);
     }
 
 }
