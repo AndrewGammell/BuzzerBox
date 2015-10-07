@@ -7,14 +7,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import fragments.LoginFragment;
 import fragments.LogViewFragment;
 import fragments.OverviewFragment;
 import io.buzzerbox.app.R;
 import persistence.DataPersister;
 import util.MessageTools;
 import util.Utility;
+
+import java.util.Locale;
 
 /**
  * Created by Devstream on 06/10/2015.
@@ -27,10 +29,9 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
     ViewPager mViewPager;
 
 
+
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-
     }
 
     @Override
@@ -65,7 +66,7 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
             }else{
                 fragment = LogViewFragment.newInstance();
             }
-
+            getSupportActionBar().setTitle(getPageTitle(position -1));
             return fragment;
         }
 
@@ -75,19 +76,17 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
             return 2;
         }
 
-//        @Override
-//        public CharSequence getPageTitle(int position) {
-//            Locale l = Locale.getDefault();
-//            switch (position) {
-//                case 0:
-//                    setTitle("OverView");
-//                    return "help";
-//                case 1:
-//                    return "me";
-//
-//            }
-//            return "null";
-//        }
+        @Override
+        public CharSequence getPageTitle(int position) {
+            Locale l = Locale.getDefault();
+            switch (position) {
+                case 0:
+                    return "Overview";
+                case 1:
+                    return "Log";
+            }
+            return "null";
+        }
     }
 
     @Override
