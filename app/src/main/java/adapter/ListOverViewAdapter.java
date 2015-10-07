@@ -6,11 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import fragments.DetailedViewFragment;
-import interfaces.FragmentControllerInterface;
 import io.buzzerbox.app.R;
 import tester.DummyAlerts;
-import tester.DummyUsers;
 
 import java.util.List;
 
@@ -20,14 +17,14 @@ import java.util.List;
 public class ListOverViewAdapter extends RecyclerView.Adapter<ListOverViewAdapter.ItemHolder> {
 
     private List list;
-//    private FragmentControllerInterface control;
+//    private ViewController control;
 
 
     public ListOverViewAdapter(List list,Context context) {
         super();
         this.list = list;
-//        if(context instanceof FragmentControllerInterface){
-//            this.control = (FragmentControllerInterface) context;
+//        if(context instanceof ViewController){
+//            this.control = (ViewController) context;
 //        }
 
 

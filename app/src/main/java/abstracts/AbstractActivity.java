@@ -1,16 +1,19 @@
 package abstracts;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
-import interfaces.FragmentControllerInterface;
+import interfaces.ViewController;
+
+import java.io.Serializable;
 
 /**
  * Created by Devstream on 29/09/2015.
  */
-public abstract class AbstractActivity extends FragmentActivity implements FragmentControllerInterface {
+public abstract class AbstractActivity extends FragmentActivity implements ViewController {
 
     protected abstract int getContainer();
 
@@ -44,18 +47,5 @@ public abstract class AbstractActivity extends FragmentActivity implements Fragm
         return true;
     }
 
-    public Fragment getFragment(){
-        return fragmentManager.findFragmentByTag(TAG);
-    }
 
-    public void onStop(){
-        super.onStop();
-        persistFragment();
-    }
-
-    protected void persistFragment(){
-        Log.d("TAG", "persistFragment() in AbstractActivity");
-        fragmentManager.saveFragmentInstanceState(fragmentManager.findFragmentByTag(TAG));
-
-    }
 }

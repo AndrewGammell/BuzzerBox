@@ -5,18 +5,18 @@ import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import interfaces.FragmentControllerInterface;
+import android.view.*;
+import io.buzzerbox.app.R;
+import util.Utility;
 
 /**
  * Created by Devstream on 29/09/2015.
  */
 public abstract class AbstractListFragment extends ListFragment {
 
-    protected FragmentControllerInterface fragmentControllerInterface;
+
     protected RecyclerView recyclerView;
+
 
     protected abstract int getRecyclerLayout();
 
@@ -24,15 +24,7 @@ public abstract class AbstractListFragment extends ListFragment {
 
     protected abstract RecyclerView.Adapter getAdapter();
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
 
-        if (!(context instanceof FragmentControllerInterface))
-            throw new IllegalStateException();
-
-        fragmentControllerInterface = (FragmentControllerInterface) context;
-    }
 
 
     @Override
@@ -43,6 +35,7 @@ public abstract class AbstractListFragment extends ListFragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
         return view;
+
     }
 
 
@@ -56,10 +49,5 @@ public abstract class AbstractListFragment extends ListFragment {
         recyclerView.setAdapter(getAdapter());
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
 
-        fragmentControllerInterface = null;
-    }
 }
