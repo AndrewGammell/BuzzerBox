@@ -5,6 +5,7 @@ import adapter.ListOverViewAdapter;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import io.buzzerbox.app.R;
+import tester.DummyAlerts;
 import util.Utility;
 
 import java.util.List;
@@ -40,7 +41,7 @@ public class ListOverViewFragment extends AbstractListFragment {
      * this list is for test purposes only
      */
     private List getList(){
-        return Utility.makeList(getContext());
+        return DummyAlerts.initialiseDummies();
     }
 
 }

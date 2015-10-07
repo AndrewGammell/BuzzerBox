@@ -9,6 +9,7 @@ import android.widget.TextView;
 import fragments.DetailedViewFragment;
 import interfaces.FragmentControllerInterface;
 import io.buzzerbox.app.R;
+import tester.DummyAlerts;
 import tester.DummyUsers;
 
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.List;
  */
 public class ListOverViewAdapter extends RecyclerView.Adapter<ListOverViewAdapter.ItemHolder> {
 
-   private List list;
+    private List list;
     private FragmentControllerInterface control;
 
 
@@ -33,7 +34,7 @@ public class ListOverViewAdapter extends RecyclerView.Adapter<ListOverViewAdapte
     }
 
     private int getLayout(){
-        return R.layout.test_card_layout;
+        return R.layout.overview_card_layout;
     }
 
     @Override
@@ -44,8 +45,17 @@ public class ListOverViewAdapter extends RecyclerView.Adapter<ListOverViewAdapte
 
     @Override
     public void onBindViewHolder(ItemHolder itemHolder, int i) {
-        DummyUsers dummy = (DummyUsers)list.get(i);
-        itemHolder.name.setText(dummy.getUsername());
+        // DummyUsers dummy = (DummyUsers)list.get(i);
+        // itemHolder.name.setText(dummy.getUsername());
+
+        DummyAlerts dummy = (DummyAlerts)list.get(i);
+        itemHolder.alarmName.setText(dummy.getAlarmName());
+        itemHolder.alarmToday.setText(dummy.getAlarmName());
+        itemHolder.alarmYesterday.setText(dummy.getAlarmName());
+        itemHolder.alarmTotalWeek.setText(dummy.getAlarmName());
+        itemHolder.alarmTotalMonth.setText(dummy.getAlarmName());
+        itemHolder.alarmTotal.setText(dummy.getAlarmName());
+        itemHolder.alarmTimeSinceLast.setText(dummy.getAlarmName());
 
     }
 
@@ -55,11 +65,24 @@ public class ListOverViewAdapter extends RecyclerView.Adapter<ListOverViewAdapte
     }
 
     public class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-            TextView name;
-        public ItemHolder(View itemView) {
+        TextView alarmName;
+        TextView alarmToday;
+        TextView alarmYesterday;
+        TextView alarmTotalWeek;
+        TextView alarmTotalMonth;
+        TextView alarmTotal;
+        TextView alarmTimeSinceLast;
+
+        TextView ItemHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            name = (TextView)itemView.findViewById(R.id.name);
+            alarmName = (TextView)itemView.findViewById(R.id.text_alarm_type);
+            alarmToday = (TextView)itemView.findViewById(R.id.text_today_int_value);
+            alarmYesterday = (TextView)itemView.findViewById(R.id.text_yesterday_int_value);
+            alarmTotalWeek = (TextView)itemView.findViewById(R.id.text_total_week_int_value);
+            alarmTotalMonth = (TextView)itemView.findViewById(R.id.text_total_month_int_value);
+            alarmTotal = (TextView)itemView.findViewById(R.id.text_total_int_value);
+            alarmTimeSinceLast = (TextView)itemView.findViewById(R.id.text_last_buzz_int_value);
         }
 
         @Override

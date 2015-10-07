@@ -1,0 +1,191 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:card_view="http://schemas.android.com/apk/res-auto"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:id="@+id/list_item"
+              android:paddingTop="0dp">
+
+    <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/card_overview"
+            card_view:cardElevation="5dp"
+            card_view:cardUseCompatPadding="true"
+            card_view:cardCornerRadius="3dp">
+
+        <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp">
+
+            <ImageView
+                    android:layout_column="0"
+                    android:layout_row="0"
+                    android:padding="10dp"
+                    android:id="@+id/image_alarm_colour"
+                    android:layout_height="30dp"
+                    android:layout_width="30dp"
+                    android:background="#BBB000"
+                    />
+            <TextView
+                    android:layout_column="1"
+                    android:layout_row="0"
+                    android:id="@+id/text_alarm_type"
+                    android:layout_height="match_parent"
+                    android:layout_width="fill_parent"
+                    android:padding="10dp"
+                    android:text="Placeholder Alarm Type Txt"
+                    android:textColor="#ff000000"
+                    android:gravity="center_vertical"/>
+
+            <LinearLayout
+                    android:layout_column="1"
+                    android:layout_row="1"
+                    android:padding="0dp">
+
+                <GridLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="0dp">
+
+                    <LinearLayout android:orientation="horizontal"
+                                  android:layout_column="0"
+                                  android:layout_row="0">
+                        <TextView
+
+                                android:id="@+id/text_today"
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:padding="5dp"
+                                android:text="Today"
+                                android:textColor="#ff000000"
+                                android:gravity="center_vertical"/>
+                        <TextView
+                                android:layout_column="0"
+                                android:layout_row="0"
+                                android:id="@+id/text_today_int_value"
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:padding="5dp"
+                                android:text="7"
+                                android:textColor="#ff000000"
+                                android:gravity="center_vertical"/>
+                    </LinearLayout>
+                    <LinearLayout android:orientation="horizontal"
+                                  android:layout_column="0"
+                                  android:layout_row="1">
+                        <TextView
+                                android:layout_column="0"
+                                android:layout_row="1"
+                                android:id="@+id/text_yesterday"
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:padding="5dp"
+                                android:text="Yesterday"
+                                android:textColor="#ff000000"
+                                android:gravity="center_vertical"/>
+                        <TextView
+                                android:layout_column="0"
+                                android:layout_row="1"
+                                android:id="@+id/text_yesterday_int_value"
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:padding="5dp"
+                                android:text="0"
+                                android:textColor="#ff000000"
+                                android:gravity="center_vertical"/>
+                    </LinearLayout>
+                    <LinearLayout android:orientation="horizontal"
+                                  android:layout_column="1"
+                                  android:layout_row="0">
+                        <TextView
+                                android:id="@+id/text_total_week"
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:padding="5dp"
+                                android:text="Total week"
+                                android:textColor="#ff000000"
+                                android:gravity="center_vertical"/>
+                        <TextView
+                                android:id="@+id/text_total_week_int_value"
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:padding="5dp"
+                                android:text="12"
+                                android:textColor="#ff000000"
+                                android:gravity="center_vertical"/>
+                    </LinearLayout>
+                    <LinearLayout android:orientation="horizontal"
+                                  android:layout_column="1"
+                                  android:layout_row="1">
+                    <TextView
+                            android:id="@+id/text_total_month"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:padding="5dp"
+                            android:text="Total month"
+                            android:textColor="#ff000000"
+                            android:gravity="center_vertical"/>
+                    <TextView
+                            android:id="@+id/text_total_month_int_value"
+                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:padding="5dp"
+                            android:text="12"
+                            android:textColor="#ff000000"
+                            android:gravity="center_vertical"/>
+                    </LinearLayout>
+
+                    <LinearLayout android:orientation="horizontal"
+                                  android:layout_column="0"
+                                  android:layout_row="2">
+                        <TextView
+                                android:id="@+id/text_total"
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:padding="5dp"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                android:text="Total"
+                                android:textColor="#ff000000"
+                                android:gravity="center_vertical"/>
+                        <TextView
+                                android:id="@+id/text_total_int_value"
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:padding="5dp"
+                                android:text="12"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                android:textColor="#ff000000"
+                                android:gravity="center_vertical"/>
+                    </LinearLayout>
+                    <LinearLayout android:orientation="horizontal"
+                                  android:layout_column="1"
+                                  android:layout_row="2">
+                        <TextView
+                                android:id="@+id/text_last_buzz"
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:padding="5dp"
+                                android:text="Last buzz"
+                                android:textColor="#ff777777"
+                                android:gravity="center_vertical"/>
+                        <TextView
+                                android:id="@+id/text_last_buzz_int_value"
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:padding="5dp"
+                                android:text="20 m ago"
+                                android:textColor="#ff777777"
+                                android:gravity="center_vertical"/>
+                    </LinearLayout>
+
+                </GridLayout>
+            </LinearLayout>
+        </GridLayout>
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>
