@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by Devstream on 05/10/2015.
  */
-public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ItemHolder> {
+public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHolder> {
 
     private List list;
     private Context context;
@@ -27,7 +27,7 @@ public class LogAdapter extends RecyclerView.Adapter<LogAdapter.ItemHolder> {
 
 
 
-    public LogAdapter(List list, Context context) {
+    public LogViewAdapter(List list, Context context) {
         super();
         this.list = list;
         this.context = context;
