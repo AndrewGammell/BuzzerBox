@@ -1,8 +1,10 @@
 package fragments;
 
 import abstracts.AbstractFragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import io.buzzerbox.app.R;
@@ -21,6 +23,7 @@ public class DetailedViewFragment extends AbstractFragment {
     private TextView name;
     private TextView password;
     private TextView id;
+    private Callback mCallback;
 
     @Override
     protected int getLayout() {
@@ -48,15 +51,31 @@ public class DetailedViewFragment extends AbstractFragment {
     }
 
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if(!(context instanceof Callback)){
+            throw new IllegalStateException();
+        }
+        mCallback = (Callback) context;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
+        setHasOptionsMenu(true);
         if(getArguments() != null){
             dummy = (DummyUsers) getArguments().getSerializable(KEY);
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return mCallback.onOptionsItemSelected(item);
+    }
+
+    public interface Callback{
+       boolean onOptionsItemSelected(MenuItem item);
+    }
 }

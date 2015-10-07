@@ -76,7 +76,7 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
 
     public static void hideKeyboard(Activity activity) {
         View view = activity.getCurrentFocus();
-        if (view == null) {
+        if (view != null) {
             ((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE)).
                     hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         }
