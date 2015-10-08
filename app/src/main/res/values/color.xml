@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="unique_alarm_color">#FFBB00</color>
+    <color name="unique_alarm_color">#ffffbb00</color>
     <color name="blue">#25a2f1</color>
     <color name="dark_blue">#ff1c7bf1</color>
     <color name="action_bar_blue">#0d83ce</color>
     <color name="white">#FFFFFF</color>
     <color name="grey">#b0b0b0</color>
     <color name="black">#000000</color>
+    <color name="accent">#ffffbb00</color>
+
 </resources>
