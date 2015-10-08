@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import fragments.DetailedViewFragment;
 import io.buzzerbox.app.R;
@@ -28,9 +30,7 @@ public class DisplayActivity extends AppCompatActivity implements DetailedViewFr
             obj = bundle.getSerializable(OBJECT_KEY);
 
         }
-
         displayDetailedView(obj);
-
     }
 
     private void displayDetailedView(Object obj){
@@ -56,4 +56,5 @@ public class DisplayActivity extends AppCompatActivity implements DetailedViewFr
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
+    
 }

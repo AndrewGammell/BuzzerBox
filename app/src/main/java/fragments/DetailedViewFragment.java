@@ -4,6 +4,8 @@ import abstracts.AbstractFragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -45,7 +47,7 @@ public class DetailedViewFragment extends AbstractFragment {
     public static Fragment newInstance(Object obj){
         Bundle bundle = new Bundle();
         DetailedViewFragment fragment = new DetailedViewFragment();
-        bundle.putSerializable(KEY, (Serializable)obj);
+        bundle.putSerializable(KEY, (Serializable) obj);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -71,6 +73,12 @@ public class DetailedViewFragment extends AbstractFragment {
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_main, menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return mCallback.onOptionsItemSelected(item);
     }
@@ -78,4 +86,7 @@ public class DetailedViewFragment extends AbstractFragment {
     public interface Callback{
        boolean onOptionsItemSelected(MenuItem item);
     }
+
+
+
 }
