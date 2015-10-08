@@ -37,6 +37,16 @@ public class DummyAlerts implements Serializable{
         list.add(new DummyAlerts("New Account", 5, 532, 47, 924 , 3881, 20));
         list.add(new DummyAlerts("Newsletter Subscription", 0, 6, 0, 88, 62, 20));
         list.add(new DummyAlerts("Sale App", 7, 0, 12, 13, 31, 20));
+        list.add(new DummyAlerts("Affiliate Link Clicked", 7, 0, 12, 13, 31, 20));
+        list.add(new DummyAlerts("Redirect From Landing Page", 0, 23, 4, 31, 62, 20));
+        list.add(new DummyAlerts("Content Upload", 7, 0, 12, 13, 31, 20));
+        list.add(new DummyAlerts("Content Download", 5, 532, 47, 924 , 3881, 20));
+        list.add(new DummyAlerts("Account Upgrade", 7, 0, 12, 13, 31, 20));
+        list.add(new DummyAlerts("Account Downgrade", 7, 0, 12, 13, 31, 20));
+        list.add(new DummyAlerts("Account Expired", 5, 532, 47, 924 , 3881, 20));
+        list.add(new DummyAlerts("Server Error", 5, 532, 47, 924 , 3881, 20));
+        list.add(new DummyAlerts("Browser Incompatible", 5, 532, 47, 924 , 3881, 20));
+
 
         return list;
     }
