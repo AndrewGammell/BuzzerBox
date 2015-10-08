@@ -58,6 +58,7 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
 
     public class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView name;
+
         public ItemHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);

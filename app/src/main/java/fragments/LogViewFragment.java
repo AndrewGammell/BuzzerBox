@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import io.buzzerbox.app.R;
+import tester.DummyAlerts;
 import tester.DummyUsers;
 
 import java.util.List;
@@ -62,7 +63,7 @@ public class LogViewFragment extends AbstractListFragment {
      * this list is for test purposes only
      */
     private List getList(){
-        return DummyUsers.initialiseDummies();
+        return DummyAlerts.initialiseDummies();
     }
 
 

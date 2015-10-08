@@ -57,10 +57,8 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
                 if (Utility.isValidUser(this)) {
                     MessageTools.showLongToast(this, "User was validated");
 
-                    //replaceWithFragment(ListOverViewFragment.newInstance());
-
-                    Intent in = new Intent(this,PageViewActivity.class);
-                    startActivity(in);
+                    //replaceWithFragment(ListOverViewFragment.newInstance())
+                    startNewActivity();
                 } else {
                     MessageTools.showLongToast(this, "not a valid user");
                 }
@@ -82,4 +80,11 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
         }
     }
 
+    private void startNewActivity(){
+        Intent intent = new Intent(this,PageViewActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        this.finish();
+    }
 }
