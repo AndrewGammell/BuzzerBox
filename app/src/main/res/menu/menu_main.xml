@@ -6,20 +6,20 @@
           android:title="@string/action_settings"
           android:orderInCategory="100"
           app:showAsAction="ifRoom"
-          android:icon="@mipmap/ic_action_action_settings" >
+          android:icon="@drawable/ic_settings_white_48dp"  >
 
           <menu>
               <item android:id="@+id/action_settings"
                     android:title="@string/action_settings"
                     android:orderInCategory="100"
                     app:showAsAction="ifRoom"
-                    android:icon="@mipmap/ic_action_action_settings" />
+                    android:icon="@drawable/ic_settings_white_48dp" />
 
               <item android:id="@+id/action_logout"
                     android:title="@string/logout"
                     android:orderInCategory="100"
                     app:showAsAction="ifRoom"
-                    android:icon="@drawable/ic_lock_white_48dp" />
+                    android:icon="@drawable/ic_lock_white_48dp"/>
 
               </menu>
 
