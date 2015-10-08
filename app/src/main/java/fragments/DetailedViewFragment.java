@@ -70,6 +70,7 @@ public class DetailedViewFragment extends AbstractFragment {
         if(getArguments() != null){
             dummy = (DummyUsers) getArguments().getSerializable(KEY);
         }
+
     }
 
     @Override

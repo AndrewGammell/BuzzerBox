@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import fragments.LogViewFragment;
 import fragments.OverviewFragment;
@@ -29,10 +30,10 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
     ViewPager mViewPager;
 
 
-
     @Override
     public void onBackPressed() {
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,8 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        mViewPager.addOnPageChangeListener(new PageChangeListener());
+        getSupportActionBar().setTitle(mSectionsPagerAdapter.getPageTitle(0));
     }
 
     @Override
@@ -49,7 +52,6 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
         super.onStop();
         DataPersister.saveUser(this);
     }
-
 
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -60,13 +62,17 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
 
         @Override
         public Fragment getItem(int position) {
-            Fragment fragment;
-            if(position == 0){
-                fragment = OverviewFragment.newInstance();
-            }else{
-                fragment = LogViewFragment.newInstance();
+            Log.d("PAGE","getItem()");
+            Fragment fragment = null;
+            switch (position) {
+                case 0:
+                    fragment = OverviewFragment.newInstance();
+
+                    break;
+                case 1:
+                    fragment = LogViewFragment.newInstance();
+                    break;
             }
-            getSupportActionBar().setTitle(getPageTitle(position -1));
             return fragment;
         }
 
@@ -78,12 +84,12 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
 
         @Override
         public CharSequence getPageTitle(int position) {
-            Locale l = Locale.getDefault();
+            Log.d("PAGE","getIPageTitle()");
             switch (position) {
                 case 0:
-                    return "Overview";
+                    return getResources().getString(R.string.title_overview);
                 case 1:
-                    return "Log";
+                    return getResources().getString(R.string.title_log);
             }
             return "null";
         }
@@ -91,8 +97,9 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()){
-            case R.id.action_settings:Utility.logout(this);
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Utility.logout(this);
                 MessageTools.showShortToast(this, "logged out");
                 goToLogin();
                 return true;
@@ -100,8 +107,26 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
         return super.onOptionsItemSelected(item);
     }
 
-    private void goToLogin(){
-        Intent intent = new Intent(this,MainActivity.class);
+    private void goToLogin() {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+
+    private class PageChangeListener implements ViewPager.OnPageChangeListener{
+
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            getSupportActionBar().setTitle(mSectionsPagerAdapter.getPageTitle(position));
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+        }
     }
 }

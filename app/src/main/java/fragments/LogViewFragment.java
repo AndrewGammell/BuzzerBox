@@ -80,6 +80,7 @@ public class LogViewFragment extends AbstractListFragment {
 
     public interface Callback{
         boolean onOptionsItemSelected(MenuItem item);
+
     }
 
 }
