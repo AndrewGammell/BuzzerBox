@@ -1,18 +1,14 @@
 package adapter;
 
-import activities.DisplayActivity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import io.buzzerbox.app.R;
-import tester.DummyUsers;
+import tester.DummyAlerts;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -21,16 +17,16 @@ import java.util.List;
 public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHolder> {
 
     private List list;
-    private Context context;
-    private final String OBJECT_KEY = "OBJECT";
-    private final String BUNDLE_KEY = "BUNDLE";
-
+//    private ViewController control;
 
 
     public LogViewAdapter(List list, Context context) {
         super();
         this.list = list;
-        this.context = context;
+//        if(context instanceof ViewController){
+//            this.control = (ViewController) context;
+//        }
+
 
     }
 
@@ -41,42 +37,50 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
     @Override
     public ItemHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(getLayout(),viewGroup,false);
+        // Marquee //
+        TextView textView = (TextView) view.findViewById(R.id.text_alarm_type);
+        textView.setSelected(true); // Set focus to the TextView that will use the marquee //
+
         return new ItemHolder(view);
+
+
+
     }
 
     @Override
     public void onBindViewHolder(ItemHolder itemHolder, int i) {
-        DummyUsers dummy = (DummyUsers)list.get(i);
-        itemHolder.name.setText(dummy.getUsername());
+        // DummyUsers dummy = (DummyUsers)list.get(i);
+        // itemHolder.name.setText(dummy.getUsername());
+
+        DummyAlerts dummy = (DummyAlerts)list.get(i);
+        itemHolder.alarmName.setText(dummy.getAlarmName());
+        itemHolder.alarmTimeSinceLast.setText(String.valueOf(dummy.getAlarmTimeSinceLast()));
 
     }
+
+
 
     @Override
     public int getItemCount() {
         return list.size();
     }
 
-    public class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        TextView name;
+    public class ItemHolder extends RecyclerView.ViewHolder { //implements View.OnClickListener{
+        TextView alarmName;
+        TextView alarmTimeSinceLast;
 
-        public ItemHolder(View itemView) {
+        ItemHolder(View itemView) {
             super(itemView);
-            itemView.setOnClickListener(this);
-            name = (TextView)itemView.findViewById(R.id.name);
+            //  itemView.setOnClickListener(this);
+            alarmName = (TextView)itemView.findViewById(R.id.text_alarm_type);
+            alarmTimeSinceLast = (TextView)itemView.findViewById(R.id.text_last_buzz_int_value);
         }
 
-        @Override
-        public void onClick(View view) {
-            int index = getAdapterPosition();
-            callDisplayActivity(index);
-        }
-
-        private void callDisplayActivity(int index){
-            Intent in = new Intent(context, DisplayActivity.class);
-            Bundle bundle = new Bundle();
-            bundle.putSerializable(OBJECT_KEY,(Serializable)list.get(index));
-            in.putExtra(BUNDLE_KEY, bundle);
-            context.startActivity(in);
-        }
+//        @Override
+//        public void onClick(View view) {
+//            int index = getAdapterPosition();
+//
+//            control.replaceWithFragment(DetailedViewFragment.newInstance(list.get(index)));
+//        }
     }
 }

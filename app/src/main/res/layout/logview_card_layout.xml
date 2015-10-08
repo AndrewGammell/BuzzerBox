@@ -1,54 +1,67 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:card_view="http://schemas.android.com/apk/res-auto"
-              android:orientation="vertical"
+              android:orientation="horizontal"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:id="@+id/list_item"
-              android:paddingTop="5dp">
+              android:paddingTop="0dp">
 
     <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/card_view"
+            android:id="@+id/card_overview"
             card_view:cardElevation="5dp"
             card_view:cardUseCompatPadding="true"
             card_view:cardCornerRadius="3dp">
 
         <GridLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="5dp">
 
+            <ImageView
+                    android:layout_column="0"
+                    android:layout_row="0"
+                    android:padding="10dp"
+                    android:id="@+id/image_alarm_colour"
+                    android:background="@drawable/unique_alarm_color_shape"
+                    android:layout_height="30dp"
+                    android:layout_width="30dp"
+                    />
             <TextView
-                    android:id="@+id/name"
                     android:layout_column="1"
                     android:layout_row="0"
+                    android:id="@+id/text_alarm_type"
                     android:layout_height="match_parent"
-                    android:layout_width="fill_parent"
-                    android:text="@string/text_placeholder_test"
+                    android:layout_width="160dp"
+                    android:padding="10dp"
+                    android:text="@string/text_alarm_type"
+                    android:singleLine="true"
+                    android:ellipsize="marquee"
+                    android:marqueeRepeatLimit="marquee_forever"
                     android:textColor="#ff000000"
                     android:gravity="center_vertical"/>
-            <ImageView
-                    android:id="@+id/image_view1"
-                    android:layout_column="0"
-                    android:layout_row="0"
-                    android:layout_height="30dp"
-                    android:layout_width="30dp"/>
 
-
-            <ImageView
-                    android:id="@+id/image_view2"
-                    android:layout_column="0"
-                    android:layout_row="1"
-                    android:layout_height="30dp"
-                    android:layout_width="30dp"/>
             <TextView
-                    android:id="@+id/bikes"
-                    android:layout_column="1"
-                    android:layout_row="1"
-                    android:textColor="#ff000000"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:text="@string/text_placeholder_test"/>
+                    android:layout_column="2"
+                    android:layout_row="0"
+                    android:id="@+id/text_last_buzz"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:padding="5dp"
+                    android:text="Last buzz"
+                    android:textColor="#ff777777"
+                    android:gravity="center_vertical"/>
+            <TextView
+                    android:layout_column="3"
+                    android:layout_row="0"
+                    android:id="@+id/text_last_buzz_int_value"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:padding="5dp"
+                    android:text="20 m ago"
+                    android:textColor="#ff777777"
+                    android:gravity="center_vertical"/>
 
 
         </GridLayout>

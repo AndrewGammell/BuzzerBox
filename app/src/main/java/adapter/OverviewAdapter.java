@@ -53,10 +53,7 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
         itemHolder.alarmTotalMonth.setText(String.valueOf(dummy.getAlarmTotalMonth()));
         itemHolder.alarmTotal.setText(String.valueOf(dummy.getAlarmTotal()));
         itemHolder.alarmTimeSinceLast.setText(String.valueOf(dummy.getAlarmTimeSinceLast()));
-
     }
-
-
 
     @Override
     public int getItemCount() {
@@ -72,9 +69,9 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
         TextView alarmTotal;
         TextView alarmTimeSinceLast;
 
-         ItemHolder(View itemView) {
+        ItemHolder(View itemView) {
             super(itemView);
-          //  itemView.setOnClickListener(this);
+            //  itemView.setOnClickListener(this);
             alarmName = (TextView)itemView.findViewById(R.id.text_alarm_type);
             alarmToday = (TextView)itemView.findViewById(R.id.text_today_int_value);
             alarmYesterday = (TextView)itemView.findViewById(R.id.text_yesterday_int_value);
