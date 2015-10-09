@@ -2,6 +2,7 @@ package activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -41,16 +42,16 @@ public class DisplayActivity extends AppCompatActivity implements DetailedViewFr
             bundle = getIntent().getBundleExtra(BUNDLE_KEY);
             obj = bundle.getSerializable(OBJECT_KEY);
         }
-        displayDetailedView(obj);
+        if(!isFragmentDisplayed()){
+            displayDetailedView(obj);
+        }
+
     }
 
     private void displayDetailedView(Object obj){
         transaction = fragmentManager.beginTransaction();
         transaction.add(getContainer(), DetailedViewFragment.newInstance(obj), TAG).commit();
-//        getSupportFragmentManager()
-//                .beginTransaction()
-//                .add(R.id.activity_main_container, DetailedViewFragment.newInstance(obj))
-//                .commit();
+
     }
 
     @Override
@@ -80,5 +81,13 @@ public class DisplayActivity extends AppCompatActivity implements DetailedViewFr
 
     private int getContainer(){
         return R.id.activity_main_container;
+    }
+
+    private boolean isFragmentDisplayed(){
+        Fragment fragment = fragmentManager.findFragmentByTag(TAG);
+        if(fragment != null){
+            return true;
+        }
+        return false;
     }
 }
