@@ -97,7 +97,7 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            case R.id.action_logout:
                 Utility.logout(this);
                 MessageTools.showShortToast(this, "logged out");
                 goToLogin();

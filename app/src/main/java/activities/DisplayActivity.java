@@ -52,9 +52,17 @@ public class DisplayActivity extends AppCompatActivity implements DetailedViewFr
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void setCurrentTitle(String title){
+        getSupportActionBar().setTitle(title);
+    }
+
     private void goToLogin(){
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
+            Intent intent = new Intent(this,MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            this.finish();
     }
     
 }

@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import io.buzzerbox.app.R;
+import tester.DummyAlerts;
 import tester.DummyUsers;
 
 import java.io.Serializable;
@@ -21,7 +22,7 @@ public class DetailedViewFragment extends AbstractFragment {
 
 
     private static final String KEY = "KEY";
-    private DummyUsers dummy;
+    private DummyAlerts dummy;
     private TextView name;
     private TextView password;
     private TextView id;
@@ -35,13 +36,15 @@ public class DetailedViewFragment extends AbstractFragment {
     @Override
     protected void instantiateWidgets(View view) {
         name = (TextView)view.findViewById(R.id.name);
-        name.setText(dummy.getUsername());
+        name.setText(dummy.getAlarmName());
 
         password = (TextView)view.findViewById(R.id.password);
-        password.setText(dummy.getPassword());
+        password.setText(String.valueOf(dummy.getAlarmTimeSinceLast()));
 
         id = (TextView)view.findViewById(R.id.id);
-        id.setText(String.valueOf(dummy.getId()));
+        id.setText(String.valueOf(dummy.getAlarmToday()));
+
+        mCallback.setCurrentTitle(dummy.getAlarmName());
     }
 
     public static Fragment newInstance(Object obj){
@@ -68,7 +71,7 @@ public class DetailedViewFragment extends AbstractFragment {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         if(getArguments() != null){
-            dummy = (DummyUsers) getArguments().getSerializable(KEY);
+            dummy = (DummyAlerts) getArguments().getSerializable(KEY);
         }
 
     }
@@ -86,6 +89,7 @@ public class DetailedViewFragment extends AbstractFragment {
 
     public interface Callback{
        boolean onOptionsItemSelected(MenuItem item);
+        void setCurrentTitle(String title);
     }
 
 
