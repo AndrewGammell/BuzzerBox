@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -25,13 +26,10 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
         , LogViewFragment.Callback {
     private static final String OBJECT_KEY = "OBJECT";
     private static final String BUNDLE_KEY = "BUNDLE";
-    SectionsPagerAdapter mSectionsPagerAdapter;
-    ViewPager mViewPager;
+    private SectionsPagerAdapter mSectionsPagerAdapter;
+    private ViewPager mViewPager;
+    private ActionBar  mActionBar;
 
-
-//    @Override
-//    public void onBackPressed() {
-//    }
 
 
     @Override
@@ -43,7 +41,8 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.addOnPageChangeListener(new PageChangeListener());
-        getSupportActionBar().setTitle(mSectionsPagerAdapter.getPageTitle(0));
+        mActionBar = getSupportActionBar();
+        mActionBar.setTitle(mSectionsPagerAdapter.getPageTitle(0));
     }
 
     @Override
@@ -83,7 +82,7 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
 
         @Override
         public CharSequence getPageTitle(int position) {
-            Log.d("PAGE","getIPageTitle()");
+            Log.d("PAGE","getPageTitle()");
             switch (position) {
                 case 0:
                     return getResources().getString(R.string.title_overview);
@@ -106,9 +105,12 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
         return super.onOptionsItemSelected(item);
     }
 
-    private void goToLogin() {
-        Intent intent = new Intent(this, MainActivity.class);
+    private void goToLogin(){
+        Intent intent = new Intent(this,MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+        this.finish();
     }
 
 
@@ -121,7 +123,7 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
 
         @Override
         public void onPageSelected(int position) {
-            getSupportActionBar().setTitle(mSectionsPagerAdapter.getPageTitle(position));
+            mActionBar.setTitle(mSectionsPagerAdapter.getPageTitle(position));
         }
 
         @Override

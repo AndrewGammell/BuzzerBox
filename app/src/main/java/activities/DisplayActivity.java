@@ -3,6 +3,9 @@ package activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,25 +22,35 @@ public class DisplayActivity extends AppCompatActivity implements DetailedViewFr
     private String BUNDLE_KEY = "BUNDLE";
     private String OBJECT_KEY = "OBJECT";
     private Object obj;
+    private Bundle bundle;
+
+    private final FragmentManager fragmentManager = getSupportFragmentManager();
+    private FragmentTransaction transaction;
+    private final String TAG = "fragment";
+
+    private ActionBar mActionBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Bundle bundle;
+        mActionBar = getSupportActionBar();
+
         if(getIntent().getBundleExtra(BUNDLE_KEY) != null){
             bundle = getIntent().getBundleExtra(BUNDLE_KEY);
             obj = bundle.getSerializable(OBJECT_KEY);
-
         }
         displayDetailedView(obj);
     }
 
     private void displayDetailedView(Object obj){
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.activity_main_container, DetailedViewFragment.newInstance(obj))
-                .commit();
+        transaction = fragmentManager.beginTransaction();
+        transaction.add(getContainer(), DetailedViewFragment.newInstance(obj), TAG).commit();
+//        getSupportFragmentManager()
+//                .beginTransaction()
+//                .add(R.id.activity_main_container, DetailedViewFragment.newInstance(obj))
+//                .commit();
     }
 
     @Override
@@ -54,7 +67,7 @@ public class DisplayActivity extends AppCompatActivity implements DetailedViewFr
 
     @Override
     public void setCurrentTitle(String title){
-        getSupportActionBar().setTitle(title);
+        mActionBar.setTitle(title);
     }
 
     private void goToLogin(){
@@ -64,5 +77,8 @@ public class DisplayActivity extends AppCompatActivity implements DetailedViewFr
             startActivity(intent);
             this.finish();
     }
-    
+
+    private int getContainer(){
+        return R.id.activity_main_container;
+    }
 }

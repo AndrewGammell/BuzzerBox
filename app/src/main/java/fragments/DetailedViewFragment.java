@@ -30,24 +30,24 @@ public class DetailedViewFragment extends AbstractFragment {
 
     @Override
     protected int getLayout() {
-       return R.layout.test_detailed_view;
+        return R.layout.test_detailed_view;
     }
 
     @Override
     protected void instantiateWidgets(View view) {
-        name = (TextView)view.findViewById(R.id.name);
+        name = (TextView) view.findViewById(R.id.name);
         name.setText(dummy.getAlarmName());
 
-        password = (TextView)view.findViewById(R.id.password);
+        password = (TextView) view.findViewById(R.id.password);
         password.setText(String.valueOf(dummy.getAlarmTimeSinceLast()));
 
-        id = (TextView)view.findViewById(R.id.id);
+        id = (TextView) view.findViewById(R.id.id);
         id.setText(String.valueOf(dummy.getAlarmToday()));
 
         mCallback.setCurrentTitle(dummy.getAlarmName());
     }
 
-    public static Fragment newInstance(Object obj){
+    public static Fragment newInstance(Object obj) {
         Bundle bundle = new Bundle();
         DetailedViewFragment fragment = new DetailedViewFragment();
         bundle.putSerializable(KEY, (Serializable) obj);
@@ -60,7 +60,7 @@ public class DetailedViewFragment extends AbstractFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        if(!(context instanceof Callback)){
+        if (!(context instanceof Callback)) {
             throw new IllegalStateException();
         }
         mCallback = (Callback) context;
@@ -70,7 +70,7 @@ public class DetailedViewFragment extends AbstractFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        if(getArguments() != null){
+        if (getArguments() != null) {
             dummy = (DummyAlerts) getArguments().getSerializable(KEY);
         }
 
@@ -87,11 +87,11 @@ public class DetailedViewFragment extends AbstractFragment {
         return mCallback.onOptionsItemSelected(item);
     }
 
-    public interface Callback{
-       boolean onOptionsItemSelected(MenuItem item);
+    public interface Callback {
+        boolean onOptionsItemSelected(MenuItem item);
+
         void setCurrentTitle(String title);
     }
-
 
 
 }
