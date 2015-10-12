@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="unique_alarm_color">#ffffbb00</color>
-    <color name="blue">#25a2f1</color>
-    <color name="dark_blue">#ff1c7bf1</color>
-    <color name="action_bar_blue">#0d83ce</color>
-    <color name="white">#FFFFFF</color>
-    <color name="grey">#b0b0b0</color>
-    <color name="black">#000000</color>
-    <color name="accent">#ffffbb00</color>
+    <!-- Custom BuzzerBox Values -->
+
+    <!-- STANDARD COLOUR VALUE SET for BuzzerBox -->
+    <!-- Changing values here WILL ALSO CHANGE Named Design Elements below -->
+    <color name="buzzerbox_yellow">#ffffbb00</color>
+    <color name="buzzerbox_blue">#25a2f1</color>
+    <color name="buzzerbox_dark_blue">#0d83ce</color>
+    <color name="buzzerbox_white">#FFFFFF</color>
+    <color name="buzzerbox_grey">#b0b0b0</color>
+    <color name="buzzerbox_black">#000000</color>
+    <!-- -->
+
+    <!-- COLOUR SET SORTED BY NAMED DESIGN ELEMENTS for BuzzerBox -->
+    <!-- top action bar main bg colour-->
+    <color name="buzzerbox_action_bar">@color/buzzerbox_dark_blue</color>
+    <!-- elements within top action bar, settings cog etc -->
+    <color name="buzzerbox_action_bar_accent">@color/buzzerbox_yellow</color>
+    <!-- default color display for custom alarm colors to be individually set later by user -->
+    <!-- may need to edit here when setting unique custom colour chosen by user -->
+    <color name="unique_alarm_color">@color/buzzerbox_yellow</color>
+    <!-- -->
 
 </resources>

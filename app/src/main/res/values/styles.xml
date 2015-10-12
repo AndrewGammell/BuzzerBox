@@ -6,12 +6,12 @@
     </style>
     <style name="MyCustomTheme" parent="Theme.AppCompat.Light">
         <!-- Override the app bar color -->
-        <item name="colorPrimary">@color/dark_blue</item>
+        <item name="colorPrimary">@color/buzzerbox_blue</item>
         <!-- this colours the main action bar !-->
-        <item name="colorPrimaryDark">@color/action_bar_blue</item>
+        <item name="colorPrimaryDark">@color/buzzerbox_dark_blue</item>
         <!-- this colours th very top where batter and signal are !-->
-        <item name="colorAccent">@color/accent</item>
+        <item name="colorAccent">@color/buzzerbox_action_bar_accent</item>
         <!-- this colours the accents of existing text or spinners !-->
-        <item name="android:fontFamily">@string/font_roboto_black</item>
+        <item name="android:fontFamily">@string/buzzerbox_font_app_default</item>
     </style>
 </resources>

@@ -36,10 +36,12 @@
                     android:layout_width="160dp"
                     android:padding="10dp"
                     android:text="@string/text_alarm_type"
+                    android:textSize="@dimen/buzzerbox_font_size_small"
+                    android:fontFamily="@string/buzzerbox_font_app_default_bold"
                     android:singleLine="true"
                     android:ellipsize="marquee"
                     android:marqueeRepeatLimit="marquee_forever"
-                    android:textColor="#ff000000"
+                    android:textColor="@color/buzzerbox_black"
                     android:gravity="center_vertical"/>
 
             <TextView
@@ -49,8 +51,10 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:padding="5dp"
-                    android:text="Last buzz"
-                    android:textColor="#ff777777"
+                    android:text="@string/txt_last_buzz"
+                    android:textSize="@dimen/buzzerbox_font_size_small"
+                    android:fontFamily="@string/buzzerbox_font_app_default"
+                    android:textColor="@color/buzzerbox_grey"
                     android:gravity="center_vertical"/>
             <TextView
                     android:layout_column="3"
@@ -59,8 +63,10 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:padding="5dp"
-                    android:text="20 m ago"
-                    android:textColor="#ff777777"
+                    android:text="@string/txt_last_buzz_int_value"
+                    android:textSize="@dimen/buzzerbox_font_size_small"
+                    android:fontFamily="@string/buzzerbox_font_app_default"
+                    android:textColor="@color/buzzerbox_grey"
                     android:gravity="center_vertical"/>
 
 
