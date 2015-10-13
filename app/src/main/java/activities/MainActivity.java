@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+
+import authentication.LoginAsyncTask;
 import fragments.SplashFragment;
 import io.buzzerbox.app.R;
 import util.MessageTools;
@@ -18,12 +20,16 @@ import util.Utility;
 
 public class MainActivity extends AbstractActivity implements View.OnClickListener {
 
+    LoginAsyncTask login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
+        login = new LoginAsyncTask("dummy@bundly.io", "dummy1234");
+        login.execute("");
         displaySplash();
+
     }
 
     @Override
@@ -43,7 +49,7 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
     }
 
     private void displaySplash() {
-        Log.d("TAG", "displaySplash() in MainActivity");
+        Log.d("NEIL", "displaySplash() in MainActivity");
         if (!(isFragmentDisplayed())) {
             addFragment(SplashFragment.newInstance());
         }
