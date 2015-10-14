@@ -1,6 +1,8 @@
 package activities;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -11,8 +13,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import fragments.DetailedViewFragment;
 import io.buzzerbox.app.R;
+import util.FontIconDrawable;
 import util.MessageTools;
 import util.Utility;
 
@@ -35,8 +39,30 @@ public class DisplayActivity extends AppCompatActivity implements DetailedViewFr
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //
+        // AK 13-10-2015 //
+        //
+
+
+       // Drawable icon = FontIconDrawable.inflate(getResources(), R.id.icon.buzzerbox_font_icon_symbol);
+
+        // AK 13-10-2015 //
+        // CODE BELOW Testing Hiding the Status Bar on Android 4.0 and Lower for DetailedViewFragment ?? //
+        // May need to Move to DetailedViewFragment.java onCreate //
+
+        //if (Build.VERSION.SDK_INT < 16){
+        //    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+        //            WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        // }
+        // CODE ABOVE Testing Hiding the Status Bar on Android 4.0 and Lower //
+        //
+
         setContentView(R.layout.activity_main);
         mActionBar = getSupportActionBar();
+
+        //
+        //
 
         if(getIntent().getBundleExtra(BUNDLE_KEY) != null){
             bundle = getIntent().getBundleExtra(BUNDLE_KEY);
@@ -51,7 +77,6 @@ public class DisplayActivity extends AppCompatActivity implements DetailedViewFr
     private void displayDetailedView(Object obj){
         transaction = fragmentManager.beginTransaction();
         transaction.add(getContainer(), DetailedViewFragment.newInstance(obj), TAG).commit();
-
     }
 
     @Override
@@ -72,11 +97,11 @@ public class DisplayActivity extends AppCompatActivity implements DetailedViewFr
     }
 
     private void goToLogin(){
-            Intent intent = new Intent(this,MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            this.finish();
+        Intent intent = new Intent(this,MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        this.finish();
     }
 
     private int getContainer(){
