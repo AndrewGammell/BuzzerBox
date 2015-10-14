@@ -35,12 +35,26 @@
     <string name="buzzerbox_font_roboto_thin">fonts/Roboto-Thin.ttf</string>
     <string name="buzzerbox_font_roboto_medium">fonts/Roboto-Medium.ttf</string>
     <string name="buzzerbox_font_helvetica_neue">fonts/Helvetica-Neue.ttf</string>
+
+    <!-- ICON FONT -->
+    <!--
+    <string name="buzzerbox_font_icon_symbol">fonts/fontawesome.ttf</string>
+    -->
+    <string name="buzzerbox_font_icon_symbol">@drawable/icon_audio_speaker</string>
+    <!-- Speaker Icon value is (&#xf028;) -->
+    <!-- Close View Large X Icon value is (&#xf00d;) -->
+    <string name="txt_icon_speaker"></string>
+    <string name="txt_icon_close_view_large_x"></string>
+    <!-- Full Icon List available at http://fontawesome.github.io/FOnt-Awesome/3.2.1/cheatsheet/  -->
+    <!-- -->
+
     <!-- -->
     <!-- Font Set Sorted By Named Design Elements for BuzzerBox -->
     <string name="buzzerbox_font_app_default">@string/buzzerbox_font_roboto_black</string>
     <string name="buzzerbox_font_app_default_bold">@string/buzzerbox_font_roboto_bold</string>
     <string name="buzzerbox_font_app_default_thin">@string/buzzerbox_font_roboto_thin</string>
     <string name="buzzerbox_font_app_title">@string/buzzerbox_font_helvetica_neue</string>
+
 
     <!-- -->
     <!-- Buzz Data Result  >> Named Variable Elements-->

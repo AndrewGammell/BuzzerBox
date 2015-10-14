@@ -77,11 +77,10 @@ public class DetailedViewFragment extends AbstractFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
+        setHasOptionsMenu(false); // changed from true to test hiding action bar - AK 13-10-2015 //
         if(getArguments() != null){
             dummy = (DummyAlerts) getArguments().getSerializable(KEY);
         }
-
     }
 
     @Override
