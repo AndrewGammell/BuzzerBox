@@ -21,6 +21,8 @@ import util.Utility;
 public class MainActivity extends AbstractActivity implements View.OnClickListener {
 
     LoginAsyncTask login;
+    private String BUNDLE_KEY = "BUNDLE";
+    private String CALL_KEY = "CALL";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,9 +72,11 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
                 }
                 break;
             case R.id.btn_create_account:
+                startWebActivity(1);
                 MessageTools.showShortToast(this, "Fire up WebView to create account");
                 break;
             case R.id.btn_forgot_password:
+                startWebActivity(2);
                 MessageTools.showShortToast(this, "Fire up WebView to reset password");
                 break;
         }
@@ -92,5 +96,13 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         this.finish();
+    }
+
+    private void startWebActivity(int in){
+        Bundle bundle = new Bundle();
+        bundle.putInt(CALL_KEY,in);
+        Intent intent = new Intent(this,DisplayActivity.class);
+        intent.putExtra(BUNDLE_KEY,bundle);
+        startActivity(intent);
     }
 }

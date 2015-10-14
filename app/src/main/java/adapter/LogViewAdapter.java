@@ -23,6 +23,7 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
 
     private String BUNDLE_KEY = "BUNDLE";
     private String OBJECT_KEY = "OBJECT";
+    private String CALL_KEY = "CALL";
     private List list;
     private Context context;
 
@@ -89,7 +90,10 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
         Intent intent = new Intent(context, DisplayActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable(OBJECT_KEY, (Serializable) list.get(position));
+        bundle.putInt(CALL_KEY,0);
         intent.putExtra(BUNDLE_KEY, bundle);
+
+
 
         context.startActivity(intent);
     }
