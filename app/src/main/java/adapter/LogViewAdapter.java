@@ -24,7 +24,6 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
     private String BUNDLE_KEY = "BUNDLE";
     private String OBJECT_KEY = "OBJECT";
     private List list;
-    //    private ViewController control;
     private Context context;
 
 
@@ -32,9 +31,7 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
         super();
         this.list = list;
         this.context = context;
-//        if(context instanceof ViewController){
-//            this.control = (ViewController) context;
-//        }
+
 
 
     }
@@ -57,9 +54,6 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
 
     @Override
     public void onBindViewHolder(ItemHolder itemHolder, int i) {
-        // DummyUsers dummy = (DummyUsers)list.get(i);
-        // itemHolder.name.setText(dummy.getUsername());
-
         DummyAlerts dummy = (DummyAlerts) list.get(i);
         itemHolder.alarmName.setText(dummy.getAlarmName());
         itemHolder.alarmTimeSinceLast.setText(String.valueOf(dummy.getAlarmTimeSinceLast()));

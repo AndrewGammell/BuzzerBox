@@ -52,7 +52,7 @@ public class OverviewFragment extends AbstractListFragment {
 
     @Override
     protected RecyclerView.Adapter getAdapter() {
-        return new OverviewAdapter(getList(),getActivity());
+        return new OverviewAdapter(getList());
     }
 
     public static Fragment newInstance(){

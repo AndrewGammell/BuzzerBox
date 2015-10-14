@@ -16,7 +16,6 @@ import persistence.DataPersister;
 import util.MessageTools;
 import util.Utility;
 
-import java.util.Locale;
 
 /**
  * Created by Devstream on 06/10/2015.
@@ -29,9 +28,7 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
     ViewPager mViewPager;
 
 
-//    @Override
-//    public void onBackPressed() {
-//    }
+
 
 
     @Override
@@ -44,8 +41,7 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.addOnPageChangeListener(new PageChangeListener());
         getSupportActionBar().setTitle(mSectionsPagerAdapter.getPageTitle(0));
-     // getSupportActionBar().setTitle(mSectionsPagerAdapter);
-     // trying to change top bar text color to white here
+
     }
 
     @Override
