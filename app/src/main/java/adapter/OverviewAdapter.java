@@ -14,13 +14,13 @@ import java.util.List;
 /**
  * Created by Devstream on 05/10/2015.
  */
-public class ListOverViewAdapter extends RecyclerView.Adapter<ListOverViewAdapter.ItemHolder> {
+public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHolder> {
 
     private List list;
 //    private ViewController control;
 
 
-    public ListOverViewAdapter(List list,Context context) {
+    public OverviewAdapter(List list, Context context) {
         super();
         this.list = list;
 //        if(context instanceof ViewController){
@@ -53,10 +53,7 @@ public class ListOverViewAdapter extends RecyclerView.Adapter<ListOverViewAdapte
         itemHolder.alarmTotalMonth.setText(String.valueOf(dummy.getAlarmTotalMonth()));
         itemHolder.alarmTotal.setText(String.valueOf(dummy.getAlarmTotal()));
         itemHolder.alarmTimeSinceLast.setText(String.valueOf(dummy.getAlarmTimeSinceLast()));
-
     }
-
-
 
     @Override
     public int getItemCount() {
@@ -72,9 +69,9 @@ public class ListOverViewAdapter extends RecyclerView.Adapter<ListOverViewAdapte
         TextView alarmTotal;
         TextView alarmTimeSinceLast;
 
-         ItemHolder(View itemView) {
+        ItemHolder(View itemView) {
             super(itemView);
-          //  itemView.setOnClickListener(this);
+            //  itemView.setOnClickListener(this);
             alarmName = (TextView)itemView.findViewById(R.id.text_alarm_type);
             alarmToday = (TextView)itemView.findViewById(R.id.text_today_int_value);
             alarmYesterday = (TextView)itemView.findViewById(R.id.text_yesterday_int_value);

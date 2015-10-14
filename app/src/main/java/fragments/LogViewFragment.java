@@ -1,8 +1,7 @@
 package fragments;
 
 import abstracts.AbstractListFragment;
-import adapter.ListOverViewAdapter;
-
+import adapter.LogViewAdapter;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,17 +9,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 import io.buzzerbox.app.R;
 import tester.DummyAlerts;
-
+import tester.DummyUsers;
 
 import java.util.List;
 
 /**
- * Created by Devstream on 05/10/2015.
+ * Created by Devstream on 07/10/2015.
  */
-public class ListOverViewFragment extends AbstractListFragment {
-
+public class LogViewFragment extends AbstractListFragment {
     private Callback mCallback = null;
 
     @Override
@@ -52,11 +51,11 @@ public class ListOverViewFragment extends AbstractListFragment {
 
     @Override
     protected RecyclerView.Adapter getAdapter() {
-        return new ListOverViewAdapter(getList(),getActivity());
+        return new LogViewAdapter(getList(),getActivity());
     }
 
     public static Fragment newInstance(){
-        return new ListOverViewFragment();
+        return new LogViewFragment();
     }
 
     /**
@@ -83,6 +82,9 @@ public class ListOverViewFragment extends AbstractListFragment {
 
     public interface Callback{
         boolean onOptionsItemSelected(MenuItem item);
+
     }
 
 }
+
+

@@ -2,10 +2,14 @@ package activities;
 
 
 import abstracts.AbstractActivity;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import fragments.SplashFragment;
 import io.buzzerbox.app.R;
 import util.MessageTools;
@@ -20,6 +24,12 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
         displaySplash();
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        hideKeyboard(this);
+        return super.onTouchEvent(event);
     }
 
     @Override
@@ -47,10 +57,8 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
                 if (Utility.isValidUser(this)) {
                     MessageTools.showLongToast(this, "User was validated");
 
-                    //replaceWithFragment(ListOverViewFragment.newInstance());
-
-                    Intent in = new Intent(this,PageViewActivity.class);
-                    startActivity(in);
+                    //replaceWithFragment(ListOverViewFragment.newInstance())
+                    startNewActivity();
                 } else {
                     MessageTools.showLongToast(this, "not a valid user");
                 }
@@ -64,6 +72,19 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
         }
     }
 
+    public static void hideKeyboard(Activity activity) {
+        View view = activity.getCurrentFocus();
+        if (view != null) {
+            ((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE)).
+                    hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+    }
 
-
+    private void startNewActivity(){
+        Intent intent = new Intent(this,PageViewActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        this.finish();
+    }
 }
