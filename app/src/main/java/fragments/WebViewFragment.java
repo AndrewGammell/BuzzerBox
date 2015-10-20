@@ -22,7 +22,7 @@ public class WebViewFragment extends AbstractFragment {
 
     @Override
     protected int getLayout() {
-        return R.layout.webview_layout;
+        return R.layout.layout_webview;
     }
 
     @Override

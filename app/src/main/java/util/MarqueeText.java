@@ -9,7 +9,7 @@
 ///**
 // *  Created by K-Admin on 08/10/2015.
 //  EXAMPLE FOR REFERENCE ONLY
-// >> ALREADY FUNCTIONING in LogViewAdapter.java & logview_card_layout.xml //
+// >> ALREADY FUNCTIONING in LogViewAdapter.java & layout_logview_card.xml //
 
 // */
 //public class MarqueeText extends Activity{

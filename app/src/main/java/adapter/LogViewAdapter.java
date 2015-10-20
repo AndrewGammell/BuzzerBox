@@ -1,7 +1,6 @@
 package adapter;
 
 import activities.DisplayActivity;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,8 +22,8 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
 
     private String BUNDLE_KEY = "BUNDLE";
     private String OBJECT_KEY = "OBJECT";
-    private String CALL_KEY = "CALL";
     private List list;
+    //    private ViewController control;
     private Context context;
 
 
@@ -32,13 +31,15 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
         super();
         this.list = list;
         this.context = context;
-
+//        if(context instanceof ViewController){
+//            this.control = (ViewController) context;
+//        }
 
 
     }
 
     private int getLayout() {
-        return R.layout.logview_card_layout;
+        return R.layout.layout_logview_card;
     }
 
     @Override
@@ -55,12 +56,14 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
 
     @Override
     public void onBindViewHolder(ItemHolder itemHolder, int i) {
+        // DummyUsers dummy = (DummyUsers)list.get(i);
+        // itemHolder.name.setText(dummy.getUsername());
+
         DummyAlerts dummy = (DummyAlerts) list.get(i);
         itemHolder.alarmName.setText(dummy.getAlarmName());
         itemHolder.alarmTimeSinceLast.setText(String.valueOf(dummy.getAlarmTimeSinceLast()));
 
     }
-
 
     @Override
     public int getItemCount() {
@@ -90,10 +93,7 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
         Intent intent = new Intent(context, DisplayActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable(OBJECT_KEY, (Serializable) list.get(position));
-        bundle.putInt(CALL_KEY,0);
         intent.putExtra(BUNDLE_KEY, bundle);
-
-
 
         context.startActivity(intent);
     }

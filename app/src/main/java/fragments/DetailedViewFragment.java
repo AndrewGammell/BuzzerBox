@@ -8,10 +8,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import io.buzzerbox.app.R;
+import android.widget.Spinner;
 import tester.DummyAlerts;
-import tester.DummyUsers;
 
 import java.io.Serializable;
 
@@ -26,15 +27,15 @@ public class DetailedViewFragment extends AbstractFragment {
     TextView alarmName;
     TextView alarmToday;
     TextView alarmYesterday;
-   // TextView alarmTotalWeek;
-   // TextView alarmTotalMonth;
-   // TextView alarmTotal;
+    // TextView alarmTotalWeek;
+    // TextView alarmTotalMonth;
+    // TextView alarmTotal;
     TextView alarmTimeSinceLast;
     private Callback mCallback;
 
     @Override
     protected int getLayout() {
-        return R.layout.open_log_detail_layout;
+        return R.layout.layout_open_log_detail;
     }
 
     @Override
@@ -51,8 +52,16 @@ public class DetailedViewFragment extends AbstractFragment {
         alarmYesterday = (TextView)view.findViewById(R.id.text_yesterday_int_value);
         alarmYesterday.setText(String.valueOf(dummy.getAlarmYesterday()));
 
-
         mCallback.setCurrentTitle(dummy.getAlarmName());
+
+//        // AK 19-10-2015 //
+//        // start of Spinner code //
+//        // Create an Array Adapter using the string array and a default spinner layout //
+//        Spinner spinner = (Spinner) findViewById(R.id.array.spinner_audio_file_list);
+//
+//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+//                this, R.array.spinner_audio_file_list, android.R.layout.layout_settings);
+//        // end of Spinner code //
     }
 
     public static Fragment newInstance(Object obj){

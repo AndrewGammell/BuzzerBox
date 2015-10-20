@@ -12,6 +12,9 @@
     <color name="buzzerbox_black">#000000</color>
     <!-- -->
 
+
+
+
     <!-- COLOUR SET SORTED BY NAMED DESIGN ELEMENTS for BuzzerBox -->
     <!-- top action bar main bg colour-->
     <color name="buzzerbox_action_bar">@color/buzzerbox_dark_blue</color>
@@ -20,6 +23,32 @@
     <!-- default color display for custom alarm colors to be individually set later by user -->
     <!-- may need to edit here when setting unique custom colour chosen by user -->
     <color name="unique_alarm_color">@color/buzzerbox_yellow</color>
+    <color name="buzzerbox_yellow_selected">#605f5e</color>
     <!-- -->
+
+
+
+
+    <!-- COLOUR PICKER SETTING HEX VALUES -->
+    <color name="colour_option_1">#f4d35e</color>
+    <color name="colour_option_2">#e85a47</color>
+    <color name="colour_option_3">#605f5e</color>
+    <color name="colour_option_4">#1d3461</color>
+    <color name="colour_option_5">#1f487e</color>
+    <color name="colour_option_6">#40de92</color>
+    <color name="colour_option_7">#878e88</color>
+    <color name="colour_option_8">#e01a4f</color>
+    <color name="colour_option_9">#5db7de</color>
+    <color name="colour_option_10">#0c090d</color>
+    <color name="colour_option_11">#531253</color>
+    <color name="colour_option_12">#97d8b2</color>
+    <color name="colour_option_13">#9ca2c1</color>
+    <color name="colour_option_14">#ed7b84</color>
+    <color name="colour_option_15">#667ef7</color>
+    <color name="colour_option_16">#f40000</color>
+    <color name="colour_option_17">#000000</color>
+    <color name="colour_option_18">#000000</color>
+
+
 
 </resources>
