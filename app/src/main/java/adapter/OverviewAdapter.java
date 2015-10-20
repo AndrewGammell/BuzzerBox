@@ -17,16 +17,21 @@ import java.util.List;
 public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHolder> {
 
     private List list;
+//    private ViewController control;
 
 
-    public OverviewAdapter(List list) {
+    public OverviewAdapter(List list, Context context) {
         super();
         this.list = list;
+//        if(context instanceof ViewController){
+//            this.control = (ViewController) context;
+//        }
+
 
     }
 
     private int getLayout(){
-        return R.layout.overview_card_layout;
+        return R.layout.layout_overview_card;
     }
 
     @Override
@@ -37,6 +42,9 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
 
     @Override
     public void onBindViewHolder(ItemHolder itemHolder, int i) {
+        // DummyUsers dummy = (DummyUsers)list.get(i);
+        // itemHolder.name.setText(dummy.getUsername());
+
         DummyAlerts dummy = (DummyAlerts)list.get(i);
         itemHolder.alarmName.setText(dummy.getAlarmName());
         itemHolder.alarmToday.setText(String.valueOf(dummy.getAlarmToday()));
@@ -52,7 +60,7 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
         return list.size();
     }
 
-    public class ItemHolder extends RecyclerView.ViewHolder {
+    public class ItemHolder extends RecyclerView.ViewHolder { //implements View.OnClickListener{
         TextView alarmName;
         TextView alarmToday;
         TextView alarmYesterday;
@@ -63,6 +71,7 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
 
         ItemHolder(View itemView) {
             super(itemView);
+            //  itemView.setOnClickListener(this);
             alarmName = (TextView)itemView.findViewById(R.id.text_alarm_type);
             alarmToday = (TextView)itemView.findViewById(R.id.text_today_int_value);
             alarmYesterday = (TextView)itemView.findViewById(R.id.text_yesterday_int_value);
@@ -71,5 +80,12 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
             alarmTotal = (TextView)itemView.findViewById(R.id.text_total_int_value);
             alarmTimeSinceLast = (TextView)itemView.findViewById(R.id.text_last_buzz_int_value);
         }
+
+//        @Override
+//        public void onClick(View view) {
+//            int index = getAdapterPosition();
+//
+//            control.replaceWithFragment(DetailedViewFragment.newInstance(list.get(index)));
+//        }
     }
 }

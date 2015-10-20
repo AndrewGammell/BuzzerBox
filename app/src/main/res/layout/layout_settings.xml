@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/buzzerbox_white"
+              android:id="@+id/layout_settings">
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:orientation="vertical"
+                  android:background="@color/buzzerbox_blue"
+                  android:padding="5dp"
+            >
+        <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:layout_margin="25dp"
+                >
+
+            <LinearLayout
+                    android:layout_column="0"
+                    android:layout_row="0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/angle_bracket_less_than"
+                        android:text="@string/angle_bracket_less_than"
+                        android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                        android:textSize="@dimen/buzzerbox_font_size_extra_large"
+                        android:textColor="@color/buzzerbox_white"
+                        />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@id/text_alarm_type"
+                        android:text="@string/text_alarm_type"
+                        android:textStyle="bold"
+                        android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                        android:textSize="@dimen/buzzerbox_font_size_large"
+                        android:textColor="@color/buzzerbox_white"
+                        />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/angle_bracket_greater_than"
+                        android:text="@string/angle_bracket_greater_than"
+                        android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                        android:textSize="@dimen/buzzerbox_font_size_extra_large"
+                        android:textColor="@color/buzzerbox_white"
+                        />
+
+            </LinearLayout>
+        </GridLayout>
+    </LinearLayout>
+    <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_gravity="left"
+            android:layout_margin="20dp">
+
+        <ImageView
+                android:layout_column="1"
+                android:layout_row="1"
+                android:id="@drawable/icon_audio_speaker"
+                android:background="@drawable/icon_audio_speaker"
+                android:layout_height="30dp"
+                android:layout_width="30dp"
+                android:gravity="left"
+               />
+        <TextView
+            android:layout_column="2"
+            android:layout_row="1"
+            android:id="@+id/text_sound"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:padding="5dp"
+            android:text="@string/text_sound"
+            android:textSize="@dimen/buzzerbox_font_size_default"
+            android:fontFamily="@string/buzzerbox_font_app_default_bold"
+            android:textColor="@color/buzzerbox_black"
+            android:gravity="left"/>
+
+        <Spinner
+                android:layout_column="3"
+                android:layout_row="1"
+                android:id="@+id/spinner_audio_file_list"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/buzzerbox_font_size_default"
+                android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                android:text="@string/text_spinner_default"
+                android:textColor="@color/buzzerbox_black"
+                android:gravity="right"/>
+
+        <TextView
+                android:layout_columnSpan="3"
+                android:layout_row="2"
+                android:id="@+id/line_break"
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:padding="5dp"
+                android:textColor="@color/buzzerbox_black"
+                />
+
+        <ImageView
+                android:layout_column="1"
+                android:layout_row="3"
+                android:id="@+id/icon_color_picker"
+                android:background="@drawable/icon_color_picker"
+                android:layout_height="30dp"
+                android:layout_width="30dp"
+                android:gravity="left"
+                />
+        <TextView
+                android:layout_column="2"
+                android:layout_row="3"
+                android:id="@+id/text_color"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="5dp"
+                android:text="@string/text_color"
+                android:textSize="@dimen/buzzerbox_font_size_default"
+                android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                android:textColor="@color/buzzerbox_black"
+                android:gravity="left"/>
+
+        <LinearLayout android:layout_column="3"
+                      android:layout_row="3"
+                      android:id="@+id/colour_picker_grid">
+            <GridLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp">
+                <!-- FIRST ROW OF SIX -->
+                <ImageView
+                        android:layout_column="0"
+                        android:layout_row="0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_1"/>
+                <ImageView
+                        android:layout_column="1"
+                        android:layout_row="0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_2"/>
+                <ImageView
+                        android:layout_column="2"
+                        android:layout_row="0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_3"/>
+                <ImageView
+                        android:layout_column="3"
+                        android:layout_row="0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_4"/>
+                <ImageView
+                        android:layout_column="4"
+                        android:layout_row="0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_5"/>
+                <ImageView
+                        android:layout_column="5"
+                        android:layout_row="0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_6"/>
+
+                        <!-- SECOND ROW OF SIX -->
+
+                <ImageView
+                        android:layout_column="0"
+                        android:layout_row="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_7"/>
+                <ImageView
+                        android:layout_column="1"
+                        android:layout_row="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_8"/>
+                <ImageView
+                        android:layout_column="2"
+                        android:layout_row="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_9"/>
+                <ImageView
+                        android:layout_column="3"
+                        android:layout_row="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_10"/>
+                <ImageView
+                        android:layout_column="4"
+                        android:layout_row="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_11"/>
+                <ImageView
+                        android:layout_column="5"
+                        android:layout_row="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_12"/>
+
+
+                <!-- THIRD ROW OF SIX -->
+
+                <ImageView
+                        android:layout_column="0"
+                        android:layout_row="2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_13"/>
+                <ImageView
+                        android:layout_column="1"
+                        android:layout_row="2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_14"/>
+                <ImageView
+                        android:layout_column="2"
+                        android:layout_row="2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_15"/>
+                <ImageView
+                        android:layout_column="3"
+                        android:layout_row="2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_16"/>
+                <ImageView
+                        android:layout_column="4"
+                        android:layout_row="2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_17"/>
+                <ImageView
+                        android:layout_column="5"
+                        android:layout_row="2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_18"/>
+
+
+            </GridLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+        <TextView
+                android:layout_columnSpan="3"
+                android:layout_row="4"
+                android:id="@id/line_break"
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:padding="5dp"
+                android:textColor="@color/buzzerbox_black"
+                />
+
+        <ImageView
+                android:layout_column="1"
+                android:layout_row="5"
+                android:id="@+id/icon_notifications"
+                android:background="@drawable/icon_notifications"
+                android:layout_height="30dp"
+                android:layout_width="30dp"
+                android:gravity="left"
+                />
+        <TextView
+                android:layout_column="2"
+                android:layout_row="5"
+                android:id="@+id/text_notifications"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="5dp"
+                android:text="@string/text_notifications"
+                android:textSize="@dimen/buzzerbox_font_size_default"
+                android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                android:textColor="@color/buzzerbox_black"
+                android:gravity="left"/>
+
+        <TextView
+                android:layout_columnSpan="3"
+                android:layout_row="6"
+                android:id="@id/line_break"
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:padding="5dp"
+                android:textColor="@color/buzzerbox_black"
+                />
+
+        <ImageView
+                android:layout_column="1"
+                android:layout_row="7"
+                android:id="@+id/icon_frequency"
+                android:background="@drawable/icon_frequency"
+                android:layout_height="30dp"
+                android:layout_width="30dp"
+                android:gravity="left"
+                />
+        <TextView
+                android:layout_column="2"
+                android:layout_row="7"
+                android:id="@+id/text_frequency"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="5dp"
+                android:text="@string/text_frequency"
+                android:textSize="@dimen/buzzerbox_font_size_default"
+                android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                android:textColor="@color/buzzerbox_black"
+                android:gravity="left"/>
+
+
+
+    </GridLayout>
+</LinearLayout>

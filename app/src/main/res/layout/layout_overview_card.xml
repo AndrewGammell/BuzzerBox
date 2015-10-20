@@ -10,6 +10,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/card_overview"
+            android:background="@drawable/custom_curved_edge_overview_layout"
             card_view:cardElevation="5dp"
             card_view:cardUseCompatPadding="true"
             card_view:cardCornerRadius="3dp">
@@ -17,6 +18,7 @@
         <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_curved_edge_overview_layout"
                 android:padding="5dp">
 
             <ImageView
@@ -125,23 +127,24 @@
                     <LinearLayout android:orientation="horizontal"
                                   android:layout_column="1"
                                   android:layout_row="1">
-                    <TextView
-                            android:id="@+id/text_total_month"
-                            android:layout_height="wrap_content"
-                            android:layout_width="match_parent"
-                            android:padding="5dp"
-                            android:text="@string/txt_total_month"
-                            android:textColor="#ff000000"
-                            android:gravity="center_vertical"/>
-                    <TextView
-                            android:id="@+id/text_total_month_int_value"
-                            android:layout_height="wrap_content"
-                            android:layout_width="match_parent"
-                            android:padding="5dp"
-                            android:text="@string/txt_total_month_int_value"
-                            android:textColor="@color/buzzerbox_black"
-                            android:textSize="@dimen/buzzerbox_font_size_default"
-                            android:gravity="center_vertical"/>
+                        <TextView
+                                android:id="@+id/text_total_month"
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:padding="5dp"
+                                android:text="@string/txt_total_month"
+                                android:textColor="#ff000000"
+                                android:textSize="@dimen/buzzerbox_font_size_default"
+                                android:gravity="center_vertical"/>
+                        <TextView
+                                android:id="@+id/text_total_month_int_value"
+                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:padding="5dp"
+                                android:text="@string/txt_total_month_int_value"
+                                android:textColor="@color/buzzerbox_black"
+                                android:textSize="@dimen/buzzerbox_font_size_default"
+                                android:gravity="center_vertical"/>
                     </LinearLayout>
 
                     <LinearLayout android:orientation="horizontal"
