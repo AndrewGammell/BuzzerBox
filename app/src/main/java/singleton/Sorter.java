@@ -39,6 +39,20 @@ public class Sorter extends AsyncTask<Void,Void,List<BuzzBox>> {
         return buzzBoxes;
     }
 
+    @Override
+    protected void onPostExecute(List<BuzzBox> buzzBoxes) {
+        super.onPostExecute(buzzBoxes);
+        for(BuzzBox bb: buzzBoxes){
+//            Log.d("LOG","containers made "+buzzBoxes.size());
+            bb.countTimeStamps();
+
+//            String str = String.format("type %s today=%d yesterday=%d week=%d month=%d total=%d last Buzz = ",
+//                    bb.getType(),bb.getToday() ,bb.getYesterday(),bb.getWeek(),bb.getMonth(),bb.getTotal());
+//            Log.d("LOG", str);
+        }
+        DataHolder.getDataHolder().setListOfBoxes(buzzBoxes);
+    }
+
     private boolean findBoxAndAdd(Buzz buzz){
         for(BuzzBox c: buzzBoxes){
 //            Log.d("LOG", "box type "+ c.getType() +" buzz name " + buzz.getName());
@@ -54,18 +68,4 @@ public class Sorter extends AsyncTask<Void,Void,List<BuzzBox>> {
     private void makeBox(Buzz buzz){
         buzzBoxes.add(new BuzzBox(buzz.getName()));
     }
-
-    @Override
-    protected void onPostExecute(List<BuzzBox> buzzBoxes) {
-        super.onPostExecute(buzzBoxes);
-        for(BuzzBox bb: buzzBoxes){
-//            Log.d("LOG","containers made "+buzzBoxes.size());
-            bb.countTimeStamps();
-
-//            String str = String.format("type %s today=%d yesterday=%d week=%d month=%d total=%d last Buzz = ",
-//                    bb.getType(),bb.getToday() ,bb.getYesterday(),bb.getWeek(),bb.getMonth(),bb.getTotal());
-//            Log.d("LOG", str);
-        }
-    }
-
 }
