@@ -1,9 +1,7 @@
 package singleton;
 
-import android.util.Log;
-import org.joda.time.DateTime;
-import singleton.Buzz;
 
+import org.joda.time.DateTime;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
