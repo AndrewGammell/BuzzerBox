@@ -1,5 +1,6 @@
 package singleton;
 
+import android.util.Log;
 import org.joda.time.DateTime;
 import singleton.Buzz;
 
@@ -70,6 +71,14 @@ public class BuzzBox implements Serializable {
         this.type = type;
     }
 
+    public String getTimeSinceLastbuzz(){
+        return timeSinceBuzz(lastBuzz);
+    }
+
+    public String getTimeSinceSecondLastBuzz(){
+        return timeSinceBuzz(lastBuzz);
+    }
+
 
     void countTimeStamps() {
         DateTime dt;
@@ -135,5 +144,56 @@ public class BuzzBox implements Serializable {
         }
     }
 
+    private String timeSinceBuzz(DateTime timeStamp){
+        DateTime now = new DateTime();
+        long milsec = now.getMillis() - timeStamp.getMillis();
+
+        long seconds = (milsec / 1000);
+        long minutes = (seconds/ 60);
+        long hours = (minutes / 60);
+        long days = (hours / 24);
+        long weeks = (days / 7);
+        long months = (weeks / 4);
+        long years = (months / 12);
+
+//        Log.d("LOG", "seconds = " + seconds);
+//        Log.d("LOG","minutes = " + minutes);
+//        Log.d("LOG","hours = " + hours);
+//        Log.d("LOG","days = " + days);
+//        Log.d("LOG","weeks = " + weeks);
+//        Log.d("LOG","months = " + months);
+//        Log.d("LOG","years = " + years);
+
+
+        if(years > 0){
+            return years + " years ago";
+        }
+
+        if(months > 0){
+            return months + " months ago";
+        }
+
+        if(weeks > 0){
+            return weeks + " weeks ago";
+        }
+
+        if(days > 0){
+            return days + " days ago";
+        }
+
+        if(hours > 0){
+            return hours + " hours ago";
+        }
+
+        if(minutes > 0){
+            return minutes + " minutes ago";
+        }
+
+        if(seconds > 0){
+            return seconds + " seconds ago";
+        }
+
+        return null;
+    }
 
 }
