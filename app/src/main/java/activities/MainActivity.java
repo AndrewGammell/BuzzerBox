@@ -34,6 +34,11 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
 
     }
 
+    /**
+     * Used to hid the keypad when the screen is touched;
+     * @param event
+     * @return
+     */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         hideKeyboard(this);
@@ -82,6 +87,10 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
         }
     }
 
+    /**
+     * Gets the current focus
+     * @param activity
+     */
     public static void hideKeyboard(Activity activity) {
         View view = activity.getCurrentFocus();
         if (view != null) {

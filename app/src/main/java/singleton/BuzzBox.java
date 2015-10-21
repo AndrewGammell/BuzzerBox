@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by Devstream on 16/10/2015.
+ * Holds a list of Buzzes and counts time stamps,
  */
 public class BuzzBox implements Serializable {
 
@@ -77,7 +78,11 @@ public class BuzzBox implements Serializable {
         return timeSinceBuzz(lastBuzz);
     }
 
-
+    /**
+     * Iterates through the held list buzzes,
+     * taking the string time stamp from each buzz and coverts it to a DateTime.
+     * passes the DateTime to the updateLastBuzz and isToday/Yesterday/Week/Month methods.
+     */
     void countTimeStamps() {
         DateTime dt;
         for (Buzz buzz : list) {
@@ -102,36 +107,76 @@ public class BuzzBox implements Serializable {
         }
     }
 
-   private boolean isToday(DateTime date) {
-        if (date.getYear() == todayRef.getYear() && date.getMonthOfYear() == todayRef.getMonthOfYear()
-                && date.getDayOfMonth() == todayRef.getDayOfMonth()) {
+    /**
+     *
+     * @param dateTime
+     * @return
+     * Takes a DateTime and uses the DateTime todayRef for comparison.
+     * if the two dates have the same year/month/day, it returns true for today.
+     */
+   private boolean isToday(DateTime dateTime) {
+        if (dateTime.getYear() == todayRef.getYear()
+                && dateTime.getMonthOfYear() == todayRef.getMonthOfYear()
+                && dateTime.getDayOfMonth() == todayRef.getDayOfMonth()) {
             return true;
         }
         return false;
     }
 
-   private boolean isYesterday(DateTime date) {
-        if (date.getYear() == yesterdayRef.getYear() && date.getMonthOfYear() == yesterdayRef.getMonthOfYear()
-                && date.getDayOfMonth() == yesterdayRef.getDayOfMonth()) {
+    /**
+     *
+     * @param dateTime
+     * @return
+     * Takes a DateTime and uses the DateTime yesterdayRef for comparison.
+     * if the two dates have the same year/month/day, it returns true for yesterday.
+     */
+   private boolean isYesterday(DateTime dateTime) {
+        if (dateTime.getYear() == yesterdayRef.getYear()
+                && dateTime.getMonthOfYear() == yesterdayRef.getMonthOfYear()
+                && dateTime.getDayOfMonth() == yesterdayRef.getDayOfMonth()) {
             return true;
         }
         return false;
     }
 
-   private boolean isWeek(DateTime date) {
-        if (date.getYear() == todayRef.getYear() && date.getWeekOfWeekyear() == todayRef.getWeekOfWeekyear()) {
+    /**
+     *
+     * @param dateTime
+     * @return
+     * Takes a DateTime and uses the DateTime todayRef for comparison.
+     * checks if the two dates are the same year,
+     * then checks if they both have the same value in a week year format.
+     * returns true if the week year values match;
+     */
+   private boolean isWeek(DateTime dateTime) {
+        if (dateTime.getYear() == todayRef.getYear()
+                && dateTime.getWeekOfWeekyear() == todayRef.getWeekOfWeekyear()) {
             return true;
         }
         return false;
     }
 
-   private boolean isMonth(DateTime date) {
-        if (date.getYear() == todayRef.getYear() && date.getMonthOfYear() == todayRef.getMonthOfYear()) {
+    /**
+     *
+     * @param dateTime
+     * @return
+     * Takes a DateTime and uses the DateTime todayRef for comparison.
+     * checks if the year and month match.
+     * returns true if the values match;
+     */
+   private boolean isMonth(DateTime dateTime) {
+        if (dateTime.getYear() == todayRef.getYear()
+                && dateTime.getMonthOfYear() == todayRef.getMonthOfYear()) {
             return true;
         }
         return false;
     }
 
+    /**
+     *
+     * updates the second last buzz to reference the last buzz.
+     * updates the last buzz to reference the newest time stamp.
+     */
    private void updateLastBuzz(DateTime newDate){
 
         if(lastBuzz == null){
@@ -142,11 +187,19 @@ public class BuzzBox implements Serializable {
         }
     }
 
-    private String timeSinceBuzz(DateTime timeStamp){
+    /**
+     *
+     * @param dateTime
+     * @return
+     * Converts a time stamp and new DateTime to milliseconds,
+     * divides the time stamp from the new DateTime,
+     * then calculates the leftover milliseconds into larger units of time.
+     */
+    private String timeSinceBuzz(DateTime dateTime){
         DateTime now = new DateTime();
-        long milsec = now.getMillis() - timeStamp.getMillis();
+        long milliseconds = now.getMillis() - dateTime.getMillis();
 
-        long seconds = (milsec / 1000);
+        long seconds = (milliseconds / 1000);
         long minutes = (seconds/ 60);
         long hours = (minutes / 60);
         long days = (hours / 24);
