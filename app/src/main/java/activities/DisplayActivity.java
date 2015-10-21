@@ -26,12 +26,17 @@ public class DisplayActivity extends AppCompatActivity implements DetailedViewFr
     private int call;
 
     private final FragmentManager fragmentManager = getSupportFragmentManager();
-    private FragmentTransaction transaction;
+//    private FragmentTransaction transaction;
     private final String TAG = "fragment";
-
     private ActionBar mActionBar;
 
 
+    /**
+     * Gets the Bundle from the Intent Extras, then gets the int(CALL_KEY) from the Bundle
+     * and stores it in the int variable call.
+     * Checks if
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

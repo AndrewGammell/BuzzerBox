@@ -22,8 +22,8 @@ import util.Utility;
  */
 public class PageViewActivity extends AppCompatActivity implements OverviewFragment.Callback
         , LogViewFragment.Callback {
-    private static final String OBJECT_KEY = "OBJECT";
-    private static final String BUNDLE_KEY = "BUNDLE";
+//    private static final String OBJECT_KEY = "OBJECT";
+//    private static final String BUNDLE_KEY = "BUNDLE";
     SectionsPagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
 
@@ -44,12 +44,14 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
 
     }
 
+    /**
+     * uses the DataPerisiter class to save the User when this Activity is stopped.
+     */
     @Override
     protected void onStop() {
         super.onStop();
         DataPersister.saveUser(this);
     }
-
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -59,12 +61,10 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
 
         @Override
         public Fragment getItem(int position) {
-            Log.d("PAGE","getItem()");
             Fragment fragment = null;
             switch (position) {
                 case 0:
                     fragment = OverviewFragment.newInstance();
-
                     break;
                 case 1:
                     fragment = LogViewFragment.newInstance();
@@ -96,7 +96,6 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_logout:
-                Utility.logout(this);
                 MessageTools.showShortToast(this, "logged out");
                 goToLogin();
                 return true;
@@ -104,12 +103,21 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * calls the logout method in the Utility class then,
+     * recalls the MainActivity with flags to prevent returning with back press.
+     */
     private void goToLogin() {
+        Utility.logout(this);
         Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
-
+    /**
+     * Using onPageSelected to set the ActionBar title to the currently displayed fragment.
+     */
     private class PageChangeListener implements ViewPager.OnPageChangeListener{
 
         @Override
