@@ -21,9 +21,6 @@ public class SettingsFragment extends AbstractFragment {
 
     private TextView alarmType;
     private Spinner spinner;
-
-
-
     private Settings settings;
 
 
