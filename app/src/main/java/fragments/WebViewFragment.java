@@ -10,9 +10,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import io.buzzerbox.app.R;
 
-/**
- * Created by Devstream on 14/10/2015.
- */
 public class WebViewFragment extends AbstractFragment {
 
     private static final String KEY = "URL";

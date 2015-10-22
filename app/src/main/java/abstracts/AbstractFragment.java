@@ -7,10 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
-/**
- * Created by Devstream on 29/09/2015.
- */
 public abstract class AbstractFragment extends Fragment {
 
     protected abstract int getLayout();
