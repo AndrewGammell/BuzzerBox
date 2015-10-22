@@ -13,19 +13,28 @@ import io.buzzerbox.app.R;
  * Created by Devstream on 22/10/2015.
  */
 public class SettingsPageActivity extends AppCompatActivity {
+
+    private final String CALL_POSITION = "CALL_POSITION";
+
     private ViewPager mViewPager;
     private PagerAdapter mPagerAdapter;
+    private int position = -1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pager_layout);
 
+        position = getIntent().getIntExtra(CALL_POSITION,0);
+
         mPagerAdapter = new PagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.addOnPageChangeListener(new PageChangeListener());
-//        mViewPager.setCurrentItem();
+        mViewPager.setCurrentItem(position);
+
+
 
     }
 
@@ -37,7 +46,10 @@ public class SettingsPageActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int i) {
-//        return SettingsFragment.newInstance(DataHolder.getDataHolder().getListOfBoxes().get(i).getSettings());
+//        return SettingsFragment.newInstance(DataHolder.getDataHolder()
+//                                  .getListOfBoxes()
+//                                  .get(i)
+//                                  .getSettings());
             return new Fragment();
 
         }
@@ -50,13 +62,14 @@ public class SettingsPageActivity extends AppCompatActivity {
 
     private class PageChangeListener implements ViewPager.OnPageChangeListener{
 
+
         @Override
         public void onPageScrolled(int i, float v, int i1) {
-
         }
 
         @Override
         public void onPageSelected(int i) {
+            position = i;
             getSupportActionBar().setTitle(
                     DataHolder.getDataHolder()
                             .getListOfBoxes()
