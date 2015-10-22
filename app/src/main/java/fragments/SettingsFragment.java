@@ -24,15 +24,12 @@ public class SettingsFragment extends AbstractFragment {
     private Settings settings;
 
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getArguments() != null){
-            settings =  (Settings) getArguments().getSerializable(SETTINGS_KEY);
+        if (getArguments() != null) {
+            settings = (Settings) getArguments().getSerializable(SETTINGS_KEY);
         }
-
     }
 
     @Override
@@ -41,27 +38,10 @@ public class SettingsFragment extends AbstractFragment {
     }
 
     public void instantiateWidgets(View view) {
-
         alarmType = (TextView) view.findViewById(R.id.text_alarm_type);
         alarmType.setText(settings.getType());
         spinner = (Spinner) view.findViewById(R.id.spinner_audio_file_list);
-//        spinner.setAdapter();
-//        buzz_audio_fx = (Spinner) view.findViewById(R.id.spinner_audio_file_list);
-//        buzz_custom_colour = (Text) view.findViewById(R.id.);
-//
-//
-//        // CHOOSE AUDIO FILE SETTINGS SPINNER //
-//        Spinner spinner = (Spinner) findViewById(R.id.spinner_audio_file_list);
-//
-
-//
-//        // Specify the layout to use when the list of choices appears //
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//
-//        // Apply the Adapter to the Spinner //
-//        spinner.setAdapter(adapter);
-//        //
-
+        spinner.setAdapter(getAdapter());
     }
 
     public static SettingsFragment newInstance(Settings settings) {
@@ -72,11 +52,16 @@ public class SettingsFragment extends AbstractFragment {
         return frag;
     }
 
-//    private class spinnerAdapter extends ArrayAdapter<CharSequence>{
-//        //        // Create an Array Adapter using the String Array and a Default Spinner Layout //
-////        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-////                this, R.array.spinner_audio_files,
-////                android.R.layout.simple_spinner_item);
-//    }
+    private ArrayAdapter<CharSequence> getAdapter() {
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                getContext(), R.array.spinner_audio_files,
+                android.R.layout.simple_spinner_item);
+
+        // Specify the layout to use when the list of choices appears //
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        return adapter;
+    }
 
 }
