@@ -145,7 +145,7 @@
     <string name="angle_bracket_greater_than"><![CDATA[  >]]></string>
     <string name="text_sound">Sound</string>
     <string name="text_color">Color</string>
-    <string name="text_notifications">Notifications</string>
+    <string name="text_notifications">Alerts</string>
     <string name="text_frequency">Frequency</string>
     <string name="text_spinner_default">buzz</string>
 

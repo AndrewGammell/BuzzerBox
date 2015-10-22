@@ -6,10 +6,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.widget.*;
+import holder.DataHolder;
 import io.buzzerbox.app.R;
 import org.w3c.dom.Text;
 import util.Settings;
@@ -42,6 +40,7 @@ public class SettingsFragment extends AbstractFragment {
         alarmType.setText(settings.getType());
         spinner = (Spinner) view.findViewById(R.id.spinner_audio_file_list);
         spinner.setAdapter(getAdapter());
+        spinner.setOnItemSelectedListener(new SpinnerItemSelectedListener());
     }
 
     public static SettingsFragment newInstance(Settings settings) {
@@ -62,6 +61,21 @@ public class SettingsFragment extends AbstractFragment {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         return adapter;
+    }
+
+    private class SpinnerItemSelectedListener implements Spinner.OnItemSelectedListener{
+
+        @Override
+        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            settings.setSound(i);
+           int in = DataHolder.getDataHolder().getListOfBoxes().get(0).getSettings().getSound();
+            Log.d("S","sound in data holder is "+ in);
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> adapterView) {
+
+        }
     }
 
 }
