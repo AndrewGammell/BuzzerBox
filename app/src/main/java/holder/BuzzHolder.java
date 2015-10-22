@@ -1,7 +1,11 @@
-package singleton;
+package holder;
 
 
+import android.util.Log;
 import org.joda.time.DateTime;
+import singleton.Buzz;
+import util.Settings;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +14,7 @@ import java.util.List;
  * Created by Devstream on 16/10/2015.
  * Holds a list of Buzzes and counts time stamps,
  */
-public class BuzzBox implements Serializable {
+public class BuzzHolder implements Serializable {
 
     private DateTime todayRef = new DateTime();
     private DateTime yesterdayRef = new DateTime().minusDays(1);
@@ -24,10 +28,12 @@ public class BuzzBox implements Serializable {
     private DateTime lastBuzz;
     private DateTime secondLastBuzz;
     private List<Buzz> list = new ArrayList<Buzz>();
+    private Settings settings;
 
 
-    public BuzzBox(String type) {
+    public BuzzHolder(String type) {
         this.type = type;
+        this.settings = new Settings(type);
     }
 
     public List<Buzz> getList() {
@@ -78,12 +84,11 @@ public class BuzzBox implements Serializable {
         return timeSinceBuzz(lastBuzz);
     }
 
-    /**
-     * Iterates through the held list buzzes,
-     * taking the string time stamp from each buzz and coverts it to a DateTime.
-     * passes the DateTime to the updateLastBuzz and isToday/Yesterday/Week/Month methods.
-     */
-    void countTimeStamps() {
+
+    public void countTimeStamps() {
+//    Iterates through the held list buzzes,
+//    taking the string time stamp from each buzz and coverts it to a DateTime.
+//    passes the DateTime to the updateLastBuzz and isToday/Yesterday/Week/Month methods.
         DateTime dt;
         for (Buzz buzz : list) {
             if(buzz.getUpdated_at() != null ){
@@ -107,14 +112,11 @@ public class BuzzBox implements Serializable {
         }
     }
 
-    /**
-     *
-     * @param dateTime
-     * @return
-     * Takes a DateTime and uses the DateTime todayRef for comparison.
-     * if the two dates have the same year/month/day, it returns true for today.
-     */
+
    private boolean isToday(DateTime dateTime) {
+//       Takes a DateTime and uses the DateTime todayRef for comparison.
+//       if the two dates have the same year/month/day, it returns true for today.
+
         if (dateTime.getYear() == todayRef.getYear()
                 && dateTime.getMonthOfYear() == todayRef.getMonthOfYear()
                 && dateTime.getDayOfMonth() == todayRef.getDayOfMonth()) {
@@ -123,14 +125,10 @@ public class BuzzBox implements Serializable {
         return false;
     }
 
-    /**
-     *
-     * @param dateTime
-     * @return
-     * Takes a DateTime and uses the DateTime yesterdayRef for comparison.
-     * if the two dates have the same year/month/day, it returns true for yesterday.
-     */
    private boolean isYesterday(DateTime dateTime) {
+//       Takes a DateTime and uses the DateTime yesterdayRef for comparison.
+//       if the two dates have the same year/month/day, it returns true for yesterday.
+
         if (dateTime.getYear() == yesterdayRef.getYear()
                 && dateTime.getMonthOfYear() == yesterdayRef.getMonthOfYear()
                 && dateTime.getDayOfMonth() == yesterdayRef.getDayOfMonth()) {
@@ -139,16 +137,13 @@ public class BuzzBox implements Serializable {
         return false;
     }
 
-    /**
-     *
-     * @param dateTime
-     * @return
-     * Takes a DateTime and uses the DateTime todayRef for comparison.
-     * checks if the two dates are the same year,
-     * then checks if they both have the same value in a week year format.
-     * returns true if the week year values match;
-     */
+
    private boolean isWeek(DateTime dateTime) {
+//       Takes a DateTime and uses the DateTime todayRef for comparison.
+//       checks if the two dates are the same year,
+//       then checks if they both have the same value in a week year format.
+//       returns true if the week year values match.
+
         if (dateTime.getYear() == todayRef.getYear()
                 && dateTime.getWeekOfWeekyear() == todayRef.getWeekOfWeekyear()) {
             return true;
@@ -156,15 +151,12 @@ public class BuzzBox implements Serializable {
         return false;
     }
 
-    /**
-     *
-     * @param dateTime
-     * @return
-     * Takes a DateTime and uses the DateTime todayRef for comparison.
-     * checks if the year and month match.
-     * returns true if the values match;
-     */
+
    private boolean isMonth(DateTime dateTime) {
+//       Takes a DateTime and uses the DateTime todayRef for comparison.
+//       checks if the year and month match.
+//       returns true if the values match.
+
         if (dateTime.getYear() == todayRef.getYear()
                 && dateTime.getMonthOfYear() == todayRef.getMonthOfYear()) {
             return true;
@@ -172,12 +164,10 @@ public class BuzzBox implements Serializable {
         return false;
     }
 
-    /**
-     *
-     * updates the second last buzz to reference the last buzz.
-     * updates the last buzz to reference the newest time stamp.
-     */
+
    private void updateLastBuzz(DateTime newDate){
+//       updates the second last buzz to reference the last buzz.
+//       updates the last buzz to reference the newest time stamp.
 
         if(lastBuzz == null){
             lastBuzz = newDate;
@@ -187,15 +177,12 @@ public class BuzzBox implements Serializable {
         }
     }
 
-    /**
-     *
-     * @param dateTime
-     * @return
-     * Converts a time stamp and new DateTime to milliseconds,
-     * divides the time stamp from the new DateTime,
-     * then calculates the leftover milliseconds into larger units of time.
-     */
+
     private String timeSinceBuzz(DateTime dateTime){
+//        Converts a time stamp and new DateTime to milliseconds,
+//        divides the time stamp from the new DateTime,
+//        then calculates the leftover milliseconds into larger units of time.
+
         DateTime now = new DateTime();
         long milliseconds = now.getMillis() - dateTime.getMillis();
 
@@ -207,13 +194,13 @@ public class BuzzBox implements Serializable {
         long months = (weeks / 4);
         long years = (months / 12);
 
-//        Log.d("LOG", "seconds = " + seconds);
-//        Log.d("LOG","minutes = " + minutes);
-//        Log.d("LOG","hours = " + hours);
-//        Log.d("LOG","days = " + days);
-//        Log.d("LOG","weeks = " + weeks);
-//        Log.d("LOG","months = " + months);
-//        Log.d("LOG","years = " + years);
+        Log.d("LOG", "seconds = " + seconds);
+        Log.d("LOG","minutes = " + minutes);
+        Log.d("LOG","hours = " + hours);
+        Log.d("LOG","days = " + days);
+        Log.d("LOG","weeks = " + weeks);
+        Log.d("LOG","months = " + months);
+        Log.d("LOG", "years = " + years);
 
 
         if(years > 0){
@@ -245,6 +232,10 @@ public class BuzzBox implements Serializable {
         }
 
         return null;
+    }
+
+    public Settings getSettings(){
+        return settings;
     }
 
 }

@@ -18,6 +18,7 @@ import java.io.Serializable;
 
 /**
  * Created by Devstream on 05/10/2015.
+ * Takes in an Object to be displayed
  */
 public class DetailedViewFragment extends AbstractFragment {
 
@@ -37,6 +38,7 @@ public class DetailedViewFragment extends AbstractFragment {
     protected int getLayout() {
         return R.layout.layout_open_log_detail;
     }
+
 
     @Override
     protected void instantiateWidgets(View view) {
@@ -64,15 +66,15 @@ public class DetailedViewFragment extends AbstractFragment {
     }
 
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-        if(!(context instanceof Callback)){
-            throw new IllegalStateException();
-        }
-        mCallback = (Callback) context;
-    }
+//    @Override
+//    public void onAttach(Context context) {
+//        super.onAttach(context);
+//
+//        if(!(context instanceof Callback)){
+//            throw new IllegalStateException();
+//        }
+//        mCallback = (Callback) context;
+//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -83,17 +85,17 @@ public class DetailedViewFragment extends AbstractFragment {
         }
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_main, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return mCallback.onOptionsItemSelected(item);
-    }
-
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        super.onCreateOptionsMenu(menu, inflater);
+//        inflater.inflate(R.menu.menu_main, menu);
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        return mCallback.onOptionsItemSelected(item);
+//    }
+//
     public interface Callback{
         boolean onOptionsItemSelected(MenuItem item);
         void setCurrentTitle(String title);
