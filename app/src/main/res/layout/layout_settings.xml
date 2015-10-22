@@ -6,7 +6,6 @@
               android:background="@color/buzzerbox_white"
               android:id="@+id/layout_settings">
 
-
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:layout_gravity="center"
