@@ -11,13 +11,14 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import io.buzzerbox.app.R;
 import org.w3c.dom.Text;
+import util.Settings;
 
 
 public class SettingsFragment extends AbstractFragment {
 
     private static final String SETTINGS_KEY = "SETTINGS";
 
-    private String buzz_audio_fx;
+    private Spinner buzz_audio_fx;
     private int buzz_custom_colour;
     private Settings settings;
 
@@ -29,7 +30,7 @@ public class SettingsFragment extends AbstractFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(getArguments() != null){
-            settings = getArguments().getSerializable(SETTINGS_KEY);
+            settings = (Settings) getArguments().getSerializable(SETTINGS_KEY);
         }
 
     }
@@ -46,7 +47,7 @@ public class SettingsFragment extends AbstractFragment {
 //
 //
 //        // CHOOSE AUDIO FILE SETTINGS SPINNER //
-//        Spinner spinner = (Spinner) findViewById(R.id.spinner_audio_file_list);
+//        Spinner spinner = (Spinner) findViewById (R.id.spinner_audio_file_list);
 //
 //        // Create an Array Adapter using the String Array and a Default Spinner Layout //
 //        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(

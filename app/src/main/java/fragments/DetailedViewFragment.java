@@ -42,20 +42,20 @@ public class DetailedViewFragment extends AbstractFragment {
 
     @Override
     protected void instantiateWidgets(View view) {
-        alarmName = (TextView)view.findViewById(R.id.text_alarm_type);
+        alarmName = (TextView) view.findViewById(R.id.text_alarm_type);
         alarmName.setText(dummy.getAlarmName());
 
-        alarmTimeSinceLast = (TextView)view.findViewById(R.id.text_last_buzz_int_value);
+        alarmTimeSinceLast = (TextView) view.findViewById(R.id.text_last_buzz_int_value);
         alarmTimeSinceLast.setText(String.valueOf(dummy.getAlarmTimeSinceLast()));
 
-        alarmToday = (TextView)view.findViewById(R.id.text_today_int_value);
+        alarmToday = (TextView) view.findViewById(R.id.text_today_int_value);
         alarmToday.setText(String.valueOf((dummy.getAlarmToday())));
 
-        alarmYesterday = (TextView)view.findViewById(R.id.text_yesterday_int_value);
+        alarmYesterday = (TextView) view.findViewById(R.id.text_yesterday_int_value);
         alarmYesterday.setText(String.valueOf(dummy.getAlarmYesterday()));
 
         mCallback.setCurrentTitle(dummy.getAlarmName());
-
+    }
 
     public static Fragment newInstance(Object obj){
         Bundle bundle = new Bundle();
@@ -66,15 +66,15 @@ public class DetailedViewFragment extends AbstractFragment {
     }
 
 
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//
-//        if(!(context instanceof Callback)){
-//            throw new IllegalStateException();
-//        }
-//        mCallback = (Callback) context;
-//    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if(!(context instanceof Callback)){
+            throw new IllegalStateException();
+        }
+        mCallback = (Callback) context;
+}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -85,17 +85,17 @@ public class DetailedViewFragment extends AbstractFragment {
         }
     }
 
-//    @Override
-//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-//        super.onCreateOptionsMenu(menu, inflater);
-//        inflater.inflate(R.menu.menu_main, menu);
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        return mCallback.onOptionsItemSelected(item);
-//    }
-//
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_main, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return mCallback.onOptionsItemSelected(item);
+    }
+
     public interface Callback{
         boolean onOptionsItemSelected(MenuItem item);
         void setCurrentTitle(String title);

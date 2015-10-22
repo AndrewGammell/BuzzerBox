@@ -21,7 +21,7 @@
                 android:gravity="center"
                 android:text="@string/text_login_title"
                 android:textColor="@color/buzzerbox_white"
-                android:textSize="@dimen/buzzerbox_font_size_extra_large"
+                android:textSize="@dimen/buzzerbox_font_size_default"
                 android:fontFamily="@string/buzzerbox_font_app_title"
                 android:textStyle="bold"
                 android:textAlignment="center"
