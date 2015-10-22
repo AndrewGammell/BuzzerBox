@@ -1,5 +1,7 @@
 package holder;
 
+import util.Settings;
+
 import java.util.List;
 
 /**
@@ -26,4 +28,5 @@ public class DataHolder {
     public void setListOfBoxes(List<BuzzHolder> boxes) {
         this.boxes = boxes;
     }
+
 }

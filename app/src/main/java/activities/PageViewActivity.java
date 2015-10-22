@@ -24,8 +24,9 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
         , LogViewFragment.Callback {
 //    private static final String OBJECT_KEY = "OBJECT";
 //    private static final String BUNDLE_KEY = "BUNDLE";
-    SectionsPagerAdapter mSectionsPagerAdapter;
-    ViewPager mViewPager;
+   private SectionsPagerAdapter mSectionsPagerAdapter;
+   private ViewPager mViewPager;
+   private PageChangeListener mPageChangeListener = new PageChangeListener();
 
 
 
@@ -39,9 +40,8 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        mViewPager.addOnPageChangeListener(new PageChangeListener());
+        mViewPager.addOnPageChangeListener(mPageChangeListener);
         getSupportActionBar().setTitle(mSectionsPagerAdapter.getPageTitle(0));
-
     }
 
 

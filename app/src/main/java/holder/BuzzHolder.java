@@ -4,6 +4,7 @@ package holder;
 import android.util.Log;
 import org.joda.time.DateTime;
 import singleton.Buzz;
+import util.Settings;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -27,10 +28,12 @@ public class BuzzHolder implements Serializable {
     private DateTime lastBuzz;
     private DateTime secondLastBuzz;
     private List<Buzz> list = new ArrayList<Buzz>();
+    private Settings settings;
 
 
     public BuzzHolder(String type) {
         this.type = type;
+        this.settings = new Settings(type);
     }
 
     public List<Buzz> getList() {
@@ -82,7 +85,7 @@ public class BuzzHolder implements Serializable {
     }
 
 
-    void countTimeStamps() {
+    public void countTimeStamps() {
 //    Iterates through the held list buzzes,
 //    taking the string time stamp from each buzz and coverts it to a DateTime.
 //    passes the DateTime to the updateLastBuzz and isToday/Yesterday/Week/Month methods.
@@ -229,6 +232,10 @@ public class BuzzHolder implements Serializable {
         }
 
         return null;
+    }
+
+    public Settings getSettings(){
+        return settings;
     }
 
 }
