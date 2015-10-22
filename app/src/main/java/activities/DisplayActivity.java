@@ -26,17 +26,16 @@ public class DisplayActivity extends AppCompatActivity implements DetailedViewFr
     private int call;
 
     private final FragmentManager fragmentManager = getSupportFragmentManager();
-//    private FragmentTransaction transaction;
     private final String TAG = "fragment";
     private ActionBar mActionBar;
 
 
-    /**
-     * Gets the Bundle from the Intent Extras, then gets the int(CALL_KEY) from the Bundle
-     * and stores it in the int variable call.
-     * Checks if
-     * @param savedInstanceState
-     */
+//   Gets the Bundle from the Intent Extras, then gets the int(CALL_KEY) from the Bundle
+//   and stores it in the int variable call.
+//   Checks if it was also passed an Object(OBJECT_KEY) in the Bundle, if an Object was passed in it
+//   is stored in the Object variable obj.
+//   calls displayFragment() if no fragment is found.
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,16 +58,10 @@ public class DisplayActivity extends AppCompatActivity implements DetailedViewFr
 
     }
 
-//    private void displayDetailedView(Object obj){
-//        transaction = fragmentManager.beginTransaction();
-//        transaction.add(getContainer(), DetailedViewFragment.newInstance(obj), TAG).commit();
-//    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){
-            case R.id.action_settings:
-                Utility.logout(this);
+            case R.id.action_logout:
                 MessageTools.showShortToast(this, "logged out");
                 goToLogin();
                 return true;
@@ -81,7 +74,10 @@ public class DisplayActivity extends AppCompatActivity implements DetailedViewFr
         mActionBar.setTitle(title);
     }
 
+//     calls the logout method in the Utility class, before starting the MainActivity
+//     again with flags to prevent it returning to this Activity from a back press.
     private void goToLogin(){
+        Utility.logout(this);
         Intent intent = new Intent(this,MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -89,10 +85,14 @@ public class DisplayActivity extends AppCompatActivity implements DetailedViewFr
         this.finish();
     }
 
+//     get the container that holds the fragment.
     private int getContainer(){
         return R.id.activity_main_container;
     }
 
+
+//      Using the tag given to the FragmentManager during a transaction it finds the  fragment
+//      if it finds a fragment it returns true.
     private boolean isFragmentDisplayed(){
         Fragment fragment = fragmentManager.findFragmentByTag(TAG);
         if(fragment != null){
@@ -101,6 +101,7 @@ public class DisplayActivity extends AppCompatActivity implements DetailedViewFr
         return false;
     }
 
+//   decides what fragment to show based on the CALL_KEY int passed in.
     private void displayFragment(int call){
         Fragment fragment = null;
         switch(call){

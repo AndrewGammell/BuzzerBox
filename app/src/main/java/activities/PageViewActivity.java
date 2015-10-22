@@ -44,9 +44,8 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
 
     }
 
-    /**
-     * uses the DataPerisiter class to save the User when this Activity is stopped.
-     */
+
+//     uses the DataPerisiter class to save the User when this Activity is stopped.
     @Override
     protected void onStop() {
         super.onStop();
@@ -103,10 +102,8 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * calls the logout method in the Utility class then,
-     * recalls the MainActivity with flags to prevent returning with back press.
-     */
+//    calls the logout method in the Utility class then,
+//    recalls the MainActivity with flags to prevent returning with back press.
     private void goToLogin() {
         Utility.logout(this);
         Intent intent = new Intent(this, MainActivity.class);
@@ -115,9 +112,7 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
         startActivity(intent);
     }
 
-    /**
-     * Using onPageSelected to set the ActionBar title to the currently displayed fragment.
-     */
+//     Using onPageSelected to set the ActionBar title to the currently displayed fragment.
     private class PageChangeListener implements ViewPager.OnPageChangeListener{
 
         @Override
