@@ -26,6 +26,10 @@
               android:label="BuzzerBox">
 
     </activity>
+    <activity android:name="activities.SettingsPageActivity"
+              android:label="BuzzerBox">
+
+    </activity>
 </application>
 
 </manifest>
