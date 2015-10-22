@@ -17,9 +17,6 @@ import util.MessageTools;
 import util.Utility;
 
 
-/**
- * Created by Devstream on 06/10/2015.
- */
 public class PageViewActivity extends AppCompatActivity implements OverviewFragment.Callback
         , LogViewFragment.Callback {
 //    private static final String OBJECT_KEY = "OBJECT";

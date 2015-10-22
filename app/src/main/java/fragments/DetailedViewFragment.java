@@ -54,15 +54,6 @@ public class DetailedViewFragment extends AbstractFragment {
 
         mCallback.setCurrentTitle(dummy.getAlarmName());
 
-//        // AK 19-10-2015 //
-//        // start of Spinner code //
-//        // Create an Array Adapter using the string array and a default spinner layout //
-//        Spinner spinner = (Spinner) findViewById(R.id.array.spinner_audio_file_list);
-//
-//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-//                this, R.array.spinner_audio_file_list, android.R.layout.layout_settings);
-//        // end of Spinner code //
-    }
 
     public static Fragment newInstance(Object obj){
         Bundle bundle = new Bundle();
