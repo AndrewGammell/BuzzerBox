@@ -77,19 +77,19 @@
                 android:layout_height="30dp"
                 android:layout_width="30dp"
                 android:gravity="left"
-               />
+                />
         <TextView
-            android:layout_column="2"
-            android:layout_row="1"
-            android:id="@+id/text_sound"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:padding="5dp"
-            android:text="@string/text_sound"
-            android:textSize="@dimen/buzzerbox_font_size_default"
-            android:fontFamily="@string/buzzerbox_font_app_default_bold"
-            android:textColor="@color/buzzerbox_black"
-            android:gravity="left"/>
+                android:layout_column="2"
+                android:layout_row="1"
+                android:id="@+id/text_sound"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="5dp"
+                android:text="@string/text_sound"
+                android:textSize="@dimen/buzzerbox_font_size_default"
+                android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                android:textColor="@color/buzzerbox_black"
+                android:gravity="left"/>
 
         <Spinner
                 android:layout_column="3"
@@ -186,7 +186,7 @@
                         android:background="@drawable/unique_alarm_color_picker_shape"
                         android:backgroundTint="@color/colour_option_6"/>
 
-                        <!-- SECOND ROW OF SIX -->
+                <!-- SECOND ROW OF SIX -->
 
                 <ImageView
                         android:layout_column="0"
@@ -269,35 +269,26 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/unique_alarm_color_picker_shape"
                         android:backgroundTint="@color/colour_option_17"/>
-                <ImageView
+                <!--<ImageView-->
+                <!--android:layout_column="5"-->
+                <!--android:layout_row="2"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@drawable/unique_alarm_color_picker_shape"-->
+                <!--android:backgroundTint="@color/colour_option_18"/>-->
+                <CheckBox
                         android:layout_column="5"
                         android:layout_row="2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/unique_alarm_color_picker_shape"
-                        android:backgroundTint="@color/colour_option_18"/>
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:backgroundTint="@color/colour_option_11"
+                        android:background="@drawable/unique_alarm_color_picker_shape"/>
 
 
             </GridLayout>
 
 
-
-
-
-
-
-
-
-
-
-
         </LinearLayout>
-
-
-
-
-
-
 
 
         <TextView
@@ -308,6 +299,7 @@
                 android:layout_width="match_parent"
                 android:padding="5dp"
                 android:textColor="@color/buzzerbox_black"
+
                 />
 
         <ImageView
@@ -363,7 +355,6 @@
                 android:fontFamily="@string/buzzerbox_font_app_default_bold"
                 android:textColor="@color/buzzerbox_black"
                 android:gravity="left"/>
-
 
 
     </GridLayout>

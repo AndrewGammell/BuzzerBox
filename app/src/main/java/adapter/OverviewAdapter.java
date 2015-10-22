@@ -87,6 +87,7 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
         private void goToSettings(int index) {
             Intent intent = new Intent(context,SettingsPageActivity.class);
             intent.putExtra(CALL_POSITION,index);
+            context.startActivity(intent);
         }
     }
 }

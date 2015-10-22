@@ -8,10 +8,11 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/MyCustomTheme">
+        >
     <activity
         android:name="activities.MainActivity"
-        android:label="@string/app_name" >
+        android:label="@string/app_name"
+        android:theme="@style/MyCustomThemeNoBar">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
@@ -19,15 +20,18 @@
         </intent-filter>
     </activity>
     <activity android:name="activities.PageViewActivity"
-              android:label="BuzzerBox">
+              android:label="BuzzerBox"
+              android:theme="@style/MyCustomTheme">
 
     </activity>
     <activity android:name="activities.DisplayActivity"
-              android:label="BuzzerBox">
+              android:label="BuzzerBox"
+              android:theme="@style/MyCustomThemeNoBar">
 
     </activity>
     <activity android:name="activities.SettingsPageActivity"
-              android:label="BuzzerBox">
+              android:label="BuzzerBox"
+              android:theme="@style/MyCustomThemeNoBar">
 
     </activity>
 </application>

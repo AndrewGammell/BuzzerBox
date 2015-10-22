@@ -32,7 +32,7 @@ public class DetailedViewFragment extends AbstractFragment {
     // TextView alarmTotalMonth;
     // TextView alarmTotal;
     TextView alarmTimeSinceLast;
-    private Callback mCallback;
+//    private Callback mCallback;
 
     @Override
     protected int getLayout() {
@@ -42,20 +42,20 @@ public class DetailedViewFragment extends AbstractFragment {
 
     @Override
     protected void instantiateWidgets(View view) {
-        alarmName = (TextView)view.findViewById(R.id.text_alarm_type);
+        alarmName = (TextView) view.findViewById(R.id.text_alarm_type);
         alarmName.setText(dummy.getAlarmName());
 
-        alarmTimeSinceLast = (TextView)view.findViewById(R.id.text_last_buzz_int_value);
+        alarmTimeSinceLast = (TextView) view.findViewById(R.id.text_last_buzz_int_value);
         alarmTimeSinceLast.setText(String.valueOf(dummy.getAlarmTimeSinceLast()));
 
-        alarmToday = (TextView)view.findViewById(R.id.text_today_int_value);
+        alarmToday = (TextView) view.findViewById(R.id.text_today_int_value);
         alarmToday.setText(String.valueOf((dummy.getAlarmToday())));
 
-        alarmYesterday = (TextView)view.findViewById(R.id.text_yesterday_int_value);
+        alarmYesterday = (TextView) view.findViewById(R.id.text_yesterday_int_value);
         alarmYesterday.setText(String.valueOf(dummy.getAlarmYesterday()));
 
-        mCallback.setCurrentTitle(dummy.getAlarmName());
-
+//        mCallback.setCurrentTitle(dummy.getAlarmName());
+    }
 
     public static Fragment newInstance(Object obj){
         Bundle bundle = new Bundle();
@@ -79,7 +79,7 @@ public class DetailedViewFragment extends AbstractFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(false); // changed from true to test hiding action bar - AK 13-10-2015 //
+//        setHasOptionsMenu(true); // changed from true to test hiding action bar - AK 13-10-2015 //
         if(getArguments() != null){
             dummy = (DummyAlerts) getArguments().getSerializable(KEY);
         }
@@ -96,10 +96,10 @@ public class DetailedViewFragment extends AbstractFragment {
 //        return mCallback.onOptionsItemSelected(item);
 //    }
 //
-    public interface Callback{
-        boolean onOptionsItemSelected(MenuItem item);
-        void setCurrentTitle(String title);
-    }
+//    public interface Callback{
+////        boolean onOptionsItemSelected(MenuItem item);
+//        void setCurrentTitle(String title);
+//    }
 
 
 
