@@ -91,7 +91,7 @@
 
     <!-- Font Set Sorted By Named Design Elements for BuzzerBox -->
 
-    <string name="buzzerbox_font_app_default">@string/buzzerbox_font_roboto_black</string>
+    <string name="buzzerbox_font_app_default">@string/buzzerbox_font_roboto_thin</string>
 
     <string name="buzzerbox_font_app_default_bold">@string/buzzerbox_font_roboto_bold</string>
 
