@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import fragments.SettingsFragment;
 import holder.DataHolder;
 import io.buzzerbox.app.R;
 
@@ -46,11 +47,11 @@ public class SettingsPageActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int i) {
-//        return SettingsFragment.newInstance(DataHolder.getDataHolder()
-//                                  .getListOfBoxes()
-//                                  .get(i)
-//                                  .getSettings());
-            return new Fragment();
+        return SettingsFragment.newInstance(DataHolder.getDataHolder()
+                .getListOfBoxes()
+                .get(i)
+                .getSettings());
+//            return new Fragment();
 
         }
 
@@ -70,11 +71,6 @@ public class SettingsPageActivity extends AppCompatActivity {
         @Override
         public void onPageSelected(int i) {
             position = i;
-            getSupportActionBar().setTitle(
-                    DataHolder.getDataHolder()
-                            .getListOfBoxes()
-                            .get(i)
-                            .getType());
         }
 
         @Override

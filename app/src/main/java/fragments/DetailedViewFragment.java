@@ -32,7 +32,7 @@ public class DetailedViewFragment extends AbstractFragment {
     // TextView alarmTotalMonth;
     // TextView alarmTotal;
     TextView alarmTimeSinceLast;
-    private Callback mCallback;
+//    private Callback mCallback;
 
     @Override
     protected int getLayout() {
@@ -54,7 +54,7 @@ public class DetailedViewFragment extends AbstractFragment {
         alarmYesterday = (TextView) view.findViewById(R.id.text_yesterday_int_value);
         alarmYesterday.setText(String.valueOf(dummy.getAlarmYesterday()));
 
-        mCallback.setCurrentTitle(dummy.getAlarmName());
+//        mCallback.setCurrentTitle(dummy.getAlarmName());
     }
 
     public static Fragment newInstance(Object obj){
@@ -66,40 +66,40 @@ public class DetailedViewFragment extends AbstractFragment {
     }
 
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-        if(!(context instanceof Callback)){
-            throw new IllegalStateException();
-        }
-        mCallback = (Callback) context;
-}
+//    @Override
+//    public void onAttach(Context context) {
+//        super.onAttach(context);
+//
+//        if(!(context instanceof Callback)){
+//            throw new IllegalStateException();
+//        }
+//        mCallback = (Callback) context;
+//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(false); // changed from true to test hiding action bar - AK 13-10-2015 //
+//        setHasOptionsMenu(true); // changed from true to test hiding action bar - AK 13-10-2015 //
         if(getArguments() != null){
             dummy = (DummyAlerts) getArguments().getSerializable(KEY);
         }
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_main, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return mCallback.onOptionsItemSelected(item);
-    }
-
-    public interface Callback{
-        boolean onOptionsItemSelected(MenuItem item);
-        void setCurrentTitle(String title);
-    }
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        super.onCreateOptionsMenu(menu, inflater);
+//        inflater.inflate(R.menu.menu_main, menu);
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        return mCallback.onOptionsItemSelected(item);
+//    }
+//
+//    public interface Callback{
+////        boolean onOptionsItemSelected(MenuItem item);
+//        void setCurrentTitle(String title);
+//    }
 
 
 

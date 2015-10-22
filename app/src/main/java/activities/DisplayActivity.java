@@ -17,7 +17,7 @@ import util.Utility;
 /**
  * Created by Devstream on 06/10/2015.
  */
-public class DisplayActivity extends AppCompatActivity implements DetailedViewFragment.Callback {
+public class DisplayActivity extends AppCompatActivity {//implements DetailedViewFragment.Callback {
     private String BUNDLE_KEY = "BUNDLE";
     private String OBJECT_KEY = "OBJECT";
     private String CALL_KEY = "CALL";
@@ -69,10 +69,10 @@ public class DisplayActivity extends AppCompatActivity implements DetailedViewFr
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void setCurrentTitle(String title){
-        mActionBar.setTitle(title);
-    }
+//    @Override
+//    public void setCurrentTitle(String title){
+//        mActionBar.setTitle(title);
+//    }
 
 //     calls the logout method in the Utility class, before starting the MainActivity
 //     again with flags to prevent it returning to this Activity from a back press.
