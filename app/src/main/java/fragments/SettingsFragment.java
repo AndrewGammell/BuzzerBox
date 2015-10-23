@@ -6,11 +6,15 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.*;
 import holder.DataHolder;
 import io.buzzerbox.app.R;
 import org.w3c.dom.Text;
 import util.Settings;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class SettingsFragment extends AbstractFragment {
@@ -20,6 +24,8 @@ public class SettingsFragment extends AbstractFragment {
     private TextView alarmType;
     private Spinner spinner;
     private Settings settings;
+    private CheckBox colour;
+    private List<View> colourList;
 
 
     @Override
@@ -36,11 +42,16 @@ public class SettingsFragment extends AbstractFragment {
     }
 
     public void instantiateWidgets(View view) {
+        colourList = getViewsByTag((ViewGroup)view.findViewById(R.id.colour_picker_grid),"colour");
+        setAllOnCheckedChangedListeners();
+
         alarmType = (TextView) view.findViewById(R.id.text_alarm_type);
         alarmType.setText(settings.getType());
+
         spinner = (Spinner) view.findViewById(R.id.spinner_audio_file_list);
         spinner.setAdapter(getAdapter());
         spinner.setOnItemSelectedListener(new SpinnerItemSelectedListener());
+
     }
 
     public static SettingsFragment newInstance(Settings settings) {
@@ -78,4 +89,47 @@ public class SettingsFragment extends AbstractFragment {
         }
     }
 
+    private class ColourSelectedListener implements CheckBox.OnCheckedChangeListener{
+
+
+
+        @Override
+        public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+            if(b){
+                for(View checkBox:colourList ){
+                    colour = (CheckBox) checkBox;
+                    if(colour.getId() != compoundButton.getId() && colour.isChecked()){
+                        colour.setChecked(false);
+                    }
+                }
+            }
+
+        }
+    }
+
+    private void setAllOnCheckedChangedListeners(){
+        for(View checkBox: colourList){
+            colour = (CheckBox) checkBox;
+            colour.setOnCheckedChangeListener(new ColourSelectedListener());
+        }
+    }
+
+    private ArrayList<View> getViewsByTag(ViewGroup root, String tag){
+        ArrayList<View> views = new ArrayList<View>();
+        final int childCount = root.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            final View child = root.getChildAt(i);
+            if (child instanceof ViewGroup) {
+                views.addAll(getViewsByTag((ViewGroup) child, tag));
+            }
+
+            final Object tagObj = child.getTag();
+            if (tagObj != null && tagObj.equals(tag)) {
+                views.add(child);
+            }
+
+        }
+        return views;
+    }
 }
