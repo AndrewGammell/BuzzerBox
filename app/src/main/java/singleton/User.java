@@ -14,17 +14,17 @@ public class User implements Serializable{
     private static User user;
     private String username;
     private String password;
-    private List<Buzz> buzzHolder;
+    private List<Buzz> buzzList;
 
-    public List<Buzz> getBuzzHolder() {
-        if (buzzHolder == null){
-            buzzHolder = new ArrayList<Buzz>();
+    public List<Buzz> getBuzzList() {
+        if (buzzList == null){
+            buzzList = new ArrayList<Buzz>();
         }
-        return buzzHolder;
+        return buzzList;
     }
 
-    public void setBuzzHolder(List<Buzz> buzzHolder) {
-        this.buzzHolder = buzzHolder;
+    public void setBuzzList(List<Buzz> buzzList) {
+        this.buzzList = buzzList;
     }
 
 

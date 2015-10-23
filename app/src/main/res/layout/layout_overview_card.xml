@@ -25,11 +25,12 @@
                     android:layout_column="0"
                     android:layout_row="0"
                     android:padding="10dp"
-                    android:id="@+id/image_alarm_colour"
                     android:background="@drawable/unique_alarm_color_shape"
+                    android:id="@+id/image_alarm_colour"
                     android:layout_height="30dp"
                     android:layout_width="30dp"
                     />
+
             <TextView
                     android:layout_column="1"
                     android:layout_row="0"

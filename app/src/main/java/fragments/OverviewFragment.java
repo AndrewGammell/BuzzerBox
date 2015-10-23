@@ -10,7 +10,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import holder.DataHolder;
 import io.buzzerbox.app.R;
+import singleton.User;
 import tester.DummyAlerts;
 
 
@@ -52,7 +54,7 @@ public class OverviewFragment extends AbstractListFragment {
 
     @Override
     protected RecyclerView.Adapter getAdapter() {
-        return new OverviewAdapter(getList(),getActivity());
+        return new OverviewAdapter(DataHolder.getDataHolder().getListOfBoxes(),getActivity());
     }
 
     public static Fragment newInstance(){

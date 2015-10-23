@@ -8,9 +8,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.http.HttpEntity;
@@ -21,8 +19,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.nio.charset.Charset;
@@ -146,7 +142,7 @@ public class LoginAsyncTask extends AppCompatActivity{
                         Buzz entry = (new Gson()).fromJson(buzzes.get(i).toString(), Buzz.class);
 
                         // add mapped class to the User singleton's Buzz List
-                        User.getUser().getBuzzHolder().add(entry);
+                        User.getUser().getBuzzList().add(entry);
                     }
                    //responseJSON = new JSONObject(responseJSONContent);
                     return statusCode;

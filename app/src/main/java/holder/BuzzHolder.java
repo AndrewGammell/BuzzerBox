@@ -1,10 +1,10 @@
 package holder;
 
 
-import android.util.Log;
 import org.joda.time.DateTime;
 import singleton.Buzz;
-import util.Settings;
+import settings.Settings;
+import util.Utility;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -77,11 +77,11 @@ public class BuzzHolder implements Serializable {
     }
 
     public String getTimeSinceLastbuzz(){
-        return timeSinceBuzz(lastBuzz);
+        return Utility.timeSinceBuzz(lastBuzz);
     }
 
     public String getTimeSinceSecondLastBuzz(){
-        return timeSinceBuzz(lastBuzz);
+        return Utility.timeSinceBuzz(lastBuzz);
     }
 
 
@@ -89,6 +89,9 @@ public class BuzzHolder implements Serializable {
 //    Iterates through the held list buzzes,
 //    taking the string time stamp from each buzz and coverts it to a DateTime.
 //    passes the DateTime to the updateLastBuzz and isToday/Yesterday/Week/Month methods.
+
+
+//        resetCounters();
         DateTime dt;
         for (Buzz buzz : list) {
             if(buzz.getUpdated_at() != null ){
@@ -178,64 +181,19 @@ public class BuzzHolder implements Serializable {
     }
 
 
-    private String timeSinceBuzz(DateTime dateTime){
-//        Converts a time stamp and new DateTime to milliseconds,
-//        divides the time stamp from the new DateTime,
-//        then calculates the leftover milliseconds into larger units of time.
 
-        DateTime now = new DateTime();
-        long milliseconds = now.getMillis() - dateTime.getMillis();
-
-        long seconds = (milliseconds / 1000);
-        long minutes = (seconds/ 60);
-        long hours = (minutes / 60);
-        long days = (hours / 24);
-        long weeks = (days / 7);
-        long months = (weeks / 4);
-        long years = (months / 12);
-
-        Log.d("LOG", "seconds = " + seconds);
-        Log.d("LOG","minutes = " + minutes);
-        Log.d("LOG","hours = " + hours);
-        Log.d("LOG","days = " + days);
-        Log.d("LOG","weeks = " + weeks);
-        Log.d("LOG","months = " + months);
-        Log.d("LOG", "years = " + years);
-
-
-        if(years > 0){
-            return years + " years ago";
-        }
-
-        if(months > 0){
-            return months + " months ago";
-        }
-
-        if(weeks > 0){
-            return weeks + " weeks ago";
-        }
-
-        if(days > 0){
-            return days + " days ago";
-        }
-
-        if(hours > 0){
-            return hours + " hours ago";
-        }
-
-        if(minutes > 0){
-            return minutes + " minutes ago";
-        }
-
-        if(seconds > 0){
-            return seconds + " seconds ago";
-        }
-
-        return null;
-    }
 
     public Settings getSettings(){
         return settings;
     }
+
+    private void resetCounters(){
+        today = 0;
+        yesterday = 0;
+        week = 0;
+        month = 0;
+        total = 0;
+    }
+
 
 }

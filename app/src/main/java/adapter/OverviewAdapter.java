@@ -8,8 +8,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import holder.BuzzHolder;
+import holder.DataHolder;
 import io.buzzerbox.app.R;
+import singleton.Buzz;
+import singleton.User;
 import tester.DummyAlerts;
 
 import java.util.List;
@@ -43,14 +48,15 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
     @Override
     public void onBindViewHolder(ItemHolder itemHolder, int i) {
 
-        DummyAlerts dummy = (DummyAlerts) list.get(i);
-        itemHolder.alarmName.setText(dummy.getAlarmName());
-        itemHolder.alarmToday.setText(String.valueOf(dummy.getAlarmToday()));
-        itemHolder.alarmYesterday.setText(String.valueOf(dummy.getAlarmYesterday()));
-        itemHolder.alarmTotalWeek.setText(String.valueOf(dummy.getAlarmTotalWeek()));
-        itemHolder.alarmTotalMonth.setText(String.valueOf(dummy.getAlarmTotalMonth()));
-        itemHolder.alarmTotal.setText(String.valueOf(dummy.getAlarmTotal()));
-        itemHolder.alarmTimeSinceLast.setText(String.valueOf(dummy.getAlarmTimeSinceLast()));
+        BuzzHolder dummy = (BuzzHolder) list.get(i);
+//        itemHolder.alarmColour.setBackgroundColor(context.getResources().getColor(R.color.colour_option_12));
+        itemHolder.alarmName.setText(dummy.getType());
+        itemHolder.alarmToday.setText(String.valueOf(dummy.getToday()));
+        itemHolder.alarmYesterday.setText(String.valueOf(dummy.getYesterday()));
+        itemHolder.alarmTotalWeek.setText(String.valueOf(dummy.getWeek()));
+        itemHolder.alarmTotalMonth.setText(String.valueOf(dummy.getMonth()));
+        itemHolder.alarmTotal.setText(String.valueOf(dummy.getTotal()));
+        itemHolder.alarmTimeSinceLast.setText(String.valueOf(dummy.getTimeSinceLastbuzz()));
     }
 
     @Override
@@ -59,6 +65,7 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
     }
 
     public class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        ImageView alarmColour;
         TextView alarmName;
         TextView alarmToday;
         TextView alarmYesterday;
@@ -70,6 +77,7 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
         ItemHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
+            alarmColour = (ImageView) itemView.findViewById(R.id.image_alarm_colour);
             alarmName = (TextView) itemView.findViewById(R.id.text_alarm_type);
             alarmToday = (TextView) itemView.findViewById(R.id.text_today_int_value);
             alarmYesterday = (TextView) itemView.findViewById(R.id.text_yesterday_int_value);

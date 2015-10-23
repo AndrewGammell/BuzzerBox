@@ -1,5 +1,8 @@
 package singleton;
 
+import org.joda.time.DateTime;
+import util.Utility;
+
 import java.io.Serializable;
 
 /**
@@ -99,5 +102,15 @@ public class Buzz implements Serializable{
 
     public void setBuzz_key(String buzz_key) {
         this.buzz_key = buzz_key;
+    }
+
+    public String getTimeSinceBuzz(){
+        DateTime dt;
+        if(updated_at != null){
+           dt =  new DateTime(updated_at);
+        }else{
+            dt = new DateTime(created_at);
+        }
+        return Utility.timeSinceBuzz(dt);
     }
 }

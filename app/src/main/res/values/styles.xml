@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light">
@@ -24,5 +24,9 @@
         <item name="colorAccent">@color/buzzerbox_action_bar_accent</item>
         <!-- this colours the accents of existing text or spinners !-->
         <item name="android:fontFamily">@string/buzzerbox_font_app_default</item>
+    </style>
+
+    <style name="AlarmImageView" parent="Theme.AppCompat.Light.NoActionBar">
+         <item name="android:radius"> 18dp</item>
     </style>
 </resources>

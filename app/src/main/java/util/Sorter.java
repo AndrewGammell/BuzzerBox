@@ -17,6 +17,7 @@ import java.util.List;
  */
 public class Sorter extends AsyncTask<Void,Void,List<BuzzHolder>> {
     List<BuzzHolder> buzzHolders = new ArrayList<BuzzHolder>();
+//    List<BuzzHolder> buzzHolders = DataHolder.getDataHolder().getListOfBoxes();
     private Context context;
 
     public Sorter(Context context) {
@@ -28,7 +29,7 @@ public class Sorter extends AsyncTask<Void,Void,List<BuzzHolder>> {
     protected List<BuzzHolder> doInBackground(Void... voids) {
         User user = User.getInstance(context);
 
-        for(Buzz b: user.getBuzzHolder()){
+        for(Buzz b: user.getBuzzList()){
             if(findBoxAndAdd(b)){
 
             }else{

@@ -1,17 +1,14 @@
 package fragments;
 
 import abstracts.AbstractFragment;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import holder.DataHolder;
 import io.buzzerbox.app.R;
-import org.w3c.dom.Text;
-import util.Settings;
+import settings.Settings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +49,7 @@ public class SettingsFragment extends AbstractFragment {
         spinner.setAdapter(getAdapter());
         spinner.setOnItemSelectedListener(new SpinnerItemSelectedListener());
 
+        setCurrentSettings();
     }
 
     public static SettingsFragment newInstance(Settings settings) {
@@ -91,8 +89,6 @@ public class SettingsFragment extends AbstractFragment {
 
     private class ColourSelectedListener implements CheckBox.OnCheckedChangeListener{
 
-
-
         @Override
         public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
@@ -131,5 +127,10 @@ public class SettingsFragment extends AbstractFragment {
 
         }
         return views;
+    }
+
+    private void setCurrentSettings(){
+        spinner.setSelection(settings.getSound());
+
     }
 }

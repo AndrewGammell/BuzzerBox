@@ -1,4 +1,4 @@
-package util;
+package settings;
 
 import java.io.Serializable;
 
@@ -8,10 +8,8 @@ import java.io.Serializable;
 public class Settings implements Serializable{
 
     private String type;
-    private int colour = 0;
-
-
-    private int sound = 0;
+    private int colour = 9;
+    private int sound = 3;
     private String notificationType = "phone";
     private int frequency = 1;
 
