@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -19,14 +21,14 @@ import util.Utility;
 
 public class PageViewActivity extends AppCompatActivity implements OverviewFragment.Callback
         , LogViewFragment.Callback {
-//    private static final String OBJECT_KEY = "OBJECT";
+    //    private static final String OBJECT_KEY = "OBJECT";
 //    private static final String BUNDLE_KEY = "BUNDLE";
-   private SectionsPagerAdapter mSectionsPagerAdapter;
-   private ViewPager mViewPager;
-   private PageChangeListener mPageChangeListener = new PageChangeListener();
-
-
-
+    private SectionsPagerAdapter mSectionsPagerAdapter;
+    private ViewPager mViewPager;
+    private PageChangeListener mPageChangeListener = new PageChangeListener();
+    private ActionBar mActionBar;
+    private ActionBar.Tab overviewTab;
+    private ActionBar.Tab logTab;
 
 
     @Override
@@ -34,15 +36,64 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pager_layout);
 
+        mActionBar = getSupportActionBar();
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.addOnPageChangeListener(mPageChangeListener);
-        getSupportActionBar().setTitle(mSectionsPagerAdapter.getPageTitle(0));
+
+        createTabs();
+    }
+
+    private void createTabs() {
+        mActionBar.setNavigationMode(mActionBar.NAVIGATION_MODE_TABS);
+
+        overviewTab = mActionBar.newTab();
+        overviewTab.setText("Overview");
+        overviewTab.setTabListener(new ActionBar.TabListener() {
+
+            @Override
+            public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+                mViewPager.setCurrentItem(0);
+            }
+
+            @Override
+            public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+            }
+
+            @Override
+            public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+            }
+        });
+
+        logTab = mActionBar.newTab();
+        logTab.setText("Log");
+        logTab.setTabListener(new ActionBar.TabListener() {
+
+            @Override
+            public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+                mViewPager.setCurrentItem(1);
+            }
+
+            @Override
+            public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+            }
+
+            @Override
+            public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+            }
+        });
+
+        mActionBar.addTab(overviewTab);
+        mActionBar.addTab(logTab);
     }
 
 
-//     uses the DataPerisiter class to save the User when this Activity is stopped.
+    //     uses the DataPerisiter class to save the User when this Activity is stopped.
     @Override
     protected void onStop() {
         super.onStop();
@@ -77,7 +128,7 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
 
         @Override
         public CharSequence getPageTitle(int position) {
-            Log.d("PAGE","getIPageTitle()");
+            Log.d("PAGE", "getIPageTitle()");
             switch (position) {
                 case 0:
                     return getResources().getString(R.string.title_overview);
@@ -99,7 +150,7 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
         return super.onOptionsItemSelected(item);
     }
 
-//    calls the logout method in the Utility class then,
+    //    calls the logout method in the Utility class then,
 //    recalls the MainActivity with flags to prevent returning with back press.
     private void goToLogin() {
         Utility.logout(this);
@@ -109,8 +160,8 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
         startActivity(intent);
     }
 
-//     Using onPageSelected to set the ActionBar title to the currently displayed fragment.
-    private class PageChangeListener implements ViewPager.OnPageChangeListener{
+    //     Using onPageSelected to set the ActionBar title to the currently displayed fragment.
+    private class PageChangeListener implements ViewPager.OnPageChangeListener {
 
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -119,11 +170,17 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
 
         @Override
         public void onPageSelected(int position) {
-            getSupportActionBar().setTitle(mSectionsPagerAdapter.getPageTitle(position));
+            switch(position){
+                case 0: mActionBar.selectTab(overviewTab);
+                    break;
+                case 1: mActionBar.selectTab(logTab);
+                    break;
+            }
         }
 
         @Override
         public void onPageScrollStateChanged(int state) {
         }
     }
+
 }
