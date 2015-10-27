@@ -36,17 +36,27 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        updateView();
+        Log.d("S", "onResume in PageActivity");
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pager_layout);
 
+        updateView();
+        createTabs();
+    }
+
+    void updateView() {
         mActionBar = getSupportActionBar();
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.addOnPageChangeListener(mPageChangeListener);
-
-        createTabs();
     }
 
     private void createTabs() {
@@ -104,7 +114,7 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
     protected void onStop() {
         super.onStop();
         DataPersister.saveUser(this);
-//        DataPersister.saveDataHolder(this);
+        DataPersister.saveDataHolder(this);
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {

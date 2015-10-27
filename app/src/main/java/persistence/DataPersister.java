@@ -45,25 +45,25 @@ public class DataPersister {
         preference.edit().remove(PACKAGE_NAME+USER).apply();
     }
 
-//    public static boolean saveDataHolder(Context context){
-//        DataHolder holder = DataHolder.getDataHolder(context);
-//        Gson gson = new Gson();
-//        String json = gson.toJson(holder);
-//        PreferenceManager.getDefaultSharedPreferences(context)
-//                .edit()
-//                .putString(PACKAGE_NAME+DATAHOLDER, json)
-//                .apply();
-//        return true;
-//    }
+    public static boolean saveDataHolder(Context context){
+        DataHolder holder = DataHolder.getDataHolder();
+        Gson gson = new Gson();
+        String json = gson.toJson(holder);
+        PreferenceManager.getDefaultSharedPreferences(context)
+                .edit()
+                .putString(PACKAGE_NAME+DATAHOLDER, json)
+                .apply();
+        return true;
+    }
 
-//    public static DataHolder loadDataHolder(Context context) {
-//        SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(context);
-//        Gson gson = new Gson();
-//        String json = preference.getString(PACKAGE_NAME + DATAHOLDER, null);
-//
-//        if(json == null)
-//            return null;
-//
-//        return gson.fromJson(json,DataHolder.class);
-//    }
+    public static DataHolder loadDataHolder(Context context) {
+        SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(context);
+        Gson gson = new Gson();
+        String json = preference.getString(PACKAGE_NAME + DATAHOLDER, null);
+
+        if(json == null)
+            return null;
+
+        return gson.fromJson(json,DataHolder.class);
+    }
 }

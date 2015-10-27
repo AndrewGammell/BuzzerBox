@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by Devstream on 20/10/2015.
  */
-public class DataHolder implements Serializable{
+public class DataHolder implements Serializable {
     private static DataHolder dataHolder;
     private List<BuzzHolder> boxes;
     private List<Settings> settingsList = new ArrayList<Settings>();
@@ -33,7 +33,7 @@ public class DataHolder implements Serializable{
 //    public static DataHolder getDataHolder(Context context) {
 //        if (dataHolder == null) {
 //           if(DataPersister.loadDataHolder(context) != null){
-//               dataHolder = DataPersister.loadDataHolder(context)
+//               dataHolder = DataPersister.loadDataHolder(context);
 //           }else{
 //               dataHolder = new DataHolder();
 //           }
@@ -57,9 +57,9 @@ public class DataHolder implements Serializable{
         return buzzList;
     }
 
-    public Settings getSettings(String type){
-        for(Settings s: settingsList){
-            if(s.getType().equals(type)){
+    public Settings getSettings(String type) {
+        for (Settings s : settingsList) {
+            if (s.getType().equals(type)) {
                 return s;
             }
         }
