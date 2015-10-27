@@ -9,6 +9,7 @@ import android.widget.*;
 import holder.DataHolder;
 import io.buzzerbox.app.R;
 import settings.Settings;
+import util.Utility;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,9 @@ public class SettingsFragment extends AbstractFragment {
     private Spinner spinner;
     private Settings settings;
     private CheckBox colour;
-    private List<View> colourList;
+    private List<View> colourButtonList;
+    private ViewGroup background;
+    private List<Integer> colourList = Utility.getColours();
 
 
     @Override
@@ -39,8 +42,10 @@ public class SettingsFragment extends AbstractFragment {
     }
 
     public void instantiateWidgets(View view) {
-        colourList = getViewsByTag((ViewGroup)view.findViewById(R.id.colour_picker_grid),"colour");
+        background = (ViewGroup) view.findViewById(R.id.layout_settings);
+        colourButtonList = getViewsByTag((ViewGroup) view.findViewById(R.id.colour_picker_grid), "colour");
         setAllOnCheckedChangedListeners();
+
 
         alarmType = (TextView) view.findViewById(R.id.text_alarm_type);
         alarmType.setText(settings.getType());
@@ -72,13 +77,13 @@ public class SettingsFragment extends AbstractFragment {
         return adapter;
     }
 
-    private class SpinnerItemSelectedListener implements Spinner.OnItemSelectedListener{
+    private class SpinnerItemSelectedListener implements Spinner.OnItemSelectedListener {
 
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
             settings.setSound(i);
-           int in = DataHolder.getDataHolder().getListOfBoxes().get(0).getSettings().getSound();
-            Log.d("S","sound in data holder is "+ in);
+            int in = DataHolder.getDataHolder().getSettingsList().get(0).getSound();
+            Log.d("S", "sound in data holder is " + in);
         }
 
         @Override
@@ -87,15 +92,16 @@ public class SettingsFragment extends AbstractFragment {
         }
     }
 
-    private class ColourSelectedListener implements CheckBox.OnCheckedChangeListener{
+    private class ColourSelectedListener implements CheckBox.OnCheckedChangeListener {
 
         @Override
         public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
-            if(b){
-                for(View checkBox:colourList ){
+            if (b) {
+                changeSettingsColour(compoundButton.getId());
+                for (View checkBox : colourButtonList) {
                     colour = (CheckBox) checkBox;
-                    if(colour.getId() != compoundButton.getId() && colour.isChecked()){
+                    if (colour.getId() != compoundButton.getId() && colour.isChecked()) {
                         colour.setChecked(false);
                     }
                 }
@@ -104,14 +110,14 @@ public class SettingsFragment extends AbstractFragment {
         }
     }
 
-    private void setAllOnCheckedChangedListeners(){
-        for(View checkBox: colourList){
+    private void setAllOnCheckedChangedListeners() {
+        for (View checkBox : colourButtonList) {
             colour = (CheckBox) checkBox;
             colour.setOnCheckedChangeListener(new ColourSelectedListener());
         }
     }
 
-    private ArrayList<View> getViewsByTag(ViewGroup root, String tag){
+    private ArrayList<View> getViewsByTag(ViewGroup root, String tag) {
         ArrayList<View> views = new ArrayList<View>();
         final int childCount = root.getChildCount();
         for (int i = 0; i < childCount; i++) {
@@ -129,8 +135,27 @@ public class SettingsFragment extends AbstractFragment {
         return views;
     }
 
-    private void setCurrentSettings(){
+    private void setCurrentSettings() {
         spinner.setSelection(settings.getSound());
-
+        colour = (CheckBox) colourButtonList.get(settings.getColour());
+        colour.setChecked(true);
+        updateDisplay();
     }
+
+    private void updateDisplay() {
+        background.setBackgroundColor(getResources().getColor(colourList.get(settings.getColour())));
+    }
+
+    private void changeSettingsColour(int id) {
+        for (int i = 0; i < colourButtonList.size(); i++) {
+            if (colourButtonList.get(i).getId() == id) {
+                settings.setColour(i);
+                updateDisplay();
+                int in = DataHolder.getDataHolder().getSettingsList().get(0).getColour();
+                Log.d("S", "colour in data holder is " + in);
+                break;
+            }
+        }
+    }
+
 }

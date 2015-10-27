@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import holder.BuzzHolder;
 import holder.DataHolder;
+import settings.Settings;
 import singleton.Buzz;
 import singleton.User;
 
@@ -44,12 +45,7 @@ public class Sorter extends AsyncTask<Void,Void,List<BuzzHolder>> {
     protected void onPostExecute(List<BuzzHolder> buzzHolders) {
         super.onPostExecute(buzzHolders);
         for(BuzzHolder bb: buzzHolders){
-//            Log.d("LOG","containers made "+buzzHolders.size());
             bb.countTimeStamps();
-
-//            String str = String.format("type %s today=%d yesterday=%d week=%d month=%d total=%d last Buzz = ",
-//                    bb.getType(),bb.getToday() ,bb.getYesterday(),bb.getWeek(),bb.getMonth(),bb.getTotal());
-//            Log.d("LOG", str);
         }
         DataHolder.getDataHolder().setListOfBoxes(buzzHolders);
     }
@@ -68,5 +64,6 @@ public class Sorter extends AsyncTask<Void,Void,List<BuzzHolder>> {
 
     private void makeBox(Buzz buzz){
         buzzHolders.add(new BuzzHolder(buzz.getName()));
+       DataHolder.getDataHolder().getSettingsList().add(new Settings(buzz.getName()));
     }
 }

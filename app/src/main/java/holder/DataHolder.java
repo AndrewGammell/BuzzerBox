@@ -57,4 +57,13 @@ public class DataHolder implements Serializable{
         return buzzList;
     }
 
+    public Settings getSettings(String type){
+        for(Settings s: settingsList){
+            if(s.getType().equals(type)){
+                return s;
+            }
+        }
+        return null;
+    }
+
 }

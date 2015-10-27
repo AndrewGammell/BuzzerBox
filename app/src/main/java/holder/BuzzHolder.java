@@ -33,7 +33,7 @@ public class BuzzHolder implements Serializable {
 
     public BuzzHolder(String type) {
         this.type = type;
-        this.settings = new Settings(type);
+//        this.settings = new Settings(type);
     }
 
     public List<Buzz> getList() {

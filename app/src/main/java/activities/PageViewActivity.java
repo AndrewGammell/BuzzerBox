@@ -30,6 +30,10 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
     private ActionBar.Tab overviewTab;
     private ActionBar.Tab logTab;
 
+    @Override
+    public void onBackPressed() {
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,7 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
 
     private void createTabs() {
         mActionBar.setNavigationMode(mActionBar.NAVIGATION_MODE_TABS);
+
 
         overviewTab = mActionBar.newTab();
         overviewTab.setText("Overview");
@@ -94,10 +99,12 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
 
 
     //     uses the DataPerisiter class to save the User when this Activity is stopped.
+//    DataHolder needs to be saved;
     @Override
     protected void onStop() {
         super.onStop();
         DataPersister.saveUser(this);
+//        DataPersister.saveDataHolder(this);
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -170,10 +177,12 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
 
         @Override
         public void onPageSelected(int position) {
-            switch(position){
-                case 0: mActionBar.selectTab(overviewTab);
+            switch (position) {
+                case 0:
+                    mActionBar.selectTab(overviewTab);
                     break;
-                case 1: mActionBar.selectTab(logTab);
+                case 1:
+                    mActionBar.selectTab(logTab);
                     break;
             }
         }

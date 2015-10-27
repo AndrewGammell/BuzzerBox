@@ -95,4 +95,29 @@ public class Utility {
         return null;
     }
 
+    public static List<Integer> getColours(){
+        List<Integer> colours = new ArrayList<Integer>();
+
+        colours.add(R.color.colour_option_1);
+        colours.add(R.color.colour_option_2);
+        colours.add(R.color.colour_option_3);
+        colours.add(R.color.colour_option_4);
+        colours.add(R.color.colour_option_5);
+        colours.add(R.color.colour_option_6);
+        colours.add(R.color.colour_option_7);
+        colours.add(R.color.colour_option_8);
+        colours.add(R.color.colour_option_9);
+        colours.add(R.color.colour_option_10);
+        colours.add(R.color.colour_option_11);
+        colours.add(R.color.colour_option_12);
+        colours.add(R.color.colour_option_13);
+        colours.add(R.color.colour_option_14);
+        colours.add(R.color.colour_option_15);
+        colours.add(R.color.colour_option_16);
+        colours.add(R.color.colour_option_17);
+        colours.add(R.color.colour_option_18);
+
+        return colours;
+    }
+
 }

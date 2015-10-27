@@ -4,7 +4,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@color/buzzerbox_white"
-              android:id="@+id/layout_settings">
+        >
 
 
     <LinearLayout android:layout_width="match_parent"
@@ -13,7 +13,7 @@
                   android:orientation="vertical"
                   android:background="@color/buzzerbox_blue"
                   android:padding="5dp"
-            >
+                  android:id="@+id/layout_settings">
         <GridLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -314,7 +314,7 @@
                         android:backgroundTint="@color/colour_option_18"
                         android:id="@+id/colour_18"
                         android:tag="colour"
-                       />
+                        />
 
 
             </GridLayout>

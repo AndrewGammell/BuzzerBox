@@ -13,9 +13,11 @@ import android.widget.TextView;
 import holder.BuzzHolder;
 import holder.DataHolder;
 import io.buzzerbox.app.R;
+import settings.Settings;
 import singleton.Buzz;
 import singleton.User;
 import tester.DummyAlerts;
+import util.Utility;
 
 import java.util.List;
 
@@ -47,9 +49,9 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
 
     @Override
     public void onBindViewHolder(ItemHolder itemHolder, int i) {
-
         BuzzHolder dummy = (BuzzHolder) list.get(i);
-//        itemHolder.alarmColour.setBackgroundColor(context.getResources().getColor(R.color.colour_option_12));
+
+       itemHolder.alarmColour.setBackgroundColor(context.getResources().getColor(getSettingsColour(dummy.getType())));
         itemHolder.alarmName.setText(dummy.getType());
         itemHolder.alarmToday.setText(String.valueOf(dummy.getToday()));
         itemHolder.alarmYesterday.setText(String.valueOf(dummy.getYesterday()));
@@ -74,6 +76,7 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
         TextView alarmTotal;
         TextView alarmTimeSinceLast;
 
+
         ItemHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
@@ -97,5 +100,13 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
             intent.putExtra(CALL_POSITION,index);
             context.startActivity(intent);
         }
+    }
+
+    private Integer getSettingsColour(String type){
+        return  Utility.getColours().get(DataHolder
+                .getDataHolder()
+                .getSettings(type)
+                .getColour());
+
     }
 }

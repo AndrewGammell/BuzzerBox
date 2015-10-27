@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import fragments.SettingsFragment;
 import holder.DataHolder;
 import io.buzzerbox.app.R;
@@ -48,11 +49,13 @@ public class SettingsPageActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int i) {
-        return SettingsFragment.newInstance(DataHolder.getDataHolder()
-                .getListOfBoxes()
-                .get(i)
-                .getSettings());
-//            return new Fragment();
+//        return SettingsFragment.newInstance(DataHolder.getDataHolder()
+//                .getListOfBoxes()
+//                .get(i)
+//                .getSettings());
+            Log.d("S","DataHolder Settings List "+ DataHolder.getDataHolder().getSettingsList().size());
+
+            return SettingsFragment.newInstance(DataHolder.getDataHolder().getSettingsList().get(i));
 
         }
 
