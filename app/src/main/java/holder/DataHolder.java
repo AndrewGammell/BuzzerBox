@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class DataHolder implements Serializable {
     private static DataHolder dataHolder;
-    private List<BuzzHolder> boxes;
+    private List<BuzzHolder> boxes  = new ArrayList<BuzzHolder>();
     private List<Settings> settingsList = new ArrayList<Settings>();
     private List<Buzz> buzzList = new ArrayList<Buzz>();
 
@@ -29,27 +29,12 @@ public class DataHolder implements Serializable {
         return dataHolder;
     }
 
-//    will load a DataHolder if null at runtime, if no DataHolder was saved it will create a new DataHolder
-//    public static DataHolder getDataHolder(Context context) {
-//        if (dataHolder == null) {
-//           if(DataPersister.loadDataHolder(context) != null){
-//               dataHolder = DataPersister.loadDataHolder(context);
-//           }else{
-//               dataHolder = new DataHolder();
-//           }
-//        }
-//        return dataHolder;
-//    }
-
     public List<BuzzHolder> getListOfBoxes() {
         return boxes;
     }
 
-    public void setListOfBoxes(List<BuzzHolder> boxes) {
-        this.boxes = boxes;
-    }
-
     public List<Settings> getSettingsList() {
+
         return settingsList;
     }
 

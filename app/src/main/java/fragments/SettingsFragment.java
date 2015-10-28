@@ -22,8 +22,9 @@ public class SettingsFragment extends AbstractFragment {
     private TextView alarmType;
     private Spinner spinner;
     private Settings settings;
-    private CheckBox colour;
-    private List<View> colourButtonList;
+//    private CheckBox colour;
+//    private List<View> colourButtonList;
+    private RadioGroup mRadioGroup;
     private ViewGroup background;
     private List<Integer> colourList = Utility.getColours();
 
@@ -43,9 +44,15 @@ public class SettingsFragment extends AbstractFragment {
 
     public void instantiateWidgets(View view) {
         background = (ViewGroup) view.findViewById(R.id.layout_settings);
-        colourButtonList = getViewsByTag((ViewGroup) view.findViewById(R.id.colour_picker_grid), "colour");
-        setAllOnCheckedChangedListeners();
+        mRadioGroup = (RadioGroup) view.findViewById(R.id.colour_picker_grid);
+        mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
 
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                buttonSwitch(radioGroup.getCheckedRadioButtonId());
+                updateDisplay();
+            }
+        });
 
         alarmType = (TextView) view.findViewById(R.id.text_alarm_type);
         alarmType.setText(settings.getType());
@@ -83,7 +90,7 @@ public class SettingsFragment extends AbstractFragment {
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
             settings.setSound(i);
             int in = DataHolder.getDataHolder().getSettingsList().get(0).getSound();
-            Log.d("S", "sound in data holder is " + in);
+            Log.d("TAG", "sound in data holder is " + in);
         }
 
         @Override
@@ -92,53 +99,50 @@ public class SettingsFragment extends AbstractFragment {
         }
     }
 
-    private class ColourSelectedListener implements CheckBox.OnCheckedChangeListener {
-
-        @Override
-        public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-
-            if (b) {
-                changeSettingsColour(compoundButton.getId());
-                for (View checkBox : colourButtonList) {
-                    colour = (CheckBox) checkBox;
-                    if (colour.getId() != compoundButton.getId() && colour.isChecked()) {
-                        colour.setChecked(false);
-                    }
-                }
-            }
-
+    private void buttonSwitch(int id){
+        switch(id){
+            case R.id.colour_1: settings.setColour(0);
+                break;
+            case R.id.colour_2: settings.setColour(1);
+                break;
+            case R.id.colour_3: settings.setColour(2);
+                break;
+            case R.id.colour_4: settings.setColour(3);
+                break;
+            case R.id.colour_5: settings.setColour(4);
+                break;
+            case R.id.colour_6: settings.setColour(5);
+                break;
+            case R.id.colour_7: settings.setColour(6);
+                break;
+            case R.id.colour_8: settings.setColour(7);
+                break;
+            case R.id.colour_9: settings.setColour(8);
+                break;
+            case R.id.colour_10: settings.setColour(9);
+                break;
+            case R.id.colour_11: settings.setColour(10);
+                break;
+            case R.id.colour_12: settings.setColour(11);
+                break;
+            case R.id.colour_13: settings.setColour(12);
+                break;
+            case R.id.colour_14: settings.setColour(13);
+                break;
+            case R.id.colour_15: settings.setColour(14);
+                break;
+            case R.id.colour_16: settings.setColour(15);
+                break;
+            case R.id.colour_17: settings.setColour(16);
+                break;
+            case R.id.colour_18: settings.setColour(17);
+                break;
         }
-    }
-
-    private void setAllOnCheckedChangedListeners() {
-        for (View checkBox : colourButtonList) {
-            colour = (CheckBox) checkBox;
-            colour.setOnCheckedChangeListener(new ColourSelectedListener());
-        }
-    }
-
-    private ArrayList<View> getViewsByTag(ViewGroup root, String tag) {
-        ArrayList<View> views = new ArrayList<View>();
-        final int childCount = root.getChildCount();
-        for (int i = 0; i < childCount; i++) {
-            final View child = root.getChildAt(i);
-            if (child instanceof ViewGroup) {
-                views.addAll(getViewsByTag((ViewGroup) child, tag));
-            }
-
-            final Object tagObj = child.getTag();
-            if (tagObj != null && tagObj.equals(tag)) {
-                views.add(child);
-            }
-
-        }
-        return views;
+        updateDisplay();
     }
 
     private void setCurrentSettings() {
         spinner.setSelection(settings.getSound());
-        colour = (CheckBox) colourButtonList.get(settings.getColour());
-        colour.setChecked(true);
         updateDisplay();
     }
 
@@ -146,16 +150,5 @@ public class SettingsFragment extends AbstractFragment {
         background.setBackgroundColor(getResources().getColor(colourList.get(settings.getColour())));
     }
 
-    private void changeSettingsColour(int id) {
-        for (int i = 0; i < colourButtonList.size(); i++) {
-            if (colourButtonList.get(i).getId() == id) {
-                settings.setColour(i);
-                updateDisplay();
-                int in = DataHolder.getDataHolder().getSettingsList().get(0).getColour();
-                Log.d("S", "colour in data holder is " + in);
-                break;
-            }
-        }
-    }
 
 }

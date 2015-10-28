@@ -1,5 +1,7 @@
 package settings;
 
+import android.os.Parcelable;
+
 import java.io.Serializable;
 
 /**
