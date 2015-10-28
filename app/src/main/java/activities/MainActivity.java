@@ -15,6 +15,7 @@ import authentication.LoginAsyncTask;
 import fragments.SplashFragment;
 import io.buzzerbox.app.R;
 import util.MessageTools;
+import util.Sorter;
 import util.Utility;
 
 
@@ -31,7 +32,7 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
         login = new LoginAsyncTask("dummy@bundly.io", "dummy1234");
         login.execute("");
         displaySplash();
-
+        new Sorter(this).execute();
     }
 
     /**
