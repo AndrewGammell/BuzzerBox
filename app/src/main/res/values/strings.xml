@@ -148,6 +148,11 @@
     <string name="text_notifications">Alerts</string>
     <string name="text_frequency">Frequency</string>
     <string name="text_spinner_default">buzz</string>
+    <string name="notify_by_email">Email</string>
+    <string name="notify_by_phone">Phone</string>
+    <string name="notify_by_text_sms">Text</string>
+    <string name="notify_frequency_text_string_end">time(s)</string>
+    <string name="notify_frequency_text_string_start">every</string>
 
     <!-- -->
 
@@ -161,11 +166,6 @@
         <item>BuzzerBox Buzz Sound 5</item>
         <item>BuzzerBox Buzz Sound 6</item>
     </string-array>
-
-
-
-
-
 
 
     <!-- TEST Elements-->

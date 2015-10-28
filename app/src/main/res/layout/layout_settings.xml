@@ -140,21 +140,21 @@
 
             <!-- -->
 
-
-            <GridLayout
+            <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="15dp">
-                <RadioGroup
+                    android:id="@+id/colour_picker_grid"
+                    android:orientation="horizontal"
+                    >
+                <GridLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/colour_picker_grid"
-                        android:orientation="horizontal"
-                        >
-
+                        android:padding="15dp">
 
                     <!-- FIRST ROW OF SIX -->
                     <RadioButton
+                            android:layout_column="0"
+                            android:layout_row="0"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/unique_alarm_color_picker_shape"
@@ -164,6 +164,8 @@
                             android:checked="false"
                             />
                     <RadioButton
+                            android:layout_column="1"
+                            android:layout_row="0"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/unique_alarm_color_picker_shape"
@@ -173,6 +175,8 @@
                             android:checked="false"
                             />
                     <RadioButton
+                            android:layout_column="2"
+                            android:layout_row="0"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/unique_alarm_color_picker_shape"
@@ -182,6 +186,8 @@
                             android:checked="false"
                             />
                     <RadioButton
+                            android:layout_column="3"
+                            android:layout_row="0"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/unique_alarm_color_picker_shape"
@@ -191,6 +197,8 @@
                             android:checked="false"
                             />
                     <RadioButton
+                            android:layout_column="4"
+                            android:layout_row="0"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/unique_alarm_color_picker_shape"
@@ -200,6 +208,8 @@
                             android:checked="false"
                             />
                     <RadioButton
+                            android:layout_column="5"
+                            android:layout_row="0"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/unique_alarm_color_picker_shape"
@@ -208,18 +218,13 @@
                             android:tag="colour"
                             android:checked="false"
                             />
-                </RadioGroup>
 
-                <!-- SECOND ROW OF SIX -->
-                <RadioGroup
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_column="0"
-                        android:layout_row="1"
-                        android:id="@id/colour_picker_grid"
-                        >
+
+                    <!-- SECOND ROW OF SIX -->
+
                     <RadioButton
+                            android:layout_column="0"
+                            android:layout_row="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/unique_alarm_color_picker_shape"
@@ -229,6 +234,8 @@
                             android:checked="false"
                             />
                     <RadioButton
+                            android:layout_column="1"
+                            android:layout_row="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/unique_alarm_color_picker_shape"
@@ -238,6 +245,8 @@
                             android:checked="false"
                             />
                     <RadioButton
+                            android:layout_column="2"
+                            android:layout_row="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/unique_alarm_color_picker_shape"
@@ -247,6 +256,8 @@
                             android:checked="false"
                             />
                     <RadioButton
+                            android:layout_column="3"
+                            android:layout_row="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/unique_alarm_color_picker_shape"
@@ -256,6 +267,8 @@
                             android:checked="false"
                             />
                     <RadioButton
+                            android:layout_column="4"
+                            android:layout_row="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/unique_alarm_color_picker_shape"
@@ -265,6 +278,8 @@
                             android:checked="false"
                             />
                     <RadioButton
+                            android:layout_column="5"
+                            android:layout_row="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/unique_alarm_color_picker_shape"
@@ -273,17 +288,13 @@
                             android:tag="colour"
                             android:checked="false"
                             />
-                </RadioGroup>
 
-                <!-- THIRD ROW OF SIX -->
-                <RadioGroup
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_column="0"
-                        android:layout_row="2"
-                        android:id="@id/colour_picker_grid">
+
+                    <!-- THIRD ROW OF SIX -->
+
                     <RadioButton
+                            android:layout_column="0"
+                            android:layout_row="2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/unique_alarm_color_picker_shape"
@@ -293,6 +304,8 @@
                             android:checked="false"
                             />
                     <RadioButton
+                            android:layout_column="1"
+                            android:layout_row="2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/unique_alarm_color_picker_shape"
@@ -302,6 +315,8 @@
                             android:checked="false"
                             />
                     <RadioButton
+                            android:layout_column="2"
+                            android:layout_row="2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/unique_alarm_color_picker_shape"
@@ -311,6 +326,8 @@
                             android:checked="false"
                             />
                     <RadioButton
+                            android:layout_column="3"
+                            android:layout_row="2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/unique_alarm_color_picker_shape"
@@ -320,6 +337,8 @@
                             android:checked="false"
                             />
                     <RadioButton
+                            android:layout_column="4"
+                            android:layout_row="2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/unique_alarm_color_picker_shape"
@@ -329,6 +348,8 @@
                             android:checked="false"
                             />
                     <RadioButton
+                            android:layout_column="5"
+                            android:layout_row="2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/unique_alarm_color_picker_shape"
@@ -337,9 +358,9 @@
                             android:tag="colour"
                             android:checked="false"
                             />
+                </GridLayout>
+            </RadioGroup>
 
-                </RadioGroup>
-            </GridLayout>
 
 
             <!-- -->
@@ -379,6 +400,48 @@
                 android:fontFamily="@string/buzzerbox_font_app_default_bold"
                 android:textColor="@color/buzzerbox_black"
                 android:gravity="left"/>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="15dp">
+            <CheckBox
+                    android:layout_column="3"
+                    android:layout_row="5"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:padding="5dp"
+                    android:text="@string/notify_by_email"
+                    android:id="@+id/notify_by_email"
+                    android:textSize="@dimen/buzzerbox_font_size_default"
+                    android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                    android:textColor="@color/buzzerbox_black"
+                    android:gravity="left"/>
+            <CheckBox
+                    android:layout_column="3"
+                    android:layout_row="5"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:padding="5dp"
+                    android:text="@string/notify_by_phone"
+                    android:id="@+id/notify_by_phone"
+                    android:textSize="@dimen/buzzerbox_font_size_default"
+                    android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                    android:textColor="@color/buzzerbox_black"
+                    android:gravity="left"/>
+            <CheckBox
+                    android:layout_column="3"
+                    android:layout_row="5"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:padding="5dp"
+                    android:text="@string/notify_by_text_sms"
+                    android:id="@+id/notify_by_text_sms"
+                    android:textSize="@dimen/buzzerbox_font_size_default"
+                    android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                    android:textColor="@color/buzzerbox_black"
+                    android:gravity="left"/>
+        </LinearLayout>
 
         <TextView
                 android:layout_columnSpan="3"
@@ -411,6 +474,42 @@
                 android:fontFamily="@string/buzzerbox_font_app_default_bold"
                 android:textColor="@color/buzzerbox_black"
                 android:gravity="left"/>
+
+        <LinearLayout android:layout_column="3"
+                      android:layout_row="7"
+                      android:layout_height="wrap_content"
+                      android:layout_width="wrap_content"
+                      android:layout_marginLeft="20dp">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/buzzerbox_font_size_default"
+                    android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                    android:textColor="@color/buzzerbox_black"
+                    android:text="@string/notify_frequency_text_string_start"
+                    android:padding="5dp"
+                    />
+            <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/buzzerbox_font_size_default"
+                    android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                    android:textColor="@color/buzzerbox_grey"
+                    android:text="0"
+                    android:padding="5dp"
+                    android:id="@+id/notify_by_total_buzz_count_number"/>                    />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/buzzerbox_font_size_default"
+                    android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                    android:textColor="@color/buzzerbox_black"
+                    android:text="@string/notify_frequency_text_string_end"
+                    android:padding="5dp"
+                    />
+
+        </LinearLayout>
 
 
     </GridLayout>
