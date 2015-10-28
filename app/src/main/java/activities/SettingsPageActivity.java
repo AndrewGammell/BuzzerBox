@@ -1,5 +1,6 @@
 package activities;
 
+import SQLLite.SettingsDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +12,7 @@ import android.util.Log;
 import fragments.SettingsFragment;
 import holder.DataHolder;
 import io.buzzerbox.app.R;
+import persistence.DataPersister;
 
 /**
  * Created by Devstream on 22/10/2015.
@@ -36,9 +38,6 @@ public class SettingsPageActivity extends AppCompatActivity {
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.addOnPageChangeListener(new PageChangeListener());
         mViewPager.setCurrentItem(position);
-
-
-
     }
 
     private class PagerAdapter extends FragmentStatePagerAdapter{
@@ -81,5 +80,20 @@ public class SettingsPageActivity extends AppCompatActivity {
         public void onPageScrollStateChanged(int i) {
 
         }
+    }
+
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        new SettingsDatabase(getBaseContext()).runBackGroundSaver();
+//    }
+
+    //     uses the DataPerisiter class to save the User when this Activity is Destroyed.
+//    DataHolder needs to be saved;
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        DataPersister.saveUser(this);
+        new SettingsDatabase(this).runBackGroundSaver();
     }
 }

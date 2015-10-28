@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class Sorter extends AsyncTask<Void, Void, List<BuzzHolder>> {
     List<BuzzHolder> buzzHolders = new ArrayList<BuzzHolder>();
-    //    List<BuzzHolder> buzzHolders = DataHolder.getDataHolder().getListOfBoxes();
+    //    List<DB> buzzHolders = DataHolder.getDataHolder().getListOfBoxes();
     private Context context;
 
     public Sorter(Context context) {

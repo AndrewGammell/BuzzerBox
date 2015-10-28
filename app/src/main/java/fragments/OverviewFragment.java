@@ -12,8 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import holder.DataHolder;
 import io.buzzerbox.app.R;
-import singleton.User;
-import tester.DummyAlerts;
+import tester.DB;
 
 
 import java.util.List;
@@ -67,7 +66,7 @@ public class OverviewFragment extends AbstractListFragment {
      * this list is for test purposes only
      */
     private List getList(){
-        return DummyAlerts.initialiseDummies();
+        return DB.initialiseDummies();
     }
 
 
@@ -86,5 +85,6 @@ public class OverviewFragment extends AbstractListFragment {
     public interface Callback{
         boolean onOptionsItemSelected(MenuItem item);
     }
+
 
 }

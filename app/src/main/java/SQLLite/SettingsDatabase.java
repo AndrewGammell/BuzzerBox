@@ -148,23 +148,23 @@ public class SettingsDatabase extends SQLiteOpenHelper {
         }
     }
 
-//    private class BackGroundLoader extends AsyncTask<Void,Void,Void> {
-//        @Override
-//        protected void onPreExecute() {
-//            super.onPreExecute();
-//
-//        }
-//
-//        @Override
-//        protected Void doInBackground(Void... voids) {
-//            Log.d("TAG", "doInBackground");
-//          loadSettings();
-//            return null;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(Void aVoid) {
-//            super.onPostExecute(aVoid);
-//        }
-//    }
+    private class BackGroundLoader extends AsyncTask<Void,Void,Void> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            Log.d("TAG", "doInBackground");
+          loadSettings();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+        }
+    }
 }

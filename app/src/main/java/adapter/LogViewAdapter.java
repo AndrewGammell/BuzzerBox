@@ -8,9 +8,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import holder.DataHolder;
 import io.buzzerbox.app.R;
-import tester.DummyAlerts;
+import singleton.Buzz;
+import util.Utility;
 
 import java.io.Serializable;
 import java.util.List;
@@ -25,6 +28,7 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
     private List list;
     //    private ViewController control;
     private Context context;
+    private List<Integer> colours = Utility.getColours();
 
 
     public LogViewAdapter(List list, Context context) {
@@ -59,9 +63,11 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
         // DummyUsers dummy = (DummyUsers)list.get(i);
         // itemHolder.name.setText(dummy.getUsername());
 
-        DummyAlerts dummy = (DummyAlerts) list.get(i);
-        itemHolder.alarmName.setText(dummy.getAlarmName());
-        itemHolder.alarmTimeSinceLast.setText(String.valueOf(dummy.getAlarmTimeSinceLast()));
+        Buzz buzz = (Buzz) list.get(i);
+        itemHolder.alarmColour.setBackgroundColor(context.getResources()
+                .getColor(colours.get(DataHolder.getDataHolder().getSettings(buzz.getName()).getColour())));
+        itemHolder.alarmName.setText(buzz.getName());
+        itemHolder.alarmTimeSinceLast.setText(String.valueOf(buzz.getTimeSinceBuzz()));
 
     }
 
@@ -73,10 +79,12 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
     public class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView alarmName;
         TextView alarmTimeSinceLast;
+        ImageView alarmColour;
 
         ItemHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
+            alarmColour = (ImageView) itemView.findViewById(R.id.image_alarm_colour);
             alarmName = (TextView) itemView.findViewById(R.id.text_alarm_type);
             alarmTimeSinceLast = (TextView) itemView.findViewById(R.id.text_last_buzz_int_value);
         }
@@ -84,15 +92,15 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
         @Override
         public void onClick(View view) {
             int index = getAdapterPosition();
-
             startNewActivity(index);
         }
     }
 
     private void startNewActivity(int position) {
+        Buzz buzz = (Buzz)list.get(position);
         Intent intent = new Intent(context, DisplayActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable(OBJECT_KEY, (Serializable) list.get(position));
+        bundle.putSerializable(OBJECT_KEY, (Serializable) DataHolder.getDataHolder().getBuzzHolder(buzz.getName()));
         intent.putExtra(BUNDLE_KEY, bundle);
 
         context.startActivity(intent);

@@ -3,7 +3,6 @@ package adapter;
 import activities.SettingsPageActivity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +12,6 @@ import android.widget.TextView;
 import holder.BuzzHolder;
 import holder.DataHolder;
 import io.buzzerbox.app.R;
-import settings.Settings;
-import singleton.Buzz;
-import singleton.User;
-import tester.DummyAlerts;
 import util.Utility;
 
 import java.util.List;
@@ -49,16 +44,17 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
 
     @Override
     public void onBindViewHolder(ItemHolder itemHolder, int i) {
-        BuzzHolder dummy = (BuzzHolder) list.get(i);
+        BuzzHolder buzzHolder = (BuzzHolder) list.get(i);
 
-       itemHolder.alarmColour.setBackgroundColor(context.getResources().getColor(getSettingsColour(dummy.getType())));
-        itemHolder.alarmName.setText(dummy.getType());
-        itemHolder.alarmToday.setText(String.valueOf(dummy.getToday()));
-        itemHolder.alarmYesterday.setText(String.valueOf(dummy.getYesterday()));
-        itemHolder.alarmTotalWeek.setText(String.valueOf(dummy.getWeek()));
-        itemHolder.alarmTotalMonth.setText(String.valueOf(dummy.getMonth()));
-        itemHolder.alarmTotal.setText(String.valueOf(dummy.getTotal()));
-        itemHolder.alarmTimeSinceLast.setText(String.valueOf(dummy.getTimeSinceLastbuzz()));
+       itemHolder.alarmColour.setBackgroundColor(context.getResources().getColor(getSettingsColour(buzzHolder.getType())));
+        itemHolder.alarmName.setText(buzzHolder.getType());
+        itemHolder.alarmToday.setText(String.valueOf(buzzHolder.getToday()));
+        itemHolder.alarmYesterday.setText(String.valueOf(buzzHolder.getYesterday()));
+        itemHolder.alarmTotalWeek.setText(String.valueOf(buzzHolder.getWeek()));
+        itemHolder.alarmTotalMonth.setText(String.valueOf(buzzHolder.getMonth()));
+
+        itemHolder.alarmTotal.setText(String.valueOf(buzzHolder.getTotal()));
+        itemHolder.alarmTimeSinceLast.setText(String.valueOf(buzzHolder.getTimeSinceLastbuzz()));
     }
 
     @Override

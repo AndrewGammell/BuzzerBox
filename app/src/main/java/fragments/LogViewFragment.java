@@ -9,10 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TextView;
 import io.buzzerbox.app.R;
-import tester.DummyAlerts;
-import tester.DummyUsers;
+import singleton.User;
 
 import java.util.List;
 
@@ -64,7 +62,7 @@ public class LogViewFragment extends AbstractListFragment {
      * this list is for test purposes only
      */
     private List getList(){
-        return DummyAlerts.initialiseDummies();
+        return User.getInstance(getContext()).getBuzzList();
     }
 
 

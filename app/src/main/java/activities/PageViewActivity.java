@@ -3,6 +3,7 @@ package activities;
 import SQLLite.SettingsDatabase;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -12,6 +13,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import fragments.LogViewFragment;
 import fragments.OverviewFragment;
 import io.buzzerbox.app.R;
@@ -30,34 +32,36 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
     private ActionBar mActionBar;
     private ActionBar.Tab overviewTab;
     private ActionBar.Tab logTab;
+    private ViewGroup viewGroup;
 
     @Override
     public void onBackPressed() {
-
+    finish();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        updateView();
+
         Log.d("S", "onResume in PageActivity");
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pager_layout);
-
+        mActionBar = getSupportActionBar();
         updateView();
         createTabs();
     }
 
     void updateView() {
-        mActionBar = getSupportActionBar();
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.addOnPageChangeListener(mPageChangeListener);
+
     }
 
     private void createTabs() {
@@ -111,12 +115,12 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
 
     //     uses the DataPerisiter class to save the User when this Activity is stopped.
 //    DataHolder needs to be saved;
-    @Override
-    protected void onStop() {
-        super.onStop();
-        DataPersister.saveUser(this);
-       new SettingsDatabase(this).runBackGroundSaver();
-    }
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        DataPersister.saveUser(this);
+//        new SettingsDatabase(this).runBackGroundSaver();
+//    }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -203,4 +207,12 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
         }
     }
 
+    //     uses the DataPerisiter class to save the User when this Activity is Destroyed.
+//    DataHolder needs to be saved;
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        DataPersister.saveUser(this);
+        new SettingsDatabase(this).runBackGroundSaver();
+    }
 }

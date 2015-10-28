@@ -49,5 +49,9 @@ public abstract class AbstractListFragment extends ListFragment {
         recyclerView.setAdapter(getAdapter());
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        recyclerView.swapAdapter(getAdapter(),true);
+    }
 }

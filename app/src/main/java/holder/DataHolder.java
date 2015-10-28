@@ -51,4 +51,13 @@ public class DataHolder implements Serializable {
         return null;
     }
 
+    public BuzzHolder getBuzzHolder(String type){
+        for(BuzzHolder holder: boxes){
+            if(holder.getType().equals(type)){
+                return holder;
+            }
+        }
+        return null;
+    }
+
 }
