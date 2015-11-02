@@ -50,9 +50,6 @@ public class WebViewFragment extends AbstractFragment {
             case 1:
                 url = "http://guyforceshiswifetodressinagarbagebagforthenextthreeyears.com/";
                 break;
-            case 2:
-                url = "https://www.youtube.com/watch?v=-PlzYOZWKxY";
-                break;
             default:
                 url = "http://www.donothingfor2minutes.com/";
                 break;
