@@ -20,7 +20,6 @@ public class LoginFragment extends AbstractFragment {
     private EditText username;
     private EditText password;
     private Button btn_login;
-    private Button btn_forgot_password;
     private Button btn_create_account;
     private View.OnClickListener activityOnClickListener;
     private Bundle mSavedInstanceState;
@@ -57,8 +56,7 @@ public class LoginFragment extends AbstractFragment {
         btn_login.setOnClickListener(new ClickListener());
         btn_create_account = (Button) view.findViewById(R.id.btn_create_account);
         btn_create_account.setOnClickListener(activityOnClickListener);
-        btn_forgot_password = (Button) view.findViewById(R.id.btn_forgot_password);
-        btn_forgot_password.setOnClickListener(activityOnClickListener);
+
     }
 
 //    used to get a new instance of LoginFragment.

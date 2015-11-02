@@ -72,9 +72,6 @@ public class DisplayActivity extends AbstractActivity {
             case 1:
                 fragment = WebViewFragment.newInstance(call);
                 break;
-            case 2:
-                fragment = WebViewFragment.newInstance(call);
-                break;
             default:
                 MessageTools.showShortToast(this, "nothing to show");
         }

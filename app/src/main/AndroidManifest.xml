@@ -11,6 +11,7 @@
         >
     <activity
         android:name="activities.MainActivity"
+        android:windowSoftInputMode="adjustResize"
         android:label="@string/app_name"
         android:theme="@style/MyCustomThemeNoBar">
         <intent-filter>
