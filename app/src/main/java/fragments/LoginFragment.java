@@ -23,9 +23,9 @@ public class LoginFragment extends AbstractFragment {
     private Button btn_forgot_password;
     private Button btn_create_account;
     private View.OnClickListener activityOnClickListener;
-    private Bundle savedInstanceState;
+    private Bundle mSavedInstanceState;
 
-
+//  assigns the context to activityOnClickListener and sets mSavedInstanceState.
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,14 +33,14 @@ public class LoginFragment extends AbstractFragment {
         if (getContext() instanceof View.OnClickListener) {
             activityOnClickListener = (View.OnClickListener) getContext();
         }
-            this.savedInstanceState = savedInstanceState;
-
+        this.mSavedInstanceState = savedInstanceState;
     }
 
+//  call a method to populate the text fields.
     @Override
     public void onResume() {
         super.onResume();
-        fillTextFields(savedInstanceState);
+        fillTextFields();
     }
 
 
@@ -49,7 +49,7 @@ public class LoginFragment extends AbstractFragment {
         return R.layout.fragment_login;
     }
 
-
+//  creates the views and sets they're listeners.
     public void instantiateWidgets(View view) {
         username = (EditText) view.findViewById(R.id.txt_username);
         password = (EditText) view.findViewById(R.id.txt_password);
@@ -61,17 +61,17 @@ public class LoginFragment extends AbstractFragment {
         btn_forgot_password.setOnClickListener(activityOnClickListener);
     }
 
+//    used to get a new instance of LoginFragment.
     public static Fragment newInstance() {
         return new LoginFragment();
     }
 
-
-
     private class ClickListener implements View.OnClickListener {
-
+//        when the Button is clicked the users password and username are set,
+//        so that the instance of user can be call during the authentication process.
         @Override
         public void onClick(View view) {
-            Log.d("TAG","onClick in Login");
+            Log.d("TAG", "onClick in Login");
             if (username.getText().toString().length() > 0 &&
                     password.getText().toString().length() > 0) {
 
@@ -84,22 +84,24 @@ public class LoginFragment extends AbstractFragment {
         }
     }
 
+    //  saves the contents of the text fields.
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString(EDITTEXT1,username.getText().toString());
-        outState.putString(EDITTEXT2,password.getText().toString());
+        outState.putString(EDITTEXT1, username.getText().toString());
+        outState.putString(EDITTEXT2, password.getText().toString());
 
     }
 
-   private void fillTextFields(Bundle savedInstanceState){
-        if(savedInstanceState != null){
+    // uses mSavedInstanceState to repopulate the text fields.
+    private void fillTextFields() {
+        if (mSavedInstanceState != null) {
 
-           if(savedInstanceState.getString(EDITTEXT1,null) != null);
-               username.setText(savedInstanceState.getString(EDITTEXT1,null));
+            if (mSavedInstanceState.getString(EDITTEXT1, null) != null) ;
+            username.setText(mSavedInstanceState.getString(EDITTEXT1, null));
 
-            if(savedInstanceState.getString(EDITTEXT2,null) != null);
-                password.setText(savedInstanceState.getString(EDITTEXT2,null));
+            if (mSavedInstanceState.getString(EDITTEXT2, null) != null) ;
+            password.setText(mSavedInstanceState.getString(EDITTEXT2, null));
         }
     }
 

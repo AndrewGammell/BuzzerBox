@@ -35,7 +35,7 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
 
     @Override
     public void onBackPressed() {
-
+        finish();
     }
 
     @Override

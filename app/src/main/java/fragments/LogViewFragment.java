@@ -52,15 +52,12 @@ public class LogViewFragment extends AbstractListFragment {
         return new LogViewAdapter(getList(),getActivity());
     }
 
+//    returns an instance of LogView.
     public static Fragment newInstance(){
         return new LogViewFragment();
     }
 
-    /**
-     *
-     * @return
-     * this list is for test purposes only
-     */
+//    return the list of buzzes to be displayed in the LogView
     private List getList(){
         return User.getInstance(getContext()).getBuzzList();
     }
@@ -71,7 +68,6 @@ public class LogViewFragment extends AbstractListFragment {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_main, menu);
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -27,7 +27,6 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
     private String OBJECT_KEY = "OBJECT";
     private String CALL_KEY = "CALL";
     private List list;
-    //    private ViewController control;
     private Context context;
     private List<Integer> colours = Utility.getColours();
 
@@ -36,11 +35,6 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
         super();
         this.list = list;
         this.context = context;
-//        if(context instanceof ViewController){
-//            this.control = (ViewController) context;
-//        }
-
-
     }
 
     private int getLayout() {
@@ -61,9 +55,6 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
 
     @Override
     public void onBindViewHolder(ItemHolder itemHolder, int i) {
-        // DummyUsers dummy = (DummyUsers)list.get(i);
-        // itemHolder.name.setText(dummy.getUsername());
-
         Buzz buzz = (Buzz) list.get(i);
         itemHolder.alarmColour.setBackgroundColor(context.getResources()
                 .getColor(colours.get(DataHolder.getDataHolder().getSettings(buzz.getName()).getColour())));
@@ -97,6 +88,7 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
         }
     }
 
+//    starts a new activity with a CALL_KEY and  Object to bo displayed.
     private void startNewActivity(int position) {
         Buzz buzz = (Buzz)list.get(position);
         Intent intent = new Intent(context, DisplayActivity.class);

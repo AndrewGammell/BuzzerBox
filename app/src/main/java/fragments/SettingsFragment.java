@@ -22,8 +22,6 @@ public class SettingsFragment extends AbstractFragment {
     private TextView alarmType;
     private Spinner spinner;
     private Settings settings;
-//    private CheckBox colour;
-//    private List<View> colourButtonList;
     private RadioGroup mRadioGroup;
     private ViewGroup background;
     private List<Integer> colourList = Utility.getColours();
@@ -64,6 +62,7 @@ public class SettingsFragment extends AbstractFragment {
         setCurrentSettings();
     }
 
+//    puts a Settings Object into a bundle to be passed into the fragment.
     public static SettingsFragment newInstance(Settings settings) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(SETTINGS_KEY, settings);

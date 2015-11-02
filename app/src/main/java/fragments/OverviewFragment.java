@@ -34,6 +34,7 @@ public class OverviewFragment extends AbstractListFragment {
         return R.id.recycler_view;
     }
 
+//    assigns the context to mCallback.
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -51,22 +52,20 @@ public class OverviewFragment extends AbstractListFragment {
         setHasOptionsMenu(true);
     }
 
+//    returns the adapter set with the list and context.
     @Override
     protected RecyclerView.Adapter getAdapter() {
-        return new OverviewAdapter(DataHolder.getDataHolder().getListOfBoxes(),getActivity());
+        return new OverviewAdapter(getList(),getActivity());
     }
 
+//    return an instance of OverviewFragment.
     public static Fragment newInstance(){
         return new OverviewFragment();
     }
 
-    /**
-     *
-     * @return
-     * this list is for test purposes only
-     */
+//    return the list to be displayed.
     private List getList(){
-        return DB.initialiseDummies();
+        return DataHolder.getDataHolder().getListOfBoxes();
     }
 
 

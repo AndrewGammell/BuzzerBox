@@ -54,7 +54,7 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
         itemHolder.alarmTotalMonth.setText(String.valueOf(buzzHolder.getMonth()));
 
         itemHolder.alarmTotal.setText(String.valueOf(buzzHolder.getTotal()));
-        itemHolder.alarmTimeSinceLast.setText(String.valueOf(buzzHolder.getTimeSinceLastbuzz()));
+        itemHolder.alarmTimeSinceLast.setText(String.valueOf(buzzHolder.getTimeSinceLastBuzz()));
     }
 
     @Override
@@ -98,6 +98,7 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
         }
     }
 
+//    gets the list of colours and uses the colour index form the settings to find the colour to be displayed.
     private Integer getSettingsColour(String type){
         return  Utility.getColours().get(DataHolder
                 .getDataHolder()

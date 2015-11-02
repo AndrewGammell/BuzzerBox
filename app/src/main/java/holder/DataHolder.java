@@ -1,7 +1,6 @@
 package holder;
 
-import android.content.Context;
-import persistence.DataPersister;
+
 import singleton.Buzz;
 import settings.Settings;
 
@@ -42,6 +41,7 @@ public class DataHolder implements Serializable {
         return buzzList;
     }
 
+//    takes a string type and returns the settings of that type.
     public Settings getSettings(String type) {
         for (Settings s : settingsList) {
             if (s.getType().equals(type)) {

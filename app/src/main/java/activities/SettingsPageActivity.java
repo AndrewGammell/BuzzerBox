@@ -48,14 +48,7 @@ public class SettingsPageActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int i) {
-//        return SettingsFragment.newInstance(DataHolder.getDataHolder()
-//                .getListOfBoxes()
-//                .get(i)
-//                .getSettings());
-            Log.d("S","DataHolder Settings List "+ DataHolder.getDataHolder().getSettingsList().size());
-
             return SettingsFragment.newInstance(DataHolder.getDataHolder().getSettingsList().get(i));
-
         }
 
         @Override
@@ -81,12 +74,6 @@ public class SettingsPageActivity extends AppCompatActivity {
 
         }
     }
-
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//        new SettingsDatabase(getBaseContext()).runBackGroundSaver();
-//    }
 
     //     uses the DataPerisiter class to save the User when this Activity is Destroyed.
 //    DataHolder needs to be saved;
