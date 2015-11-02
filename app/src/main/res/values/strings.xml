@@ -18,15 +18,17 @@
 
     <!-- Login Splash Elements-->
 
-    <string name="email">Email*</string>
+    <string name="email">EMAIL*</string>
 
     <string name="password">PASSWORD*</string>
 
     <string name="forgot_password">Forgot password?</string>
 
-    <string name="no_account">No Account? Create an account\nget.buzzerbox.com</string>
+    <string name="no_account">No Account? Create an account\nget.buzzerbox.net</string>
 
     <string name="text_login_title">buzzerbox</string>
+
+    <string name="button_login_text">LOG IN</string>
 
     <string name="text_login_successful">Log In Successful</string>
 
@@ -126,12 +128,12 @@
     <string name="txt_total_month_int_value">12</string>
 
 
-    <string name="txt_last_buzz">20 m ago</string>
+    <string name="txt_last_buzz">Last buzz</string>
 
     <string name="txt_last_buzz_int_value">20 m ago</string>
 
 
-    <string name="txt_previous_buzz">2nd Last buzz</string>
+    <string name="txt_previous_buzz">2nd last buzz</string>
 
     <string name="txt_previous_buzz_int_value">20 m ago</string>
 
@@ -153,6 +155,7 @@
     <string name="notify_by_text_sms">Text</string>
     <string name="notify_frequency_text_string_end">time(s)</string>
     <string name="notify_frequency_text_string_start">every</string>
+
 
     <!-- -->
 
