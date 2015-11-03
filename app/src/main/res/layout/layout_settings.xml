@@ -99,9 +99,9 @@
                         android:id="@+id/spinner_audio_file_list"
                         android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
+                        android:width="35dp"
                         android:textSize="@dimen/buzzerbox_font_size_default"
                         android:fontFamily="@string/buzzerbox_font_app_default_bold"
-                        android:text="@string/text_spinner_default"
                         android:textColor="@color/buzzerbox_black"
                         android:gravity="right"/>
 
@@ -116,6 +116,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
                                 android:background="@color/buzzerbox_grey"
+                                android:layout_marginBottom="5dp"
                                 />
                 </LinearLayout>
                 <!-- -->
@@ -389,6 +390,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
                                 android:background="@color/buzzerbox_grey"
+                                android:layout_marginBottom="5dp"
                                 />
                 </LinearLayout>
                 <!-- -->
@@ -461,6 +463,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
                                 android:background="@color/buzzerbox_grey"
+                                android:layout_marginBottom="5dp"
                                 />
                 </LinearLayout>
                 <!-- -->
@@ -510,11 +513,13 @@
                         <Spinner
                                 android:layout_width="35dp"
                                 android:layout_height="35dp"
+                                android:width="35dp"
                                 android:textSize="@dimen/buzzerbox_font_size_default"
+
                                 android:fontFamily="@string/buzzerbox_font_app_default_bold"
                                 android:textColor="@color/buzzerbox_grey"
                                 android:padding="5dp"
-                                android:id="@+id/spinner_notification_frequency" />                    />
+                                android:id="@+id/spinner_frequency" />
                         <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -537,6 +542,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
                                 android:background="@color/buzzerbox_grey"
+                                android:layout_marginBottom="5dp"
                                 />
                 </LinearLayout>
                 <!-- -->
