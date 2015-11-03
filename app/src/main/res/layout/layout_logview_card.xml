@@ -38,6 +38,7 @@
                     android:padding="10dp"
                     android:text="@string/text_alarm_type"
                     android:textSize="@dimen/buzzerbox_font_size_small"
+                    android:textStyle="bold"
                     android:fontFamily="@string/buzzerbox_font_app_default_bold"
                     android:singleLine="true"
                     android:ellipsize="marquee"

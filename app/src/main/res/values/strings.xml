@@ -162,12 +162,12 @@
     <!-- Spinner Values of Audio Sound FX used in layout_settings.xml -->
 
     <string-array name ="spinner_audio_files">
-        <item>BuzzerBox Buzz Sound 1</item>
-        <item>BuzzerBox Buzz Sound 2</item>
-        <item>BuzzerBox Buzz Sound 3</item>
-        <item>BuzzerBox Buzz Sound 4</item>
-        <item>BuzzerBox Buzz Sound 5</item>
-        <item>BuzzerBox Buzz Sound 6</item>
+        <item>Audio FX 1</item>
+        <item>Audio FX 2</item>
+        <item>Audio FX 3</item>
+        <item>Audio FX 4</item>
+        <item>Audio FX 5</item>
+        <item>Audio FX 6</item>
     </string-array>
 
 
