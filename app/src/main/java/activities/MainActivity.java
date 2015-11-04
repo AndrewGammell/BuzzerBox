@@ -28,7 +28,7 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
-        login = new LoginAsyncTask("dummy@bundly.io", "dummy1234");
+        login = new LoginAsyncTask("dummy@bundly.io", "dummy1234", this);
         login.execute("");
         displaySplash();
 

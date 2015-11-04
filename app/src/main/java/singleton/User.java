@@ -1,10 +1,13 @@
 package singleton;
 
 import android.content.Context;
+import android.util.Log;
+
 import persistence.DataPersister;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -12,9 +15,44 @@ import java.util.List;
  */
 public class User implements Serializable{
     private static User user;
-    private String username;
-    private String password;
+    private String username = "null";
+    private String password = "null";
+
+    public String getAuthToken() {
+        return authToken;
+    }
+
+    public void setAuthToken(String authToken) {
+        this.authToken = authToken;
+    }
+
+    private String authToken = "null";
     private List<Buzz> buzzHolder;
+    private HashMap<String, List<Buzz>> buzzTypes;
+
+    public HashMap<String, List<Buzz>> getBuzzTypes() {
+        if (buzzTypes == null){
+            buzzTypes = new HashMap<String, List<Buzz>>();
+        }
+        return buzzTypes;
+    }
+
+    public void setBuzzTypes(HashMap<String, List<Buzz>> buzzTypes) {
+        this.buzzTypes = buzzTypes;
+    }
+
+    public void addToBuzzTypes(Buzz entry){
+        if (User.getUser().getBuzzTypes().containsKey(entry.getBuzz_key())){
+            User.getUser().getBuzzTypes().get(entry.getBuzz_key()).add(entry);
+            Log.d("NEIL", "adding to buzz types " + entry.getBuzz_key() + ": " + entry.toString());
+        }
+        else{
+            List<Buzz> newBuzzType = new ArrayList<Buzz>();
+            newBuzzType.add(entry);
+            User.getUser().getBuzzTypes().put(entry.getBuzz_key(), newBuzzType);
+            Log.d("NEIL", "creating buzz type " + entry.getBuzz_key() + ": " + entry.toString());
+        }
+    }
 
     public List<Buzz> getBuzzHolder() {
         if (buzzHolder == null){
@@ -49,6 +87,7 @@ public class User implements Serializable{
         }
         return user;
     }
+
 
     public String getUsername(){
         return username;

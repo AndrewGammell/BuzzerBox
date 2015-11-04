@@ -30,11 +30,7 @@
     <!-- Custom BuzzerBox Font Values -->
     <!-- Changing values here WILL ALSO CHANGE Named Design Elements below -->
     <!-- Fonts & Txt Type  -->
-    <string name="buzzerbox_font_roboto_black">fonts/Roboto-Black.ttf</string>
-    <string name="buzzerbox_font_roboto_bold">fonts/Roboto-Bold.ttf</string>
-    <string name="buzzerbox_font_roboto_thin">fonts/Roboto-Thin.ttf</string>
-    <string name="buzzerbox_font_roboto_medium">fonts/Roboto-Medium.ttf</string>
-    <string name="buzzerbox_font_helvetica_neue">fonts/Helvetica-Neue.ttf</string>
+
 
     <!-- ICON FONT -->
     <!--
@@ -54,6 +50,11 @@
     <string name="buzzerbox_font_app_default_bold">@string/buzzerbox_font_roboto_bold</string>
     <string name="buzzerbox_font_app_default_thin">@string/buzzerbox_font_roboto_thin</string>
     <string name="buzzerbox_font_app_title">@string/buzzerbox_font_helvetica_neue</string>
+    <string name="buzzerbox_font_roboto_black">fonts/Roboto-Black.ttf</string>
+    <string name="buzzerbox_font_roboto_bold">fonts/Roboto-Bold.ttf</string>
+    <string name="buzzerbox_font_roboto_thin">fonts/Roboto-Thin.ttf</string>
+    <string name="buzzerbox_font_roboto_medium">fonts/Roboto-Medium.ttf</string>
+    <string name="buzzerbox_font_helvetica_neue">fonts/Helvetica-Neue.ttf</string>
 
 
     <!-- -->
