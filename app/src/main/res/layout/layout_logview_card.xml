@@ -10,14 +10,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/card_overview"
-            card_view:cardElevation="5dp"
+            card_view:cardElevation="0dp"
             card_view:cardUseCompatPadding="true"
             card_view:cardCornerRadius="3dp">
 
         <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp">
+                android:background="@color/buzzerbox_white"
+                android:padding="1dp">
 
             <ImageView
                     android:layout_column="0"
@@ -37,6 +38,7 @@
                     android:padding="10dp"
                     android:text="@string/text_alarm_type"
                     android:textSize="@dimen/buzzerbox_font_size_small"
+                    android:textStyle="bold"
                     android:fontFamily="@string/buzzerbox_font_app_default_bold"
                     android:singleLine="true"
                     android:ellipsize="marquee"
@@ -69,6 +71,18 @@
                     android:textColor="@color/buzzerbox_grey"
                     android:gravity="center_vertical"/>
 
+
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_columnSpan="4"
+                    android:layout_column="0"
+                    android:layout_row="1">
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/buzzerbox_grey"
+                        />
+            </LinearLayout>
 
         </GridLayout>
     </android.support.v7.widget.CardView>
