@@ -93,31 +93,6 @@
 
 
 
-                                <!--
-
-                        android:fontFamily="@string/buzzerbox_font_icon_symbols"
-
-                        android:text="@string/buzzerbox_icon_audio_speaker" -->
-
-
-
-                                <!--
-
-                         <ImageView
-
-                                                 android:layout_width="wrap_content"
-
-                                                 android:layout_height="wrap_content"
-
-                                                android:src="@drawable/icon_audio_speaker"
-
-                                                android:id="@+id/icon_audio_speaker"
-
-                                                />
-
-                       -->
-
-
 
                         </LinearLayout>
 
@@ -141,11 +116,11 @@
 
                                         android:textColor="@color/buzzerbox_black"
 
-                                        android:layout_width="30dp"
+                                        android:layout_width="24dp"
 
-                                        android:layout_height="30dp"
+                                        android:layout_height="24dp"
 
-                                        android:background="@null"
+                                        android:background="@drawable/icon_close_current_view_large_x_"
 
                                         />
 
