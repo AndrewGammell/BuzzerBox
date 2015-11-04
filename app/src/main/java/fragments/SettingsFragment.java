@@ -50,7 +50,7 @@ public class SettingsFragment extends AbstractFragment {
         spinnerSound.setAdapter(getAdapter(R.array.spinner_audio_files));
         spinnerSound.setOnItemSelectedListener(new SpinnerItemSelectedListener());
 
-        spinnerFrequency = (Spinner) view.findViewById(R.id.spinner_notification_frequency);
+        spinnerFrequency = (Spinner) view.findViewById(R.id.spinner_frequency);
         spinnerFrequency.setAdapter(getAdapter(R.array.spinner_frequency));
         spinnerFrequency.setOnItemSelectedListener(new SpinnerItemSelectedListener());
 
@@ -88,7 +88,7 @@ public class SettingsFragment extends AbstractFragment {
                     int in = DataHolder.getDataHolder().getSettingsList().get(0).getSound();
                     Log.d("TAG", "sound in data holder is " + in);
                     break;
-                case R.id.spinner_notification_frequency:
+                case R.id.spinner_frequency:
                     settings.setFrequency(i + 1);
                     int il = DataHolder.getDataHolder().getSettingsList().get(0).getFrequency();
                     Log.d("TAG", "frequency in data holder is " + il);
