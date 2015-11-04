@@ -146,9 +146,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="15dp">
-                    Add a comment to this line
-                    <!-- FIRST ROW OF SIX -->
+                   <!-- FIRST ROW OF SIX -->
                     <CheckBox
+                            android:tag="colour"
                             android:layout_column="0"
                             android:layout_row="0"
                             android:layout_width="wrap_content"
@@ -156,6 +156,7 @@
                             android:background="@drawable/unique_alarm_color_picker_shape"
                             android:backgroundTint="@color/colour_option_1"/>
                     <CheckBox
+                            android:tag="colour"
                             android:layout_column="1"
                             android:layout_row="0"
                             android:layout_width="wrap_content"
@@ -163,6 +164,7 @@
                             android:background="@drawable/unique_alarm_color_picker_shape"
                             android:backgroundTint="@color/colour_option_2"/>
                     <CheckBox
+                            android:tag="colour"
                             android:layout_column="2"
                             android:layout_row="0"
                             android:layout_width="wrap_content"
@@ -170,6 +172,7 @@
                             android:background="@drawable/unique_alarm_color_picker_shape"
                             android:backgroundTint="@color/colour_option_3"/>
                     <CheckBox
+                            android:tag="colour"
                             android:layout_column="3"
                             android:layout_row="0"
                             android:layout_width="wrap_content"
@@ -177,6 +180,7 @@
                             android:background="@drawable/unique_alarm_color_picker_shape"
                             android:backgroundTint="@color/colour_option_4"/>
                     <CheckBox
+                            android:tag="colour"
                             android:layout_column="4"
                             android:layout_row="0"
                             android:layout_width="wrap_content"
@@ -184,6 +188,7 @@
                             android:background="@drawable/unique_alarm_color_picker_shape"
                             android:backgroundTint="@color/colour_option_5"/>
                     <CheckBox
+                            android:tag="colour"
                             android:layout_column="5"
                             android:layout_row="0"
                             android:layout_width="wrap_content"
@@ -194,6 +199,7 @@
                     <!-- SECOND ROW OF SIX -->
 
                     <CheckBox
+                            android:tag="colour"
                             android:layout_column="0"
                             android:layout_row="1"
                             android:layout_width="wrap_content"
@@ -201,6 +207,7 @@
                             android:background="@drawable/unique_alarm_color_picker_shape"
                             android:backgroundTint="@color/colour_option_7"/>
                     <CheckBox
+                            android:tag="colour"
                             android:layout_column="1"
                             android:layout_row="1"
                             android:layout_width="wrap_content"
@@ -208,6 +215,7 @@
                             android:background="@drawable/unique_alarm_color_picker_shape"
                             android:backgroundTint="@color/colour_option_8"/>
                     <CheckBox
+                            android:tag="colour"
                             android:layout_column="2"
                             android:layout_row="1"
                             android:layout_width="wrap_content"
@@ -215,6 +223,7 @@
                             android:background="@drawable/unique_alarm_color_picker_shape"
                             android:backgroundTint="@color/colour_option_9"/>
                     <CheckBox
+                            android:tag="colour"
                             android:layout_column="3"
                             android:layout_row="1"
                             android:layout_width="wrap_content"
@@ -222,6 +231,7 @@
                             android:background="@drawable/unique_alarm_color_picker_shape"
                             android:backgroundTint="@color/colour_option_10"/>
                     <CheckBox
+                            android:tag="colour"
                             android:layout_column="4"
                             android:layout_row="1"
                             android:layout_width="wrap_content"
@@ -229,6 +239,7 @@
                             android:background="@drawable/unique_alarm_color_picker_shape"
                             android:backgroundTint="@color/colour_option_11"/>
                     <CheckBox
+                            android:tag="colour"
                             android:layout_column="5"
                             android:layout_row="1"
                             android:layout_width="wrap_content"
@@ -240,6 +251,7 @@
                     <!-- THIRD ROW OF SIX -->
 
                     <CheckBox
+                            android:tag="colour"
                             android:layout_column="0"
                             android:layout_row="2"
                             android:layout_width="wrap_content"
@@ -247,6 +259,7 @@
                             android:background="@drawable/unique_alarm_color_picker_shape"
                             android:backgroundTint="@color/colour_option_13"/>
                     <CheckBox
+                            android:tag="colour"
                             android:layout_column="1"
                             android:layout_row="2"
                             android:layout_width="wrap_content"
@@ -254,6 +267,7 @@
                             android:background="@drawable/unique_alarm_color_picker_shape"
                             android:backgroundTint="@color/colour_option_14"/>
                     <CheckBox
+                            android:tag="colour"
                             android:layout_column="2"
                             android:layout_row="2"
                             android:layout_width="wrap_content"
@@ -261,6 +275,7 @@
                             android:background="@drawable/unique_alarm_color_picker_shape"
                             android:backgroundTint="@color/colour_option_15"/>
                     <CheckBox
+                            android:tag="colour"
                             android:layout_column="3"
                             android:layout_row="2"
                             android:layout_width="wrap_content"
@@ -268,6 +283,7 @@
                             android:background="@drawable/unique_alarm_color_picker_shape"
                             android:backgroundTint="@color/colour_option_16"/>
                     <CheckBox
+                            android:tag="colour"
                             android:layout_column="4"
                             android:layout_row="2"
                             android:layout_width="wrap_content"
@@ -275,6 +291,7 @@
                             android:background="@drawable/unique_alarm_color_picker_shape"
                             android:backgroundTint="@color/colour_option_17"/>
                     <CheckBox
+                            android:tag="colour"
                             android:layout_column="5"
                             android:layout_row="2"
                             android:layout_width="wrap_content"
