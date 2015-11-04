@@ -11,7 +11,6 @@ import io.buzzerbox.app.R;
 import settings.Settings;
 import util.Utility;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -20,9 +19,9 @@ public class SettingsFragment extends AbstractFragment {
     private static final String SETTINGS_KEY = "SETTINGS";
 
     private TextView alarmType;
-    private Spinner spinner;
+    private Spinner spinnerSound;
+    private Spinner spinnerFrequency;
     private Settings settings;
-    private RadioGroup mRadioGroup;
     private ViewGroup background;
     private List<Integer> colourList = Utility.getColours();
 
@@ -41,28 +40,24 @@ public class SettingsFragment extends AbstractFragment {
     }
 
     public void instantiateWidgets(View view) {
-        background = (ViewGroup) view.findViewById(R.id.layout_settings);
-        mRadioGroup = (RadioGroup) view.findViewById(R.id.colour_picker_grid);
-        mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
 
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                buttonSwitch(radioGroup.getCheckedRadioButtonId());
-                updateDisplay();
-            }
-        });
+        background = (ViewGroup)view.findViewById(R.id.layout_settings);
 
         alarmType = (TextView) view.findViewById(R.id.text_alarm_type);
         alarmType.setText(settings.getType());
 
-        spinner = (Spinner) view.findViewById(R.id.spinner_audio_file_list);
-        spinner.setAdapter(getAdapter());
-        spinner.setOnItemSelectedListener(new SpinnerItemSelectedListener());
+        spinnerSound = (Spinner) view.findViewById(R.id.spinner_audio_file_list);
+        spinnerSound.setAdapter(getAdapter(R.array.spinner_audio_files));
+        spinnerSound.setOnItemSelectedListener(new SpinnerItemSelectedListener());
+
+        spinnerFrequency = (Spinner) view.findViewById(R.id.spinner_notification_frequency);
+        spinnerFrequency.setAdapter(getAdapter(R.array.spinner_frequency));
+        spinnerFrequency.setOnItemSelectedListener(new SpinnerItemSelectedListener());
 
         setCurrentSettings();
     }
 
-//    puts a Settings Object into a bundle to be passed into the fragment.
+    //    puts a Settings Object into a bundle to be passed into the fragment.
     public static SettingsFragment newInstance(Settings settings) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(SETTINGS_KEY, settings);
@@ -71,10 +66,10 @@ public class SettingsFragment extends AbstractFragment {
         return frag;
     }
 
-    private ArrayAdapter<CharSequence> getAdapter() {
+    private ArrayAdapter<CharSequence> getAdapter(int array) {
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                getContext(), R.array.spinner_audio_files,
+                getContext(), array,
                 android.R.layout.simple_spinner_item);
 
         // Specify the layout to use when the list of choices appears //
@@ -87,9 +82,17 @@ public class SettingsFragment extends AbstractFragment {
 
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-            settings.setSound(i);
-            int in = DataHolder.getDataHolder().getSettingsList().get(0).getSound();
-            Log.d("TAG", "sound in data holder is " + in);
+            switch (adapterView.getId()) {
+                case R.id.spinner_audio_file_list:
+                    settings.setSound(i);
+                    int in = DataHolder.getDataHolder().getSettingsList().get(0).getSound();
+                    Log.d("TAG", "sound in data holder is " + in);
+                    break;
+                case R.id.spinner_notification_frequency:
+                    settings.setFrequency(i + 1);
+                    int il = DataHolder.getDataHolder().getSettingsList().get(0).getFrequency();
+                    Log.d("TAG", "frequency in data holder is " + il);
+            }
         }
 
         @Override
@@ -98,56 +101,22 @@ public class SettingsFragment extends AbstractFragment {
         }
     }
 
-    private void buttonSwitch(int id){
-        switch(id){
-            case R.id.colour_1: settings.setColour(0);
-                break;
-            case R.id.colour_2: settings.setColour(1);
-                break;
-            case R.id.colour_3: settings.setColour(2);
-                break;
-            case R.id.colour_4: settings.setColour(3);
-                break;
-            case R.id.colour_5: settings.setColour(4);
-                break;
-            case R.id.colour_6: settings.setColour(5);
-                break;
-            case R.id.colour_7: settings.setColour(6);
-                break;
-            case R.id.colour_8: settings.setColour(7);
-                break;
-            case R.id.colour_9: settings.setColour(8);
-                break;
-            case R.id.colour_10: settings.setColour(9);
-                break;
-            case R.id.colour_11: settings.setColour(10);
-                break;
-            case R.id.colour_12: settings.setColour(11);
-                break;
-            case R.id.colour_13: settings.setColour(12);
-                break;
-            case R.id.colour_14: settings.setColour(13);
-                break;
-            case R.id.colour_15: settings.setColour(14);
-                break;
-            case R.id.colour_16: settings.setColour(15);
-                break;
-            case R.id.colour_17: settings.setColour(16);
-                break;
-            case R.id.colour_18: settings.setColour(17);
-                break;
-        }
-        updateDisplay();
-    }
+
 
     private void setCurrentSettings() {
-        spinner.setSelection(settings.getSound());
+        spinnerSound.setSelection(settings.getSound());
+        spinnerFrequency.setSelection(settings.getFrequency() - 1);
+
         updateDisplay();
     }
 
     private void updateDisplay() {
         background.setBackgroundColor(getResources().getColor(colourList.get(settings.getColour())));
     }
+
+
+
+
 
 
 }

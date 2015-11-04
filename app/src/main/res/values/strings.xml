@@ -149,9 +149,12 @@
     <string name="text_color">Color</string>
     <string name="text_notifications">Alerts</string>
     <string name="text_frequency">Frequency</string>
+    <string name="text_spinner_default">buzz</string>
     <string name="notify_by_email">Email</string>
     <string name="notify_by_phone">Phone</string>
     <string name="notify_by_text_sms">Text</string>
+    <string name="notify_frequency_text_string_end">time(s)</string>
+    <string name="notify_frequency_text_string_start">every</string>
 
 
     <!-- -->
@@ -159,25 +162,39 @@
     <!-- Spinner Values of Audio Sound FX used in layout_settings.xml -->
 
     <string-array name ="spinner_audio_files">
-        <item>Audio FX 1</item>
-        <item>Audio FX 2</item>
-        <item>Audio FX 3</item>
-        <item>Audio FX 4</item>
-        <item>Audio FX 5</item>
-        <item>Audio FX 6</item>
+        <item>Sound 1</item>
+        <item>Sound 2</item>
+        <item>Sound 3</item>
+        <item>Sound 4</item>
+        <item>Sound 5</item>
+        <item>Sound 6</item>
     </string-array>
 
-    <!-- Spinner Values of Notification Frequency used in layout_settings.xml -->
-
-    <string name="notify_frequency_text_string_start">every</string>
-    <string name="notify_frequency_text_string_end">time(s)</string>
-
-
     <string-array name ="spinner_frequency">
-        <item>0</item>
         <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
         <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
         <item>10</item>
+    </string-array>
+
+
+    <!-- TEST Elements-->
+
+    <string-array name="test_strings">
+
+        <item>Error</item>
+
+        <item>Sale</item>
+
+        <item>Account Delete</item>
+
+        <item>Account Created</item>
 
     </string-array>
 
