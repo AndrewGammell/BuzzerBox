@@ -38,6 +38,7 @@
                 android:textColorHint="@color/buzzerbox_grey"
                 android:textColor="@color/buzzerbox_black"
                 android:layout_marginBottom="20dp"
+                android:inputType="textEmailAddress"
                 />
         <EditText
                 android:id="@+id/txt_password"
@@ -52,6 +53,7 @@
                 android:textColorHint="@color/buzzerbox_grey"
                 android:textColor="@color/buzzerbox_black"
                 android:layout_marginBottom="60dp"
+                android:inputType="textPassword"
                 />
 
 
