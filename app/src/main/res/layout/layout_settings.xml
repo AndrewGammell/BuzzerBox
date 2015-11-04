@@ -6,545 +6,477 @@
               android:background="@color/buzzerbox_white">
 
 
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:layout_gravity="center"
-                      android:orientation="vertical"
-                      android:background="@color/buzzerbox_blue"
-                      android:padding="5dp"
-                      android:id="@+id/layout_settings">
-                <GridLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="@null"
-                        android:layout_margin="25dp"
-                        >
-                        <LinearLayout
-                                android:layout_column="0"
-                                android:layout_row="0"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:id="@+id/angle_bracket_less_than"
-                                        android:text="@string/angle_bracket_less_than"
-                                        android:fontFamily="@string/buzzerbox_font_app_default_bold"
-                                        android:textSize="@dimen/buzzerbox_font_size_medium"
-                                        android:textColor="@color/buzzerbox_white"
-                                        />
-
-                                <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:id="@id/text_alarm_type"
-                                        android:text="@string/text_alarm_type"
-                                        android:textStyle="bold"
-                                        android:fontFamily="@string/buzzerbox_font_app_default_bold"
-                                        android:textSize="@dimen/buzzerbox_font_size_medium"
-                                        android:textColor="@color/buzzerbox_white"
-                                        />
-
-                                <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:id="@+id/angle_bracket_greater_than"
-                                        android:text="@string/angle_bracket_greater_than"
-                                        android:fontFamily="@string/buzzerbox_font_app_default_bold"
-                                        android:textSize="@dimen/buzzerbox_font_size_medium"
-                                        android:textColor="@color/buzzerbox_white"
-                                        />
-
-                        </LinearLayout>
-                </GridLayout>
-        </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center"
+                  android:orientation="vertical"
+                  android:background="@color/buzzerbox_blue"
+                  android:padding="5dp"
+                  android:id="@+id/layout_settings">
         <GridLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:layout_margin="25dp"
+                >
+            <LinearLayout
+                    android:layout_column="0"
+                    android:layout_row="0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/angle_bracket_less_than"
+                        android:text="@string/angle_bracket_less_than"
+                        android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                        android:textSize="@dimen/buzzerbox_font_size_medium"
+                        android:textColor="@color/buzzerbox_white"
+                        />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@id/text_alarm_type"
+                        android:text="@string/text_alarm_type"
+                        android:textStyle="bold"
+                        android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                        android:textSize="@dimen/buzzerbox_font_size_medium"
+                        android:textColor="@color/buzzerbox_white"
+                        />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/angle_bracket_greater_than"
+                        android:text="@string/angle_bracket_greater_than"
+                        android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                        android:textSize="@dimen/buzzerbox_font_size_medium"
+                        android:textColor="@color/buzzerbox_white"
+                        />
+
+            </LinearLayout>
+        </GridLayout>
+    </LinearLayout>
+    <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_gravity="left"
+            android:layout_margin="10dp">
+
+        <!-- SOUND SELECTION SPINNER -->
+
+        <ImageView
+                android:layout_column="1"
+                android:layout_row="1"
+                android:id="@drawable/icon_audio_speaker"
+                android:background="@drawable/icon_audio_speaker"
+                android:layout_height="30dp"
+                android:layout_width="30dp"
+                android:gravity="left"
+                />
+        <TextView
+                android:layout_column="2"
+                android:layout_row="1"
+                android:id="@+id/text_sound"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
                 android:padding="5dp"
-                android:layout_gravity="left"
-                android:layout_margin="10dp">
+                android:text="@string/text_sound"
+                android:textStyle="bold"
+                android:textSize="@dimen/buzzerbox_font_size_default"
+                android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                android:textColor="@color/buzzerbox_black"
+                android:gravity="left"/>
 
-                <!-- SOUND SELECTION SPINNER -->
+        <Spinner
+                android:layout_column="3"
+                android:layout_row="1"
+                android:id="@+id/spinner_audio_file_list"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:width="35dp"
+                android:textSize="@dimen/buzzerbox_font_size_default"
+                android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                android:textColor="@color/buzzerbox_black"
+                android:gravity="right"/>
 
-                <ImageView
+
+        <!-- LINE BREAK -->
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_columnSpan="3"
+                android:layout_column="1"
+                android:layout_row="2">
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/buzzerbox_grey"
+                    android:layout_marginBottom="5dp"
+                    />
+        </LinearLayout>
+        <!-- -->
+
+        <ImageView
+                android:layout_column="1"
+                android:layout_row="3"
+                android:id="@+id/icon_color_picker"
+                android:background="@drawable/icon_color_picker"
+                android:layout_height="30dp"
+                android:layout_width="30dp"
+                android:gravity="left"
+                />
+        <TextView
+                android:layout_column="2"
+                android:layout_row="3"
+                android:id="@+id/text_color"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="5dp"
+                android:text="@string/text_color"
+                android:textSize="@dimen/buzzerbox_font_size_default"
+                android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                android:textColor="@color/buzzerbox_black"
+                android:gravity="left"/>
+
+        <LinearLayout android:layout_column="3"
+                      android:layout_row="3"
+                      android:id="@+id/colour_picker_grid">
+            <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp">
+                <!-- FIRST ROW OF SIX -->
+                <CheckBox
+                        android:layout_column="0"
+                        android:layout_row="0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_1"
+                        android:id="@+id/colour_1"/>
+                <CheckBox
+                        android:layout_column="1"
+                        android:layout_row="0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_2"
+                        android:id="@+id/colour_2"/>
+                <CheckBox
+                        android:layout_column="2"
+                        android:layout_row="0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_3"
+                        android:id="@+id/colour_3"/>
+                <CheckBox
+                        android:layout_column="3"
+                        android:layout_row="0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_4"
+                        android:id="@+id/colour_4"/>
+                <CheckBox
+                        android:layout_column="4"
+                        android:layout_row="0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_5"
+                        android:id="@+id/colour_5"/>
+                <CheckBox
+                        android:layout_column="5"
+                        android:layout_row="0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_6"
+                        android:id="@+id/colour_6"/>
+
+                <!-- SECOND ROW OF SIX -->
+
+                <CheckBox
+                        android:layout_column="0"
+                        android:layout_row="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_7"
+                        android:id="@+id/colour_7"/>
+                <CheckBox
                         android:layout_column="1"
                         android:layout_row="1"
-                        android:id="@drawable/icon_audio_speaker"
-                        android:background="@drawable/icon_audio_speaker"
-                        android:layout_height="30dp"
-                        android:layout_width="30dp"
-                        android:gravity="left"
-                        />
-                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_8"
+                        android:id="@+id/colour_8"/>
+                <CheckBox
                         android:layout_column="2"
                         android:layout_row="1"
-                        android:id="@+id/text_sound"
-                        android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:padding="5dp"
-                        android:text="@string/text_sound"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/buzzerbox_font_size_default"
-                        android:fontFamily="@string/buzzerbox_font_app_default_bold"
-                        android:textColor="@color/buzzerbox_black"
-                        android:gravity="left"/>
-
-                <Spinner
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_9"
+                        android:id="@+id/colour_9"/>
+                <CheckBox
                         android:layout_column="3"
                         android:layout_row="1"
-                        android:id="@+id/spinner_audio_file_list"
-                        android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:width="35dp"
-                        android:textSize="@dimen/buzzerbox_font_size_default"
-                        android:fontFamily="@string/buzzerbox_font_app_default_bold"
-                        android:textColor="@color/buzzerbox_black"
-                        android:gravity="right"/>
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_10"
+                        android:id="@+id/colour_10"/>
+                <CheckBox
+                        android:layout_column="4"
+                        android:layout_row="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_11"
+                        android:id="@+id/colour_11"/>
+                <CheckBox
+                        android:layout_column="5"
+                        android:layout_row="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_12"
+                        android:id="@+id/colour_12"/>
 
 
-                <!-- LINE BREAK -->
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_columnSpan="3"
+
+                <!-- THIRD ROW OF SIX -->
+
+                <CheckBox
+                        android:layout_column="0"
+                        android:layout_row="2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_13"
+                        android:id="@+id/colour_13"/>
+                <CheckBox
                         android:layout_column="1"
-                        android:layout_row="2">
-                        <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/buzzerbox_grey"
-                                android:layout_marginBottom="5dp"
-                                />
-                </LinearLayout>
-                <!-- -->
-
-                <!-- COLOR PICKER GRID -->
-
-
-                <ImageView
-                        android:layout_column="1"
-                        android:layout_row="3"
-                        android:id="@+id/icon_color_picker"
-                        android:background="@drawable/icon_color_picker"
-                        android:layout_height="30dp"
-                        android:layout_width="30dp"
-                        android:gravity="left"
-                        />
-                <TextView
+                        android:layout_row="2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_14"
+                        android:id="@+id/colour_14"/>
+                <CheckBox
                         android:layout_column="2"
-                        android:layout_row="3"
-                        android:id="@+id/text_color"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:padding="5dp"
-                        android:text="@string/text_color"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/buzzerbox_font_size_default"
-                        android:fontFamily="@string/buzzerbox_font_app_default_bold"
-                        android:textColor="@color/buzzerbox_black"
-                        android:gravity="left"/>
-
-                <LinearLayout android:layout_column="3"
-                              android:layout_row="3"
-                              android:layout_width="wrap_content" android:layout_height="wrap_content">
-
-
-                        <!-- -->
-
-
-                        <GridLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="15dp">
-                                <RadioGroup
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:id="@+id/colour_picker_grid"
-                                        android:orientation="horizontal"
-                                        android:padding="1dp"
-                                        >
-
-
-                                        <!-- FIRST ROW OF SIX -->
-                                        <RadioButton
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:background="@drawable/unique_alarm_color_picker_shape"
-                                                android:backgroundTint="@color/colour_option_1"
-                                                android:id="@+id/colour_1"
-                                                android:tag="colour"
-                                                android:checked="false"
-                                                android:paddingLeft="1dp"
-                                                />
-                                        <RadioButton
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:background="@drawable/unique_alarm_color_picker_shape"
-                                                android:backgroundTint="@color/colour_option_2"
-                                                android:id="@+id/colour_2"
-                                                android:tag="colour"
-                                                android:checked="false"
-                                                android:paddingLeft="1dp"
-                                                />
-                                        <RadioButton
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:background="@drawable/unique_alarm_color_picker_shape"
-                                                android:backgroundTint="@color/colour_option_3"
-                                                android:id="@+id/colour_3"
-                                                android:tag="colour"
-                                                android:checked="false"
-                                                android:paddingLeft="1dp"
-                                                />
-                                        <RadioButton
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:background="@drawable/unique_alarm_color_picker_shape"
-                                                android:backgroundTint="@color/colour_option_4"
-                                                android:id="@+id/colour_4"
-                                                android:tag="colour"
-                                                android:checked="false"
-                                                android:paddingLeft="1dp"
-                                                />
-                                        <RadioButton
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:background="@drawable/unique_alarm_color_picker_shape"
-                                                android:backgroundTint="@color/colour_option_5"
-                                                android:id="@+id/colour_5"
-                                                android:tag="colour"
-                                                android:checked="false"
-                                                android:paddingLeft="1dp"
-                                                />
-                                        <RadioButton
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:background="@drawable/unique_alarm_color_picker_shape"
-                                                android:backgroundTint="@color/colour_option_6"
-                                                android:id="@+id/colour_6"
-                                                android:tag="colour"
-                                                android:checked="false"
-                                                android:paddingLeft="1dp"
-                                                />
-                                </RadioGroup>
-
-                                <!-- SECOND ROW OF SIX -->
-                                <RadioGroup
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
-                                        android:layout_column="0"
-                                        android:layout_row="1"
-                                        android:padding="1dp"
-                                        >
-                                        <RadioButton
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:background="@drawable/unique_alarm_color_picker_shape"
-                                                android:backgroundTint="@color/colour_option_7"
-                                                android:id="@+id/colour_7"
-                                                android:tag="colour"
-                                                android:checked="false"
-                                                android:paddingLeft="1dp"
-                                                />
-                                        <RadioButton
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:background="@drawable/unique_alarm_color_picker_shape"
-                                                android:backgroundTint="@color/colour_option_8"
-                                                android:id="@+id/colour_8"
-                                                android:tag="colour"
-                                                android:checked="false"
-                                                android:paddingLeft="1dp"
-                                                />
-                                        <RadioButton
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:background="@drawable/unique_alarm_color_picker_shape"
-                                                android:backgroundTint="@color/colour_option_9"
-                                                android:id="@+id/colour_9"
-                                                android:tag="colour"
-                                                android:checked="false"
-                                                android:paddingLeft="1dp"
-                                                />
-                                        <RadioButton
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:background="@drawable/unique_alarm_color_picker_shape"
-                                                android:backgroundTint="@color/colour_option_10"
-                                                android:id="@+id/colour_10"
-                                                android:tag="colour"
-                                                android:checked="false"
-                                                android:paddingLeft="1dp"
-                                                />
-                                        <RadioButton
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:background="@drawable/unique_alarm_color_picker_shape"
-                                                android:backgroundTint="@color/colour_option_11"
-                                                android:id="@+id/colour_11"
-                                                android:tag="colour"
-                                                android:checked="false"
-                                                android:paddingLeft="1dp"
-                                                />
-                                        <RadioButton
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:background="@drawable/unique_alarm_color_picker_shape"
-                                                android:backgroundTint="@color/colour_option_12"
-                                                android:id="@+id/colour_12"
-                                                android:tag="colour"
-                                                android:checked="false"
-                                                android:paddingLeft="1dp"
-                                                />
-                                </RadioGroup>
-
-                                <!-- THIRD ROW OF SIX -->
-                                <RadioGroup
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="horizontal"
-                                        android:layout_column="0"
-                                        android:layout_row="2"
-                                        android:padding="1dp"
-                                        >
-                                        <RadioButton
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:background="@drawable/unique_alarm_color_picker_shape"
-                                                android:backgroundTint="@color/colour_option_13"
-                                                android:id="@+id/colour_13"
-                                                android:tag="colour"
-                                                android:checked="false"
-                                                android:paddingLeft="1dp"
-                                                />
-                                        <RadioButton
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:background="@drawable/unique_alarm_color_picker_shape"
-                                                android:backgroundTint="@color/colour_option_14"
-                                                android:id="@+id/colour_14"
-                                                android:tag="colour"
-                                                android:checked="false"
-                                                android:paddingLeft="1dp"
-                                                />
-                                        <RadioButton
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:background="@drawable/unique_alarm_color_picker_shape"
-                                                android:backgroundTint="@color/colour_option_15"
-                                                android:id="@+id/colour_15"
-                                                android:tag="colour"
-                                                android:checked="false"
-                                                android:paddingLeft="1dp"
-                                                />
-                                        <RadioButton
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:background="@drawable/unique_alarm_color_picker_shape"
-                                                android:backgroundTint="@color/colour_option_16"
-                                                android:id="@+id/colour_16"
-                                                android:tag="colour"
-                                                android:checked="false"
-                                                android:paddingLeft="1dp"
-                                                />
-                                        <RadioButton
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:background="@drawable/unique_alarm_color_picker_shape"
-                                                android:backgroundTint="@color/colour_option_17"
-                                                android:id="@+id/colour_17"
-                                                android:tag="colour"
-                                                android:checked="false"
-                                                android:paddingLeft="1dp"
-                                                />
-                                        <RadioButton
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:background="@drawable/unique_alarm_color_picker_shape"
-                                                android:backgroundTint="@color/colour_option_18"
-                                                android:id="@+id/colour_18"
-                                                android:tag="colour"
-                                                android:checked="false"
-                                                android:paddingLeft="1dp"
-                                                />
-
-                                </RadioGroup>
-                        </GridLayout>
-
-
-                        <!-- -->
-
-                </LinearLayout>
-
-                <!-- LINE BREAK -->
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_columnSpan="3"
-                        android:layout_column="1"
-                        android:layout_row="4">
-                        <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/buzzerbox_grey"
-                                android:layout_marginBottom="5dp"
-                                />
-                </LinearLayout>
-                <!-- -->
-
-                <ImageView
-                        android:layout_column="1"
-                        android:layout_row="5"
-                        android:id="@+id/icon_notifications"
-                        android:background="@drawable/icon_notifications"
-                        android:layout_height="30dp"
-                        android:layout_width="30dp"
-                        android:gravity="left"
-                        />
-
-                <!-- NOTIFICATION ALERTS -->
-
-
-                <TextView
-                        android:layout_column="2"
-                        android:layout_row="5"
-                        android:id="@+id/text_notifications"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:padding="5dp"
-                        android:text="@string/text_notifications"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/buzzerbox_font_size_default"
-                        android:fontFamily="@string/buzzerbox_font_app_default_bold"
-                        android:textColor="@color/buzzerbox_black"
-                        android:gravity="left" />
-                <LinearLayout
+                        android:layout_row="2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginLeft="15dp" >
-                        <CheckBox
-                                android:layout_column="3"
-                                android:layout_row="5"
-                                android:layout_height="wrap_content"
-                                android:layout_width="wrap_content"
-                                android:padding="5dp"
-                                android:text="@string/notify_by_email"
-                                android:id="@+id/notify_by_email"
-                                android:textSize="@dimen/buzzerbox_font_size_default"
-                                android:fontFamily="@string/buzzerbox_font_app_default_bold"
-                                android:textColor="@color/buzzerbox_black"
-                                android:gravity="left"/>
-                        <CheckBox
-                                android:layout_column="3"
-                                android:layout_row="5"
-                                android:layout_height="wrap_content"
-                                android:layout_width="wrap_content"
-                                android:padding="5dp"
-                                android:text="@string/notify_by_phone"
-                                android:id="@+id/notify_by_phone"
-                                android:textSize="@dimen/buzzerbox_font_size_default"
-                                android:fontFamily="@string/buzzerbox_font_app_default_bold"
-                                android:textColor="@color/buzzerbox_black"
-                                android:gravity="left"/>
-
-                </LinearLayout>
-
-                <!-- LINE BREAK -->
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_columnSpan="3"
-                        android:layout_column="1"
-                        android:layout_row="6">
-                        <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/buzzerbox_grey"
-                                android:layout_marginBottom="5dp"
-                                />
-                </LinearLayout>
-                <!-- -->
-
-                <ImageView
-                        android:layout_column="1"
-                        android:layout_row="7"
-                        android:id="@+id/icon_frequency"
-                        android:background="@drawable/icon_frequency"
-                        android:layout_height="30dp"
-                        android:layout_width="30dp"
-                        android:gravity="left"
-                        />
-
-                <!-- ALERT FREQUENCY SPINNER -->
-
-                <TextView
-                        android:layout_column="2"
-                        android:layout_row="7"
-                        android:id="@+id/text_frequency"
-                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_15"
+                        android:id="@+id/colour_15"/>
+                <CheckBox
+                        android:layout_column="3"
+                        android:layout_row="2"
                         android:layout_width="wrap_content"
-                        android:padding="5dp"
-                        android:text="@string/text_frequency"
-                        android:textSize="@dimen/buzzerbox_font_size_default"
-                        android:textStyle="bold"
-                        android:fontFamily="@string/buzzerbox_font_app_default_bold"
-                        android:textColor="@color/buzzerbox_black"
-                        android:gravity="left" />
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_16"
+                        android:id="@+id/colour_16"/>
+                <CheckBox
+                        android:layout_column="4"
+                        android:layout_row="2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_17"
+                        android:id="@+id/colour_17"/>
+                <CheckBox
+                        android:layout_column="5"
+                        android:layout_row="2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:backgroundTint="@color/colour_option_18"
+                        android:id="@+id/colour_18"/>
 
-                <LinearLayout android:layout_column="3"
-                              android:layout_row="7"
-                              android:layout_height="wrap_content"
-                              android:layout_width="wrap_content"
-                              android:layout_marginLeft="20dp">
 
-                        <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="@dimen/buzzerbox_font_size_default"
-                                android:fontFamily="@string/buzzerbox_font_app_default_bold"
-                                android:textColor="@color/buzzerbox_black"
-                                android:text="@string/notify_frequency_text_string_start"
-                                android:padding="5dp"
-                                />
+            </GridLayout>
 
-                        <Spinner
-                                android:layout_width="35dp"
-                                android:layout_height="35dp"
-                                android:width="35dp"
-                                android:textSize="@dimen/buzzerbox_font_size_default"
 
-                                android:fontFamily="@string/buzzerbox_font_app_default_bold"
-                                android:textColor="@color/buzzerbox_grey"
-                                android:padding="5dp"
-                                android:id="@+id/spinner_frequency" />
-                        <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="@dimen/buzzerbox_font_size_default"
-                                android:fontFamily="@string/buzzerbox_font_app_default_bold"
-                                android:textColor="@color/buzzerbox_black"
-                                android:text="@string/notify_frequency_text_string_end"
-                                android:padding="5dp"
-                                />
+            <!-- -->
 
-                </LinearLayout>
+        </LinearLayout>
 
-                <!-- LINE BREAK -->
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_columnSpan="3"
-                        android:layout_column="1"
-                        android:layout_row="8">
-                        <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/buzzerbox_grey"
-                                android:layout_marginBottom="5dp"
-                                />
-                </LinearLayout>
-                <!-- -->
-        </GridLayout>
+        <!-- LINE BREAK -->
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_columnSpan="3"
+                android:layout_column="1"
+                android:layout_row="4">
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/buzzerbox_grey"
+                    android:layout_marginBottom="5dp"
+                    />
+        </LinearLayout>
+        <!-- -->
+
+        <ImageView
+                android:layout_column="1"
+                android:layout_row="5"
+                android:id="@+id/icon_notifications"
+                android:background="@drawable/icon_notifications"
+                android:layout_height="30dp"
+                android:layout_width="30dp"
+                android:gravity="left"
+                />
+
+        <!-- NOTIFICATION ALERTS -->
+
+
+        <TextView
+                android:layout_column="2"
+                android:layout_row="5"
+                android:id="@+id/text_notifications"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="5dp"
+                android:text="@string/text_notifications"
+                android:textStyle="bold"
+                android:textSize="@dimen/buzzerbox_font_size_default"
+                android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                android:textColor="@color/buzzerbox_black"
+                android:gravity="left" />
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="15dp" >
+            <CheckBox
+                    android:layout_column="3"
+                    android:layout_row="5"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:padding="5dp"
+                    android:text="@string/notify_by_email"
+                    android:id="@+id/notify_by_email"
+                    android:textSize="@dimen/buzzerbox_font_size_default"
+                    android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                    android:textColor="@color/buzzerbox_black"
+                    android:gravity="left"/>
+            <CheckBox
+                    android:layout_column="3"
+                    android:layout_row="5"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:padding="5dp"
+                    android:text="@string/notify_by_phone"
+                    android:id="@+id/notify_by_phone"
+                    android:textSize="@dimen/buzzerbox_font_size_default"
+                    android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                    android:textColor="@color/buzzerbox_black"
+                    android:gravity="left"/>
+
+        </LinearLayout>
+
+        <!-- LINE BREAK -->
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_columnSpan="3"
+                android:layout_column="1"
+                android:layout_row="6">
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/buzzerbox_grey"
+                    android:layout_marginBottom="5dp"
+                    />
+        </LinearLayout>
+        <!-- -->
+
+        <ImageView
+                android:layout_column="1"
+                android:layout_row="7"
+                android:id="@+id/icon_frequency"
+                android:background="@drawable/icon_frequency"
+                android:layout_height="30dp"
+                android:layout_width="30dp"
+                android:gravity="left"
+                />
+
+        <!-- ALERT FREQUENCY SPINNER -->
+
+        <TextView
+                android:layout_column="2"
+                android:layout_row="7"
+                android:id="@+id/text_frequency"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:padding="5dp"
+                android:text="@string/text_frequency"
+                android:textSize="@dimen/buzzerbox_font_size_default"
+                android:textStyle="bold"
+                android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                android:textColor="@color/buzzerbox_black"
+                android:gravity="left" />
+
+        <LinearLayout android:layout_column="3"
+                      android:layout_row="7"
+                      android:layout_height="wrap_content"
+                      android:layout_width="wrap_content"
+                      android:layout_marginLeft="20dp">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/buzzerbox_font_size_default"
+                    android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                    android:textColor="@color/buzzerbox_black"
+                    android:text="@string/notify_frequency_text_string_start"
+                    android:padding="5dp"
+                    />
+
+            <Spinner
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:width="35dp"
+                    android:textSize="@dimen/buzzerbox_font_size_default"
+
+                    android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                    android:textColor="@color/buzzerbox_grey"
+                    android:padding="5dp"
+                    android:id="@+id/spinner_frequency" />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/buzzerbox_font_size_default"
+                    android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                    android:textColor="@color/buzzerbox_black"
+                    android:text="@string/notify_frequency_text_string_end"
+                    android:padding="5dp"
+                    />
+
+        </LinearLayout>
+
+        <!-- LINE BREAK -->
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_columnSpan="3"
+                android:layout_column="1"
+                android:layout_row="8">
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/buzzerbox_grey"
+                    android:layout_marginBottom="5dp"
+                    />
+        </LinearLayout>
+        <!-- -->
+    </GridLayout>
 </LinearLayout>
