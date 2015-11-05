@@ -31,7 +31,7 @@ public class SettingsFragment extends AbstractFragment {
     private ViewGroup background;
     private List<Integer> colourList = Utility.getColours();
 
-    // SOUNDPOOL // AK edit 5-11-2015 //
+    // SOUNDPOOL -- >> // AK edit 5-11-2015 //
     // Variables for soundpool //
 
     private SoundPool soundPool;
@@ -73,8 +73,8 @@ public class SettingsFragment extends AbstractFragment {
 
         Button  BuzzAudioFX = (Button) view.findViewById(R.id.button_spinner_audio_listen);
 
-        // Change new OnClickListener & implemented methods? below Dialog or viewView ?//
-        // Causing Redline @ Override onClick implemented method below //
+        // Change new OnClickListener [ & implemented methods ? ] below to Dialog or viewView [ ?] //
+        // This is Causing Redline @Override onClick implemented method below [ ? ] //
 
         BuzzAudioFX.setOnClickListener(new DialogInterface.OnClickListener() {
             //
