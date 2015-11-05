@@ -47,9 +47,9 @@ public class SettingsDatabase extends SQLiteOpenHelper {
     }
 
 
-    public void runBackGroundLoader(){
-        new BackGroundLoader().execute();
-    }
+//    public void runBackGroundLoader(){
+//        new BackGroundLoader().execute();
+//    }
 
     public void runBackGroundSaver(){
         new BackGroundSaver().execute();

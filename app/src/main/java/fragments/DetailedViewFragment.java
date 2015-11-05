@@ -1,10 +1,10 @@
 package fragments;
 
 import abstracts.AbstractFragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.TextView;
 import holder.BuzzHolder;
 import holder.DataHolder;
@@ -33,7 +33,7 @@ public class DetailedViewFragment extends AbstractFragment {
     TextView alarmTotalMonth;
     TextView alarmTotal;
     TextView alarmTimeSinceLast;
-//    private Callback mCallback;
+
 
     @Override
     protected int getLayout() {
@@ -68,7 +68,7 @@ public class DetailedViewFragment extends AbstractFragment {
 
         viewGroup = (ViewGroup) view.findViewById(R.id.open_log_title);
         viewGroup.setBackgroundColor(getResources().getColor(Utility.getColours().get(settings.getColour())));
-//        mCallback.setCurrentTitle(buzz.getAlarmName());
+
     }
 
     public static Fragment newInstance(Object obj) {
@@ -79,41 +79,19 @@ public class DetailedViewFragment extends AbstractFragment {
         return fragment;
     }
 
-
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//
-//        if(!(context instanceof Callback)){
-//            throw new IllegalStateException();
-//        }
-//        mCallback = (Callback) context;
-//    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setHasOptionsMenu(true); // changed from true to test hiding action bar - AK 13-10-2015 //
-        if (getArguments() != null) {
+
+        if (getArguments() != null)
             buzz = (BuzzHolder) getArguments().getSerializable(KEY);
         }
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_main, menu);
     }
-
-//    @Override
-//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-//        super.onCreateOptionsMenu(menu, inflater);
-//        inflater.inflate(R.menu.menu_main, menu);
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        return mCallback.onOptionsItemSelected(item);
-//    }
-//
-//    public interface Callback{
-////        boolean onOptionsItemSelected(MenuItem item);
-//        void setCurrentTitle(String title);
-//    }
-
 
 }

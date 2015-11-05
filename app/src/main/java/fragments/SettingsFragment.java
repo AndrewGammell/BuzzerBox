@@ -112,6 +112,7 @@ public class SettingsFragment extends AbstractFragment {
         @Override
         public void onClick(View v){
             switch (v.getId()){
+                //  EDITS NEEDED //
                 case R.id.button_spinner_audio_listen: soundPool.play(sound_1, leftVolume, rightVolume, playPriority, loop, rate);
                     break;
 

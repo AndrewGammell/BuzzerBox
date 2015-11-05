@@ -3,6 +3,7 @@ package activities;
 import SQLLite.SettingsDatabase;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -12,6 +13,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import fragments.LogViewFragment;
 import fragments.OverviewFragment;
 import io.buzzerbox.app.R;
@@ -19,37 +21,47 @@ import persistence.DataPersister;
 import util.MessageTools;
 import util.Utility;
 
-/**
- * uses tabs and swipes to navigate through the pages displayed.
- */
+
 public class PageViewActivity extends AppCompatActivity implements OverviewFragment.Callback
         , LogViewFragment.Callback {
-
+    //    private static final String OBJECT_KEY = "OBJECT";
+//    private static final String BUNDLE_KEY = "BUNDLE";
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     private PageChangeListener mPageChangeListener = new PageChangeListener();
     private ActionBar mActionBar;
     private ActionBar.Tab overviewTab;
     private ActionBar.Tab logTab;
-
+    private ViewGroup viewGroup;
 
     @Override
     public void onBackPressed() {
-        finish();
+    finish();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Log.d("S", "onResume in PageActivity");
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pager_layout);
         mActionBar = getSupportActionBar();
+        updateView();
+        createTabs();
+    }
+
+    void updateView() {
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.addOnPageChangeListener(mPageChangeListener);
 
-
-        createTabs();
     }
 
     private void createTabs() {
@@ -99,6 +111,16 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
         mActionBar.addTab(overviewTab);
         mActionBar.addTab(logTab);
     }
+
+
+    //     uses the DataPerisiter class to save the User when this Activity is stopped.
+//    DataHolder needs to be saved;
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        DataPersister.saveUser(this);
+//        new SettingsDatabase(this).runBackGroundSaver();
+//    }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 

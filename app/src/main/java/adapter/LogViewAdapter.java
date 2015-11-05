@@ -25,6 +25,7 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
 
     private String BUNDLE_KEY = "BUNDLE";
     private String OBJECT_KEY = "OBJECT";
+    private String CALL_KEY = "CALL";
     private List list;
     //    private ViewController control;
     private Context context;
@@ -100,7 +101,8 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
         Buzz buzz = (Buzz)list.get(position);
         Intent intent = new Intent(context, DisplayActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable(OBJECT_KEY, (Serializable) DataHolder.getDataHolder().getBuzzHolder(buzz.getName()));
+        bundle.putSerializable(OBJECT_KEY, DataHolder.getDataHolder().getBuzzHolder(buzz.getName()));
+        bundle.putInt(CALL_KEY,0);
         intent.putExtra(BUNDLE_KEY, bundle);
 
         context.startActivity(intent);

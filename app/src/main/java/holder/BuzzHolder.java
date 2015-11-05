@@ -28,12 +28,12 @@ public class BuzzHolder implements Serializable {
     private DateTime lastBuzz;
     private DateTime secondLastBuzz;
     private List<Buzz> list = new ArrayList<Buzz>();
-
+    private Settings settings;
 
 
     public BuzzHolder(String type) {
         this.type = type;
-
+//        this.settings = new Settings(type);
     }
 
     public List<Buzz> getList() {
@@ -76,7 +76,7 @@ public class BuzzHolder implements Serializable {
         this.type = type;
     }
 
-    public String getTimeSinceLastBuzz(){
+    public String getTimeSinceLastbuzz(){
         return Utility.timeSinceBuzz(lastBuzz);
     }
 
@@ -90,6 +90,8 @@ public class BuzzHolder implements Serializable {
 //    taking the string time stamp from each buzz and coverts it to a DateTime.
 //    passes the DateTime to the updateLastBuzz and isToday/Yesterday/Week/Month methods.
 
+
+//        resetCounters();
         DateTime dt;
         for (Buzz buzz : list) {
             if(buzz.getUpdated_at() != null ){
@@ -180,6 +182,18 @@ public class BuzzHolder implements Serializable {
 
 
 
+
+    public Settings getSettings(){
+        return settings;
+    }
+
+    private void resetCounters(){
+        today = 0;
+        yesterday = 0;
+        week = 0;
+        month = 0;
+        total = 0;
+    }
 
 
 }

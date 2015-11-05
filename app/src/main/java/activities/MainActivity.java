@@ -1,6 +1,7 @@
 package activities;
 
 
+import SQLLite.SettingsDatabase;
 import abstracts.AbstractActivity;
 import android.app.Activity;
 import android.content.Context;
@@ -13,7 +14,10 @@ import android.view.inputmethod.InputMethodManager;
 
 import authentication.LoginAsyncTask;
 import fragments.SplashFragment;
+import holder.DataHolder;
 import io.buzzerbox.app.R;
+import persistence.DataPersister;
+import singleton.User;
 import util.MessageTools;
 import util.Sorter;
 import util.Utility;
@@ -25,6 +29,18 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
     private String BUNDLE_KEY = "BUNDLE";
     private String CALL_KEY = "CALL";
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        User.getInstance(this);
+//        new SettingsDatabase(this).runBackGroundSaver();
+        if(DataHolder.getDataHolder().getSettingsList().size() == 0){
+            new SettingsDatabase(this).loadSettings();
+        }
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,13 +49,10 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
         login.execute("");
         displaySplash();
         new Sorter(this).execute();
+
     }
 
-    /**
-     * Used to hid the keypad when the screen is touched;
-     * @param event
-     * @return
-     */
+    //    Used to hid the keypad when the screen is touched;
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         hideKeyboard(this);
@@ -70,8 +83,6 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
             case R.id.btn_login:
                 if (Utility.isValidUser(this)) {
                     MessageTools.showLongToast(this, "User was validated");
-
-                    //replaceWithFragment(ListOverViewFragment.newInstance())
                     startNewActivity();
                 } else {
                     MessageTools.showLongToast(this, "not a valid user");
@@ -81,17 +92,10 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
                 startWebActivity(1);
                 MessageTools.showShortToast(this, "Fire up WebView to create account");
                 break;
-            case R.id.btn_forgot_password:
-                startWebActivity(2);
-                MessageTools.showShortToast(this, "Fire up WebView to reset password");
-                break;
         }
     }
 
-    /**
-     * Gets the current focus
-     * @param activity
-     */
+    //   Gets the current focus of the screen and if not null hides keypad;
     public static void hideKeyboard(Activity activity) {
         View view = activity.getCurrentFocus();
         if (view != null) {
@@ -100,19 +104,25 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
         }
     }
 
-    private void startNewActivity(){
-        Intent intent = new Intent(this,PageViewActivity.class);
+//    Fires up a new Activity and uses flags to prevent this
+//    Activity from being brought back from a back press.
+
+    private void startNewActivity() {
+        Intent intent = new Intent(this, PageViewActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         this.finish();
     }
 
-    private void startWebActivity(int in){
+//     Creates a Bundle and adds an int(CALL_KEY) to be put into the intent.
+//     Fires off a new Activity with Args.
+
+    private void startWebActivity(int in) {
         Bundle bundle = new Bundle();
-        bundle.putInt(CALL_KEY,in);
-        Intent intent = new Intent(this,DisplayActivity.class);
-        intent.putExtra(BUNDLE_KEY,bundle);
+        bundle.putInt(CALL_KEY, in);
+        Intent intent = new Intent(this, DisplayActivity.class);
+        intent.putExtra(BUNDLE_KEY, bundle);
         startActivity(intent);
     }
 }

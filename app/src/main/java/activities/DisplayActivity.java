@@ -43,7 +43,7 @@ public class DisplayActivity extends AbstractActivity {
 //   is stored in the Object variable obj.
 //   calls displayFragment() if no fragment is found.
     @Override
-    protected void doInOnCreate(Bundle saveInstanceState) {
+   public void onCreate(Bundle saveInstanceState) {
         if (call < 0) {
             if (getIntent().getBundleExtra(BUNDLE_KEY) != null) {
                 bundle = getIntent().getBundleExtra(BUNDLE_KEY);
