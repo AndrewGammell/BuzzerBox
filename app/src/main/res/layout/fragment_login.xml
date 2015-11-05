@@ -84,7 +84,7 @@
                 android:fontFamily="@string/buzzerbox_font_app_default"
                 android:textAlignment="center"
                 android:layout_marginBottom="20dp"
-                ></Button>
+                />
 
 
     </LinearLayout>

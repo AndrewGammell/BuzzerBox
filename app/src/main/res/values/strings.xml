@@ -162,12 +162,21 @@
     <!-- Spinner Values of Audio Sound FX used in layout_settings.xml -->
 
     <string-array name ="spinner_audio_files">
+        <!--
+        <item>Sound 1</item>
+         <item>Sound 2</item>
+         <item>Sound 3</item>
+         <item>Sound 4</item>
+         <item>Sound 5</item>
+         <item>Sound 6</item>
+         -->
         <item>Sound 1</item>
         <item>Sound 2</item>
         <item>Sound 3</item>
         <item>Sound 4</item>
         <item>Sound 5</item>
         <item>Sound 6</item>
+
     </string-array>
 
     <string-array name ="spinner_frequency">
