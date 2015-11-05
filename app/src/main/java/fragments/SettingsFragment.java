@@ -90,6 +90,7 @@ public class SettingsFragment extends AbstractFragment {
             }
         });
 
+
         return view;
     }
     // Create soundpool and load the files to correct vars //
@@ -122,24 +123,24 @@ public class SettingsFragment extends AbstractFragment {
                 // buzz_audio_1 , 2 3 4 5 6 7 8 9 etc //
 
 
-
-                case R.id.button_spinner_audio_listen: soundPool.play(sound_2, leftVolume, rightVolume, playPriority, loop, rate);
-                    break;
-                case R.id.button_spinner_audio_listen: soundPool.play(sound_3, leftVolume, rightVolume, playPriority, loop, rate);
-                    break;
-                case R.id.button_spinner_audio_listen: soundPool.play(sound_4, leftVolume, rightVolume, playPriority, loop, rate);
-                    break;
-                case R.id.button_spinner_audio_listen: soundPool.play(sound_5, leftVolume, rightVolume, playPriority, loop, rate);
-                    break;
-                case R.id.button_spinner_audio_listen: soundPool.play(sound_6, leftVolume, rightVolume, playPriority, loop, rate);
-                    break;
-                case R.id.button_spinner_audio_listen: soundPool.play(sound_7, leftVolume, rightVolume, playPriority, loop, rate);
-                    break;
-                case R.id.button_spinner_audio_listen: soundPool.play(sound_8, leftVolume, rightVolume, playPriority, loop, rate);
-                    break;
-                case R.id.button_spinner_audio_listen: soundPool.play(sound_9, leftVolume, rightVolume, playPriority, loop, rate);
-                    break;
-
+//
+//                case R.id.button_spinner_audio_listen: soundPool.play(sound_2, leftVolume, rightVolume, playPriority, loop, rate);
+//                    break;
+//                case R.id.button_spinner_audio_listen: soundPool.play(sound_3, leftVolume, rightVolume, playPriority, loop, rate);
+//                    break;
+//                case R.id.button_spinner_audio_listen: soundPool.play(sound_4, leftVolume, rightVolume, playPriority, loop, rate);
+//                    break;
+//                case R.id.button_spinner_audio_listen: soundPool.play(sound_5, leftVolume, rightVolume, playPriority, loop, rate);
+//                    break;
+//                case R.id.button_spinner_audio_listen: soundPool.play(sound_6, leftVolume, rightVolume, playPriority, loop, rate);
+//                    break;
+//                case R.id.button_spinner_audio_listen: soundPool.play(sound_7, leftVolume, rightVolume, playPriority, loop, rate);
+//                    break;
+//                case R.id.button_spinner_audio_listen: soundPool.play(sound_8, leftVolume, rightVolume, playPriority, loop, rate);
+//                    break;
+//                case R.id.button_spinner_audio_listen: soundPool.play(sound_9, leftVolume, rightVolume, playPriority, loop, rate);
+//                    break;
+//
 
             }
 
