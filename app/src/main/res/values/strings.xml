@@ -72,22 +72,6 @@
 
     <string name="buzzerbox_font_helvetica_neue">fonts/Helvetica-Neue.ttf</string>
 
-    <!-- ICON FONT -->
-
-    <string name="buzzerbox_font_icon_symbols">fonts/fontawesome.ttf</string>
-
-    <!-- Full Icon List available at http://fontawesome.github.io/Font-Awesome/3.2.1/cheatsheet/  -->
-
-    <!-- Speaker Icon value is (&#xf028;) -->
-
-    <!-- Close View Large X Icon value is (&#xf00d;) -->
-
-    <string name="icon_audio_speaker">&#xf028;</string>
-
-    <string name="icon_close_view_large_x">&#xf00d;</string>
-
-    <!-- -->
-
 
     <!-- -->
 
@@ -162,21 +146,12 @@
     <!-- Spinner Values of Audio Sound FX used in layout_settings.xml -->
 
     <string-array name ="spinner_audio_files">
-        <!--
-        <item>Sound 1</item>
-         <item>Sound 2</item>
-         <item>Sound 3</item>
-         <item>Sound 4</item>
-         <item>Sound 5</item>
-         <item>Sound 6</item>
-         -->
         <item>Sound 1</item>
         <item>Sound 2</item>
         <item>Sound 3</item>
         <item>Sound 4</item>
         <item>Sound 5</item>
         <item>Sound 6</item>
-
     </string-array>
 
     <string-array name ="spinner_frequency">

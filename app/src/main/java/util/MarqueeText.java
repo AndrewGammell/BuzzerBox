@@ -5,11 +5,17 @@
 //import android.view.Menu;
 //import android.widget.TextView;
 //import io.buzzerbox.app.R;
-//
+
+
+
+
 ///**
 // *  Created by K-Admin on 08/10/2015.
 //  EXAMPLE FOR REFERENCE ONLY
 // >> ALREADY FUNCTIONING in LogViewAdapter.java & layout_logview_card.xml //
+
+
+
 
 // */
 //public class MarqueeText extends Activity{

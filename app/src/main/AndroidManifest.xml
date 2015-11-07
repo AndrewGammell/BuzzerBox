@@ -9,6 +9,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         >
+
+
     <activity
         android:name="activities.MainActivity"
         android:windowSoftInputMode="adjustResize"

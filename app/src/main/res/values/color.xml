@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!-- Custom BuzzerBox Values -->
 
     <!-- STANDARD COLOUR VALUE SET for BuzzerBox -->
@@ -12,22 +13,16 @@
     <color name="buzzerbox_black">#000000</color>
     <!-- -->
 
-
-
-
     <!-- COLOUR SET SORTED BY NAMED DESIGN ELEMENTS for BuzzerBox -->
     <!-- top action bar main bg colour-->
     <color name="buzzerbox_action_bar">@color/buzzerbox_dark_blue</color>
     <!-- elements within top action bar, settings cog etc -->
     <color name="buzzerbox_action_bar_accent">@color/buzzerbox_yellow</color>
-    <!-- default color display for custom alarm colors to be individually set later by user -->
+    <!-- DEFAULT color display for custom alarm colors to be individually set later by user -->
     <!-- may need to edit here when setting unique custom colour chosen by user -->
     <color name="unique_alarm_color">@color/buzzerbox_yellow</color>
     <color name="buzzerbox_yellow_selected">#605f5e</color>
     <!-- -->
-
-
-
 
     <!-- COLOUR PICKER SETTING HEX VALUES -->
     <color name="colour_option_1">#f4d35e</color>
@@ -46,9 +41,8 @@
     <color name="colour_option_14">#ed7b84</color>
     <color name="colour_option_15">#667ef7</color>
     <color name="colour_option_16">#f40000</color>
-    <color name="colour_option_17">#000000</color>
+    <color name="colour_option_17">#679146</color>
     <color name="colour_option_18">#000000</color>
-
 
 
 </resources>

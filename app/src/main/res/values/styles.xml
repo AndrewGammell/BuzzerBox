@@ -1,9 +1,16 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
-        <!-- Customize your theme here. -->
+    <!-- -->
+    <!-- BASE APPLICATION THEME -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Any Base Customization happens here. -->
     </style>
+    <!-- END of Base application theme. -->
+    <!-- -->
+
+
+    <!-- MY CUSTOM THEME WITH TOOLBAR -->
+    <!-- Custom theme for Views that show the top ToolBar -->
     <style name="MyCustomTheme" parent="Theme.AppCompat.Light">
         <!-- Override the app bar color -->
         <item name="colorPrimary">@color/buzzerbox_blue</item>
@@ -13,20 +20,42 @@
         <item name="colorAccent">@color/buzzerbox_action_bar_accent</item>
         <!-- this colours the accents of existing text or spinners !-->
         <item name="android:fontFamily">@string/buzzerbox_font_app_default</item>
+        <!-- This is where ALL TEXT COLOR is being SET in the TOOLBAR !! -->
+        <item name="android:textColorPrimary">@color/buzzerbox_white</item>
+        <!-- This is where the SETTINGS/LOGOUT MENU TEXT COLOR is being SET in the TOOLBAR !! -->
+        <item name="android:textColor">@color/buzzerbox_dark_blue</item>
+        <!-- This is where The SETTINGS/LOGOUT MENU BACKGROUND COLOR is being SET in the TOOLBAR !! -->
+        <item name="android:colorBackground">@color/buzzerbox_yellow</item>
     </style>
+    <!-- END of Custom theme for Views that show the top ToolBar -->
+    <!-- -->
 
+
+
+    <!-- MY CUSTOM THEME WITHOUT A TOOLBAR -->
+    <!-- Custom theme for Views that DO NOT show the top ToolBar -->
     <style name="MyCustomThemeNoBar" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Override the app bar color -->
-        <item name="colorPrimary">@color/buzzerbox_blue</item>
+        <item name="colorPrimary">@color/buzzerbox_yellow</item>
         <!-- this colours the main action bar !-->
         <item name="colorPrimaryDark">@color/buzzerbox_dark_blue</item>
-        <!-- this colours th very top where batter and signal are !-->
+        <!-- this colours th very top where battery and signal indicators are !-->
         <item name="colorAccent">@color/buzzerbox_action_bar_accent</item>
         <!-- this colours the accents of existing text or spinners !-->
         <item name="android:fontFamily">@string/buzzerbox_font_app_default</item>
     </style>
+    <!-- END of Custom theme for Views that DO NOT show the top ToolBar -->
+    <!-- -->
 
+
+
+    <!-- -->
     <style name="AlarmImageView" parent="Theme.AppCompat.Light.NoActionBar">
          <item name="android:radius"> 18dp</item>
     </style>
+    <!-- -->
+
+
+
+
 </resources>

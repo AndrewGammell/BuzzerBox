@@ -76,22 +76,22 @@ public class SettingsFragment extends AbstractFragment {
         // Change new OnClickListener & implemented methods? below Dialog or viewView ?//
         // Causing Redline @ Override onClick implemented method below //
 
-        BuzzAudioFX.setOnClickListener(new DialogInterface.OnClickListener() {
-            //
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-            }
-
-            @Override // Redline Error !! Fix ??
-
-            public void onClick(View view) {
-                // Fix needed here?
-
-            }
-        });
+//        BuzzAudioFX.setOnClickListener(new DialogInterface.OnClickListener() {
+//            //
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//            }
+//
+//            @Override // Redline Error !! Fix ??
+//
+//            public void onClick(View view) {
+//                // Fix needed here?
+//
+//            }
+//        });
 
         return view;
-    }
+      }
     // Create soundpool and load the files to correct vars //
     // SoundPool is Deprecated but Necessary to include for pre-Lollipop Android Versions //
 
@@ -123,22 +123,22 @@ public class SettingsFragment extends AbstractFragment {
 
 
 
-                case R.id.button_spinner_audio_listen: soundPool.play(sound_2, leftVolume, rightVolume, playPriority, loop, rate);
-                    break;
-                case R.id.button_spinner_audio_listen: soundPool.play(sound_3, leftVolume, rightVolume, playPriority, loop, rate);
-                    break;
-                case R.id.button_spinner_audio_listen: soundPool.play(sound_4, leftVolume, rightVolume, playPriority, loop, rate);
-                    break;
-                case R.id.button_spinner_audio_listen: soundPool.play(sound_5, leftVolume, rightVolume, playPriority, loop, rate);
-                    break;
-                case R.id.button_spinner_audio_listen: soundPool.play(sound_6, leftVolume, rightVolume, playPriority, loop, rate);
-                    break;
-                case R.id.button_spinner_audio_listen: soundPool.play(sound_7, leftVolume, rightVolume, playPriority, loop, rate);
-                    break;
-                case R.id.button_spinner_audio_listen: soundPool.play(sound_8, leftVolume, rightVolume, playPriority, loop, rate);
-                    break;
-                case R.id.button_spinner_audio_listen: soundPool.play(sound_9, leftVolume, rightVolume, playPriority, loop, rate);
-                    break;
+//                case R.id.button_spinner_audio_listen: soundPool.play(sound_2, leftVolume, rightVolume, playPriority, loop, rate);
+//                    break;
+//                case R.id.button_spinner_audio_listen: soundPool.play(sound_3, leftVolume, rightVolume, playPriority, loop, rate);
+//                    break;
+//                case R.id.button_spinner_audio_listen: soundPool.play(sound_4, leftVolume, rightVolume, playPriority, loop, rate);
+//                    break;
+//                case R.id.button_spinner_audio_listen: soundPool.play(sound_5, leftVolume, rightVolume, playPriority, loop, rate);
+//                    break;
+//                case R.id.button_spinner_audio_listen: soundPool.play(sound_6, leftVolume, rightVolume, playPriority, loop, rate);
+//                    break;
+//                case R.id.button_spinner_audio_listen: soundPool.play(sound_7, leftVolume, rightVolume, playPriority, loop, rate);
+//                    break;
+//                case R.id.button_spinner_audio_listen: soundPool.play(sound_8, leftVolume, rightVolume, playPriority, loop, rate);
+//                    break;
+//                case R.id.button_spinner_audio_listen: soundPool.play(sound_9, leftVolume, rightVolume, playPriority, loop, rate);
+//                    break;
 
 
             }
