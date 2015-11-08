@@ -4,7 +4,8 @@
             android:radius="14dp"
             />
     <solid
-            android:color="@null"/>
+            android:color="@null"
+            android:background="@drawable/icon_tick_state_selection"/>
     <padding
             android:left="0dp"
             android:top="0dp"
@@ -15,4 +16,5 @@
             android:width="24dp"
             android:height="24dp"
             />
+
 </shape>

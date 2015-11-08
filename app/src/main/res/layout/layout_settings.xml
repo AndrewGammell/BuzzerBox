@@ -155,6 +155,7 @@
                     android:padding="15dp"
                     android:id="@+id/colour_picker_grid">
                 <!-- FIRST ROW OF SIX -->
+                <!-- NEED TO FIX - setting checkbox colors by BackgroundTint / colorControlNormal / colorAccent not supported below v21 -->
                 <CheckBox
                         android:tag="colour"
                         android:layout_column="0"
@@ -163,6 +164,7 @@
                         android:layout_height="wrap_content"
                         android:button="@drawable/checkbox_selector"
                         android:background="@drawable/unique_alarm_color_picker_shape"
+                        android:colorControlNormal="@color/colour_option_1"
                         android:backgroundTint="@color/colour_option_1"
                         android:id="@+id/colour_1"/>
                 <CheckBox
