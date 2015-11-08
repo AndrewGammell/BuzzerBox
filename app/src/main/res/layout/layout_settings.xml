@@ -99,7 +99,6 @@
                 android:layout_column="3"
                 android:layout_row="1"
                 android:id="@+id/spinner_audio_file_list"
-                android:text="@string/text_spinner_default"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:width="35dp"
@@ -142,6 +141,7 @@
                 android:padding="5dp"
                 android:text="@string/text_color"
                 android:textSize="@dimen/buzzerbox_font_size_default"
+                android:textStyle="bold"
                 android:fontFamily="@string/buzzerbox_font_app_default_bold"
                 android:textColor="@color/buzzerbox_black"
                 android:gravity="left"/>
