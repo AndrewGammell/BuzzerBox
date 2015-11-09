@@ -61,7 +61,7 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
 
         Buzz buzz = (Buzz) list.get(i);
         itemHolder.alarmColour.setBackgroundColor(context.getResources()
-                .getColor(colours.get(15))); // This Default hardcoded number as per color picker list  -- may need edit //
+                .getColor(colours.get(DataHolder.getDataHolder().getSettings(buzz.getName()).getColour()))); // This Default hardcoded number as per color picker list  -- may need edit //
         itemHolder.alarmName.setText(buzz.getName());
         itemHolder.alarmTimeSinceLast.setText(String.valueOf(buzz.getTimeSinceBuzz()));
 
