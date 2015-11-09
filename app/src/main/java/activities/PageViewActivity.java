@@ -15,7 +15,9 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import fragments.LogViewFragment;
+import fragments.LoginFragment;
 import fragments.OverviewFragment;
+import fragments.SettingsFragment;
 import io.buzzerbox.app.R;
 import persistence.DataPersister;
 import util.MessageTools;
@@ -34,17 +36,21 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
     private ActionBar.Tab logTab;
     private ViewGroup viewGroup;
 
+
+//    starts a new intent of action main to category home to prevent login reappearing.
     @Override
     public void onBackPressed() {
-    finish();
+   Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        Log.d("S", "onResume in PageActivity");
-    }
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Log.d("S", "onResume in PageActivity");
+//    }
 
 
     @Override
@@ -113,15 +119,6 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
     }
 
 
-    //     uses the DataPerisiter class to save the User when this Activity is stopped.
-//    DataHolder needs to be saved;
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//        DataPersister.saveUser(this);
-//        new SettingsDatabase(this).runBackGroundSaver();
-//    }
-
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
@@ -173,13 +170,11 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
     }
 
     //    calls the logout method in the Utility class then,
-//    recalls the MainActivity with flags to prevent returning with back press.
+//   calls back pressed and finishAffinity().
     private void goToLogin() {
         Utility.logout(this);
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+        onBackPressed();
+        this.finishAffinity();
     }
 
     //     Using onPageSelected to set the ActionBar title to the currently displayed fragment.
