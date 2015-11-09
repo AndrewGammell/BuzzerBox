@@ -15,6 +15,7 @@ import holder.DataHolder;
 import io.buzzerbox.app.R;
 import settings.Settings;
 
+import util.MessageTools;
 import util.Utility;
 
 import java.util.ArrayList;
@@ -68,62 +69,62 @@ public class SettingsFragment extends AbstractFragment {
     }
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater.inflate((R.layout.layout_settings), container, false);
-
-        loadBuzzAudioFX();
-
-        Button  BuzzAudioFX = (Button) view.findViewById(R.id.button_spinner_audio_listen);
-
-        // Change new OnClickListener & implemented methods? below Dialog or viewView ?//
-        // Causing Redline @ Override onClick implemented method below //
-
-//        BuzzAudioFX.setOnClickListener(new DialogInterface.OnClickListener() {
-//            //
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//            }
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+//        View view = inflater.inflate((R.layout.layout_settings), container, false);
 //
-//            @Override // Redline Error !! Fix ??
+//        loadBuzzAudioFX();
 //
-//            public void onClick(View view) {
-//                // Fix needed here?
+//        Button BuzzAudioFX = (Button) view.findViewById(R.id.button_spinner_audio_listen);
 //
-//            }
-//        });
-
-        return view;
-      }
+//        // Change new OnClickListener & implemented methods? below Dialog or viewView ?//
+//        // Causing Redline @ Override onClick implemented method below //
+//
+////        BuzzAudioFX.setOnClickListener(new DialogInterface.OnClickListener() {
+////            //
+////            @Override
+////            public void onClick(DialogInterface dialogInterface, int i) {
+////            }
+////
+////            @Override // Redline Error !! Fix ??
+////
+////            public void onClick(View view) {
+////                // Fix needed here?
+////
+////            }
+////        });
+//
+//        return view;
+//    }
     // Create soundpool and load the files to correct vars //
     // SoundPool is Deprecated but Necessary to include for pre-Lollipop Android Versions //
 
-    private void loadBuzzAudioFX(){
+    private void loadBuzzAudioFX() {
         soundPool = new SoundPool(maxStreams, streamType, srcQuality);
-        sound_1 = soundPool.load(getContext(),R.raw.buzz_audio_1, loadPriority);
-        sound_2 = soundPool.load(getContext(),R.raw.buzz_audio_2, loadPriority);
-        sound_3 = soundPool.load(getContext(),R.raw.buzz_audio_3, loadPriority);
-        sound_4 = soundPool.load(getContext(),R.raw.buzz_audio_4, loadPriority);
-        sound_5 = soundPool.load(getContext(),R.raw.buzz_audio_5, loadPriority);
-        sound_6 = soundPool.load(getContext(),R.raw.buzz_audio_6, loadPriority);
-        sound_7 = soundPool.load(getContext(),R.raw.buzz_audio_7, loadPriority);
-        sound_8 = soundPool.load(getContext(),R.raw.buzz_audio_8, loadPriority);
-        sound_9 = soundPool.load(getContext(),R.raw.buzz_audio_9, loadPriority);
+        sound_1 = soundPool.load(getContext(), R.raw.buzz_audio_1, loadPriority);
+        sound_2 = soundPool.load(getContext(), R.raw.buzz_audio_2, loadPriority);
+        sound_3 = soundPool.load(getContext(), R.raw.buzz_audio_3, loadPriority);
+        sound_4 = soundPool.load(getContext(), R.raw.buzz_audio_4, loadPriority);
+        sound_5 = soundPool.load(getContext(), R.raw.buzz_audio_5, loadPriority);
+        sound_6 = soundPool.load(getContext(), R.raw.buzz_audio_6, loadPriority);
+        sound_7 = soundPool.load(getContext(), R.raw.buzz_audio_7, loadPriority);
+        sound_8 = soundPool.load(getContext(), R.raw.buzz_audio_8, loadPriority);
+        sound_9 = soundPool.load(getContext(), R.raw.buzz_audio_9, loadPriority);
     }
 
     private class Clicker implements View.OnClickListener {
         @Override
-        public void onClick(View v){
-            switch (v.getId()){
+        public void onClick(View v) {
+            switch (v.getId()) {
                 //  EDITS NEEDED //
-                case R.id.button_spinner_audio_listen: soundPool.play(sound_1, leftVolume, rightVolume, playPriority, loop, rate);
+                case R.id.button_spinner_audio_listen:
+                    soundPool.play(sound_1, leftVolume, rightVolume, playPriority, loop, rate);
                     break;
 
 
                 // Edit to Pass in Selected Sound Vars here from audio_spinner list when button press is detected //
                 // Defaulting to First Sound Only //
                 // buzz_audio_1 , 2 3 4 5 6 7 8 9 etc //
-
 
 
 //                case R.id.button_spinner_audio_listen: soundPool.play(sound_2, leftVolume, rightVolume, playPriority, loop, rate);
@@ -152,8 +153,6 @@ public class SettingsFragment extends AbstractFragment {
     }
 
 
-
-
     @Override
     protected int getLayout() {
         return R.layout.layout_settings;
@@ -161,8 +160,8 @@ public class SettingsFragment extends AbstractFragment {
 
     public void instantiateWidgets(View view) {
 
-        background = (ViewGroup)view.findViewById(R.id.layout_settings);
-        colourContainer = (ViewGroup)view.findViewById(R.id.colour_picker_grid);
+        background = (ViewGroup) view.findViewById(R.id.layout_settings);
+        colourContainer = (ViewGroup) view.findViewById(R.id.colour_picker_grid);
 
         alarmType = (TextView) view.findViewById(R.id.text_alarm_type);
         alarmType.setText(settings.getType());
@@ -175,7 +174,8 @@ public class SettingsFragment extends AbstractFragment {
         spinnerFrequency.setAdapter(getAdapter(R.array.spinner_frequency));
         spinnerFrequency.setOnItemSelectedListener(new SpinnerItemSelectedListener());
 
-        checkboxes = getViewsByTag(colourContainer,"colour");
+        checkboxes = getViewsByTag(colourContainer, "colour");
+
         setupCheckboxes();
 
         setCurrentSettings();
@@ -218,6 +218,7 @@ public class SettingsFragment extends AbstractFragment {
                     Log.d("TAG", "frequency in data holder is " + il);
             }
         }
+
         @Override
         public void onNothingSelected(AdapterView<?> adapterView) {
         }
@@ -226,7 +227,7 @@ public class SettingsFragment extends AbstractFragment {
     private void setCurrentSettings() {
         spinnerSound.setSelection(settings.getSound());
         spinnerFrequency.setSelection(settings.getFrequency() - 1);
-        checkboxes.get(settings.getColour()).setSelected(true);
+
         updateDisplay();
     }
 
@@ -234,7 +235,7 @@ public class SettingsFragment extends AbstractFragment {
         background.setBackgroundColor(getResources().getColor(colourList.get(settings.getColour())));
     }
 
-    private ArrayList<View> getViewsByTag(ViewGroup root, String tag){
+    private ArrayList<View> getViewsByTag(ViewGroup root, String tag) {
         ArrayList<View> views = new ArrayList<View>();
         final int childCount = root.getChildCount();
         for (int i = 0; i < childCount; i++) {
@@ -252,81 +253,79 @@ public class SettingsFragment extends AbstractFragment {
         return views;
     }
 
-    private void setupCheckboxes(){
-
+    private void setupCheckboxes() {
         CheckBox c;
-        for(View v: checkboxes){
-            c = (CheckBox)v;
+        for (View v : checkboxes) {
+            c = (CheckBox) v;
             c.setOnCheckedChangeListener(new CheckBoxListener());
-
         }
     }
 
-    private class CheckBoxListener implements CheckBox.OnCheckedChangeListener{
+    private class CheckBoxListener implements CheckBox.OnCheckedChangeListener {
 
         @Override
         public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
-                switchColours(compoundButton.getId());
-
-
-        }
-
-        private void switchColours(int id){
-            switch(id){
-                case R.id.colour_1: settings.setColour(0);
-                    Log.d("C","0 picked");
+            switch (compoundButton.getId()) {
+                case R.id.colour_1:
+                    settings.setColour(0);
                     break;
-                case R.id.colour_2: settings.setColour(1);
+                case R.id.colour_2:
+                    settings.setColour(1);
                     break;
-                case R.id.colour_3: settings.setColour(2);
+                case R.id.colour_3:
+                    settings.setColour(2);
                     break;
-                case R.id.colour_4: settings.setColour(3);
+                case R.id.colour_4:
+                    settings.setColour(3);
                     break;
-                case R.id.colour_5: settings.setColour(4);
+                case R.id.colour_5:
+                    settings.setColour(4);
                     break;
-                case R.id.colour_6: settings.setColour(5);
+                case R.id.colour_6:
+                    settings.setColour(5);
                     break;
-                case R.id.colour_7: settings.setColour(6);
+                case R.id.colour_7:
+                    settings.setColour(6);
                     break;
-                case R.id.colour_8: settings.setColour(7);
+                case R.id.colour_8:
+                    settings.setColour(7);
                     break;
-                case R.id.colour_9: settings.setColour(8);
+                case R.id.colour_9:
+                    settings.setColour(8);
                     break;
-                case R.id.colour_10: settings.setColour(9);
+                case R.id.colour_10:
+                    settings.setColour(9);
                     break;
-                case R.id.colour_11: settings.setColour(10);
+                case R.id.colour_11:
+                    settings.setColour(10);
                     break;
-                case R.id.colour_12: settings.setColour(11);
+                case R.id.colour_12:
+                    settings.setColour(11);
                     break;
-                case R.id.colour_13: settings.setColour(12);
+                case R.id.colour_13:
+                    settings.setColour(12);
                     break;
-                case R.id.colour_14: settings.setColour(13);
+                case R.id.colour_14:
+                    settings.setColour(13);
                     break;
-                case R.id.colour_15: settings.setColour(14);
+                case R.id.colour_15:
+                    settings.setColour(14);
                     break;
-                case R.id.colour_16: settings.setColour(15);
+                case R.id.colour_16:
+                    settings.setColour(15);
                     break;
-                case R.id.colour_17: settings.setColour(16);
+                case R.id.colour_17:
+                    settings.setColour(16);
                     break;
-                case R.id.colour_18: settings.setColour(17);
+                case R.id.colour_18:
+                    settings.setColour(17);
                     break;
 
             }
-            deselect(id);
             updateDisplay();
         }
 
-        private void deselect(int id){
-            CheckBox c;
-            for(View v: checkboxes){
-                c = (CheckBox)v;
 
-                if(c.getId() != id && c.isChecked() == true){
-                    c.setChecked(false);
-                    break;
-                }
-            }
-        }
     }
 }
