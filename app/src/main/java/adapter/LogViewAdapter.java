@@ -18,6 +18,7 @@ import java.util.List;
 
 /**
  * Created by Devstream on 05/10/2015.
+ *
  */
 public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHolder> {
 
@@ -31,9 +32,7 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
     public LogViewAdapter(List list, Context context) {
         super();
         this.list = list;
-        this.context = context;
-
-
+        this.context = context
 
     }
 
