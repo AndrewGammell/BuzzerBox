@@ -66,7 +66,7 @@
                                 android:padding="5dp"
                                 android:text="@string/text_today"
                                 android:textColor="@color/buzzerbox_black"
-                                android:textSize="@dimen/buzzerbox_font_size_extra_small"
+                                android:textSize="@dimen/default_buzzerbox_font_size_extra_small"
                                 android:gravity="center_vertical"/>
                         <TextView
                                 android:layout_column="0"
@@ -77,7 +77,7 @@
                                 android:padding="5dp"
                                 android:text="@string/txt_today_int_value"
                                 android:textColor="@color/buzzerbox_black"
-                                android:textSize="@dimen/buzzerbox_font_size_extra_small"
+                                android:textSize="@dimen/default_buzzerbox_font_size_extra_small"
                                 android:gravity="center_vertical"/>
                     </LinearLayout>
                     <LinearLayout android:orientation="horizontal"
@@ -92,7 +92,7 @@
                                 android:padding="5dp"
                                 android:text="@string/txt_yesterday"
                                 android:textColor="@color/buzzerbox_black"
-                                android:textSize="@dimen/buzzerbox_font_size_extra_small"
+                                android:textSize="@dimen/default_buzzerbox_font_size_extra_small"
                                 android:gravity="center_vertical"/>
                         <TextView
                                 android:layout_column="0"
@@ -103,7 +103,7 @@
                                 android:padding="5dp"
                                 android:text="@string/txt_yesterday_int_value"
                                 android:textColor="@color/buzzerbox_black"
-                                android:textSize="@dimen/buzzerbox_font_size_extra_small"
+                                android:textSize="@dimen/default_buzzerbox_font_size_extra_small"
                                 android:gravity="center_vertical"/>
                     </LinearLayout>
                     <LinearLayout android:orientation="horizontal"
@@ -116,7 +116,7 @@
                                 android:padding="5dp"
                                 android:text="@string/txt_total_week"
                                 android:textColor="@color/buzzerbox_black"
-                                android:textSize="@dimen/buzzerbox_font_size_extra_small"
+                                android:textSize="@dimen/default_buzzerbox_font_size_extra_small"
                                 android:gravity="center_vertical"/>
                         <TextView
                                 android:id="@+id/text_total_week_int_value"
@@ -125,7 +125,7 @@
                                 android:padding="5dp"
                                 android:text="@string/txt_total_week_int_value"
                                 android:textColor="@color/buzzerbox_black"
-                                android:textSize="@dimen/buzzerbox_font_size_extra_small"
+                                android:textSize="@dimen/default_buzzerbox_font_size_extra_small"
                                 android:gravity="center_vertical"/>
                     </LinearLayout>
                     <LinearLayout android:orientation="horizontal"
@@ -138,7 +138,7 @@
                                 android:padding="5dp"
                                 android:text="@string/txt_total_month"
                                 android:textColor="#ff000000"
-                                android:textSize="@dimen/buzzerbox_font_size_extra_small"
+                                android:textSize="@dimen/default_buzzerbox_font_size_extra_small"
                                 android:gravity="center_vertical"/>
                         <TextView
                                 android:id="@+id/text_total_month_int_value"
@@ -147,7 +147,7 @@
                                 android:padding="5dp"
                                 android:text="@string/txt_total_month_int_value"
                                 android:textColor="@color/buzzerbox_black"
-                                android:textSize="@dimen/buzzerbox_font_size_extra_small"
+                                android:textSize="@dimen/default_buzzerbox_font_size_extra_small"
                                 android:gravity="center_vertical"/>
                     </LinearLayout>
 
@@ -162,7 +162,7 @@
                                 android:textStyle="bold"
                                 android:text="@string/txt_total"
                                 android:textColor="@color/buzzerbox_black"
-                                android:textSize="@dimen/buzzerbox_font_size_extra_small"
+                                android:textSize="@dimen/default_buzzerbox_font_size_extra_small"
                                 android:gravity="center_vertical"/>
                         <TextView
                                 android:id="@+id/text_total_int_value"
@@ -172,7 +172,7 @@
                                 android:text="@string/txt_total_int_value"
                                 android:textStyle="bold"
                                 android:textColor="@color/buzzerbox_black"
-                                android:textSize="@dimen/buzzerbox_font_size_extra_small"
+                                android:textSize="@dimen/default_buzzerbox_font_size_extra_small"
                                 android:gravity="center_vertical"/>
                     </LinearLayout>
                     <LinearLayout android:orientation="horizontal"
@@ -185,7 +185,7 @@
                                 android:padding="5dp"
                                 android:text="Last buzz"
                                 android:textColor="@color/buzzerbox_grey"
-                                android:textSize="@dimen/buzzerbox_font_size_extra_small"
+                                android:textSize="@dimen/default_buzzerbox_font_size_extra_small"
                                 android:gravity="center_vertical"/>
                         <TextView
                                 android:id="@+id/text_last_buzz_int_value"
@@ -194,7 +194,7 @@
                                 android:padding="5dp"
                                 android:text="@string/txt_last_buzz_int_value"
                                 android:textColor="@color/buzzerbox_grey"
-                                android:textSize="@dimen/buzzerbox_font_size_extra_small"
+                                android:textSize="@dimen/default_buzzerbox_font_size_extra_small"
                                 android:gravity="center_vertical"/>
                     </LinearLayout>
                 </GridLayout>

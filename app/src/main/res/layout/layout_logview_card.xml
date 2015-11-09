@@ -37,7 +37,7 @@
                     android:layout_width="160dp"
                     android:padding="10dp"
                     android:text="@string/text_alarm_type"
-                    android:textSize="@dimen/buzzerbox_font_size_small"
+                    android:textSize="@dimen/default_buzzerbox_font_size_small"
                     android:textStyle="bold"
                     android:fontFamily="@string/buzzerbox_font_app_default_bold"
                     android:singleLine="true"
@@ -54,7 +54,7 @@
                     android:layout_width="wrap_content"
                     android:padding="5dp"
                     android:text="@string/txt_last_buzz"
-                    android:textSize="@dimen/buzzerbox_font_size_small"
+                    android:textSize="@dimen/default_buzzerbox_font_size_small"
                     android:fontFamily="@string/buzzerbox_font_app_default"
                     android:textColor="@color/buzzerbox_grey"
                     android:gravity="center_vertical"/>
@@ -66,7 +66,7 @@
                     android:layout_width="wrap_content"
                     android:padding="5dp"
                     android:text="@string/txt_last_buzz_int_value"
-                    android:textSize="@dimen/buzzerbox_font_size_small"
+                    android:textSize="@dimen/default_buzzerbox_font_size_small"
                     android:fontFamily="@string/buzzerbox_font_app_default"
                     android:textColor="@color/buzzerbox_grey"
                     android:gravity="center_vertical"/>

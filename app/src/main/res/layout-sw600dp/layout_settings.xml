@@ -18,7 +18,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@null"
-                android:layout_margin="25dp"
+                android:layout_margin="10dp"
                 >
             <LinearLayout
                     android:layout_column="0"
@@ -33,7 +33,7 @@
                         android:id="@+id/angle_bracket_less_than"
                         android:text="@string/angle_bracket_less_than"
                         android:fontFamily="@string/buzzerbox_font_app_default_bold"
-                        android:textSize="@dimen/default_buzzerbox_font_size_medium"
+                        android:textSize="@dimen/large_buzzerbox_font_size_medium"
                         android:textColor="@color/buzzerbox_white"
                         />
 
@@ -44,7 +44,7 @@
                         android:text="@string/text_alarm_type"
                         android:textStyle="bold"
                         android:fontFamily="@string/buzzerbox_font_app_default_bold"
-                        android:textSize="@dimen/default_buzzerbox_font_size_medium"
+                        android:textSize="@dimen/large_buzzerbox_font_size_medium"
                         android:textColor="@color/buzzerbox_white"
                         />
 
@@ -54,7 +54,7 @@
                         android:id="@+id/angle_bracket_greater_than"
                         android:text="@string/angle_bracket_greater_than"
                         android:fontFamily="@string/buzzerbox_font_app_default_bold"
-                        android:textSize="@dimen/default_buzzerbox_font_size_medium"
+                        android:textSize="@dimen/large_buzzerbox_font_size_medium"
                         android:textColor="@color/buzzerbox_white"
                         />
 
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:layout_gravity="left"
-            android:layout_margin="10dp">
+            android:layout_margin="20dp">
 
         <!-- SOUND SELECTION SPINNER -->
 
@@ -90,7 +90,7 @@
                 android:padding="5dp"
                 android:text="@string/text_sound"
                 android:textStyle="bold"
-                android:textSize="@dimen/default_buzzerbox_font_size_default"
+                android:textSize="@dimen/large_buzzerbox_font_size_default"
                 android:fontFamily="@string/buzzerbox_font_app_default_bold"
                 android:textColor="@color/buzzerbox_black"
                 android:gravity="left"/>
@@ -100,9 +100,9 @@
                 android:layout_row="1"
                 android:id="@+id/spinner_audio_file_list"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:width="35dp"
-                android:textSize="@dimen/default_buzzerbox_font_size_default"
+                android:textSize="@dimen/large_buzzerbox_font_size_default"
                 android:fontFamily="@string/buzzerbox_font_app_default_bold"
                 android:textColor="@color/buzzerbox_black"
                 android:gravity="right"/>
@@ -118,7 +118,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/buzzerbox_grey"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="10dp"
                     />
         </LinearLayout>
         <!-- -->
@@ -140,7 +140,7 @@
                 android:layout_width="wrap_content"
                 android:padding="5dp"
                 android:text="@string/text_color"
-                android:textSize="@dimen/default_buzzerbox_font_size_default"
+                android:textSize="@dimen/large_buzzerbox_font_size_default"
                 android:textStyle="bold"
                 android:fontFamily="@string/buzzerbox_font_app_default_bold"
                 android:textColor="@color/buzzerbox_black"
@@ -152,7 +152,7 @@
             <GridLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="15dp"
+                    android:padding="25dp"
                     android:id="@+id/colour_picker_grid">
                 <!-- FIRST ROW OF SIX -->
                 <!-- NEED TO FIX - setting checkbox colors by BackgroundTint / colorControlNormal / colorAccent not supported below v21 -->
@@ -364,7 +364,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/buzzerbox_grey"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="10dp"
                     />
         </LinearLayout>
         <!-- -->
@@ -391,7 +391,7 @@
                 android:padding="5dp"
                 android:text="@string/text_notifications"
                 android:textStyle="bold"
-                android:textSize="@dimen/default_buzzerbox_font_size_default"
+                android:textSize="@dimen/large_buzzerbox_font_size_default"
                 android:fontFamily="@string/buzzerbox_font_app_default_bold"
                 android:textColor="@color/buzzerbox_black"
                 android:gravity="left" />
@@ -409,7 +409,7 @@
                     android:padding="5dp"
                     android:text="@string/notify_by_email"
                     android:id="@+id/notify_by_email"
-                    android:textSize="@dimen/default_buzzerbox_font_size_default"
+                    android:textSize="@dimen/large_buzzerbox_font_size_default"
                     android:fontFamily="@string/buzzerbox_font_app_default_bold"
                     android:textColor="@color/buzzerbox_black"
                     android:gravity="left"/>
@@ -421,7 +421,7 @@
                     android:padding="5dp"
                     android:text="@string/notify_by_phone"
                     android:id="@+id/notify_by_phone"
-                    android:textSize="@dimen/default_buzzerbox_font_size_default"
+                    android:textSize="@dimen/large_buzzerbox_font_size_default"
                     android:fontFamily="@string/buzzerbox_font_app_default_bold"
                     android:textColor="@color/buzzerbox_black"
                     android:gravity="left"/>
@@ -438,7 +438,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/buzzerbox_grey"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="10dp"
                     />
         </LinearLayout>
         <!-- -->
@@ -463,7 +463,7 @@
                 android:layout_width="wrap_content"
                 android:padding="5dp"
                 android:text="@string/text_frequency"
-                android:textSize="@dimen/default_buzzerbox_font_size_default"
+                android:textSize="@dimen/large_buzzerbox_font_size_default"
                 android:textStyle="bold"
                 android:fontFamily="@string/buzzerbox_font_app_default_bold"
                 android:textColor="@color/buzzerbox_black"
@@ -478,7 +478,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/default_buzzerbox_font_size_default"
+                    android:textSize="@dimen/large_buzzerbox_font_size_default"
                     android:fontFamily="@string/buzzerbox_font_app_default_bold"
                     android:textColor="@color/buzzerbox_black"
                     android:text="@string/notify_frequency_text_string_start"
@@ -489,7 +489,7 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:width="35dp"
-                    android:textSize="@dimen/default_buzzerbox_font_size_default"
+                    android:textSize="@dimen/large_buzzerbox_font_size_default"
 
                     android:fontFamily="@string/buzzerbox_font_app_default_bold"
                     android:textColor="@color/buzzerbox_grey"
@@ -498,7 +498,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/default_buzzerbox_font_size_default"
+                    android:textSize="@dimen/large_buzzerbox_font_size_default"
                     android:fontFamily="@string/buzzerbox_font_app_default_bold"
                     android:textColor="@color/buzzerbox_black"
                     android:text="@string/notify_frequency_text_string_end"
@@ -517,7 +517,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/buzzerbox_grey"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="10dp"
                     />
         </LinearLayout>
         <!-- -->
