@@ -12,11 +12,13 @@ import java.util.List;
 
 /**
  * Created by Devstream on 29/09/2015.
+ * describes a user with a list of Buzz's
  */
 public class User implements Serializable{
     private static User user;
     private String username = "null";
     private String password = "null";
+    private List<Buzz>buzzList = new ArrayList<Buzz>();
 
     public String getAuthToken() {
         return authToken;
@@ -105,5 +107,11 @@ public class User implements Serializable{
         this.password = password;
     }
 
+    public void setList(List<Buzz> theBuzzList){
+        this.buzzList = theBuzzList;
+    }
 
+    public List<Buzz>getBuzzList() {
+        return buzzList;
+    }
 }

@@ -10,6 +10,7 @@ import singleton.User;
 
 /**
  * Created by Devstream on 30/09/2015.
+ *
  */
 public class DataPersister {
     private static final String PACKAGE_NAME = "io.buzzerbox.app";

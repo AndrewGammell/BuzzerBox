@@ -154,7 +154,8 @@ public class LoginAsyncTask {
      * private inner class makes a call on background thread
      * to retrieve Buzz Objects
      */
-    private class BuzzGet extends AsyncTask<String, String, Integer> {
+    public class BuzzGet extends AsyncTask<String, String, Integer> {
+
         @Override
         protected Integer doInBackground(String... args){
             int statusCode;
@@ -199,11 +200,11 @@ public class LoginAsyncTask {
                         // add mapped class to the User singleton's Buzz List
                         User.getInstance(c).getBuzzHolder().add(entry);
                         User.getInstance(c).addToBuzzTypes(entry);
-
                         buzzList.add(entry);
                     }
                     tries++;
                     tokenExpired = false;
+                    User.getInstance(c).setList(buzzList);
                    //responseJSON = new JSONObject(responseJSONContent);
                     Log.d(TAG, "The list of buzzes is " + buzzList.toString());
                     return statusCode;

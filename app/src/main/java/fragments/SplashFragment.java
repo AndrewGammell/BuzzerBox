@@ -11,15 +11,19 @@ import android.view.View;
 import authentication.LoginAsyncTask;
 import interfaces.ViewController;
 import io.buzzerbox.app.R;
+import persistence.DataPersister;
 import singleton.Buzz;
+import singleton.User;
 import util.Utility;
 
 import java.util.List;
 
 /**
  * Created by Devstream on 29/09/2015.
+ *
  */
 public class SplashFragment extends AbstractFragment {
+    private static final String TAG = "SplashFragment";
     private ViewController viewController;
     /**
      * create splash layout
@@ -49,8 +53,15 @@ public class SplashFragment extends AbstractFragment {
         super.onCreate(savedInstanceState);
 
         Log.d("TAG", "onCreate of splash");
-        new LoginAsyncTask("dummy@bundly.io", "dummy1234", getActivity()).execute("");
-        countdownToLogin();
+        User user = DataPersister.loadUser(getActivity());
+        if(user == null) {
+            new LoginAsyncTask("dummy@bundly.io", "dummy1234", getActivity()).execute("");
+            countdownToLogin();
+        }else{
+            Log.d(TAG, "Already have a user");
+            new LoginAsyncTask(user.getUsername(), user.getPassword(), getActivity()).execute("");
+            startActivity(PageViewActivity.newIntent(getActivity(), User.getInstance(getActivity()).getBuzzList()));
+        }
     }
 
 
