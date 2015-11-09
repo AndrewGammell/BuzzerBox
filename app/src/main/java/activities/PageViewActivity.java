@@ -1,5 +1,6 @@
 package activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,17 +14,25 @@ import fragments.LogViewFragment;
 import fragments.OverviewFragment;
 import io.buzzerbox.app.R;
 import persistence.DataPersister;
+import singleton.Buzz;
 import util.MessageTools;
 import util.Utility;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
  * Created by Devstream on 06/10/2015.
+ *
  */
 public class PageViewActivity extends AppCompatActivity implements OverviewFragment.Callback
         , LogViewFragment.Callback {
+    private static final String TAG = "PageViewActivity";
     private static final String OBJECT_KEY = "OBJECT";
     private static final String BUNDLE_KEY = "BUNDLE";
+    private List<Buzz>buzzList = new ArrayList<Buzz>();
     SectionsPagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
 
@@ -33,12 +42,15 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pager_layout);
 
+        buzzList = (List<Buzz>)getIntent().getExtras().getSerializable(OBJECT_KEY);
+        Log.d(TAG, "Got buzz list in PageView" + buzzList.toString());
+
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.addOnPageChangeListener(new PageChangeListener());
-        getSupportActionBar().setTitle(mSectionsPagerAdapter.getPageTitle(0));
-
+        if(getSupportActionBar() != null)
+            getSupportActionBar().setTitle(mSectionsPagerAdapter.getPageTitle(0));
     }
 
     @Override
@@ -60,7 +72,7 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
             Fragment fragment = null;
             switch (position) {
                 case 0:
-                    fragment = OverviewFragment.newInstance();
+                    fragment = OverviewFragment.newInstance(buzzList);
 
                     break;
                 case 1:
@@ -122,5 +134,11 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
         @Override
         public void onPageScrollStateChanged(int state) {
         }
+    }
+
+    public static Intent newIntent(Context context, List<Buzz> buzzList) {
+        Intent intent = new Intent(context, PageViewActivity.class);
+        intent.putExtra(OBJECT_KEY, (Serializable) buzzList);
+        return intent;
     }
 }

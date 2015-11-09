@@ -3,7 +3,6 @@ package fragments;
 import abstracts.AbstractFragment;
 import activities.PageViewActivity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
@@ -12,7 +11,10 @@ import android.view.View;
 import authentication.LoginAsyncTask;
 import interfaces.ViewController;
 import io.buzzerbox.app.R;
+import singleton.Buzz;
 import util.Utility;
+
+import java.util.List;
 
 /**
  * Created by Devstream on 29/09/2015.
@@ -72,9 +74,9 @@ public class SplashFragment extends AbstractFragment {
                     /**
                      *new intent to page view activity
                      */
-
-                    Intent in = new Intent(getActivity(), PageViewActivity.class);
-                    startActivity(in);
+                    final List<Buzz>buzzList = LoginAsyncTask.buzzList;
+                    if(buzzList != null)
+                        startActivity(PageViewActivity.newIntent(getActivity(), LoginAsyncTask.buzzList));
                 }else{
                     Log.d("TAG","Invalid user in splash");
                     viewController.replaceWithFragment(LoginFragment.newInstance());
@@ -89,6 +91,4 @@ public class SplashFragment extends AbstractFragment {
         viewController = null;
 
     }
-
-
 }

@@ -1,20 +1,12 @@
 package authentication;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
-
-import fragments.LoginFragment;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -24,17 +16,14 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.net.HttpURLConnection;
-import java.nio.charset.Charset;
-
-import io.buzzerbox.app.R;
 import persistence.DataPersister;
 import singleton.Buzz;
 import singleton.User;
+
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Neil on 10/10/2015.
@@ -56,8 +45,8 @@ public class LoginAsyncTask {
     private boolean hasEmailPass = false;
     private boolean hasAuth = false;
     private int tries;
-
     private Context c;
+    public static List<Buzz>buzzList = new ArrayList<Buzz>();
 
     public LoginAsyncTask(){}
 
@@ -161,6 +150,10 @@ public class LoginAsyncTask {
         }
     }
 
+    /**
+     * private inner class makes a call on background thread
+     * to retrieve Buzz Objects
+     */
     private class BuzzGet extends AsyncTask<String, String, Integer> {
         @Override
         protected Integer doInBackground(String... args){
@@ -201,16 +194,18 @@ public class LoginAsyncTask {
                     for (int i = 0; i < buzzes.size(); i++){
                         // create new buzz class and map json
                         Buzz entry = (new Gson()).fromJson(buzzes.get(i).toString(), Buzz.class);
+                        Log.d(TAG, entry.toString());
 
                         // add mapped class to the User singleton's Buzz List
                         User.getInstance(c).getBuzzHolder().add(entry);
                         User.getInstance(c).addToBuzzTypes(entry);
 
-                        Log.d("NEIL", entry.toString());
+                        buzzList.add(entry);
                     }
                     tries++;
                     tokenExpired = false;
                    //responseJSON = new JSONObject(responseJSONContent);
+                    Log.d(TAG, "The list of buzzes is " + buzzList.toString());
                     return statusCode;
                 } catch(Exception e){
                     // Need to put in place more solid checks for expired token in return json above

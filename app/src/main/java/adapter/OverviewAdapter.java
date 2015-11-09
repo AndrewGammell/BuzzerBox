@@ -1,28 +1,27 @@
 package adapter;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import io.buzzerbox.app.R;
-import tester.DummyAlerts;
+import singleton.Buzz;
 
 import java.util.List;
 
 /**
  * Created by Devstream on 05/10/2015.
+ *
  */
 public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHolder> {
+    private static final String TAG = "OverviewAdapter";
+    private List<Buzz> list;
 
-    private List list;
-
-
-    public OverviewAdapter(List list) {
+    public OverviewAdapter(List<Buzz> list) {
         super();
         this.list = list;
-
     }
 
     private int getLayout(){
@@ -37,14 +36,14 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
 
     @Override
     public void onBindViewHolder(ItemHolder itemHolder, int i) {
-        DummyAlerts dummy = (DummyAlerts)list.get(i);
-        itemHolder.alarmName.setText(dummy.getAlarmName());
-        itemHolder.alarmToday.setText(String.valueOf(dummy.getAlarmToday()));
-        itemHolder.alarmYesterday.setText(String.valueOf(dummy.getAlarmYesterday()));
-        itemHolder.alarmTotalWeek.setText(String.valueOf(dummy.getAlarmTotalWeek()));
-        itemHolder.alarmTotalMonth.setText(String.valueOf(dummy.getAlarmTotalMonth()));
-        itemHolder.alarmTotal.setText(String.valueOf(dummy.getAlarmTotal()));
-        itemHolder.alarmTimeSinceLast.setText(String.valueOf(dummy.getAlarmTimeSinceLast()));
+        Buzz dummy = list.get(i);
+        itemHolder.alarmName.setText(dummy.getName());
+        itemHolder.alarmToday.setText(String.valueOf(dummy.getId()));
+        itemHolder.alarmYesterday.setText(String.valueOf(dummy.getUser_id()));
+        itemHolder.alarmTotalWeek.setText(dummy.getCreated_at());
+        itemHolder.alarmTotalMonth.setText(dummy.getBuzz_key());
+        itemHolder.alarmTotal.setText(dummy.getUpdated_at());
+        itemHolder.alarmTimeSinceLast.setText(dummy.getIncoming_url());
     }
 
     @Override
@@ -52,7 +51,7 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
         return list.size();
     }
 
-    public class ItemHolder extends RecyclerView.ViewHolder {
+    public class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView alarmName;
         TextView alarmToday;
         TextView alarmYesterday;
@@ -63,6 +62,7 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
 
         ItemHolder(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
             alarmName = (TextView)itemView.findViewById(R.id.text_alarm_type);
             alarmToday = (TextView)itemView.findViewById(R.id.text_today_int_value);
             alarmYesterday = (TextView)itemView.findViewById(R.id.text_yesterday_int_value);
@@ -70,6 +70,13 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
             alarmTotalMonth = (TextView)itemView.findViewById(R.id.text_total_month_int_value);
             alarmTotal = (TextView)itemView.findViewById(R.id.text_total_int_value);
             alarmTimeSinceLast = (TextView)itemView.findViewById(R.id.text_last_buzz_int_value);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int index = getAdapterPosition();
+            Buzz buzz = list.get(index);
+            Log.d(TAG, buzz.toString());
         }
     }
 }

@@ -52,7 +52,9 @@ public class LoginFragment extends AbstractFragment {
 
     public void instantiateWidgets(View view) {
         username = (EditText) view.findViewById(R.id.txt_username);
+        username.setText("andrew");
         password = (EditText) view.findViewById(R.id.txt_password);
+        password.setText("alan");
         btn_login = (Button) view.findViewById(R.id.btn_login);
         btn_login.setOnClickListener(new ClickListener());
         btn_create_account = (Button) view.findViewById(R.id.btn_create_account);
@@ -64,8 +66,6 @@ public class LoginFragment extends AbstractFragment {
     public static Fragment newInstance() {
         return new LoginFragment();
     }
-
-
 
     private class ClickListener implements View.OnClickListener {
 
@@ -89,7 +89,6 @@ public class LoginFragment extends AbstractFragment {
         super.onSaveInstanceState(outState);
         outState.putString(EDITTEXT1,username.getText().toString());
         outState.putString(EDITTEXT2,password.getText().toString());
-
     }
 
    private void fillTextFields(Bundle savedInstanceState){

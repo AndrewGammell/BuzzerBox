@@ -3,6 +3,7 @@ package persistence;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import com.google.gson.Gson;
 import singleton.User;
 
@@ -28,6 +29,7 @@ public class DataPersister {
 
 
     public static boolean saveUser(Context context) {
+        Log.d(USER, "User is stored");
         User user = User.getInstance(context);
         Gson gson = new Gson();
         String json = gson.toJson(user);

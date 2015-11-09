@@ -89,10 +89,8 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
     }
 
     private void startNewActivity(){
-        Intent intent = new Intent(this,PageViewActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+        Log.d("TAG", "Getting pushed now");
+        startActivity(PageViewActivity.newIntent(this, LoginAsyncTask.buzzList));
         this.finish();
     }
 
