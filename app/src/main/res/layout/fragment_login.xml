@@ -34,6 +34,7 @@
                 android:layout_height="40dp"
                 android:gravity="center"
                 android:background="@color/buzzerbox_white"
+                android:textSize="@dimen/default_buzzerbox_font_size_small"
                 android:fontFamily="@string/buzzerbox_font_app_default"
                 android:textColorHint="@color/buzzerbox_grey"
                 android:textColor="@color/buzzerbox_black"
@@ -52,7 +53,7 @@
                 android:fontFamily="@string/buzzerbox_font_app_default"
                 android:textColorHint="@color/buzzerbox_grey"
                 android:textColor="@color/buzzerbox_black"
-                android:layout_marginBottom="60dp"
+                android:layout_marginBottom="30dp"
                 android:inputType="textPassword"
                 />
 
