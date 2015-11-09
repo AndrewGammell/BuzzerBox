@@ -5,7 +5,7 @@
             />
     <solid
             android:color="@null"
-            android:background="@drawable/icon_tick_state_selection"/>
+            />
     <padding
             android:left="0dp"
             android:top="0dp"

@@ -27,12 +27,17 @@
               android:theme="@style/MyCustomTheme">
 
     </activity>
-    <activity android:name="activities.DisplayActivity"
+    <activity android:name="activities.WebViewActivity"
               android:label="BuzzerBox"
               android:theme="@style/MyCustomThemeNoBar">
 
     </activity>
     <activity android:name="activities.SettingsPageActivity"
+              android:label="BuzzerBox"
+              android:theme="@style/MyCustomThemeNoBar">
+
+    </activity>
+    <activity android:name="activities.DetailedViewActivity"
               android:label="BuzzerBox"
               android:theme="@style/MyCustomThemeNoBar">
 

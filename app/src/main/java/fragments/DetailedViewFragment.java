@@ -1,7 +1,6 @@
 package fragments;
 
 import abstracts.AbstractFragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.*;
@@ -10,9 +9,7 @@ import holder.BuzzHolder;
 import holder.DataHolder;
 import io.buzzerbox.app.R;
 import settings.Settings;
-import tester.DB;
 import util.Utility;
-
 import java.io.Serializable;
 
 /**
@@ -86,12 +83,5 @@ public class DetailedViewFragment extends AbstractFragment {
         if (getArguments() != null)
             buzz = (BuzzHolder) getArguments().getSerializable(KEY);
         }
-
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_main, menu);
-    }
 
 }

@@ -1,6 +1,6 @@
 package adapter;
 
-import activities.DisplayActivity;
+import activities.DetailedViewActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +15,6 @@ import io.buzzerbox.app.R;
 import singleton.Buzz;
 import util.Utility;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -25,9 +24,7 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
 
     private String BUNDLE_KEY = "BUNDLE";
     private String OBJECT_KEY = "OBJECT";
-    private String CALL_KEY = "CALL";
     private List list;
-    //    private ViewController control;
     private Context context;
     private List<Integer> colours = Utility.getColours();
 
@@ -36,9 +33,7 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
         super();
         this.list = list;
         this.context = context;
-//        if(context instanceof ViewController){
-//            this.control = (ViewController) context;
-//        }
+
 
 
     }
@@ -99,10 +94,9 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
 
     private void startNewActivity(int position) {
         Buzz buzz = (Buzz)list.get(position);
-        Intent intent = new Intent(context, DisplayActivity.class);
+        Intent intent = new Intent(context, DetailedViewActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable(OBJECT_KEY, DataHolder.getDataHolder().getBuzzHolder(buzz.getName()));
-        bundle.putInt(CALL_KEY,0);
         intent.putExtra(BUNDLE_KEY, bundle);
 
         context.startActivity(intent);

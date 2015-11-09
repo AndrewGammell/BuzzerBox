@@ -2,6 +2,7 @@ package util;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import holder.BuzzHolder;
 import holder.DataHolder;
 import settings.Settings;
@@ -47,6 +48,7 @@ public class Sorter extends AsyncTask<Void, Void, List<BuzzHolder>> {
         for (BuzzHolder bb : buzzHolders) {
             bb.countTimeStamps();
         }
+                    Log.d("BUZZ", "buzzholders in sorter "+ buzzHolders.size());
         DataHolder.getDataHolder().getListOfBoxes().addAll(buzzHolders);
     }
 

@@ -16,7 +16,6 @@ import authentication.LoginAsyncTask;
 import fragments.SplashFragment;
 import holder.DataHolder;
 import io.buzzerbox.app.R;
-import persistence.DataPersister;
 import singleton.User;
 import util.MessageTools;
 import util.Sorter;
@@ -34,7 +33,6 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
     protected void onStart() {
         super.onStart();
         User.getInstance(this);
-//        new SettingsDatabase(this).runBackGroundSaver();
         if(DataHolder.getDataHolder().getSettingsList().size() == 0){
             new SettingsDatabase(this).loadSettings();
         }
@@ -121,7 +119,7 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
     private void startWebActivity(int in) {
         Bundle bundle = new Bundle();
         bundle.putInt(CALL_KEY, in);
-        Intent intent = new Intent(this, DisplayActivity.class);
+        Intent intent = new Intent(this, WebViewActivity.class);
         intent.putExtra(BUNDLE_KEY, bundle);
         startActivity(intent);
     }
