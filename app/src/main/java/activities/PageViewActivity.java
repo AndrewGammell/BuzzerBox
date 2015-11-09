@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -116,6 +117,7 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
     private void goToLogin() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
 
@@ -128,7 +130,9 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
 
         @Override
         public void onPageSelected(int position) {
-            getSupportActionBar().setTitle(mSectionsPagerAdapter.getPageTitle(position));
+            ActionBar actionBar = getSupportActionBar();
+            if(actionBar != null)
+                actionBar.setTitle(mSectionsPagerAdapter.getPageTitle(position));
         }
 
         @Override

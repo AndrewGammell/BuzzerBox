@@ -1,7 +1,7 @@
 package util;
 
 import android.content.Context;
-import io.buzzerbox.app.R;
+import persistence.DataPersister;
 import singleton.User;
 import tester.Database;
 import tester.DummyUsers;
@@ -35,6 +35,8 @@ public class Utility {
         User user = User.getInstance(context);
         user.setUsername(null);
         user.setPassword(null);
+        user.setList(null);
+        DataPersister.deleteUser(context);
     }
 
 public static List makeList(Context context){

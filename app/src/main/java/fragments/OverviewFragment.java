@@ -2,6 +2,7 @@ package fragments;
 
 import abstracts.AbstractListFragment;
 import adapter.OverviewAdapter;
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,7 +13,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import io.buzzerbox.app.R;
 import singleton.Buzz;
-import tester.DummyAlerts;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -45,6 +45,7 @@ public class OverviewFragment extends AbstractListFragment {
             throw new IllegalStateException();
         }
         mCallback = (Callback)context;
+        Log.d(TAG, ((Activity)context).getClass().getSimpleName());
     }
 
 
@@ -73,13 +74,8 @@ public class OverviewFragment extends AbstractListFragment {
         return fragment;
     }
 
-    /**
-     *
-     * @return
-     * this list is for test purposes only
-     */
-    private List getList(){
-        return DummyAlerts.initialiseDummies();
+    private List<Buzz> getList(){
+        return buzzList;
     }
 
 
