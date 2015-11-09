@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import fragments.DetailedViewFragment;
 import fragments.WebViewFragment;
@@ -18,6 +19,7 @@ import util.Utility;
  * Created by Devstream on 06/10/2015.
  */
 public class DisplayActivity extends AppCompatActivity implements DetailedViewFragment.Callback {
+    private static final String TAG = "DisplayActivity";
     private String BUNDLE_KEY = "BUNDLE";
     private String OBJECT_KEY = "OBJECT";
     private String CALL_KEY = "CALL";
@@ -27,7 +29,6 @@ public class DisplayActivity extends AppCompatActivity implements DetailedViewFr
 
     private final FragmentManager fragmentManager = getSupportFragmentManager();
     private FragmentTransaction transaction;
-    private final String TAG = "fragment";
 
     private ActionBar mActionBar;
 
@@ -48,6 +49,7 @@ public class DisplayActivity extends AppCompatActivity implements DetailedViewFr
             }
         }
 
+        Log.d(TAG, "Got to the Display with  " + obj);
         if(!isFragmentDisplayed()){
             displayFragment(call);
         }
@@ -109,6 +111,5 @@ public class DisplayActivity extends AppCompatActivity implements DetailedViewFr
 
         }
         fragmentManager.beginTransaction().add(getContainer(),fragment, TAG).commit();
-
     }
 }

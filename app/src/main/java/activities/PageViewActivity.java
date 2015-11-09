@@ -28,9 +28,6 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
     ViewPager mViewPager;
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

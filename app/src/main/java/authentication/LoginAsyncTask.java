@@ -14,6 +14,7 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 
+import fragments.LoginFragment;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -27,6 +28,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.HttpURLConnection;
 import java.nio.charset.Charset;
 
 import io.buzzerbox.app.R;
@@ -36,9 +38,10 @@ import singleton.User;
 
 /**
  * Created by Neil on 10/10/2015.
+ *
  */
-public class LoginAsyncTask extends AppCompatActivity{
-
+public class LoginAsyncTask {
+    private static final String TAG = "LoginAsyncTask";
     private String email;
     private String password;
     private String url;
@@ -56,14 +59,6 @@ public class LoginAsyncTask extends AppCompatActivity{
 
     private Context c;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_splash);
-        JSONObject dets = new JSONObject();
-        this.execute(dets.toString());
-    }
-
     public LoginAsyncTask(){}
 
     public LoginAsyncTask(String email, String password, Context c){
@@ -72,15 +67,18 @@ public class LoginAsyncTask extends AppCompatActivity{
         this.url = this.baseURL+"?email="+this.email+"&password="+this.password;
         this.c = c;
         this.tries = 0;
+        //
+        JSONObject dets = new JSONObject();
+        this.execute(dets.toString());
     }
 
     public void execute(String jsonContent){
-        //loading = new Post();
-       // loading.execute(jsonContent);
-        Log.d("NEIL", "auth_ " + User.getInstance(c).getAuthToken());
-        Log.d("NEIL", "pw " + User.getInstance(c).getPassword());
-        Log.d("NEIL", "em " + User.getInstance(c).getUsername());
-        checkSavedStatus();
+        loading = new Post();
+        loading.execute(jsonContent);
+        Log.d(TAG, "auth_ " + User.getInstance(c).getAuthToken());
+        Log.d(TAG, "pw " + User.getInstance(c).getPassword());
+        Log.d(TAG, "em " + User.getInstance(c).getUsername());
+        //checkSavedStatus();
     }
 
     private void getBuzz(){
@@ -89,25 +87,25 @@ public class LoginAsyncTask extends AppCompatActivity{
     }
 
     private void checkSavedStatus(){
-        Log.d("NEIL", "checking saved status");
+        Log.d(TAG, "checking saved status");
         if (User.getInstance(c).getAuthToken().equals("null")){
             hasAuth = false;
-            Log.d("NEIL", "no auth pass");
+            Log.d(TAG, "no auth pass");
             // no auth token, check for username and pass
             if ((User.getInstance(c).getUsername().equals("null"))||(User.getInstance(c).getPassword().equals("null"))){
-                Log.d("NEIL", "no email pass");
+                Log.d(TAG, "no email pass");
                 hasEmailPass = false;
                 // no username or pass token, go to Login Screen
                     //Intent login =
             }
             else{
                 // Send email and pass and get new token
-                Log.d("NEIL", "has email pass");
+                Log.d(TAG, "has email pass");
                 hasEmailPass = true;
                 this.email = User.getInstance(c).getUsername();
                 this.password = User.getInstance(c).getPassword();
                 this.url = this.baseURL+"?email="+this.email+"&password="+this.password;
-                Log.d("NEIL", this.url);
+                Log.d(TAG, this.url);
                 loading = new Post();
                 loading.execute("");
             }
@@ -116,14 +114,13 @@ public class LoginAsyncTask extends AppCompatActivity{
             hasAuth = true;
             // Log in with auth token, when doing this - on response we should check if token expired,
             // and if so, send email and pass again
-            Log.d("NEIL", "has auth");
+            Log.d(TAG, "has auth");
             AuthToken = User.getInstance(c).getAuthToken();
-
             getBuzz();
         }
     }
 
-    class Post extends AsyncTask<String, String, Integer> {
+    private class Post extends AsyncTask<String, String, Integer> {
         @Override
         protected Integer doInBackground(String... args){
             int statusCode;
@@ -132,18 +129,18 @@ public class LoginAsyncTask extends AppCompatActivity{
             try{
                 HttpClient client = new DefaultHttpClient();
                 HttpPost request = new HttpPost(url);
-                Log.d("NEIL", url);
+                Log.d(TAG, url);
                 HttpEntity entity = new StringEntity(args[0]);
                 try{
                     HttpResponse response = client.execute(request);
                     HttpEntity responseEntity = response.getEntity();
                     statusCode = response.getStatusLine().getStatusCode();
                     responseJSONContent = EntityUtils.toString(responseEntity);
-                    Log.d("NEIL", "resp json content " + responseJSONContent);
+                    Log.d(TAG, "resp json content " + responseJSONContent);
                     responseJSON = new JSONObject(responseJSONContent);
-                    Log.d("NEIL", "json token " + responseJSON);
+                    Log.d(TAG, "json token " + responseJSON);
                     AuthToken = responseJSON.getString("authentication_token");
-                    Log.d("NEIL", "auth token " + AuthToken);
+                    Log.d(TAG, "auth token " + AuthToken);
                     return statusCode;
                 } catch(Exception e){
                     return null;
@@ -155,7 +152,7 @@ public class LoginAsyncTask extends AppCompatActivity{
 
         @Override
         protected void onPostExecute(Integer resultCode){
-            Log.d("NEIL", "saving auth token " + AuthToken);
+            Log.d(TAG, "saving auth token " + AuthToken);
             User.getInstance(c).setUsername(email);
             User.getInstance(c).setPassword(password);
             User.getInstance(c).setAuthToken(AuthToken);
@@ -164,7 +161,7 @@ public class LoginAsyncTask extends AppCompatActivity{
         }
     }
 
-    class BuzzGet extends AsyncTask<String, String, Integer> {
+    private class BuzzGet extends AsyncTask<String, String, Integer> {
         @Override
         protected Integer doInBackground(String... args){
             int statusCode;
@@ -217,12 +214,12 @@ public class LoginAsyncTask extends AppCompatActivity{
                     return statusCode;
                 } catch(Exception e){
                     // Need to put in place more solid checks for expired token in return json above
-                    Log.d("NEIL", "Token Expired");
+                    Log.d(TAG, "Token Expired");
                     tokenExpired = true;
                     return null;
                 }
             } catch(Exception e){
-                Log.d("NEIL", "some other err");
+                Log.d(TAG, "some other err");
                 return null;
             }
         }
@@ -245,12 +242,12 @@ public class LoginAsyncTask extends AppCompatActivity{
                     }
                     else{
                         // go to login screen
-                        Log.d("NEIL", "tried 5 times, going to login");
+                        Log.d(TAG, "tried 5 times, going to login");
                     }
                 }
                 else{
                     // go to login screen
-                    Log.d("NEIL", "no email and p, going to login");
+                    Log.d(TAG, "no email and p, going to login");
                 }
             }
             else{

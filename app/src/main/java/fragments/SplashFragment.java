@@ -9,6 +9,7 @@ import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
+import authentication.LoginAsyncTask;
 import interfaces.ViewController;
 import io.buzzerbox.app.R;
 import util.Utility;
@@ -46,8 +47,8 @@ public class SplashFragment extends AbstractFragment {
         super.onCreate(savedInstanceState);
 
         Log.d("TAG", "onCreate of splash");
+        new LoginAsyncTask("dummy@bundly.io", "dummy1234", getActivity()).execute("");
         countdownToLogin();
-
     }
 
 
@@ -72,7 +73,7 @@ public class SplashFragment extends AbstractFragment {
                      *new intent to page view activity
                      */
 
-                    Intent in = new Intent(getActivity(),PageViewActivity.class);
+                    Intent in = new Intent(getActivity(), PageViewActivity.class);
                     startActivity(in);
                 }else{
                     Log.d("TAG","Invalid user in splash");

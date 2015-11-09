@@ -1,7 +1,6 @@
 package adapter;
 
 import activities.DisplayActivity;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 import io.buzzerbox.app.R;
 import tester.DummyAlerts;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -25,15 +23,14 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
     private String BUNDLE_KEY = "BUNDLE";
     private String OBJECT_KEY = "OBJECT";
     private String CALL_KEY = "CALL";
-    private List list;
+    private List<DummyAlerts> list;
     private Context context;
 
 
-    public LogViewAdapter(List list, Context context) {
+    public LogViewAdapter(List<DummyAlerts> list, Context context) {
         super();
         this.list = list;
-        this.context = context
-
+        this.context = context;
     }
 
     private int getLayout() {
@@ -77,23 +74,29 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
             alarmTimeSinceLast = (TextView) itemView.findViewById(R.id.text_last_buzz_int_value);
         }
 
+        /**
+         * click to see a detailed Buzz
+         * @param view of list item clicked
+         */
         @Override
         public void onClick(View view) {
             int index = getAdapterPosition();
-
-            startNewActivity(index);
+            DummyAlerts alert = list.get(index);
+            startNewActivity(alert);
         }
     }
 
-    private void startNewActivity(int position) {
+    /**
+     * start new Activity and pass in the Alert object
+     * to view it's details
+     * @param alert object is a detailed Buzz
+     */
+    private void startNewActivity(DummyAlerts alert) {
         Intent intent = new Intent(context, DisplayActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable(OBJECT_KEY, (Serializable) list.get(position));
+        bundle.putSerializable(OBJECT_KEY, alert);
         bundle.putInt(CALL_KEY,0);
         intent.putExtra(BUNDLE_KEY, bundle);
-
-
-
         context.startActivity(intent);
     }
 }
