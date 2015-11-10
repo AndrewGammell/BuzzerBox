@@ -87,6 +87,7 @@
                 android:id="@+id/text_sound"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:padding="5dp"
                 android:text="@string/text_sound"
                 android:textStyle="bold"
@@ -101,6 +102,7 @@
                 android:id="@+id/spinner_audio_file_list"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
                 android:width="35dp"
                 android:textSize="@dimen/large_buzzerbox_font_size_default"
                 android:fontFamily="@string/buzzerbox_font_app_default_bold"
@@ -138,6 +140,7 @@
                 android:id="@+id/text_color"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:padding="5dp"
                 android:text="@string/text_color"
                 android:textSize="@dimen/large_buzzerbox_font_size_default"
@@ -164,7 +167,6 @@
                         android:layout_height="wrap_content"
                         android:button="@drawable/checkbox_selector"
                         android:background="@drawable/unique_alarm_color_picker_shape"
-
                         android:backgroundTint="@color/colour_option_1"
                         android:id="@+id/colour_1"/>
                 <CheckBox
@@ -388,6 +390,7 @@
                 android:id="@+id/text_notifications"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:padding="5dp"
                 android:text="@string/text_notifications"
                 android:textStyle="bold"
@@ -461,6 +464,7 @@
                 android:id="@+id/text_frequency"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:padding="5dp"
                 android:text="@string/text_frequency"
                 android:textSize="@dimen/large_buzzerbox_font_size_default"
