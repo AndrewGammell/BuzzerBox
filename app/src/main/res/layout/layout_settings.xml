@@ -486,8 +486,8 @@
                     />
 
             <Spinner
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:width="35dp"
                     android:textSize="@dimen/default_buzzerbox_font_size_default"
 

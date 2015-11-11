@@ -5,17 +5,14 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Devstream on 10/11/2015.
  */
 public class CustomSoundPlayer {
-
-    public CustomSoundPlayer(Context context){
-        loadSound(context);
-    }
-
 
     // vars for new soundpool object //
     private final int maxStreams = 1;
@@ -33,17 +30,18 @@ public class CustomSoundPlayer {
     private final float rate = 1;
 
     private SoundPool   sp = new SoundPool(maxStreams,streamType,srcQuality);
-    private List<Integer> soundList = new ArrayList<Integer>();
+    private Map<String,Integer>  soundMap = new HashMap<String, Integer>();
 
 
     public void loadSound(Context context){
-        for(int i: Utility.getSounds()){
-           soundList.add(sp.load(context,i,loadPriority));
+        List<Integer> list = Utility.getSounds();
+        for(int i=0; i<list.size();i++){
+            soundMap.put("sound"+i,sp.load(context,list.get(i),loadPriority));
         }
     }
 
     public void playSound(int sound){
-        sp.play(soundList.get(sound),leftVolume,rightVolume,playPriority,loop,rate);
+        sp.play(soundMap.get("sound"+sound),leftVolume,rightVolume,playPriority,loop,rate);
     }
 
 

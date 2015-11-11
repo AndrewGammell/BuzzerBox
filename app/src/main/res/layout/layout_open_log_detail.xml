@@ -33,8 +33,6 @@
 
                 android:layout_gravity="left"
 
-                android:background="@color/unique_alarm_color"
-
                 android:layout_margin="25dp"
 
                 >
@@ -66,6 +64,7 @@
                         android:fontFamily="@string/buzzerbox_font_app_default_bold"
 
                         android:textSize="@dimen/default_buzzerbox_font_size_medium"
+
 
                         android:textColor="@color/buzzerbox_black"
 

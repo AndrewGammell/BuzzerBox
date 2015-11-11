@@ -120,7 +120,6 @@ public class Utility {
         return colours;
     }
 
-
     public static List<Integer> getSounds(){
         List<Integer> list = new ArrayList<Integer>();
         list.add(R.raw.buzz_audio_1);
