@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * Created by Devstream on 29/09/2015.
+ *
  */
 public class DummyAlerts implements Serializable{
 
@@ -18,7 +19,9 @@ public class DummyAlerts implements Serializable{
     int alarmTimeSinceLast;
 
 
-    public DummyAlerts(String alarmName, int alarmToday, int alarmYesterday, int alarmTotalWeek, int alarmTotalMonth, int alarmTotal, int alarmTimeSinceLast){
+    public DummyAlerts(String alarmName, int alarmToday, int alarmYesterday,
+                       int alarmTotalWeek, int alarmTotalMonth,
+                       int alarmTotal, int alarmTimeSinceLast){
         this.alarmName = alarmName;
         this.alarmToday = alarmToday;
         this.alarmYesterday = alarmYesterday;

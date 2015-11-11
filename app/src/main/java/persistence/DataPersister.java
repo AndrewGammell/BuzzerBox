@@ -39,12 +39,10 @@ public class DataPersister {
                 .putString(PACKAGE_NAME+USER, json)
                 .apply();
         return true;
-
     }
 
     public static void deleteUser(Context context){
         SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(context);
         preference.edit().remove(PACKAGE_NAME+USER).apply();
     }
-
 }
