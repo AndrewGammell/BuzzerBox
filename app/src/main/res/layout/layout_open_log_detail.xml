@@ -3,24 +3,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
               android:orientation="vertical"
-
               android:layout_width="match_parent"
-
               android:layout_height="match_parent"
-
               android:background="@color/buzzerbox_white"
-
               android:id="@+id/open_log_detail_layout">
 
 
     <LinearLayout android:layout_width="match_parent"
                   android:id="@+id/open_log_title"
                   android:layout_height="wrap_content"
-
                   android:layout_gravity="left"
-
                   android:orientation="vertical"
-
                   android:background="@color/unique_alarm_color"
                   android:padding="5dp"
             >
@@ -28,166 +21,85 @@
         <GridLayout
 
                 android:layout_width="wrap_content"
-
                 android:layout_height="wrap_content"
-
                 android:layout_gravity="left"
-
                 android:layout_margin="25dp"
-
                 >
 
-
-
-            <LinearLayout
-
-                    android:layout_column="0"
-
-                    android:layout_row="0"
-
-                    android:layout_width="match_parent"
-
-                    android:layout_height="wrap_content"
-
-                    android:orientation="horizontal">
-
-                <TextView
-
-                        android:layout_width="wrap_content"
-
-                        android:layout_height="wrap_content"
-
-                        android:id="@id/text_alarm_type"
-
-                        android:text="@string/text_alarm_type"
-
-                        android:fontFamily="@string/buzzerbox_font_app_default_bold"
-
-                        android:textSize="@dimen/default_buzzerbox_font_size_medium"
-
-
-                        android:textColor="@color/buzzerbox_black"
-
-                        />
-
-
-
-
-
-                <ImageView
-
-                        android:background="@drawable/icon_audio_speaker"
-
-                        android:textColor="@color/buzzerbox_black"
-
-                        android:layout_width="30dp"
-
-                        android:layout_height="30dp"
-
-                        android:layout_column="1"
-
+            <FrameLayout>
+                <LinearLayout
+                        android:layout_column="0"
                         android:layout_row="0"
-
-                        />
-
-
-
-
-            </LinearLayout>
-
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@id/text_alarm_type"
+                            android:text="@string/text_alarm_type"
+                            android:fontFamily="@string/buzzerbox_font_app_default_bold"
+                            android:textSize="@dimen/default_buzzerbox_font_size_medium"
+                            android:textColor="@color/buzzerbox_black"
+                            android:layout_gravity="left"
+                            />
+                    <ImageView
+                            android:background="@drawable/icon_audio_speaker"
+                            android:textColor="@color/buzzerbox_black"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_gravity="left"
+                            />
+                </LinearLayout>
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_row="0"
+                        android:layout_gravity="right">
+                    <ImageView
+                            android:textColor="@color/buzzerbox_black"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:background="@drawable/icon_close_x"
+                            android:gravity="right"
+                            />
+                </LinearLayout>
+            </FrameLayout>
             <LinearLayout
-
-                    android:layout_width="match_parent"
-
-                    android:layout_height="match_parent"
-
-                    android:layout_column="1"
-
-                    android:layout_row="0"
-
-                    android:gravity="right">
-
-
-
-                <TextView
-
-                        android:text="@drawable/icon_close_x"
-
-                        android:textColor="@color/buzzerbox_black"
-
-                        android:layout_width="24dp"
-
-                        android:layout_height="24dp"
-
-                        android:background="@drawable/icon_close_x"
-
-                        />
-
-            </LinearLayout>
-
-            <LinearLayout
-
-                    android:layout_width="wrap_content"
-
-                    android:layout_height="wrap_content"
-
-                    android:orientation="horizontal"
-
                     android:layout_column="0"
-
                     android:layout_row="1"
+                    android:orientation="horizontal">
+                    <TextView
 
-                    >
+                            android:id="@+id/text_last_buzz"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:text="@string/txt_last_buzz"
+                            android:textSize="@dimen/default_buzzerbox_font_size_small"
+                            android:fontFamily="@string/buzzerbox_font_app_default"
+                            android:textColor="@color/buzzerbox_grey"
+                            android:padding="5dp"
+                            />
 
-                <TextView
+                    <TextView
 
-                        android:id="@+id/text_last_buzz"
-
-                        android:layout_height="wrap_content"
-
-                        android:layout_width="wrap_content"
-
-                        android:text="@string/txt_last_buzz"
-
-                        android:textSize="@dimen/default_buzzerbox_font_size_small"
-
-                        android:fontFamily="@string/buzzerbox_font_app_default"
-
-                        android:textColor="@color/buzzerbox_grey"
-
-                        android:padding="5dp"
-
-                        />
-
-                <TextView
-
-                        android:layout_column="2"
-
-                        android:layout_row="1"
-
-                        android:id="@+id/text_last_buzz_int_value"
-
-                        android:layout_height="wrap_content"
-
-                        android:layout_width="wrap_content"
-
-                        android:text="@string/txt_last_buzz_int_value"
-
-                        android:textSize="@dimen/default_buzzerbox_font_size_small"
-
-                        android:fontFamily="@string/buzzerbox_font_app_default"
-
-                        android:textColor="@color/buzzerbox_grey"
-
-                        android:padding="5dp"
-
-                        />
-
+                            android:id="@+id/text_last_buzz_int_value"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:text="@string/txt_last_buzz_int_value"
+                            android:textSize="@dimen/default_buzzerbox_font_size_small"
+                            android:fontFamily="@string/buzzerbox_font_app_default"
+                            android:textColor="@color/buzzerbox_grey"
+                            android:padding="5dp"
+                            />
             </LinearLayout>
 
         </GridLayout>
 
     </LinearLayout>
+
 
 
 
@@ -547,20 +459,20 @@
     <!-- PLACEHOLDER CODE FOR LINE CHART DISPLAY -->
 
     <!--<LinearLayout-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:orientation="vertical"-->
-            <!--android:layout_gravity="center"-->
-            <!-->-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical"-->
+    <!--android:layout_gravity="center"-->
+    <!-->-->
 
-        <!--&lt;!&ndash; START >>> BUZZ INFO LINE CHART &ndash;&gt;-->
-        <!--<com.github.mikephil.charting.charts.LineChart-->
-                <!--android:id="@+id/chart1"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_above="@+id/seekBar1" />-->
+    <!--&lt;!&ndash; START >>> BUZZ INFO LINE CHART &ndash;&gt;-->
+    <!--<com.github.mikephil.charting.charts.LineChart-->
+    <!--android:id="@+id/chart1"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_above="@+id/seekBar1" />-->
 
-        <!--&lt;!&ndash; <<< END BUZZ INFO LINE CHART &ndash;&gt;-->
+    <!--&lt;!&ndash; <<< END BUZZ INFO LINE CHART &ndash;&gt;-->
     <!--</LinearLayout>-->
 
 

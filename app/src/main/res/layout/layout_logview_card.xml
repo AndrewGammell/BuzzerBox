@@ -42,7 +42,6 @@
                     android:fontFamily="@string/buzzerbox_font_app_default_bold"
                     android:singleLine="true"
                     android:ellipsize="marquee"
-                    android:marqueeRepeatLimit="marquee_forever"
                     android:textColor="@color/buzzerbox_black"
                     android:gravity="center_vertical"/>
 

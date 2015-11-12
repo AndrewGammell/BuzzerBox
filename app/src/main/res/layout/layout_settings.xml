@@ -141,7 +141,6 @@
                 android:padding="5dp"
                 android:text="@string/text_color"
                 android:textSize="@dimen/default_buzzerbox_font_size_default"
-                android:textStyle="bold"
                 android:fontFamily="@string/buzzerbox_font_app_default_bold"
                 android:textColor="@color/buzzerbox_black"
                 android:gravity="left"/>
@@ -149,206 +148,220 @@
         <LinearLayout android:layout_column="3"
                       android:layout_row="3"
                       android:id="@+id/colour_picker_grid_layout">
-            <GridLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="15dp"
-                    android:id="@+id/colour_picker_grid">
-                <!-- FIRST ROW OF SIX -->
-                <!-- NEED TO FIX - setting checkbox colors by BackgroundTint / colorControlNormal / colorAccent not supported below v21 -->
-                <CheckBox
-                        android:tag="colour"
-                        android:layout_column="0"
-                        android:layout_row="0"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/checkbox_selector"
-                        android:background="@drawable/unique_alarm_color_picker_shape"
-
-                        android:backgroundTint="@color/colour_option_1"
-                        android:id="@+id/colour_1"/>
-                <CheckBox
-                        android:tag="colour"
-                        android:layout_column="1"
-                        android:layout_row="0"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/checkbox_selector"
-                        android:background="@drawable/unique_alarm_color_picker_shape"
-                        android:backgroundTint="@color/colour_option_2"
-                        android:id="@+id/colour_2"/>
-                <CheckBox
-                        android:tag="colour"
-                        android:layout_column="2"
-                        android:layout_row="0"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/checkbox_selector"
-                        android:background="@drawable/unique_alarm_color_picker_shape"
-                        android:backgroundTint="@color/colour_option_3"
-                        android:id="@+id/colour_3"/>
-                <CheckBox
-                        android:tag="colour"
-                        android:layout_column="3"
-                        android:layout_row="0"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/checkbox_selector"
-                        android:background="@drawable/unique_alarm_color_picker_shape"
-                        android:backgroundTint="@color/colour_option_4"
-                        android:id="@+id/colour_4"/>
-                <CheckBox
-                        android:tag="colour"
-                        android:layout_column="4"
-                        android:layout_row="0"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/checkbox_selector"
-                        android:background="@drawable/unique_alarm_color_picker_shape"
-                        android:backgroundTint="@color/colour_option_5"
-                        android:id="@+id/colour_5"/>
-                <CheckBox
-                        android:tag="colour"
-                        android:layout_column="5"
-                        android:layout_row="0"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/checkbox_selector"
-                        android:background="@drawable/unique_alarm_color_picker_shape"
-                        android:backgroundTint="@color/colour_option_6"
-                        android:id="@+id/colour_6"/>
-
-                <!-- SECOND ROW OF SIX -->
-
-                <CheckBox
-                        android:tag="colour"
-                        android:layout_column="0"
-                        android:layout_row="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/checkbox_selector"
-                        android:background="@drawable/unique_alarm_color_picker_shape"
-                        android:backgroundTint="@color/colour_option_7"
-                        android:id="@+id/colour_7"/>
-                <CheckBox
-                        android:tag="colour"
-                        android:layout_column="1"
-                        android:layout_row="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/checkbox_selector"
-                        android:background="@drawable/unique_alarm_color_picker_shape"
-                        android:backgroundTint="@color/colour_option_8"
-                        android:id="@+id/colour_8"/>
-                <CheckBox
-                        android:tag="colour"
-                        android:layout_column="2"
-                        android:layout_row="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/checkbox_selector"
-                        android:background="@drawable/unique_alarm_color_picker_shape"
-                        android:backgroundTint="@color/colour_option_9"
-                        android:id="@+id/colour_9"/>
-                <CheckBox
-                        android:tag="colour"
-                        android:layout_column="3"
-                        android:layout_row="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/checkbox_selector"
-                        android:background="@drawable/unique_alarm_color_picker_shape"
-                        android:backgroundTint="@color/colour_option_10"
-                        android:id="@+id/colour_10"/>
-                <CheckBox
-                        android:tag="colour"
-                        android:layout_column="4"
-                        android:layout_row="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/checkbox_selector"
-                        android:background="@drawable/unique_alarm_color_picker_shape"
-                        android:backgroundTint="@color/colour_option_11"
-                        android:id="@+id/colour_11"/>
-                <CheckBox
-                        android:tag="colour"
-                        android:layout_column="5"
-                        android:layout_row="1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/checkbox_selector"
-                        android:background="@drawable/unique_alarm_color_picker_shape"
-                        android:backgroundTint="@color/colour_option_12"
-                        android:id="@+id/colour_12"/>
 
 
+            <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
 
-                <!-- THIRD ROW OF SIX -->
+                <!-- THIS IS THE IMAGE FILE TO REPLACE / EDIT IF COLORS ARE CHANGED IN THE GRID -->
+                <!-- HARDCODED WIDTH AND HEIGHT TO HIDE BEHIND / FIT ACTUAL WORKING GRID IN THE FRAMElAYOUT-->
 
-                <CheckBox
-                        android:tag="colour"
-                        android:layout_column="0"
-                        android:layout_row="2"
+                <ImageView
+                        android:layout_width="185dp"
+                        android:layout_height="100dp"
+                        android:padding="15dp"
+                        android:background="@drawable/color_picker_placeholder_image_tall"
+                        />
+
+                <!-- -->
+
+                <GridLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:button="@drawable/checkbox_selector"
-                        android:background="@drawable/unique_alarm_color_picker_shape"
-                        android:backgroundTint="@color/colour_option_13"
-                        android:id="@+id/colour_13"/>
-                <CheckBox
-                        android:tag="colour"
-                        android:layout_column="1"
-                        android:layout_row="2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/checkbox_selector"
-                        android:background="@drawable/unique_alarm_color_picker_shape"
-                        android:backgroundTint="@color/colour_option_14"
-                        android:id="@+id/colour_14"/>
-                <CheckBox
-                        android:tag="colour"
-                        android:layout_column="2"
-                        android:layout_row="2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/checkbox_selector"
-                        android:background="@drawable/unique_alarm_color_picker_shape"
-                        android:backgroundTint="@color/colour_option_15"
-                        android:id="@+id/colour_15"/>
-                <CheckBox
-                        android:tag="colour"
-                        android:layout_column="3"
-                        android:layout_row="2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/checkbox_selector"
-                        android:background="@drawable/unique_alarm_color_picker_shape"
-                        android:backgroundTint="@color/colour_option_16"
-                        android:id="@+id/colour_16"/>
-                <CheckBox
-                        android:tag="colour"
-                        android:layout_column="4"
-                        android:layout_row="2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/checkbox_selector"
-                        android:background="@drawable/unique_alarm_color_picker_shape"
-                        android:backgroundTint="@color/colour_option_17"
-                        android:id="@+id/colour_17"/>
-                <CheckBox
-                        android:tag="colour"
-                        android:layout_column="5"
-                        android:layout_row="2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/checkbox_selector"
-                        android:background="@drawable/unique_alarm_color_picker_shape"
-                        android:backgroundTint="@color/colour_option_18"
-                        android:id="@+id/colour_18"/>
+                        android:padding="15dp"
+                        android:id="@+id/colour_picker_grid">
+                    <!-- FIRST ROW OF SIX -->
+                    <CheckBox
+                            android:tag="colour"
+                            android:layout_column="0"
+                            android:layout_row="0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/checkbox_selector"
+                            android:background="@drawable/unique_alarm_color_picker_shape"
+                            android:backgroundTint="@color/colour_option_1"
+                            android:id="@+id/colour_1"/>
+                    <CheckBox
+                            android:tag="colour"
+                            android:layout_column="1"
+                            android:layout_row="0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/checkbox_selector"
+                            android:background="@drawable/unique_alarm_color_picker_shape"
+                            android:backgroundTint="@color/colour_option_2"
+                            android:id="@+id/colour_2"/>
+                    <CheckBox
+                            android:tag="colour"
+                            android:layout_column="2"
+                            android:layout_row="0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/checkbox_selector"
+                            android:background="@drawable/unique_alarm_color_picker_shape"
+                            android:backgroundTint="@color/colour_option_3"
+                            android:id="@+id/colour_3"/>
+                    <CheckBox
+                            android:tag="colour"
+                            android:layout_column="3"
+                            android:layout_row="0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/checkbox_selector"
+                            android:background="@drawable/unique_alarm_color_picker_shape"
+                            android:backgroundTint="@color/colour_option_4"
+                            android:id="@+id/colour_4"/>
+                    <CheckBox
+                            android:tag="colour"
+                            android:layout_column="4"
+                            android:layout_row="0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/checkbox_selector"
+                            android:background="@drawable/unique_alarm_color_picker_shape"
+                            android:backgroundTint="@color/colour_option_5"
+                            android:id="@+id/colour_5"/>
+                    <CheckBox
+                            android:tag="colour"
+                            android:layout_column="5"
+                            android:layout_row="0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/checkbox_selector"
+                            android:background="@drawable/unique_alarm_color_picker_shape"
+                            android:backgroundTint="@color/colour_option_6"
+                            android:id="@+id/colour_6"/>
+
+                    <!-- SECOND ROW OF SIX -->
+
+                    <CheckBox
+                            android:tag="colour"
+                            android:layout_column="0"
+                            android:layout_row="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/checkbox_selector"
+                            android:background="@drawable/unique_alarm_color_picker_shape"
+                            android:backgroundTint="@color/colour_option_7"
+                            android:id="@+id/colour_7"/>
+                    <CheckBox
+                            android:tag="colour"
+                            android:layout_column="1"
+                            android:layout_row="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/checkbox_selector"
+                            android:background="@drawable/unique_alarm_color_picker_shape"
+                            android:backgroundTint="@color/colour_option_8"
+                            android:id="@+id/colour_8"/>
+                    <CheckBox
+                            android:tag="colour"
+                            android:layout_column="2"
+                            android:layout_row="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/checkbox_selector"
+                            android:background="@drawable/unique_alarm_color_picker_shape"
+                            android:backgroundTint="@color/colour_option_9"
+                            android:id="@+id/colour_9"/>
+                    <CheckBox
+                            android:tag="colour"
+                            android:layout_column="3"
+                            android:layout_row="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/checkbox_selector"
+                            android:background="@drawable/unique_alarm_color_picker_shape"
+                            android:backgroundTint="@color/colour_option_10"
+                            android:id="@+id/colour_10"/>
+                    <CheckBox
+                            android:tag="colour"
+                            android:layout_column="4"
+                            android:layout_row="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/checkbox_selector"
+                            android:background="@drawable/unique_alarm_color_picker_shape"
+                            android:backgroundTint="@color/colour_option_11"
+                            android:id="@+id/colour_11"/>
+                    <CheckBox
+                            android:tag="colour"
+                            android:layout_column="5"
+                            android:layout_row="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/checkbox_selector"
+                            android:background="@drawable/unique_alarm_color_picker_shape"
+                            android:backgroundTint="@color/colour_option_12"
+                            android:id="@+id/colour_12"/>
 
 
-            </GridLayout>
 
+                    <!-- THIRD ROW OF SIX -->
+
+                    <CheckBox
+                            android:tag="colour"
+                            android:layout_column="0"
+                            android:layout_row="2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/checkbox_selector"
+                            android:background="@drawable/unique_alarm_color_picker_shape"
+                            android:backgroundTint="@color/colour_option_13"
+                            android:id="@+id/colour_13"/>
+                    <CheckBox
+                            android:tag="colour"
+                            android:layout_column="1"
+                            android:layout_row="2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/checkbox_selector"
+                            android:background="@drawable/unique_alarm_color_picker_shape"
+                            android:backgroundTint="@color/colour_option_14"
+                            android:id="@+id/colour_14"/>
+                    <CheckBox
+                            android:tag="colour"
+                            android:layout_column="2"
+                            android:layout_row="2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/checkbox_selector"
+                            android:background="@drawable/unique_alarm_color_picker_shape"
+                            android:backgroundTint="@color/colour_option_15"
+                            android:id="@+id/colour_15"/>
+                    <CheckBox
+                            android:tag="colour"
+                            android:layout_column="3"
+                            android:layout_row="2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/checkbox_selector"
+                            android:background="@drawable/unique_alarm_color_picker_shape"
+                            android:backgroundTint="@color/colour_option_16"
+                            android:id="@+id/colour_16"/>
+                    <CheckBox
+                            android:tag="colour"
+                            android:layout_column="4"
+                            android:layout_row="2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/checkbox_selector"
+                            android:background="@drawable/unique_alarm_color_picker_shape"
+                            android:backgroundTint="@color/colour_option_17"
+                            android:id="@+id/colour_17"/>
+                    <CheckBox
+                            android:tag="colour"
+                            android:layout_column="5"
+                            android:layout_row="2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/checkbox_selector"
+                            android:background="@drawable/unique_alarm_color_picker_shape"
+                            android:backgroundTint="@color/colour_option_18"
+                            android:id="@+id/colour_18"/>
+
+
+                </GridLayout>
+            </FrameLayout>
 
             <!-- -->
 
@@ -486,8 +499,8 @@
                     />
 
             <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:width="35dp"
                     android:textSize="@dimen/default_buzzerbox_font_size_default"
 
