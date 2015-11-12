@@ -3,9 +3,6 @@ package activities;
 import abstracts.AbstractActivity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import fragments.DetailedViewFragment;
 import io.buzzerbox.app.R;
 
@@ -14,10 +11,7 @@ import io.buzzerbox.app.R;
  */
 public class DetailedViewActivity extends AbstractActivity {
 
-    private String BUNDLE_KEY = "BUNDLE";
-    private String OBJECT_KEY = "OBJECT";
     private Object obj;
-    private Bundle bundle;
 
 
     @Override
@@ -34,9 +28,11 @@ public class DetailedViewActivity extends AbstractActivity {
     public void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(getLayout());
-            if (getIntent().getBundleExtra(BUNDLE_KEY) != null) {
-                bundle = getIntent().getBundleExtra(BUNDLE_KEY);
-                obj = bundle.getSerializable(OBJECT_KEY);
+        String BUNDLE_KEY = "BUNDLE";
+        if (getIntent().getBundleExtra(BUNDLE_KEY) != null) {
+                Bundle bundle = getIntent().getBundleExtra(BUNDLE_KEY);
+            String OBJECT_KEY = "OBJECT";
+            obj = bundle.getSerializable(OBJECT_KEY);
                 }
 
         if (!isFragmentDisplayed()) {

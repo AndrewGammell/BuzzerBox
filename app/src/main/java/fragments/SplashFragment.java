@@ -3,20 +3,27 @@ package fragments;
 import abstracts.AbstractFragment;
 import activities.PageViewActivity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
+import authentication.LoginAsyncTask;
 import interfaces.ViewController;
 import io.buzzerbox.app.R;
+import persistence.DataPersister;
+import singleton.Buzz;
+import singleton.User;
 import util.Utility;
+
+import java.util.List;
 
 /**
  * Created by Devstream on 29/09/2015.
+ *
  */
 public class SplashFragment extends AbstractFragment {
+    private static final String TAG = "SplashFragment";
     private ViewController viewController;
     /**
      * create splash layout
@@ -46,8 +53,15 @@ public class SplashFragment extends AbstractFragment {
         super.onCreate(savedInstanceState);
 
         Log.d("TAG", "onCreate of splash");
-        countdownToLogin();
-
+        User user = DataPersister.loadUser(getActivity());
+        if(user == null) {
+            new LoginAsyncTask("dummy@bundly.io", "dummy1234", getActivity()).execute("");
+            countdownToLogin();
+        }else{
+            Log.d(TAG, "Already have a user");
+            new LoginAsyncTask(user.getUsername(), user.getPassword(), getActivity()).execute("");
+            startActivity(PageViewActivity.newIntent(getActivity(), User.getInstance(getActivity()).getBuzzList()));
+        }
     }
 
 
@@ -71,9 +85,9 @@ public class SplashFragment extends AbstractFragment {
                     /**
                      *new intent to page view activity
                      */
-
-                    Intent in = new Intent(getActivity(),PageViewActivity.class);
-                    startActivity(in);
+                    final List<Buzz>buzzList = LoginAsyncTask.buzzList;
+                    if(buzzList != null)
+                        startActivity(PageViewActivity.newIntent(getActivity(), LoginAsyncTask.buzzList));
                 }else{
                     Log.d("TAG","Invalid user in splash");
                     viewController.replaceWithFragment(LoginFragment.newInstance());
@@ -88,6 +102,4 @@ public class SplashFragment extends AbstractFragment {
         viewController = null;
 
     }
-
-
 }

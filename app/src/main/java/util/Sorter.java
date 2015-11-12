@@ -18,9 +18,9 @@ import java.util.List;
  * AsyncTask that takes the list of buzzes from the user and sorts them into containers for each alert type
  */
 public class Sorter extends AsyncTask<Void, Void, List<BuzzHolder>> {
-    List<BuzzHolder> buzzHolders = new ArrayList<BuzzHolder>();
+    private final List<BuzzHolder> buzzHolders = new ArrayList<BuzzHolder>();
     //    List<DB> buzzHolders = DataHolder.getDataHolder().getListOfBoxes();
-    private Context context;
+    private final Context context;
 
     public Sorter(Context context) {
         super();
@@ -32,9 +32,7 @@ public class Sorter extends AsyncTask<Void, Void, List<BuzzHolder>> {
         User user = User.getInstance(context);
 
         for (Buzz b : user.getBuzzList()) {
-            if (findBoxAndAdd(b)) {
-
-            } else {
+            if (!findBoxAndAdd(b)) {
                 makeBox(b);
                 findBoxAndAdd(b);
             }
@@ -48,7 +46,7 @@ public class Sorter extends AsyncTask<Void, Void, List<BuzzHolder>> {
         for (BuzzHolder bb : buzzHolders) {
             bb.countTimeStamps();
         }
-                    Log.d("BUZZ", "buzzholders in sorter "+ buzzHolders.size());
+        Log.d("BUZZ", "buzzholders in sorter " + buzzHolders.size());
         DataHolder.getDataHolder().getListOfBoxes().addAll(buzzHolders);
     }
 

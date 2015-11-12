@@ -4,7 +4,6 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,29 +18,25 @@ public class CustomSoundPlayer {
     private final int streamType = AudioManager.STREAM_MUSIC;
     private final int srcQuality = 0;
 
-    // Vars for soundpool.load //
-    private final int loadPriority = 1;
-
-    // Vars for soundpool.play //
-    private final float leftVolume = 1;
-    private final float rightVolume = 1;
-    private final int playPriority = 0;
-    private final int loop = 0;
-    private final float rate = 1;
-
-    private SoundPool   sp = new SoundPool(maxStreams,streamType,srcQuality);
-    private Map<String,Integer>  soundMap = new HashMap<String, Integer>();
+    private final SoundPool   sp = new SoundPool(maxStreams,streamType,srcQuality);
+    private final Map<String,Integer>  soundMap = new HashMap<String, Integer>();
 
 
     public void loadSound(Context context){
         List<Integer> list = Utility.getSounds();
         for(int i=0; i<list.size();i++){
-            soundMap.put("sound"+i,sp.load(context,list.get(i),loadPriority));
+            int loadPriority = 1;
+            soundMap.put("sound"+i,sp.load(context,list.get(i), loadPriority));
         }
     }
 
     public void playSound(int sound){
-        sp.play(soundMap.get("sound"+sound),leftVolume,rightVolume,playPriority,loop,rate);
+        float leftVolume = 1;
+        float rightVolume = 1;
+        int playPriority = 0;
+        int loop = 0;
+        float rate = 1;
+        sp.play(soundMap.get("sound"+sound), leftVolume, rightVolume, playPriority, loop, rate);
     }
 
 

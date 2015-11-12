@@ -1,7 +1,5 @@
 package holder;
 
-import android.content.Context;
-import persistence.DataPersister;
 import singleton.Buzz;
 import settings.Settings;
 
@@ -14,9 +12,9 @@ import java.util.List;
  */
 public class DataHolder implements Serializable {
     private static DataHolder dataHolder;
-    private List<BuzzHolder> boxes  = new ArrayList<BuzzHolder>();
-    private List<Settings> settingsList = new ArrayList<Settings>();
-    private List<Buzz> buzzList = new ArrayList<Buzz>();
+    private final List<BuzzHolder> boxes  = new ArrayList<BuzzHolder>();
+    private final List<Settings> settingsList = new ArrayList<Settings>();
+    private final List<Buzz> buzzList = new ArrayList<Buzz>();
 
 
     private DataHolder() {

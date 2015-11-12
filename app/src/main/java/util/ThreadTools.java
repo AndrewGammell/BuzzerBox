@@ -7,10 +7,9 @@ import java.util.concurrent.*;
 /**
  * Created by Devstream on 29/09/2015.
  */
-public class ThreadTools {
+class ThreadTools {
 
-    private static ExecutorService service = Executors.newCachedThreadPool();
-    private static Future<Object> future;
+    private static final ExecutorService service = Executors.newCachedThreadPool();
     private static final String TAG ="TAG";
 
 
@@ -19,7 +18,7 @@ public class ThreadTools {
     }
 
     public static Object runCallable(Callable callable){
-        future = service.submit(callable);
+        Future<Object> future = service.submit(callable);
 
         try{
             return future.get();

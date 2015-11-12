@@ -59,7 +59,7 @@
 
         <Button
                 android:id="@+id/btn_login"
-                android:text="@string/button_login_text"
+
                 android:textColor="@color/buzzerbox_white"
                 android:layout_width="360dp"
                 android:layout_height="50dp"

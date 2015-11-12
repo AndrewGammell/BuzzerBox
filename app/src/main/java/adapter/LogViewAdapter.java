@@ -10,10 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import holder.BuzzHolder;
 import holder.DataHolder;
 import io.buzzerbox.app.R;
+import settings.Settings;
 import singleton.Buzz;
 import util.Utility;
+
 
 import java.util.List;
 
@@ -22,20 +25,15 @@ import java.util.List;
  */
 public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHolder> {
 
-    private String BUNDLE_KEY = "BUNDLE";
-    private String OBJECT_KEY = "OBJECT";
-    private List list;
-    private Context context;
-    private List<Integer> colours = Utility.getColours();
+    private final List<Buzz> list;
+    private final Context context;
+    private final List<Integer> colours = Utility.getColours();
 
 
-    public LogViewAdapter(List list, Context context) {
+    public LogViewAdapter(List<Buzz> list, Context context) {
         super();
         this.list = list;
         this.context = context;
-
-
-
     }
 
     private int getLayout() {
@@ -59,13 +57,17 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
         // DummyUsers dummy = (DummyUsers)list.get(i);
         // itemHolder.name.setText(dummy.getUsername());
 
-        Buzz buzz = (Buzz) list.get(i);
-        itemHolder.alarmColour.setBackgroundColor(context.getResources()
-                .getColor(colours.get(DataHolder.getDataHolder().getSettings(buzz.getName()).getColour()))); // This Default hardcoded number as per color picker list  -- may need edit //
-        itemHolder.alarmName.setText(buzz.getName());
-        itemHolder.alarmTimeSinceLast.setText(String.valueOf(buzz.getTimeSinceBuzz()));
+            Buzz buzz = list.get(i);
+            Settings settings = DataHolder.getDataHolder().getSettings(buzz.getName());
+
+            itemHolder.alarmColour.setBackgroundColor(context.getResources()
+                    .getColor(colours.get(DataHolder.getDataHolder().getSettings(buzz.getName()).getColour()))); // This Default hardcoded number as per color picker list  -- may need edit //
+            itemHolder.alarmName.setText(buzz.getName());
+            itemHolder.alarmTimeSinceLast.setText(String.valueOf(buzz.getTimeSinceBuzz()));
+
 
     }
+
 
     @Override
     public int getItemCount() {
@@ -73,9 +75,9 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
     }
 
     public class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView alarmName;
-        TextView alarmTimeSinceLast;
-        ImageView alarmColour;
+        final TextView alarmName;
+        final TextView alarmTimeSinceLast;
+        final ImageView alarmColour;
 
         ItemHolder(View itemView) {
             super(itemView);
@@ -85,20 +87,32 @@ public class LogViewAdapter extends RecyclerView.Adapter<LogViewAdapter.ItemHold
             alarmTimeSinceLast = (TextView) itemView.findViewById(R.id.text_last_buzz_int_value);
         }
 
+        /**
+         * click to see a detailed Buzz
+         * @param view of list item clicked
+         */
         @Override
         public void onClick(View view) {
             int index = getAdapterPosition();
-            startNewActivity(index);
+            Buzz alert = list.get(index);
+            startNewActivity(DataHolder.getDataHolder().getBuzzHolder(alert.getName()));
         }
     }
 
-    private void startNewActivity(int position) {
-        Buzz buzz = (Buzz)list.get(position);
+    /**
+     * start new Activity and pass in the Alert object
+     * to view it's details
+     *
+     */
+    private void startNewActivity(BuzzHolder holder) {
         Intent intent = new Intent(context, DetailedViewActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putSerializable(OBJECT_KEY, DataHolder.getDataHolder().getBuzzHolder(buzz.getName()));
+        String OBJECT_KEY = "OBJECT";
+        bundle.putSerializable(OBJECT_KEY, holder);
+        String CALL_KEY = "CALL";
+        bundle.putInt(CALL_KEY,0);
+        String BUNDLE_KEY = "BUNDLE";
         intent.putExtra(BUNDLE_KEY, bundle);
-
         context.startActivity(intent);
     }
 }

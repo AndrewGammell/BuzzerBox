@@ -3,7 +3,7 @@ package SQLLite;
 /**
  * Created by Devstream on 28/10/2015.
  */
-public class SettingsDBSchema {
+class SettingsDBSchema {
 
     public static final String DB_NAME ="settings_data.db";
     public static final String TABLE_NAME = "settings";

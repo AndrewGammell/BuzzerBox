@@ -39,6 +39,22 @@ public class Utility {
         user.setPassword(null);
     }
 
+
+
+    public static List<Integer> getSounds(){
+        List<Integer> list = new ArrayList<Integer>();
+        list.add(R.raw.buzz_audio_1);
+        list.add(R.raw.buzz_audio_2);
+        list.add(R.raw.buzz_audio_3);
+        list.add(R.raw.buzz_audio_4);
+        list.add(R.raw.buzz_audio_5);
+        list.add(R.raw.buzz_audio_6);
+        list.add(R.raw.buzz_audio_7);
+        list.add(R.raw.buzz_audio_8);
+        list.add(R.raw.buzz_audio_9);
+        return list;
+    }
+
     public static String timeSinceBuzz(DateTime dateTime){
 //        Converts a time stamp and new DateTime to milliseconds,
 //        divides the time stamp from the new DateTime,
@@ -118,22 +134,6 @@ public class Utility {
         colours.add(R.color.colour_option_18);
 
         return colours;
-    }
-
-    public static List<Integer> getSounds(){
-        List<Integer> list = new ArrayList<Integer>();
-        list.add(R.raw.buzz_audio_1);
-        list.add(R.raw.buzz_audio_2);
-        list.add(R.raw.buzz_audio_3);
-        list.add(R.raw.buzz_audio_4);
-        list.add(R.raw.buzz_audio_5);
-        list.add(R.raw.buzz_audio_6);
-        list.add(R.raw.buzz_audio_7);
-        list.add(R.raw.buzz_audio_8);
-        list.add(R.raw.buzz_audio_9);
-
-
-        return list;
     }
 
 }

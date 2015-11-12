@@ -1,13 +1,10 @@
 package abstracts;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.*;
-import io.buzzerbox.app.R;
-import util.Utility;
 
 /**
  * Created by Devstream on 29/09/2015.
@@ -15,7 +12,7 @@ import util.Utility;
 public abstract class AbstractListFragment extends ListFragment {
 
 
-    protected RecyclerView recyclerView;
+    private RecyclerView recyclerView;
 
 
     protected abstract int getRecyclerLayout();
@@ -53,5 +50,6 @@ public abstract class AbstractListFragment extends ListFragment {
     public void onResume() {
         super.onResume();
         recyclerView.swapAdapter(getAdapter(),true);
+        recyclerView.getAdapter().notifyDataSetChanged();
     }
 }

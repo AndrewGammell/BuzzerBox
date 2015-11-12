@@ -18,15 +18,14 @@ import java.util.List;
 
 /**
  * Created by Devstream on 05/10/2015.
+ *
  */
 public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHolder> {
+    private static final String TAG = "OverviewAdapter";
+    private final List<BuzzHolder> list;
+    private final Context context;
 
-    private List list;
-    private final String CALL_POSITION = "CALL_POSITION";
-    private Context context;
-
-
-    public OverviewAdapter(List list, Context context) {
+    public OverviewAdapter(List<BuzzHolder> list,Context context) {
         super();
         this.list = list;
         this.context = context;
@@ -44,17 +43,16 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
 
     @Override
     public void onBindViewHolder(ItemHolder itemHolder, int i) {
-        BuzzHolder buzzHolder = (BuzzHolder) list.get(i);
-
-       itemHolder.alarmColour.setBackgroundColor(context.getResources().getColor(getSettingsColour(buzzHolder.getType())));
-        itemHolder.alarmName.setText(buzzHolder.getType());
-        itemHolder.alarmToday.setText(String.valueOf(buzzHolder.getToday()));
-        itemHolder.alarmYesterday.setText(String.valueOf(buzzHolder.getYesterday()));
-        itemHolder.alarmTotalWeek.setText(String.valueOf(buzzHolder.getWeek()));
-        itemHolder.alarmTotalMonth.setText(String.valueOf(buzzHolder.getMonth()));
-
-        itemHolder.alarmTotal.setText(String.valueOf(buzzHolder.getTotal()));
-        itemHolder.alarmTimeSinceLast.setText(String.valueOf(buzzHolder.getTimeSinceLastbuzz()));
+        BuzzHolder dummy = list.get(i);
+        itemHolder.alarmColour.setBackgroundColor(context.getResources()
+                .getColor(getSettingsColour(dummy.getType())));
+        itemHolder.alarmName.setText(dummy.getType());
+        itemHolder.alarmToday.setText(String.valueOf(dummy.getToday()));
+        itemHolder.alarmYesterday.setText(String.valueOf(dummy.getYesterday()));
+        itemHolder.alarmTotalWeek.setText(String.valueOf(dummy.getWeek()));
+        itemHolder.alarmTotalMonth.setText(String.valueOf(dummy.getMonth()));
+        itemHolder.alarmTotal.setText(String.valueOf(dummy.getTotal()));
+        itemHolder.alarmTimeSinceLast.setText(dummy.getTimeSinceLastbuzz());
     }
 
     @Override
@@ -63,15 +61,14 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
     }
 
     public class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        ImageView alarmColour;
-        TextView alarmName;
-        TextView alarmToday;
-        TextView alarmYesterday;
-        TextView alarmTotalWeek;
-        TextView alarmTotalMonth;
-        TextView alarmTotal;
-        TextView alarmTimeSinceLast;
-
+        final ImageView alarmColour;
+        final TextView alarmName;
+        final TextView alarmToday;
+        final TextView alarmYesterday;
+        final TextView alarmTotalWeek;
+        final TextView alarmTotalMonth;
+        final TextView alarmTotal;
+        final TextView alarmTimeSinceLast;
 
         ItemHolder(View itemView) {
             super(itemView);
@@ -93,6 +90,7 @@ public class OverviewAdapter extends RecyclerView.Adapter<OverviewAdapter.ItemHo
 
         private void goToSettings(int index) {
             Intent intent = new Intent(context,SettingsPageActivity.class);
+            String CALL_POSITION = "CALL_POSITION";
             intent.putExtra(CALL_POSITION,index);
             context.startActivity(intent);
         }

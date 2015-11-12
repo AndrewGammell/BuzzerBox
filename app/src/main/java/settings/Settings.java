@@ -1,7 +1,5 @@
 package settings;
 
-import android.os.Parcelable;
-
 import java.io.Serializable;
 
 /**
@@ -9,7 +7,7 @@ import java.io.Serializable;
  */
 public class Settings implements Serializable{
 
-    private String type;
+    private final String type;
     private int colour = 1;
     private int sound = 3;
     private String notificationType = "phone";

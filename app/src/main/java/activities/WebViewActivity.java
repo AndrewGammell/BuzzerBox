@@ -1,19 +1,9 @@
 package activities;
 
 import abstracts.AbstractActivity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
-import fragments.DetailedViewFragment;
 import fragments.WebViewFragment;
 import io.buzzerbox.app.R;
-import util.MessageTools;
-import util.Utility;
 
 /**
  * Created by Devstream on 06/10/2015.

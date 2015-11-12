@@ -4,7 +4,6 @@ import SQLLite.SettingsDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -19,10 +18,6 @@ import persistence.DataPersister;
  */
 public class SettingsPageActivity extends AppCompatActivity {
 
-    private final String CALL_POSITION = "CALL_POSITION";
-
-    private ViewPager mViewPager;
-    private PagerAdapter mPagerAdapter;
     private int position = -1;
 
 
@@ -31,10 +26,11 @@ public class SettingsPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pager_layout);
 
+        String CALL_POSITION = "CALL_POSITION";
         position = getIntent().getIntExtra(CALL_POSITION,0);
 
-        mPagerAdapter = new PagerAdapter(getSupportFragmentManager());
-        mViewPager = (ViewPager) findViewById(R.id.pager);
+        PagerAdapter mPagerAdapter = new PagerAdapter(getSupportFragmentManager());
+        ViewPager mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.addOnPageChangeListener(new PageChangeListener());
         mViewPager.setCurrentItem(position);

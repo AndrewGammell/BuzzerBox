@@ -32,6 +32,11 @@ public class Buzz implements Serializable{
         this.buzz_key = buzz_key;
     }
 
+    @Override
+    public String toString(){
+        return "userID: " + user_id + ", id: " + id + ", name: " + name + ", lastBuzz: " + updated_at + ", buzzKey: " + buzz_key;
+    }
+
     public int getUser_id() {
         return user_id;
     }

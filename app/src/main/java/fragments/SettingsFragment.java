@@ -1,8 +1,6 @@
 package fragments;
 
 import abstracts.AbstractFragment;
-import android.media.AudioManager;
-import android.media.SoundPool;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,17 +21,15 @@ public class SettingsFragment extends AbstractFragment {
 
     private static final String SETTINGS_KEY = "SETTINGS";
 
-    private TextView alarmType;
     private Spinner spinnerSound;
     private Spinner spinnerFrequency;
     private Settings settings;
     private ViewGroup background;
-    private ViewGroup colourContainer;
-    private List<Integer> colourList = Utility.getColours();
+    private final List<Integer> colourList = Utility.getColours();
     private List<View> checkboxes;
     private CheckBox emailCheckBox;
     private CheckBox phoneCheckBox;
-    private CustomSoundPlayer customSoundPlayer = new CustomSoundPlayer();
+    private final CustomSoundPlayer customSoundPlayer = new CustomSoundPlayer();
 
 
     @Override
@@ -54,9 +50,9 @@ public class SettingsFragment extends AbstractFragment {
     public void instantiateWidgets(View view) {
 
         background = (ViewGroup) view.findViewById(R.id.layout_settings);
-        colourContainer = (ViewGroup) view.findViewById(R.id.colour_picker_grid);
+        ViewGroup colourContainer = (ViewGroup) view.findViewById(R.id.colour_picker_grid);
 
-        alarmType = (TextView) view.findViewById(R.id.text_alarm_type);
+        TextView alarmType = (TextView) view.findViewById(R.id.text_alarm_type);
         alarmType.setText(settings.getType());
 
         spinnerSound = (Spinner) view.findViewById(R.id.spinner_audio_file_list);
@@ -69,10 +65,10 @@ public class SettingsFragment extends AbstractFragment {
 
         checkboxes = getViewsByTag(colourContainer, "colour");
 
-        emailCheckBox = (CheckBox)view.findViewById(R.id.notify_by_email);
+        emailCheckBox = (CheckBox) view.findViewById(R.id.notify_by_email);
         emailCheckBox.setOnCheckedChangeListener(new CheckBoxListener());
 
-        phoneCheckBox = (CheckBox)view.findViewById(R.id.notify_by_phone);
+        phoneCheckBox = (CheckBox) view.findViewById(R.id.notify_by_phone);
         phoneCheckBox.setOnCheckedChangeListener(new CheckBoxListener());
 
         setupCheckboxes();
@@ -107,7 +103,7 @@ public class SettingsFragment extends AbstractFragment {
             switch (adapterView.getId()) {
                 case R.id.spinner_audio_file_list:
                     settings.setSound(i);
-                       customSoundPlayer.playSound(i);
+                    customSoundPlayer.playSound(i);
 
                     int in = DataHolder.getDataHolder().getSettingsList().get(0).getSound();
                     Log.d("TAG", "sound in data holder is " + in);
@@ -122,126 +118,128 @@ public class SettingsFragment extends AbstractFragment {
 
         @Override
         public void onNothingSelected(AdapterView<?> adapterView) {
-        }
-    }
-
-    private void setCurrentSettings() {
-        spinnerSound.setSelection(settings.getSound());
-        spinnerFrequency.setSelection(settings.getFrequency() - 1);
-        if(settings.getNotificationType().equals("phone")){
-            phoneCheckBox.setChecked(true);
-        }else{
-            emailCheckBox.setChecked(true);
-        }
-        updateDisplay();
-    }
-
-    private void updateDisplay() {
-        background.setBackgroundColor(getResources().getColor(colourList.get(settings.getColour())));
-    }
-
-    private ArrayList<View> getViewsByTag(ViewGroup root, String tag) {
-        ArrayList<View> views = new ArrayList<View>();
-        final int childCount = root.getChildCount();
-        for (int i = 0; i < childCount; i++) {
-            final View child = root.getChildAt(i);
-            if (child instanceof ViewGroup) {
-                views.addAll(getViewsByTag((ViewGroup) child, tag));
-            }
-
-            final Object tagObj = child.getTag();
-            if (tagObj != null && tagObj.equals(tag)) {
-                views.add(child);
-            }
 
         }
-        return views;
     }
 
-    private void setupCheckboxes() {
-        CheckBox c;
-        for (View v : checkboxes) {
-            c = (CheckBox) v;
-            c.setOnCheckedChangeListener(new CheckBoxListener());
-        }
-    }
-
-    private class CheckBoxListener implements CheckBox.OnCheckedChangeListener {
-
-        @Override
-        public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-
-            switch (compoundButton.getId()) {
-                case R.id.colour_1:
-                    settings.setColour(0);
-                    break;
-                case R.id.colour_2:
-                    settings.setColour(1);
-                    break;
-                case R.id.colour_3:
-                    settings.setColour(2);
-                    break;
-                case R.id.colour_4:
-                    settings.setColour(3);
-                    break;
-                case R.id.colour_5:
-                    settings.setColour(4);
-                    break;
-                case R.id.colour_6:
-                    settings.setColour(5);
-                    break;
-                case R.id.colour_7:
-                    settings.setColour(6);
-                    break;
-                case R.id.colour_8:
-                    settings.setColour(7);
-                    break;
-                case R.id.colour_9:
-                    settings.setColour(8);
-                    break;
-                case R.id.colour_10:
-                    settings.setColour(9);
-                    break;
-                case R.id.colour_11:
-                    settings.setColour(10);
-                    break;
-                case R.id.colour_12:
-                    settings.setColour(11);
-                    break;
-                case R.id.colour_13:
-                    settings.setColour(12);
-                    break;
-                case R.id.colour_14:
-                    settings.setColour(13);
-                    break;
-                case R.id.colour_15:
-                    settings.setColour(14);
-                    break;
-                case R.id.colour_16:
-                    settings.setColour(15);
-                    break;
-                case R.id.colour_17:
-                    settings.setColour(16);
-                    break;
-                case R.id.colour_18:
-                    settings.setColour(17);
-                    break;
-                case R.id.notify_by_email:
-                    if(b){
-                        settings.setNotificationType("email");
-                        phoneCheckBox.setChecked(false);
-                    }
-                    break;
-                case R.id.notify_by_phone:
-                    if(b){
-                        settings.setNotificationType("phone");
-                        emailCheckBox.setChecked(false);
-                    }
-                    break;
+        private void setCurrentSettings() {
+            spinnerSound.setSelection(settings.getSound());
+            spinnerFrequency.setSelection(settings.getFrequency() - 1);
+            if (settings.getNotificationType().equals("phone")) {
+                phoneCheckBox.setChecked(true);
+            } else {
+                emailCheckBox.setChecked(true);
             }
             updateDisplay();
         }
 
+        private void updateDisplay() {
+            background.setBackgroundColor(getResources().getColor(colourList.get(settings.getColour())));
+        }
 
+        private ArrayList<View> getViewsByTag(ViewGroup root, String tag) {
+            ArrayList<View> views = new ArrayList<View>();
+            final int childCount = root.getChildCount();
+            for (int i = 0; i < childCount; i++) {
+                final View child = root.getChildAt(i);
+                if (child instanceof ViewGroup) {
+                    views.addAll(getViewsByTag((ViewGroup) child, tag));
+                }
+
+                final Object tagObj = child.getTag();
+                if (tagObj != null && tagObj.equals(tag)) {
+                    views.add(child);
+                }
+
+            }
+            return views;
+        }
+
+        private void setupCheckboxes() {
+            CheckBox c;
+            for (View v : checkboxes) {
+                c = (CheckBox) v;
+                c.setOnCheckedChangeListener(new CheckBoxListener());
+            }
+        }
+
+        private class CheckBoxListener implements CheckBox.OnCheckedChangeListener {
+
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+                switch (compoundButton.getId()) {
+                    case R.id.colour_1:
+                        settings.setColour(0);
+                        break;
+                    case R.id.colour_2:
+                        settings.setColour(1);
+                        break;
+                    case R.id.colour_3:
+                        settings.setColour(2);
+                        break;
+                    case R.id.colour_4:
+                        settings.setColour(3);
+                        break;
+                    case R.id.colour_5:
+                        settings.setColour(4);
+                        break;
+                    case R.id.colour_6:
+                        settings.setColour(5);
+                        break;
+                    case R.id.colour_7:
+                        settings.setColour(6);
+                        break;
+                    case R.id.colour_8:
+                        settings.setColour(7);
+                        break;
+                    case R.id.colour_9:
+                        settings.setColour(8);
+                        break;
+                    case R.id.colour_10:
+                        settings.setColour(9);
+                        break;
+                    case R.id.colour_11:
+                        settings.setColour(10);
+                        break;
+                    case R.id.colour_12:
+                        settings.setColour(11);
+                        break;
+                    case R.id.colour_13:
+                        settings.setColour(12);
+                        break;
+                    case R.id.colour_14:
+                        settings.setColour(13);
+                        break;
+                    case R.id.colour_15:
+                        settings.setColour(14);
+                        break;
+                    case R.id.colour_16:
+                        settings.setColour(15);
+                        break;
+                    case R.id.colour_17:
+                        settings.setColour(16);
+                        break;
+                    case R.id.colour_18:
+                        settings.setColour(17);
+                        break;
+                    case R.id.notify_by_email:
+                        if (b) {
+                            settings.setNotificationType("email");
+                            phoneCheckBox.setChecked(false);
+                        }
+                        break;
+                    case R.id.notify_by_phone:
+                        if (b) {
+                            settings.setNotificationType("phone");
+                            emailCheckBox.setChecked(false);
+                        }
+                        break;
+                }
+                updateDisplay();
+            }
+
+
+        }
     }
-}
+

@@ -1,14 +1,13 @@
 package abstracts;
 
-import android.content.Intent;
+
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import interfaces.ViewController;
-
-import java.io.Serializable;
 
 /**
  * Created by Devstream on 29/09/2015.
@@ -43,10 +42,7 @@ public abstract class AbstractActivity extends FragmentActivity implements ViewC
     public boolean isFragmentDisplayed() {
         Log.d("TAG","isFragmentDisplayed() in AbstractActivity");
         Fragment fragment = fragmentManager.findFragmentByTag(TAG);
-        if (fragment == null) {
-            return false;
-        }
-        return true;
+        return fragment != null;
     }
 
 

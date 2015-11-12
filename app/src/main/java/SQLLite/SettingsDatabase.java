@@ -47,9 +47,9 @@ public class SettingsDatabase extends SQLiteOpenHelper {
     }
 
 
-//    public void runBackGroundLoader(){
-//        new BackGroundLoader().execute();
-//    }
+    public void runBackGroundLoader(){
+        new BackGroundLoader().execute();
+    }
 
     public void runBackGroundSaver(){
         new BackGroundSaver().execute();
@@ -65,7 +65,7 @@ public class SettingsDatabase extends SQLiteOpenHelper {
         }
     }
 
-    public boolean addEntry(Settings settings) {
+    private boolean addEntry(Settings settings) {
         SQLiteDatabase sql = this.getReadableDatabase();
         sql.insert(SettingsDBSchema.TABLE_NAME, null, values(settings));
         sql.close();
@@ -108,7 +108,7 @@ public class SettingsDatabase extends SQLiteOpenHelper {
         return true;
     }
 
-    public void removeAllFromDataBase(){
+    private void removeAllFromDataBase(){
         String query = "DELETE FROM " + SettingsDBSchema.TABLE_NAME;
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         sqLiteDatabase.execSQL(query);

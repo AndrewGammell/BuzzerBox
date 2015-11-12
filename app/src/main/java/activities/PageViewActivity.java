@@ -1,9 +1,9 @@
 package activities;
 
 import SQLLite.SettingsDatabase;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -15,25 +15,28 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import fragments.LogViewFragment;
-import fragments.LoginFragment;
 import fragments.OverviewFragment;
-import fragments.SettingsFragment;
 import io.buzzerbox.app.R;
 import persistence.DataPersister;
+import singleton.Buzz;
 import util.MessageTools;
 import util.Utility;
 
+import java.io.Serializable;
+import java.util.List;
 
+/**
+ * Created by Devstream on 06/10/2015.
+ */
 public class PageViewActivity extends AppCompatActivity implements OverviewFragment.Callback
         , LogViewFragment.Callback {
-    //    private static final String OBJECT_KEY = "OBJECT";
-//    private static final String BUNDLE_KEY = "BUNDLE";
-    private SectionsPagerAdapter mSectionsPagerAdapter;
+    private static final String TAG = "PageViewActivity";
+    private static final String OBJECT_KEY = "OBJECT";
+    private static final String BUNDLE_KEY = "BUNDLE";
+
     private ViewPager mViewPager;
     private PageChangeListener mPageChangeListener = new PageChangeListener();
     private ActionBar mActionBar;
-    private ActionBar.Tab overviewTab;
-    private ActionBar.Tab logTab;
     private ViewGroup viewGroup;
 
 
@@ -46,13 +49,6 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
         startActivity(intent);
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        Log.d("S", "onResume in PageActivity");
-//    }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,8 +58,11 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
         createTabs();
     }
 
-    void updateView() {
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+    private void updateView() {
+        List<Buzz> buzzList = (List<Buzz>) getIntent().getExtras().getSerializable(OBJECT_KEY);
+        Log.d(TAG, "Got buzz list in PageView" + buzzList.toString());
+
+        SectionsPagerAdapter mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.addOnPageChangeListener(mPageChangeListener);
@@ -71,10 +70,10 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
     }
 
     private void createTabs() {
-        mActionBar.setNavigationMode(mActionBar.NAVIGATION_MODE_TABS);
+        mActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
 
-        overviewTab = mActionBar.newTab();
+        ActionBar.Tab overviewTab = mActionBar.newTab();
         overviewTab.setText("Overview");
         overviewTab.setTabListener(new ActionBar.TabListener() {
 
@@ -94,7 +93,7 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
             }
         });
 
-        logTab = mActionBar.newTab();
+        ActionBar.Tab logTab = mActionBar.newTab();
         logTab.setText("Log");
         logTab.setTabListener(new ActionBar.TabListener() {
 
@@ -127,10 +126,12 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
 
         @Override
         public Fragment getItem(int position) {
+            Log.d("PAGE","getItem()");
             Fragment fragment = null;
             switch (position) {
                 case 0:
                     fragment = OverviewFragment.newInstance();
+
                     break;
                 case 1:
                     fragment = LogViewFragment.newInstance();
@@ -147,7 +148,7 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
 
         @Override
         public CharSequence getPageTitle(int position) {
-            Log.d("PAGE", "getIPageTitle()");
+            Log.d("PAGE","getIPageTitle()");
             switch (position) {
                 case 0:
                     return getResources().getString(R.string.title_overview);
@@ -162,6 +163,7 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_logout:
+                Utility.logout(this);
                 MessageTools.showShortToast(this, "logged out");
                 goToLogin();
                 return true;
@@ -178,7 +180,8 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
     }
 
     //     Using onPageSelected to set the ActionBar title to the currently displayed fragment.
-    private class PageChangeListener implements ViewPager.OnPageChangeListener {
+   
+    private class PageChangeListener implements ViewPager.OnPageChangeListener{
 
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -187,19 +190,18 @@ public class PageViewActivity extends AppCompatActivity implements OverviewFragm
 
         @Override
         public void onPageSelected(int position) {
-            switch (position) {
-                case 0:
-                    mActionBar.selectTab(overviewTab);
-                    break;
-                case 1:
-                    mActionBar.selectTab(logTab);
-                    break;
-            }
+
         }
 
         @Override
         public void onPageScrollStateChanged(int state) {
         }
+    }
+
+    public static Intent newIntent(Context context, List<Buzz> buzzList) {
+        Intent intent = new Intent(context, PageViewActivity.class);
+        intent.putExtra(OBJECT_KEY, (Serializable) buzzList);
+        return intent;
     }
 
     //     uses the DataPerisiter class to save the User when this Activity is Destroyed.

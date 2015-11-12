@@ -19,8 +19,6 @@ public class LoginFragment extends AbstractFragment {
     private final String EDITTEXT2 = "edittextfield2";
     private EditText username;
     private EditText password;
-    private Button btn_login;
-    private Button btn_create_account;
     private View.OnClickListener activityOnClickListener;
     private Bundle savedInstanceState;
 
@@ -51,10 +49,12 @@ public class LoginFragment extends AbstractFragment {
 
     public void instantiateWidgets(View view) {
         username = (EditText) view.findViewById(R.id.txt_username);
+        username.setText("andrew");
         password = (EditText) view.findViewById(R.id.txt_password);
-        btn_login = (Button) view.findViewById(R.id.btn_login);
+        password.setText("alan");
+        Button btn_login = (Button) view.findViewById(R.id.btn_login);
         btn_login.setOnClickListener(new ClickListener());
-        btn_create_account = (Button) view.findViewById(R.id.btn_create_account);
+        Button btn_create_account = (Button) view.findViewById(R.id.btn_create_account);
         btn_create_account.setOnClickListener(activityOnClickListener);
 
     }
@@ -62,8 +62,6 @@ public class LoginFragment extends AbstractFragment {
     public static Fragment newInstance() {
         return new LoginFragment();
     }
-
-
 
     private class ClickListener implements View.OnClickListener {
 
@@ -87,7 +85,6 @@ public class LoginFragment extends AbstractFragment {
         super.onSaveInstanceState(outState);
         outState.putString(EDITTEXT1,username.getText().toString());
         outState.putString(EDITTEXT2,password.getText().toString());
-
     }
 
    private void fillTextFields(Bundle savedInstanceState){

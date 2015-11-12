@@ -10,9 +10,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import holder.BuzzHolder;
 import holder.DataHolder;
 import io.buzzerbox.app.R;
-import tester.DB;
 
 
 import java.util.List;
@@ -53,7 +53,7 @@ public class OverviewFragment extends AbstractListFragment {
 
     @Override
     protected RecyclerView.Adapter getAdapter() {
-        return new OverviewAdapter(DataHolder.getDataHolder().getListOfBoxes(),getActivity());
+        return new OverviewAdapter(getList() ,getContext());
     }
 
     public static Fragment newInstance(){
@@ -65,8 +65,8 @@ public class OverviewFragment extends AbstractListFragment {
      * @return
      * this list is for test purposes only
      */
-    private List getList(){
-        return DB.initialiseDummies();
+    private List<BuzzHolder> getList(){
+        return DataHolder.getDataHolder().getListOfBoxes();
     }
 
 

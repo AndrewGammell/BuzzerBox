@@ -3,7 +3,6 @@ package holder;
 
 import org.joda.time.DateTime;
 import singleton.Buzz;
-import settings.Settings;
 import util.Utility;
 
 import java.io.Serializable;
@@ -16,8 +15,8 @@ import java.util.List;
  */
 public class BuzzHolder implements Serializable {
 
-    private DateTime todayRef = new DateTime();
-    private DateTime yesterdayRef = new DateTime().minusDays(1);
+    private final DateTime todayRef = new DateTime();
+    private final DateTime yesterdayRef = new DateTime().minusDays(1);
 
     private String type;
     private int today = 0;
@@ -27,13 +26,13 @@ public class BuzzHolder implements Serializable {
     private int total = 0;
     private DateTime lastBuzz;
     private DateTime secondLastBuzz;
-    private List<Buzz> list = new ArrayList<Buzz>();
-    private Settings settings;
+    private final List<Buzz> list = new ArrayList<Buzz>();
+
 
 
     public BuzzHolder(String type) {
         this.type = type;
-//        this.settings = new Settings(type);
+
     }
 
     public List<Buzz> getList() {
@@ -120,25 +119,19 @@ public class BuzzHolder implements Serializable {
 //       Takes a DateTime and uses the DateTime todayRef for comparison.
 //       if the two dates have the same year/month/day, it returns true for today.
 
-        if (dateTime.getYear() == todayRef.getYear()
-                && dateTime.getMonthOfYear() == todayRef.getMonthOfYear()
-                && dateTime.getDayOfMonth() == todayRef.getDayOfMonth()) {
-            return true;
-        }
-        return false;
-    }
+       return dateTime.getYear() == todayRef.getYear()
+               && dateTime.getMonthOfYear() == todayRef.getMonthOfYear()
+               && dateTime.getDayOfMonth() == todayRef.getDayOfMonth();
+   }
 
    private boolean isYesterday(DateTime dateTime) {
 //       Takes a DateTime and uses the DateTime yesterdayRef for comparison.
 //       if the two dates have the same year/month/day, it returns true for yesterday.
 
-        if (dateTime.getYear() == yesterdayRef.getYear()
-                && dateTime.getMonthOfYear() == yesterdayRef.getMonthOfYear()
-                && dateTime.getDayOfMonth() == yesterdayRef.getDayOfMonth()) {
-            return true;
-        }
-        return false;
-    }
+       return dateTime.getYear() == yesterdayRef.getYear()
+               && dateTime.getMonthOfYear() == yesterdayRef.getMonthOfYear()
+               && dateTime.getDayOfMonth() == yesterdayRef.getDayOfMonth();
+   }
 
 
    private boolean isWeek(DateTime dateTime) {
@@ -147,12 +140,9 @@ public class BuzzHolder implements Serializable {
 //       then checks if they both have the same value in a week year format.
 //       returns true if the week year values match.
 
-        if (dateTime.getYear() == todayRef.getYear()
-                && dateTime.getWeekOfWeekyear() == todayRef.getWeekOfWeekyear()) {
-            return true;
-        }
-        return false;
-    }
+       return dateTime.getYear() == todayRef.getYear()
+               && dateTime.getWeekOfWeekyear() == todayRef.getWeekOfWeekyear();
+   }
 
 
    private boolean isMonth(DateTime dateTime) {
@@ -160,12 +150,9 @@ public class BuzzHolder implements Serializable {
 //       checks if the year and month match.
 //       returns true if the values match.
 
-        if (dateTime.getYear() == todayRef.getYear()
-                && dateTime.getMonthOfYear() == todayRef.getMonthOfYear()) {
-            return true;
-        }
-        return false;
-    }
+       return dateTime.getYear() == todayRef.getYear()
+               && dateTime.getMonthOfYear() == todayRef.getMonthOfYear();
+   }
 
 
    private void updateLastBuzz(DateTime newDate){
@@ -178,13 +165,6 @@ public class BuzzHolder implements Serializable {
             secondLastBuzz = lastBuzz;
             lastBuzz = newDate;
         }
-    }
-
-
-
-
-    public Settings getSettings(){
-        return settings;
     }
 
     private void resetCounters(){

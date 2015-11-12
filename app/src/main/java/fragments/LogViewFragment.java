@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import io.buzzerbox.app.R;
+import singleton.Buzz;
 import singleton.User;
 
 import java.util.List;
@@ -61,7 +62,7 @@ public class LogViewFragment extends AbstractListFragment {
      * @return
      * this list is for test purposes only
      */
-    private List getList(){
+    private List<Buzz> getList(){
         return User.getInstance(getContext()).getBuzzList();
     }
 

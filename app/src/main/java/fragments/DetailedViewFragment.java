@@ -21,15 +21,6 @@ public class DetailedViewFragment extends AbstractFragment {
 
     private static final String KEY = "KEY";
     private BuzzHolder buzz;
-    private Settings settings;
-    TextView alarmName;
-    TextView alarmToday;
-    TextView alarmYesterday;
-    ViewGroup viewGroup;
-    TextView alarmTotalWeek;
-    TextView alarmTotalMonth;
-    TextView alarmTotal;
-    TextView alarmTimeSinceLast;
 
 
     @Override
@@ -40,30 +31,30 @@ public class DetailedViewFragment extends AbstractFragment {
 
     @Override
     protected void instantiateWidgets(View view) {
-        settings = DataHolder.getDataHolder().getSettings(buzz.getType());
+        Settings settings = DataHolder.getDataHolder().getSettings(buzz.getType());
 
-        alarmName = (TextView) view.findViewById(R.id.text_alarm_type);
+        TextView alarmName = (TextView) view.findViewById(R.id.text_alarm_type);
         alarmName.setText(buzz.getType());
 
-        alarmTimeSinceLast = (TextView) view.findViewById(R.id.text_last_buzz_int_value);
+        TextView alarmTimeSinceLast = (TextView) view.findViewById(R.id.text_last_buzz_int_value);
         alarmTimeSinceLast.setText(String.valueOf(buzz.getTimeSinceLastbuzz()));
 
-        alarmToday = (TextView) view.findViewById(R.id.text_today_int_value);
+        TextView alarmToday = (TextView) view.findViewById(R.id.text_today_int_value);
         alarmToday.setText(String.valueOf((buzz.getToday())));
 
-        alarmYesterday = (TextView) view.findViewById(R.id.text_yesterday_int_value);
+        TextView alarmYesterday = (TextView) view.findViewById(R.id.text_yesterday_int_value);
         alarmYesterday.setText(String.valueOf(buzz.getYesterday()));
 
-        alarmTotalWeek = (TextView) view.findViewById(R.id.text_total_week_int_value);
+        TextView alarmTotalWeek = (TextView) view.findViewById(R.id.text_total_week_int_value);
         alarmTotalWeek.setText(String.valueOf(buzz.getWeek()));
 
-        alarmTotalMonth = (TextView) view.findViewById(R.id.text_total_month_int_value);
+        TextView alarmTotalMonth = (TextView) view.findViewById(R.id.text_total_month_int_value);
         alarmTotalMonth.setText(String.valueOf(buzz.getMonth()));
 
-        alarmTotal = (TextView) view.findViewById(R.id.text_total_int_value);
+        TextView alarmTotal = (TextView) view.findViewById(R.id.text_total_int_value);
         alarmTotal.setText(String.valueOf(buzz.getTotal()));
 
-        viewGroup = (ViewGroup) view.findViewById(R.id.open_log_title);
+        ViewGroup viewGroup = (ViewGroup) view.findViewById(R.id.open_log_title);
         viewGroup.setBackgroundColor(getResources().getColor(Utility.getColours().get(settings.getColour())));
 
     }

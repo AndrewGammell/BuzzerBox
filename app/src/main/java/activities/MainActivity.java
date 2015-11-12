@@ -29,22 +29,24 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
     private String CALL_KEY = "CALL";
 
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        User.getInstance(this);
-        if(DataHolder.getDataHolder().getSettingsList().size() == 0){
-            new SettingsDatabase(this).loadSettings();
-        }
-
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        User.getInstance(this);
+//        if(DataHolder.getDataHolder().getSettingsList().size() == 0){
+//            new SettingsDatabase(this).loadSettings();
+//        }
+//
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
-        login = new LoginAsyncTask("dummy@bundly.io", "dummy1234");
-        login.execute("");
+        User.getInstance(this);
+        if(DataHolder.getDataHolder().getSettingsList().size() == 0){
+            new SettingsDatabase(this).runBackGroundLoader();
+        }
         displaySplash();
         new Sorter(this).execute();
 
@@ -87,14 +89,14 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
                 }
                 break;
             case R.id.btn_create_account:
-                startWebActivity(1);
+                startWebActivity();
                 MessageTools.showShortToast(this, "Fire up WebView to create account");
                 break;
         }
     }
 
     //   Gets the current focus of the screen and if not null hides keypad;
-    public static void hideKeyboard(Activity activity) {
+    private static void hideKeyboard(Activity activity) {
         View view = activity.getCurrentFocus();
         if (view != null) {
             ((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE)).
@@ -102,25 +104,17 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
         }
     }
 
-//    Fires up a new Activity and uses flags to prevent this
-//    Activity from being brought back from a back press.
-
-    private void startNewActivity() {
-        Intent intent = new Intent(this, PageViewActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+    private void startNewActivity(){
+        Log.d("TAG", "Getting pushed now");
+        startActivity(PageViewActivity.newIntent(this, LoginAsyncTask.buzzList));
         this.finish();
     }
 
 //     Creates a Bundle and adds an int(CALL_KEY) to be put into the intent.
 //     Fires off a new Activity with Args.
 
-    private void startWebActivity(int in) {
-        Bundle bundle = new Bundle();
-        bundle.putInt(CALL_KEY, in);
+    private void startWebActivity() {
         Intent intent = new Intent(this, WebViewActivity.class);
-        intent.putExtra(BUNDLE_KEY, bundle);
         startActivity(intent);
     }
 }
