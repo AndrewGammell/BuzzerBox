@@ -32,10 +32,6 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
     @Override
     protected void onStart() {
         super.onStart();
-        User.getInstance(this);
-        if(DataHolder.getDataHolder().getSettingsList().size() == 0){
-            new SettingsDatabase(this).loadSettings();
-        }
 
     }
 
@@ -45,6 +41,11 @@ public class MainActivity extends AbstractActivity implements View.OnClickListen
         setContentView(getLayout());
         login = new LoginAsyncTask("dummy@bundly.io", "dummy1234");
         login.execute("");
+        User.getInstance(this);
+        if(DataHolder.getDataHolder().getSettingsList().size() == 0){
+            new SettingsDatabase(this).loadSettings();
+        }
+
         displaySplash();
         new Sorter(this).execute();
 
